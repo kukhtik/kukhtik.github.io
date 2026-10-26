@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineer Companion — offline RAG — Maxim Kukhto</title>
+<meta name="description" content="Offline RAG over radiotherapy equipment documentation: hybrid LanceDB + BM25 retrieval, local embeddings and reranker, CPU-only. Answers cite document, page and drawing region.">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="content bar">
+    <a class="mark" href="/">maxim-kukhto <span>/ portfolio</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/#work">Work</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <p class="locale" aria-label="Language">
+      <a href="/en/case/engineer-companion.html" aria-current="true" lang="en">EN</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a href="/ru/case/engineer-companion.html" lang="ru">RU</a>
+    </p>
+  </div>
+</header>
+
+<main id="main">
+  <article class="content case-head">
+    <p><a class="back-link" href="/">← All cases</a></p>
+    <div class="case-title-row">
+      <p class="case-meta">
+        <span class="badge badge-public">Public code</span>
+        <span>2026</span>
+        <span>Offline RAG</span>
+      </p>
+      <h1>Engineer Companion</h1>
+      <p class="lead">A field engineer in an RF-shielded bunker needs the exact page of a specification in seconds, with no internet — out of tens of thousands of pages of manuals.</p>
+    </div>
+    <div class="cover">
+      <figure>
+        <img src="img/engineer-companion-chat.png" width="2000" height="1250"
+             alt="Screenshot of the Engineer Companion application: a chat answer about a linear accelerator component, with evidence links stating the document, page number and drawing region">
+        <figcaption>Answer with evidence links: document, page, drawing region.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <div class="content case-layout">
+    <div class="case-main">
+      <section aria-labelledby="problem-title">
+        <h2 id="problem-title"><span class="index" aria-hidden="true">01</span>Problem</h2>
+        <div class="prose">
+          <p>A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds — out of tens of thousands of pages of manuals.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="approach-title">
+        <h2 id="approach-title"><span class="index" aria-hidden="true">02</span>Approach</h2>
+        <ul class="approach-list">
+          <li>One Python core: PDF indexing, chunking, embeddings, LanceDB retrieval and a fact catalogue.</li>
+          <li>Hybrid retrieval: dense vectors + BM25, with a cross-encoder reranker.</li>
+          <li>Local quantized inference (Gemma-3-4B, GGUF / llama.cpp); every answer carries an evidence link to document, page and drawing region.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="results-title">
+        <h2 id="results-title"><span class="index" aria-hidden="true">03</span>Results</h2>
+        <dl class="metrics results-grid">
+          <div class="metric"><dt class="label">Indexed facts</dt><dd class="value">21,214</dd></div>
+          <div class="metric"><dt class="label">Benchmark accuracy</dt><dd class="value">96/100</dd></div>
+          <div class="metric"><dt class="label">p50 latency (CPU)</dt><dd class="value">130 ms</dd></div>
+          <div class="metric"><dt class="label">Tests passing</dt><dd class="value">768/775</dd></div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="stack-title">
+        <h2 id="stack-title"><span class="index" aria-hidden="true">04</span>Stack</h2>
+        <ul class="stack-list">
+          <li>Python</li>
+          <li>LanceDB</li>
+          <li>BM25</li>
+          <li>multilingual-e5-small</li>
+          <li>mmarco reranker</li>
+          <li>Gemma-3-4B (GGUF)</li>
+          <li>llama.cpp</li>
+          <li>PySide6</li>
+          <li>pytest</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="public-title">
+        <h2 id="public-title"><span class="index" aria-hidden="true">05</span>What is public</h2>
+        <div class="prose">
+          <p>Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal.</p>
+        </div>
+      </section>
+    </div>
+
+    <aside class="case-aside">
+      <div class="aside-box" data-od-id="aside-links">
+        <h2>Links</h2>
+        <ul class="aside-links inner">
+          <li>
+            <a href="https://github.com/kukhtik/engineer-companion">
+              <span class="kind">Public code</span>
+              github.com/kukhtik/engineer-companion
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/kukhtik/Open_space">
+              <span class="kind">Architecture notes</span>
+              github.com/kukhtik/Open_space
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="aside-box" data-od-id="aside-gallery">
+        <h2>Gallery</h2>
+        <div class="inner">
+          <figure class="gallery-item">
+            <img src="img/geoconverter.png" width="1938" height="976"
+                 alt="Report window from GeoConverter showing calibration residuals between coordinate systems">
+            <figcaption>Generated calibration report with round-trip residuals.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="content row">
+    <p>© 2026 Maxim Kukhto</p>
+    <p>static site · no trackers</p>
+  </div>
+</footer>
+</body>
+</html>

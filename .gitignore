@@ -8,3 +8,5 @@ __pycache__/
 venv/
 # evidence artefacts kept out of the repo (screenshots are uploaded to the site)
 .reports/
+# render evidence (screenshots, lighthouse json, report.json)
+out/

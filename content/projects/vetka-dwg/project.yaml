@@ -52,7 +52,7 @@ links:
     url: "https://github.com/kukhtik/Open_space"
 
 images:
-  - src: "images/vetka-dwg-library.png"
+  - src: "images/vetka-dwg-library.webp"
     alt:
       en: "VETKA_DWG block library audit console"
       ru: "VETKA_DWG — консоль аудита библиотеки блоков"

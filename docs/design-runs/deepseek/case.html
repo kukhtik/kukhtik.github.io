@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineer Companion, case study by Maxim Kukhto</title>
+<meta name="description" content="Offline RAG over radiotherapy equipment documentation: hybrid LanceDB and BM25 retrieval, local inference, evidence-linked answers. 21,214 facts indexed, 96/100 benchmark accuracy, 130 ms p50 on CPU.">
+<meta name="author" content="Maxim Kukhto">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2315191d'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' fill='%23f8f9fa' text-anchor='middle'%3EMK%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg: oklch(0.982 0.002 255);
+  --surface: oklch(0.962 0.004 255);
+  --paper: oklch(0.995 0.001 255);
+  --fg: oklch(0.21 0.01 255);
+  --muted: oklch(0.45 0.01 255);
+  --border: oklch(0.875 0.006 255);
+  --border-strong: oklch(0.78 0.008 255);
+  --accent: oklch(0.50 0.15 38);
+  --accent-hover: oklch(0.44 0.15 38);
+  --accent-fg: oklch(0.995 0.001 255);
+  --focus: var(--accent);
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: 1.75rem;
+  --step-4: 2.25rem;
+  --wrap: 1200px;
+  --radius: 2px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: oklch(0.185 0.006 255);
+    --surface: oklch(0.225 0.007 255);
+    --paper: oklch(0.255 0.008 255);
+    --fg: oklch(0.945 0.003 255);
+    --muted: oklch(0.735 0.01 255);
+    --border: oklch(0.33 0.008 255);
+    --border-strong: oklch(0.44 0.01 255);
+    --accent: oklch(0.75 0.125 45);
+    --accent-hover: oklch(0.80 0.115 45);
+    --accent-fg: oklch(0.185 0.006 255);
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-sans);
+  font-size:var(--step-0);
+  line-height:1.6;
+  font-synthesis-weight:none;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-weight:600;text-wrap:balance}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(20px, 5vw, 40px)}
+.skip{
+  position:absolute;left:16px;top:8px;z-index:100;
+  transform:translateY(-180%);
+  display:inline-flex;align-items:center;min-height:44px;
+  background:var(--fg);color:var(--bg);
+  padding:10px 14px;border-radius:var(--radius);
+  font-size:14px;text-decoration:none;
+}
+.skip:focus{transform:none}
+.site-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:28px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none}
+.brand-mark{
+  display:inline-grid;place-items:center;width:24px;height:24px;
+  border:1px solid var(--fg);border-radius:var(--radius);
+  font-family:var(--font-mono);font-size:9px;letter-spacing:0.04em;
+}
+.brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;font-size:14px;text-decoration:none}
+.nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.lang{display:flex;align-items:center;gap:5px;margin-left:6px;font-family:var(--font-mono);font-size:12px}
+.lang [aria-current="page"]{font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.lang a{display:inline-flex;align-items:center;justify-content:flex-start;min-width:44px;min-height:44px;padding-left:6px;color:var(--muted);text-decoration:none}
+.lang a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+.lang-sep{color:var(--border-strong)}
+.case-hero{padding-top:clamp(28px, 4vw, 44px);padding-bottom:clamp(28px, 4vw, 40px);scroll-margin-top:80px}
+.back{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:0.01em;text-decoration:none;color:var(--muted);
+}
+.back:hover{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+.meta-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
+.badge{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;
+  border:1px solid var(--border-strong);border-radius:var(--radius);
+  padding:4px 8px;white-space:nowrap;
+}
+.year{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.field{padding-left:14px;border-left:1px solid var(--border);font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.case-hero h1{margin:14px 0 0;font-size:clamp(2rem, 6vw, 3.5rem);line-height:1.05;letter-spacing:-0.03em}
+.case-lead{max-width:60ch;margin:16px 0 0;font-size:clamp(1.125rem, 2vw, 1.25rem);line-height:1.55;color:var(--fg)}
+.cover{margin:0;padding-block:0}
+.cover img{width:100%;height:auto;aspect-ratio:2000 / 1250;object-fit:contain;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface)}
+.cover figcaption{margin-top:10px;font-family:var(--font-mono);font-size:12px;line-height:1.5;color:var(--muted)}
+.case-layout{
+  display:grid;grid-template-columns:minmax(0, 1fr) 300px;
+  gap:clamp(40px, 6vw, 80px);
+  margin-top:clamp(36px, 5vw, 52px);
+  padding-block:clamp(36px, 5vw, 52px);
+}
+.case-body{min-width:0}
+.case-body section{padding-top:20px;border-top:1px solid var(--border)}
+.case-body section + section{margin-top:36px}
+.case-body h2{margin:0 0 12px;font-size:var(--step-2);line-height:1.25;letter-spacing:-0.02em}
+.case-body p{max-width:70ch;margin:0;font-size:17px;line-height:1.65}
+.approach{list-style:none;counter-reset:step;margin:0;padding:0}
+.approach li{display:grid;grid-template-columns:40px minmax(0, 1fr);gap:10px;padding:14px 0;border-bottom:1px solid var(--border)}
+.approach li:first-child{padding-top:0}
+.approach li:last-child{border-bottom:0;padding-bottom:0}
+.approach li::before{
+  counter-increment:step;content:counter(step, decimal-leading-zero);
+  font-family:var(--font-mono);font-size:12px;line-height:1.8;color:var(--muted);
+}
+.approach p{margin:0;font-size:16px;line-height:1.6;max-width:68ch}
+.result-grid{
+  display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));
+  margin:0;border-top:1px solid var(--border-strong);border-left:1px solid var(--border);
+}
+.result-grid > div{padding:16px 18px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.result-grid dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;color:var(--muted)}
+.result-grid dd{margin:6px 0 0;font-family:var(--font-mono);font-size:var(--step-3);line-height:1.2;letter-spacing:-0.02em}
+.stack{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.stack li{
+  border:1px solid var(--border-strong);border-radius:var(--radius);
+  padding:6px 10px;font-family:var(--font-mono);font-size:12px;line-height:1.5;
+}
+.case-aside{position:sticky;top:88px;align-self:start;display:grid;gap:36px;min-width:0}
+.aside-block{border-top:2px solid var(--fg);padding-top:12px;min-width:0}
+.aside-block h2{margin:0 0 10px;font-size:14px;font-weight:600;line-height:1.4}
+.aside-links{list-style:none;margin:0;padding:0}
+.aside-links li{border-bottom:1px solid var(--border);min-width:0}
+.aside-links a{display:block;min-height:44px;padding:9px 0;text-decoration:none}
+.aside-links a:hover .aside-label{text-decoration:underline;text-underline-offset:4px}
+.aside-label{display:block;font-size:14px;font-weight:600;line-height:1.4}
+.aside-url{display:block;margin-top:2px;font-family:var(--font-mono);font-size:11px;line-height:1.45;color:var(--muted);overflow-wrap:anywhere;word-break:break-word}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 20px;
+  background:var(--accent);color:var(--accent-fg);
+  border:1px solid var(--accent);border-radius:var(--radius);
+  font-size:15px;font-weight:600;letter-spacing:0.01em;text-decoration:none;white-space:nowrap;
+  transition:background-color .14s ease, border-color .14s ease, transform .08s ease;
+}
+.btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn:active{transform:translateY(1px)}
+.aside-cta{display:flex;width:100%;margin-top:16px}
+.gallery{max-width:590px;margin:0}
+.gallery img{width:100%;height:auto;aspect-ratio:1938 / 976;object-fit:contain;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface)}
+.gallery figcaption{margin-top:8px;font-family:var(--font-mono);font-size:11px;line-height:1.5;color:var(--muted)}
+.site-footer{border-top:1px solid var(--border);padding-block:24px}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.footer-inner p{margin:0}
+.footer-inner a{text-decoration:none}
+.footer-inner a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+@media (max-width:960px){
+  .case-layout{grid-template-columns:1fr;gap:44px}
+  .case-aside{position:static;grid-template-columns:minmax(0, 1fr);gap:32px}
+  .gallery{max-width:100%}
+}
+@media (max-width:760px){
+  .site-header{position:static}
+  .header-inner{display:grid;grid-template-columns:1fr auto;gap:0 16px;padding-block:10px}
+  .brand{grid-column:1;grid-row:1}
+  .lang{grid-column:2;grid-row:1;justify-self:end;margin-left:0}
+  .nav{grid-column:1 / -1;grid-row:2;margin-left:0;margin-top:8px;padding-top:2px;border-top:1px solid var(--border);gap:24px}
+  .case-hero{padding-top:20px}
+  .cover figcaption{font-size:11px}
+  .case-layout{padding-top:32px}
+  .case-body p{font-size:16px}
+  .result-grid dd{font-size:var(--step-2)}
+  .footer-inner{flex-direction:column;gap:4px}
+}
+@media (max-width:460px){
+  .header-inner{gap:0 12px}
+  .brand-name{font-size:14px}
+  .badge{white-space:normal}
+  .field{padding-left:0;border-left:0;flex-basis:100%}
+  .case-lead{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important}
+  .skip{transition:none}
+  .btn:active{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header" data-od-id="case-page-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="home.html" aria-label="Maxim Kukhto, home">
+      <span class="brand-mark" aria-hidden="true">MK</span>
+      <span class="brand-name">Maxim Kukhto</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="home.html#work">Work</a>
+      <a href="home.html#about">About</a>
+      <a href="home.html#contact">Contact</a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <span aria-current="page">EN</span>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <a href="ru/" lang="ru" hreflang="ru">RU</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article data-od-id="case-engineer-companion-page">
+    <header class="case-hero">
+      <div class="wrap">
+        <a class="back" href="home.html#work" data-od-id="case-back">&larr; All work</a>
+        <div class="meta-row">
+          <span class="badge">Public code</span>
+          <span class="year">2026</span>
+          <span class="field">Offline RAG</span>
+        </div>
+        <h1 data-od-id="case-title">Engineer Companion</h1>
+        <p class="case-lead">A field engineer in an RF-shielded bunker needs the exact page of a specification in seconds, with no internet &mdash; out of tens of thousands of pages of manuals.</p>
+      </div>
+    </header>
+
+    <figure class="cover" data-od-id="case-cover">
+      <div class="wrap">
+        <img src="img/engineer-companion-chat.png" width="2000" height="1250" decoding="async" alt="Engineer Companion window: a question about the HDW collimator and an answer citing page 118, with source actions, local-model speed and token counts.">
+        <figcaption>Answer with evidence links: document, page, drawing region.</figcaption>
+      </div>
+    </figure>
+
+    <div class="wrap case-layout">
+      <div class="case-body">
+        <section aria-labelledby="problem-title" data-od-id="case-problem">
+          <h2 id="problem-title" data-od-id="problem-heading">Problem</h2>
+          <p>A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds &mdash; out of tens of thousands of pages of manuals.</p>
+        </section>
+
+        <section aria-labelledby="approach-title" data-od-id="case-approach">
+          <h2 id="approach-title" data-od-id="approach-heading">Approach</h2>
+          <ol class="approach">
+            <li><p>One Python core: PDF indexing, chunking, embeddings, LanceDB retrieval and a fact catalogue.</p></li>
+            <li><p>Hybrid retrieval: dense vectors + BM25, with a cross-encoder reranker.</p></li>
+            <li><p>Local quantized inference (Gemma-3-4B, GGUF / llama.cpp); every answer carries an evidence link to document, page and drawing region.</p></li>
+          </ol>
+        </section>
+
+        <section aria-labelledby="results-title" data-od-id="case-results">
+          <h2 id="results-title" data-od-id="results-heading">Results</h2>
+          <dl class="result-grid">
+            <div><dt>Facts indexed</dt><dd>21,214</dd></div>
+            <div><dt>Benchmark accuracy</dt><dd>96/100</dd></div>
+            <div><dt>p50 latency (CPU)</dt><dd>130 ms</dd></div>
+            <div><dt>Tests passing</dt><dd>768/775</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="stack-title" data-od-id="case-stack">
+          <h2 id="stack-title" data-od-id="stack-heading">Stack</h2>
+          <ul class="stack">
+            <li>Python</li>
+            <li>LanceDB</li>
+            <li>BM25</li>
+            <li>multilingual-e5-small</li>
+            <li>mmarco reranker</li>
+            <li>Gemma-3-4B (GGUF)</li>
+            <li>llama.cpp</li>
+            <li>PySide6</li>
+            <li>pytest</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="public-title" data-od-id="case-public">
+          <h2 id="public-title" data-od-id="public-heading">What is public</h2>
+          <p>Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal.</p>
+        </section>
+      </div>
+
+      <aside class="case-aside" aria-label="Case links and gallery" data-od-id="case-aside">
+        <div class="aside-block" data-od-id="case-links">
+          <h2 data-od-id="links-heading">Links</h2>
+          <ul class="aside-links">
+            <li>
+              <a href="https://github.com/kukhtik/engineer-companion" rel="noopener">
+                <span class="aside-label">Public code</span>
+                <span class="aside-url">github.com/kukhtik/engineer-companion</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/kukhtik/Open_space" rel="noopener">
+                <span class="aside-label">Architecture notes</span>
+                <span class="aside-url">github.com/kukhtik/Open_space</span>
+              </a>
+            </li>
+          </ul>
+          <a class="btn aside-cta" href="mailto:maxkukhto@gmail.com?subject=Engineer%20Companion" data-od-id="case-email">Email about this project</a>
+        </div>
+
+        <div class="aside-block" data-od-id="case-gallery">
+          <h2 data-od-id="gallery-heading">Gallery</h2>
+          <figure class="gallery">
+            <img src="img/geoconverter.png" width="1938" height="976" loading="lazy" decoding="async" alt="GeoConverter v8.3 window with source and result coordinate tables, system selectors and conversion settings.">
+            <figcaption>Related work, GeoConverter v8.3: source and result coordinate tables and conversion direction controls.</figcaption>
+          </figure>
+        </div>
+      </aside>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer" data-od-id="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; 2026 Maxim Kukhto</p>
+    <p>static site &middot; no trackers</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -36,6 +36,8 @@ FORBIDDEN = [
 
 REQUIRED_UI = [
     "nav.label",
+    "nav.lang_label",
+    "nav.status",
     "nav.home",
     "nav.work",
     "nav.about",
@@ -48,6 +50,7 @@ REQUIRED_UI = [
     "actions.view_case",
     "actions.back_to_work",
     "actions.back_home",
+    "actions.email_about",
     "sections.selected_work",
     "sections.selected_work_note",
     "sections.what_i_do",
@@ -56,6 +59,9 @@ REQUIRED_UI = [
     "sections.contact",
     "sections.contact_note",
     "sections.more",
+    "sections.record",
+    "sections.instrument_note",
+    "sections.record_note",
     "sections.problem",
     "sections.approach",
     "sections.results",

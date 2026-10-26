@@ -1,126 +1,238 @@
 {% extends "base.html" %}
+{% block head_extra %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ t(site.name, lang) | tojson }},
+    "jobTitle": {{ t(site.role, lang) | tojson }},
+    "email": "mailto:{{ site.email }}",
+    "url": {{ (site.domain + home_url) | tojson }},
+    "address": {"@type": "PostalAddress", "addressLocality": {{ t(site.location, lang) | tojson }}},
+    "sameAs": [{{ site.github | tojson }}, {{ site.linkedin | tojson }}]
+  }
+  </script>
+{% endblock %}
 {% block content %}
 <section class="hero">
-  <div class="wrap hero-inner">
-    <p class="eyebrow">{{ t(site.role, lang) }}</p>
-    <h1>{{ t(site.name, lang) }}</h1>
-    <p class="lead">{{ t(site.hero.lead, lang) }}</p>
-    <p class="hero-note">{{ t(site.hero.note, lang) }}</p>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ t(site.role, lang) }}</p>
+        <h1>{{ t(site.name, lang) }}</h1>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <p class="role-line">{{ t(site.hero.lead, lang) }}</p>
+        <p class="lead">{{ t(site.hero.note, lang) }}</p>
+        <div class="actions">
+          <a class="btn" href="/{{ site.cv[lang] }}" download>
+            {{ ui.actions.download_cv[lang] }}
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn-ghost" href="mailto:{{ site.email }}"><span>{{ site.email }}</span></a>
+        </div>
+      </div>
+      <div class="instrument" data-dial>
+        <svg viewBox="0 0 520 520" role="img" aria-labelledby="inst-title">
+          <title id="inst-title">Schematic of a linear accelerator gantry rotating around the isocentre above a treatment table</title>
+          <defs>
+            <linearGradient id="beamGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#45F08F" stop-opacity=".42"/>
+              <stop offset="100%" stop-color="#45F08F" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
 
-    <div class="meta" aria-label="{{ ui.meta.status[lang] }}">
-      <span>{{ t(site.location, lang) }}</span>
-      <span>{{ site.timezone }}</span>
-      <span class="meta-availability">{{ t(site.availability, lang) }}</span>
+          <circle class="ins-ring" cx="260" cy="260" r="204"/>
+          <circle class="ins-ring ins-ring-outer ins-ring-pulse" cx="260" cy="260" r="188"/>
+          <circle cx="260" cy="260" r="176" fill="none" stroke="rgba(233,242,240,.2)" stroke-width="9" stroke-dasharray="1 18"/>
+
+          <line class="ins-cross" x1="30" y1="260" x2="490" y2="260"/>
+          <line class="ins-cross" x1="260" y1="30" x2="260" y2="490"/>
+
+          <rect x="148" y="302" width="224" height="15" rx="7.5" fill="#101A1D" stroke="rgba(233,242,240,.22)"/>
+          <line x1="196" y1="317" x2="196" y2="336" class="ins-cross"/>
+          <line x1="324" y1="317" x2="324" y2="336" class="ins-cross"/>
+
+          <g class="ins-gantry">
+            <path d="M234 98 L286 98 L270 256 L250 256 Z" fill="url(#beamGrad)"/>
+            <rect x="228" y="54" width="64" height="36" rx="8" fill="#0B1214" stroke="#45F08F" stroke-width="1.4"/>
+            <circle cx="260" cy="90" r="4.5" fill="#45F08F"/>
+            <line x1="238" y1="66" x2="282" y2="66" stroke="rgba(69,240,143,.35)"/>
+          </g>
+
+          <g class="ins-reticle">
+            <circle cx="260" cy="260" r="11" fill="none" stroke="#45F08F" stroke-width="1.5"/>
+            <circle cx="260" cy="260" r="2.5" fill="#45F08F"/>
+            <line x1="228" y1="260" x2="244" y2="260" stroke="#45F08F" stroke-width="1.5"/>
+            <line x1="276" y1="260" x2="292" y2="260" stroke="#45F08F" stroke-width="1.5"/>
+            <line x1="260" y1="228" x2="260" y2="244" stroke="#45F08F" stroke-width="1.5"/>
+            <line x1="260" y1="276" x2="260" y2="292" stroke="#45F08F" stroke-width="1.5"/>
+          </g>
+
+          <text class="ins-label" x="8" y="26">GANTRY <tspan class="ins-label-accent">0°</tspan></text>
+          <text class="ins-label" x="392" y="26">SAD <tspan class="ins-label-accent">1000</tspan> mm</text>
+          <text class="ins-label" x="8" y="508">ISOCENTRE <tspan class="ins-label-accent">±0.5</tspan> mm</text>
+          <text class="ins-label" x="432" y="508">6 MV</text>
+        </svg>
+        <p class="instrument-cap">{{ ui.sections.instrument_note[lang] }}</p>
+      </div>
     </div>
 
-    <div class="actions">
-      <a class="btn" href="/{{ site.cv[lang] }}">{{ ui.actions.download_cv[lang] }}</a>
-      <a class="btn ghost" href="{{ site.github }}">GitHub</a>
-      <a class="btn ghost" href="mailto:{{ site.email }}">{{ ui.actions.email[lang] }}</a>
-    </div>
+    <dl class="telemetry" data-reveal>
+      {% for f in site.facts[:4] %}
+      <div>
+        <dt>{{ t(f.label, lang) }}</dt>
+        <dd><b>{{ t(f.value, lang) }}</b></dd>
+      </div>
+      {% endfor %}
+    </dl>
   </div>
 </section>
 
-<section id="work" class="section">
+<section class="section" id="record" aria-labelledby="record-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2>{{ ui.sections.selected_work[lang] }}</h2>
-      <p>{{ ui.sections.selected_work_note[lang] }}</p>
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="section-index">01 / {{ ui.sections.record[lang] }}</p>
+        <h2 id="record-title">{{ ui.sections.record_note[lang] }}</h2>
+      </div>
+      <p>{{ t(site.availability, lang) }} · {{ t(site.location, lang) }} · {{ site.timezone }}</p>
     </div>
 
-    <div class="cards">
+    <ol class="timeline">
+      {% for r in site.record %}
+      <li data-reveal data-delay="{{ loop.index0 }}">
+        <span class="timeline-when mono">{{ r.when }}</span>
+        <div class="timeline-body">
+          <h3>{{ t(r.title, lang) }}</h3>
+          <p>{{ t(r.text, lang) }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="section-index">02 / {{ ui.sections.selected_work[lang] }}</p>
+        <h2 id="work-title">{{ ui.sections.selected_work_note[lang] }}</h2>
+      </div>
+      <p>{{ ui.sections.results[lang] }}: {{ ui.sections.confidentiality[lang] }}.</p>
+    </div>
+
+    <div class="cases">
       {% for p in projects %}
-      <article class="card">
-        <a class="card-link" href="{{ p.url }}">
-          <div class="card-media">
-            <img src="{{ p.cover }}" alt="{{ t(p.images[0].alt, lang) }}" loading="lazy" width="1600" height="1000">
+      <article class="case-card{% if loop.first %} case-card--wide{% endif %}" data-reveal{% if not loop.first %} data-delay="{{ loop.index0 }}"{% endif %}>
+        <div class="case-shot">
+          <div class="case-frame-bar" aria-hidden="true">
+            <i></i><i></i><i></i><span>{{ p.slug }}</span>
           </div>
-          <div class="card-body">
-            <div class="card-kicker">
-              <span class="status status-{{ p.status }}">{{ status_label(p.status, lang) }}</span>
-              <span class="year">{{ p.year }}</span>
-            </div>
-            <h3>{{ t(p.title, lang) }}</h3>
-            <p>{{ t(p.summary, lang) }}</p>
-            <ul class="metrics" aria-label="{{ ui.sections.results[lang] }}">
-              {% for r in p.results[:3] %}
-              <li><strong>{{ r.value }}</strong><span>{{ t(r.label, lang) }}</span></li>
-              {% endfor %}
-            </ul>
-            <span class="card-cta">{{ ui.actions.view_case[lang] }} →</span>
+          <img src="{{ p.cover }}"{% if p.cover_srcset %} srcset="{{ p.cover_srcset }}" sizes="{% if loop.first %}(max-width: 980px) 100vw, 1090px{% else %}(max-width: 980px) 100vw, 545px{% endif %}"{% endif %} width="{{ p.cover_w }}" height="{{ p.cover_h }}" loading="lazy" decoding="async" alt="{{ t(p.images[0].alt, lang) }}">
+        </div>
+        <div class="case-body">
+          <div class="case-meta">
+            <span class="badge badge--{{ p.status }}">{{ status_label(p.status, lang) }}</span>
+            <span class="year mono">{{ p.year }}</span>
           </div>
-        </a>
+          <h3><a href="{{ p.url_en if lang == 'en' else p.url_ru }}">{{ t(p.title, lang) }}</a></h3>
+          <p class="case-summary">{{ t(p.summary, lang) }}</p>
+          <dl class="case-metrics">
+            {% for r in p.results[:3] %}
+            <div><dt>{{ t(r.label, lang) }}</dt><dd>{{ r.value }}</dd></div>
+            {% endfor %}
+          </dl>
+          <span class="case-cta">{{ ui.actions.view_case[lang] }}
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
       </article>
       {% endfor %}
     </div>
 
     {% if site.more %}
     <div class="more">
-      <h3>{{ ui.sections.more[lang] }}</h3>
-      <ul>
-        {% for item in site.more %}
-        <li>
-          <a href="{{ item.url }}">{{ t(item.title, lang) }}</a>
-          <span>{{ t(item.text, lang) }}</span>
-        </li>
-        {% endfor %}
-      </ul>
+      {% for item in site.more %}
+      <a href="{{ item.url }}" rel="noopener" data-reveal data-delay="{{ loop.index0 }}">
+        <strong>{{ t(item.title, lang) }}</strong>
+        <span>{{ t(item.text, lang) }}</span>
+      </a>
+      {% endfor %}
     </div>
     {% endif %}
   </div>
 </section>
 
-<section id="do" class="section section-alt">
+<section class="section" id="do" aria-labelledby="do-title">
   <div class="wrap">
-    <div class="section-head">
-      <h2>{{ ui.sections.what_i_do[lang] }}</h2>
-      <p>{{ ui.sections.what_i_do_note[lang] }}</p>
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="section-index">03 / {{ ui.sections.what_i_do[lang] }}</p>
+        <h2 id="do-title">{{ ui.sections.what_i_do_note[lang] }}</h2>
+      </div>
     </div>
-    <div class="services">
+    <div class="caps">
       {% for s in site.services %}
-      <div class="service">
-        <span class="service-num">{{ s.number }}</span>
+      <article class="cap" data-reveal data-delay="{{ loop.index0 }}">
+        <svg class="cap-glyph" viewBox="0 0 100 100" aria-hidden="true">
+          {% if loop.index == 1 %}
+          <circle cx="50" cy="50" r="34"/><circle cx="50" cy="50" r="18"/><path d="M50 8v18M50 74v18M8 50h18M74 50h18"/>
+          {% elif loop.index == 2 %}
+          <path d="M20 78V30l30-14 30 14v48"/><path d="M20 46h60M35 78V46M65 78V46"/><circle cx="50" cy="30" r="6"/>
+          {% else %}
+          <rect x="18" y="18" width="64" height="64" rx="8"/><path d="M34 50h10l6-14 8 28 6-14h6"/>
+          {% endif %}
+        </svg>
+        <p class="cap-num">{{ s.number }}</p>
         <h3>{{ t(s.title, lang) }}</h3>
         <p>{{ t(s.text, lang) }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="section-index">04 / {{ ui.sections.about[lang] }}</p>
+        <h2 id="about-title">{{ t(site.name, lang) }} — {{ t(site.role, lang) }}</h2>
       </div>
-      {% endfor %}
     </div>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="wrap about">
-    <div class="about-main">
-      <h2>{{ ui.sections.about[lang] }}</h2>
-      {% for para in site.about[lang] %}
-      <p>{{ para }}</p>
-      {% endfor %}
-    </div>
-    <aside class="facts">
-      <dl>
-        {% for f in site.facts %}
-        <dt>{{ t(f.label, lang) }}</dt>
-        <dd>{{ t(f.value, lang) }}</dd>
+    <div class="about">
+      <div class="about-copy" data-reveal>
+        {% for para in site.about[lang] %}
+        <p>{{ para }}</p>
         {% endfor %}
-        <dt>{{ ui.sections.links[lang] }}</dt>
-        <dd><a href="{{ site.github }}">GitHub</a> · <a href="{{ site.linkedin }}">LinkedIn</a></dd>
-      </dl>
-    </aside>
+      </div>
+      <aside class="facts" aria-labelledby="facts-title" data-reveal data-delay="1">
+        <h3 id="facts-title">{{ ui.sections.links[lang] }}</h3>
+        <dl>
+          {% for f in site.facts %}
+          <div><dt>{{ t(f.label, lang) }}</dt><dd>{{ t(f.value, lang) }}</dd></div>
+          {% endfor %}
+          <div><dt>GitHub</dt><dd><a href="{{ site.github }}" rel="noopener">github.com/kukhtik</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="{{ site.linkedin }}" rel="noopener">{{ ui.actions.linkedin[lang] }}</a></dd></div>
+        </dl>
+      </aside>
+    </div>
   </div>
 </section>
 
-<section id="contact" class="section contact">
-  <div class="wrap contact-inner">
-    <div>
-      <h2>{{ ui.sections.contact[lang] }}</h2>
-      <p>{{ ui.sections.contact_note[lang] }}</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:{{ site.email }}"><span>{{ ui.actions.email[lang] }}</span>{{ site.email }}</a>
-      <a href="{{ site.github }}"><span>GitHub</span>github.com/kukhtik</a>
-      <a href="{{ site.linkedin }}"><span>LinkedIn</span>max-kukhto-517091337</a>
-      <a href="/{{ site.cv[lang] }}"><span>CV</span>{{ ui.actions.download_cv[lang] }}</a>
-    </div>
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title">{{ ui.sections.contact[lang] }}</h2>
+    <p class="contact-lead">{{ ui.sections.contact_note[lang] }}</p>
+    <a class="email" href="mailto:{{ site.email }}">{{ site.email }}
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true"><path d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <ul class="contact-links">
+      <li><a href="{{ site.github }}" rel="noopener"><span class="contact-label">{{ ui.actions.github[lang] }}</span><span class="contact-url">github.com/kukhtik</span></a></li>
+      <li><a href="{{ site.linkedin }}" rel="noopener"><span class="contact-label">{{ ui.actions.linkedin[lang] }}</span><span class="contact-url">linkedin.com/in/max-kukhto</span></a></li>
+      <li><a href="/{{ site.cv[lang] }}" download><span class="contact-label">{{ ui.actions.download_cv[lang] }}</span><span class="contact-url">PDF · {{ lang | upper }}</span></a></li>
+    </ul>
   </div>
 </section>
 {% endblock %}

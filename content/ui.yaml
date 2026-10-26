@@ -1,5 +1,7 @@
 nav:
   label: {en: "Main navigation", ru: "Основная навигация"}
+  lang_label: {en: "Language", ru: "Язык"}
+  status: {en: "UTC+3 · remote · available from November 2026", ru: "UTC+3 · remote · доступен с ноября 2026"}
   home: {en: "Home", ru: "Главная"}
   work: {en: "Work", ru: "Работы"}
   about: {en: "About", ru: "Обо мне"}
@@ -14,6 +16,7 @@ actions:
   view_case: {en: "View case", ru: "Смотреть кейс"}
   back_to_work: {en: "All work", ru: "Все работы"}
   back_home: {en: "Back to home", ru: "На главную"}
+  email_about: {en: "Email about this project", ru: "Написать о проекте"}
 
 sections:
   selected_work: {en: "Selected work", ru: "Избранные проекты"}
@@ -30,6 +33,13 @@ sections:
     en: "Looking for a remote Python/AI role in CAD/GIS automation, RAG/LLM systems, or medtech. I can start full-time from late November 2026."
     ru: "Ищу remote-роль Python/AI-инженера в CAD/GIS-автоматизации, RAG/LLM или medtech. Могу начать full-time с конца ноября 2026."
   more: {en: "Also", ru: "Ещё"}
+  record: {en: "Service record", ru: "Служебная история"}
+  instrument_note:
+    en: "Field service, 2022—2026 · linear accelerators"
+    ru: "Сервис, 2022—2026 · линейные ускорители"
+  record_note:
+    en: "I do not come to software from a bootcamp. I come from a radiotherapy bunker: linear accelerators, dosimetry, and documentation that has to be right the first time."
+    ru: "Я пришёл в разработку не с курсов. Я пришёл из бункера радиотерапии: линейные ускорители, дозиметрия и документация, которая обязана быть верной с первого раза."
   problem: {en: "Problem", ru: "Задача"}
   approach: {en: "Approach", ru: "Что сделал"}
   results: {en: "Results", ru: "Результат"}

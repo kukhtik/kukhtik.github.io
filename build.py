@@ -10,7 +10,9 @@ the design layer; the build never edits content.
 
 from __future__ import annotations
 
+import re
 import shutil
+import struct
 import sys
 from datetime import date
 from pathlib import Path
@@ -43,6 +45,53 @@ def L(value, lang: str) -> str:
     return "" if value is None else str(value)
 
 
+def image_size(path: Path) -> tuple[int | None, int | None]:
+    """Intrinsic image size from the file header (PNG or WebP, no Pillow needed)."""
+    try:
+        with path.open("rb") as fh:
+            head = fh.read(40)
+    except OSError:
+        return None, None
+    if head[:8] == b"\x89PNG\r\n\x1a\n":
+        width, height = struct.unpack(">II", head[16:24])
+        return width, height
+    if head[:4] == b"RIFF" and head[8:12] == b"WEBP":
+        kind = head[12:16]
+        if kind == b"VP8X":
+            return (int.from_bytes(head[24:27], "little") + 1,
+                    int.from_bytes(head[27:30], "little") + 1)
+        if kind == b"VP8L":
+            bits = int.from_bytes(head[21:25], "little")
+            return (bits & 0x3FFF) + 1, ((bits >> 14) & 0x3FFF) + 1
+        if kind == b"VP8 " and head[23:26] == b"\x9d\x01\x2a":
+            return (int.from_bytes(head[26:28], "little") & 0x3FFF,
+                    int.from_bytes(head[28:30], "little") & 0x3FFF)
+    return None, None
+
+
+def srcset_for(folder: Path, url: str) -> str:
+    """Build a width-descriptor srcset from sibling `<stem>-<w>.webp` variants."""
+    stem = Path(url).stem
+    prefix = url.rsplit("/", 1)[0]
+    found: list[tuple[int, str]] = []
+    for w in (640, 800, 960, 1200, 1600):
+        if (folder / f"{stem}-{w}.webp").exists():
+            found.append((w, f"{prefix}/{stem}-{w}.webp"))
+    if len(found) < 2:
+        return ""
+    found.sort()
+    return ", ".join(f"{u} {w}w" for w, u in found)
+
+
+def minify_css(css: str) -> str:
+    """Strip comments and redundant whitespace. Sources stay readable; dist/ ships lean."""
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};:,>])\s*", r"\1", css)
+    css = re.sub(r";}", "}", css)
+    return css.strip()
+
+
 def truncate(text: str, limit: int = 160) -> str:
     text = " ".join(str(text).split())
     if len(text) <= limit:
@@ -65,13 +114,20 @@ def main() -> int:
         slug = project.get("slug") or pdir.name
         images = project.get("images") or []
         gallery = []
+        img_dir = pdir / "images"
         for img in images:
             src = str(img.get("src", ""))
             name = Path(src).name
-            gallery.append({**img, "url": f"/assets/projects/{slug}/{name}"})
+            width, height = image_size(pdir / src)
+            url = f"/assets/projects/{slug}/{name}"
+            gallery.append({**img, "url": url, "w": width or 1600, "h": height or 1000,
+                            "srcset": srcset_for(img_dir, url)})
         project["slug"] = slug
         project["gallery_all"] = gallery
         project["cover"] = gallery[0]["url"] if gallery else "/assets/placeholder.svg"
+        project["cover_srcset"] = gallery[0]["srcset"] if gallery else ""
+        project["cover_w"] = gallery[0]["w"] if gallery else 1600
+        project["cover_h"] = gallery[0]["h"] if gallery else 1000
         project["gallery"] = gallery[1:]
         project["url_en"] = f"/work/{slug}/"
         project["url_ru"] = f"/ru/work/{slug}/"
@@ -94,7 +150,7 @@ def main() -> int:
     def status_label(status: str, lang: str) -> str:
         return L(status_labels.get(status, status), lang)
 
-    def base_ctx(lang: str, **extra):
+    def base_ctx(lang: str, other_url: str, **extra):
         other_lang = "ru" if lang == "en" else "en"
         other_home = "/ru/" if lang == "en" else "/"
         return {
@@ -102,6 +158,7 @@ def main() -> int:
             "ui": ui,
             "lang": lang,
             "other_lang": other_lang,
+            "other_url": other_url,
             "other_home_url": other_home,
             "other_lang_label": other_lang.upper(),
             "year": YEAR,
@@ -120,6 +177,7 @@ def main() -> int:
         canonical = domain + home_url
         ctx = base_ctx(
             lang,
+            other_url="/ru/" if lang == "en" else "/",
             home_url=home_url,
             canonical=canonical,
             alternate_en=domain + "/",
@@ -141,6 +199,7 @@ def main() -> int:
             canonical = domain + url
             ctx = base_ctx(
                 lang,
+                other_url=project["url_ru"] if lang == "en" else project["url_en"],
                 home_url=home_url,
                 canonical=canonical,
                 alternate_en=domain + project["url_en"],
@@ -157,6 +216,7 @@ def main() -> int:
     # --- 404 ------------------------------------------------------------
     ctx = base_ctx(
         "en",
+        other_url="/ru/",
         home_url="/",
         canonical=domain + "/404.html",
         alternate_en=domain + "/404.html",
@@ -169,6 +229,8 @@ def main() -> int:
 
     # --- assets ---------------------------------------------------------
     shutil.copytree(STATIC, DIST / "assets")
+    for css_file in (DIST / "assets").rglob("*.css"):
+        css_file.write_text(minify_css(css_file.read_text(encoding="utf-8")), encoding="utf-8")
     cv_dir = CONTENT / "cv"
     if cv_dir.exists():
         for f in cv_dir.iterdir():
@@ -192,6 +254,10 @@ def main() -> int:
         sitemap.append(f"  <url><loc>{url}</loc><lastmod>{today}</lastmod></url>")
     sitemap.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
+
+    cname = ROOT / "CNAME"
+    if cname.exists():
+        shutil.copy2(cname, DIST / "CNAME")
 
     (DIST / "robots.txt").write_text(
         "User-agent: *\nAllow: /\nSitemap: " + domain + "/sitemap.xml\n",

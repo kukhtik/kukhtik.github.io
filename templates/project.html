@@ -1,85 +1,95 @@
 {% extends "base.html" %}
 {% block content %}
-<article class="case">
-  <div class="wrap">
-    <a class="back" href="{{ home_url }}#work">← {{ ui.actions.back_to_work[lang] }}</a>
-
-    <header class="case-head">
-      <div class="card-kicker">
-        <span class="status status-{{ project.status }}">{{ status_label(project.status, lang) }}</span>
-        <span class="year">{{ project.year }}</span>
+<article>
+  <header class="case-hero">
+    <div class="wrap">
+      <a class="back" href="{{ home_url }}#work">← {{ ui.actions.back_to_work[lang] }}</a>
+      <div class="meta-row">
+        <span class="badge badge--{{ project.status }}">{{ status_label(project.status, lang) }}</span>
+        <span class="year mono">{{ project.year }}</span>
       </div>
       <h1>{{ t(project.title, lang) }}</h1>
-      <p class="lead">{{ t(project.summary, lang) }}</p>
-    </header>
+      <p class="case-lead">{{ t(project.summary, lang) }}</p>
+    </div>
+  </header>
 
-    <figure class="case-cover">
-      <img src="{{ project.cover }}" alt="{{ t(project.images[0].alt, lang) }}" width="1600" height="1000">
-      <figcaption>{{ t(project.images[0].caption, lang) }}</figcaption>
-    </figure>
+  <div class="wrap">
+    <div class="cover">
+      <figure>
+        <img src="{{ project.cover }}"{% if project.cover_srcset %} srcset="{{ project.cover_srcset }}" sizes="(max-width: 1180px) 100vw, 1120px"{% endif %} width="{{ project.cover_w }}" height="{{ project.cover_h }}" decoding="async" alt="{{ t(project.images[0].alt, lang) }}">
+        <figcaption>{{ t(project.images[0].caption, lang) }}</figcaption>
+      </figure>
+    </div>
+  </div>
 
-    <div class="case-grid">
-      <div class="case-main">
-        <section>
-          <h2>{{ ui.sections.problem[lang] }}</h2>
-          <p>{{ t(project.problem, lang) }}</p>
-        </section>
+  <div class="wrap case-layout">
+    <div class="case-body">
+      <section aria-labelledby="problem-title">
+        <h2 id="problem-title">{{ ui.sections.problem[lang] }}</h2>
+        <p>{{ t(project.problem, lang) }}</p>
+      </section>
 
-        <section>
-          <h2>{{ ui.sections.approach[lang] }}</h2>
-          <ul class="bullets">
-            {% for item in project.approach[lang] %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        </section>
+      <section aria-labelledby="approach-title">
+        <h2 id="approach-title">{{ ui.sections.approach[lang] }}</h2>
+        <ol class="approach">
+          {% for item in project.approach[lang] %}
+          <li><p>{{ item }}</p></li>
+          {% endfor %}
+        </ol>
+      </section>
 
-        <section>
-          <h2>{{ ui.sections.results[lang] }}</h2>
-          <div class="result-grid">
-            {% for r in project.results %}
-            <div class="result">
-              <strong>{{ r.value }}</strong>
-              <span>{{ t(r.label, lang) }}</span>
-            </div>
-            {% endfor %}
-          </div>
-        </section>
+      <section aria-labelledby="results-title">
+        <h2 id="results-title">{{ ui.sections.results[lang] }}</h2>
+        <dl class="result-grid">
+          {% for r in project.results %}
+          <div><dt>{{ t(r.label, lang) }}</dt><dd>{{ r.value }}</dd></div>
+          {% endfor %}
+        </dl>
+      </section>
 
-        <section>
-          <h2>{{ ui.sections.stack[lang] }}</h2>
-          <ul class="chips">
-            {% for s in project.stack %}
-            <li>{{ s }}</li>
-            {% endfor %}
-          </ul>
-        </section>
-
-        <section>
-          <h2>{{ ui.sections.confidentiality[lang] }}</h2>
-          <p>{{ t(project.confidentiality, lang) }}</p>
-        </section>
-      </div>
-
-      <aside class="case-side">
-        <h2>{{ ui.sections.links[lang] }}</h2>
-        <ul class="side-links">
-          {% for l in project.links %}
-          <li><a href="{{ l.url }}">{{ t(l.label, lang) }} →</a></li>
+      <section aria-labelledby="stack-title">
+        <h2 id="stack-title">{{ ui.sections.stack[lang] }}</h2>
+        <ul class="stack">
+          {% for s in project.stack %}
+          <li>{{ s }}</li>
           {% endfor %}
         </ul>
+      </section>
 
-        {% if project.gallery %}
+      <section aria-labelledby="public-title">
+        <h2 id="public-title">{{ ui.sections.confidentiality[lang] }}</h2>
+        <p>{{ t(project.confidentiality, lang) }}</p>
+      </section>
+    </div>
+
+    <aside class="case-aside" aria-label="{{ ui.sections.links[lang] }}">
+      <div class="aside-block">
+        <h2>{{ ui.sections.links[lang] }}</h2>
+        <ul class="aside-links">
+          {% for l in project.links %}
+          <li>
+            <a href="{{ l.url }}" rel="noopener">
+              <span class="aside-label">{{ t(l.label, lang) }}</span>
+              <span class="aside-url">{{ l.url | replace('https://', '') | truncate(42, true, '…') }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="btn aside-cta" href="mailto:{{ site.email }}?subject={{ t(project.title, lang) | urlencode }}">{{ ui.actions.email_about[lang] }}</a>
+      </div>
+
+      {% if project.gallery %}
+      <div class="aside-block">
         <h2>{{ ui.sections.gallery[lang] }}</h2>
         {% for img in project.gallery %}
-        <figure class="side-figure">
-          <img src="{{ img.url }}" alt="{{ t(img.alt, lang) }}" loading="lazy" width="1600" height="1000">
+        <figure class="gallery">
+          <img src="{{ img.url }}"{% if img.srcset %} srcset="{{ img.srcset }}" sizes="(max-width: 980px) 100vw, 320px"{% endif %} width="{{ img.w }}" height="{{ img.h }}" loading="lazy" decoding="async" alt="{{ t(img.alt, lang) }}">
           <figcaption>{{ t(img.caption, lang) }}</figcaption>
         </figure>
         {% endfor %}
-        {% endif %}
-      </aside>
-    </div>
+      </div>
+      {% endif %}
+    </aside>
   </div>
 </article>
 {% endblock %}

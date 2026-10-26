@@ -59,14 +59,14 @@ links:
     url: "https://github.com/kukhtik/Open_space"
 
 images:
-  - src: "images/engineer-companion-chat.png"
+  - src: "images/engineer-companion-chat.webp"
     alt:
       en: "Engineer Companion chat answering with document and page citations"
       ru: "Engineer Companion — ответ со ссылками на документ и страницу"
     caption:
       en: "Answer with evidence links: document, page, drawing region."
       ru: "Ответ со ссылками: документ, страница, область чертежа."
-  - src: "images/engineer-companion-library.png"
+  - src: "images/engineer-companion-library.webp"
     alt:
       en: "Engineer Companion document library and index statistics"
       ru: "Engineer Companion — библиотека документов и статистика индекса"

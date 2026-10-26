@@ -1,92 +1,79 @@
-# AGENTS.md — runbook for agents
+# AGENTS.md — runbook
 
-This folder is a **content-driven static site**. Read `SPEC.md` for the full spec.
+Content-driven static site: YAML → Jinja2 → `dist/` → GitHub Pages. Design in `DESIGN.md`.
 
 ## Golden rules
 
-1. **Never edit `dist/` by hand.** It is generated. Edit `content/`, `templates/`, `static/`.
-2. **Never edit content inside templates.** Facts live in `content/*.yaml`.
-3. **Never add a project by editing `home.html`.** Add a folder under `content/projects/`.
-4. **Always run the three commands** after a change:
-   ```bash
-   PY="C:/Users/Nitro/AppData/Local/Programs/Python/Python312/python.exe"
-   "$PY" scripts/validate.py
-   "$PY" build.py
-   "$PY" scripts/check_dist.py
-   ```
-5. **Do not commit `dist/`** unless the deploy method explicitly requires it (see `SPEC.md` §9).
-6. **Do not add fake facts.** Forbidden tokens are enforced by `validate.py`.
-7. **Design is yours.** `static/css/site.css` is a baseline, not a final design. Replace it and
-   `templates/` if needed; keep the content schema and build contract. Document the direction in
-   `DESIGN.md`.
+1. **Never edit `dist/`.** It is generated. Edit `content/`, `templates/`, `static/`.
+2. **Never put copy in templates.** Facts live in `content/*.yaml`.
+3. **Never add a case by editing `home.html`.** Create `content/projects/<slug>/project.yaml`.
+4. **One command surface: `manage.py`.** It wraps validate → build → check → render.
+5. **Do not invent facts.** `scripts/validate.py` blocks forbidden claims and stale dates.
+6. **Design is yours** — but every animation needs a `prefers-reduced-motion` off switch, and
+   every image needs intrinsic `width`/`height` plus a real `alt` in both languages.
 
-## Add a project
+## Everyday commands
 
 ```bash
-cp -r content/projects/engineer-companion content/projects/my-project
-# edit content/projects/my-project/project.yaml:
-#   slug: my-project          (must equal the folder name)
-#   order: 4                  (unique)
-#   published: true
-#   featured: true            (show on home)
-#   status: public|nda|commercial|rnd
-#   title/summary/problem/approach/results/stack/confidentiality/links/images (en + ru)
-# put images in content/projects/my-project/images/
-"$PY" scripts/validate.py && "$PY" build.py && "$PY" scripts/check_dist.py
+PY="C:/Users/Nitro/AppData/Local/Programs/Python/Python312/python.exe"
+
+"$PY" manage.py list                 # cases: order, status, published, images
+"$PY" manage.py build                # validate + build + check_dist (the gate)
+"$PY" manage.py serve 8000           # preview http://127.0.0.1:8000/
+"$PY" manage.py shoot                # 1280/390 screenshots + measured numbers → out/
+"$PY" manage.py doctor               # environment, CV files, CSS budget, image weights
+"$PY" manage.py edit                 # local admin UI at http://127.0.0.1:8765/
+"$PY" manage.py deploy               # prints the release steps (executor cannot push)
 ```
 
-Check `/work/my-project/` and `/ru/work/my-project/` on a local server:
+## Manage content
 
 ```bash
-"$PY" -m http.server 8000 --directory dist
+"$PY" manage.py new my-case --title "My case"          # scaffold, published: false
+"$PY" manage.py image my-case shot.png \
+      --alt-en "Dashboard" --alt-ru "Дашборд"          # → WebP, 1600 px, entry appended
+"$PY" manage.py status my-case nda                     # public | nda | commercial | rnd
+"$PY" manage.py order my-case 2
+"$PY" manage.py show my-case                           # published: true
+"$PY" manage.py hide my-case                           # published: false (page disappears)
+"$PY" manage.py rm my-case --yes                       # delete the folder
 ```
 
-## Hide a project
+Scalar edits are line-precise: comments and formatting in the YAML survive.
+`new` writes a placeholder cover so the case is valid before real screenshots exist;
+the first `image` call replaces it.
 
-Set `published: false` in its `project.yaml`, rebuild. The page disappears from `dist/` and
-`sitemap.xml`; the source stays in git.
+The admin UI (`manage.py edit`) edits the same YAML files as **raw text** (no round-trip
+reformatting), saves with validation, and can trigger a build. It is local-only, binds
+127.0.0.1, and is not part of the deployed site.
 
-## Remove a project
+## Site map of the build
 
-```bash
-rm -rf content/projects/my-project
-"$PY" scripts/validate.py && "$PY" build.py && "$PY" scripts/check_dist.py
-```
+| file | what it does |
+|---|---|
+| `build.py` | reads YAML, renders pages, copies assets (minifies CSS), writes sitemap/robots/_headers/_redirects |
+| `scripts/validate.py` | content schema, both locales, images exist, links, forbidden tokens, CV files |
+| `scripts/check_dist.py` | per page: lang/title/description/canonical/one h1; every img has alt; every internal link resolves; sitemap entries exist |
+| `scripts/shoot.py` | Playwright: 1280 + 390 screenshots, page weight, 360 px overflow, alt/h1 checks |
+| `manage.py` | the single command surface above |
 
-## Update the CVs
+## Design layer
 
-```bash
-cp ../rewrite/resume_master_en_20261026.pdf content/cv/cv-en.pdf
-cp ../rewrite/resume_master_ru_20261026.pdf content/cv/cv-ru.pdf
-"$PY" scripts/validate.py && "$PY" build.py && "$PY" scripts/check_dist.py
-```
+`templates/*.html` + `static/css/site.css` + `static/js/site.js` + `static/fonts/*`.
+Tokens in `:root`; components below them; motion has a dedicated section and a
+`prefers-reduced-motion` block at the end. Image dimensions come from the file header
+(`image_size()` in `build.py`), and `<stem>-800/-1200.webp` variants become `srcset`
+automatically.
 
-## Update availability / dates
+## Deploy
 
-Edit **one** place: `content/site.yaml` → `availability`. Rebuild. Do not hardcode dates in
-templates.
+`.github/workflows/pages.yml` builds and publishes `dist/` to GitHub Pages on every push to
+`main` (repo `kukhtik/kukhtik.github.io` → https://kukhtik.github.io/).
+`.github/workflows/cloudflare.yml` is the manual Cloudflare Pages path (needs
+`CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`).
 
-## Redesign
+## History
 
-Edit `templates/*.html` and `static/css/site.css`. Do not touch `content/`. Then:
-`validate.py` → `build.py` → `check_dist.py`.
-If you change class names, update the templates together. The content validator does not depend on
-HTML classes.
-
-## What the checks mean
-
-- `validate.py` — content schema, both locales, images exist, links, forbidden claims, CV files.
-- `build.py` — renders `dist/`, copies assets, generates sitemap/robots/headers/redirects.
-- `check_dist.py` — every page has lang/title/description/canonical/one h1; every img has alt;
-  every internal link resolves; sitemap URLs exist; no forbidden tokens.
-
-If a check fails, fix the source, not the check.
-
-## Local preview
-
-`file://` will not work (root-relative `/assets/...`). Use:
-
-```bash
-"$PY" -m http.server 8000 --directory dist
-# http://localhost:8000/  and  http://localhost:8000/ru/
-```
+`docs/design-runs/` holds the two OpenDesign mocks (deepseek / glm) and the brief from the
+first design round. That direction was rejected by the owner; the current design is
+documented in `DESIGN.md`.

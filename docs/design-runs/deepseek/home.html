@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maxim Kukhto, Python / AI engineer</title>
+<meta name="description" content="Python / AI engineer building offline RAG, CAD/GIS automation and LLM agents. Available full-time from late November 2026.">
+<meta name="author" content="Maxim Kukhto">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2315191d'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' fill='%23f8f9fa' text-anchor='middle'%3EMK%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg: oklch(0.982 0.002 255);
+  --surface: oklch(0.962 0.004 255);
+  --paper: oklch(0.995 0.001 255);
+  --fg: oklch(0.21 0.01 255);
+  --muted: oklch(0.45 0.01 255);
+  --border: oklch(0.875 0.006 255);
+  --border-strong: oklch(0.78 0.008 255);
+  --accent: oklch(0.50 0.15 38);
+  --accent-hover: oklch(0.44 0.15 38);
+  --accent-fg: oklch(0.995 0.001 255);
+  --focus: var(--accent);
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: 1.75rem;
+  --step-4: 2.25rem;
+  --step-6: clamp(2.75rem, 6.5vw, 4.5rem);
+  --wrap: 1200px;
+  --radius: 2px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: oklch(0.185 0.006 255);
+    --surface: oklch(0.225 0.007 255);
+    --paper: oklch(0.255 0.008 255);
+    --fg: oklch(0.945 0.003 255);
+    --muted: oklch(0.735 0.01 255);
+    --border: oklch(0.33 0.008 255);
+    --border-strong: oklch(0.44 0.01 255);
+    --accent: oklch(0.75 0.125 45);
+    --accent-hover: oklch(0.80 0.115 45);
+    --accent-fg: oklch(0.185 0.006 255);
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-sans);
+  font-size:var(--step-0);
+  line-height:1.6;
+  font-synthesis-weight:none;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-weight:600;text-wrap:balance}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(20px, 5vw, 40px)}
+.skip{
+  position:absolute;left:16px;top:8px;z-index:100;
+  transform:translateY(-180%);
+  display:inline-flex;align-items:center;min-height:44px;
+  background:var(--fg);color:var(--bg);
+  padding:10px 14px;border-radius:var(--radius);
+  font-size:14px;text-decoration:none;
+}
+.skip:focus{transform:none}
+.site-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:28px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none}
+.brand-mark{
+  display:inline-grid;place-items:center;width:24px;height:24px;
+  border:1px solid var(--fg);border-radius:var(--radius);
+  font-family:var(--font-mono);font-size:9px;letter-spacing:0.04em;
+}
+.brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;font-size:14px;text-decoration:none}
+.nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.lang{display:flex;align-items:center;gap:5px;margin-left:6px;font-family:var(--font-mono);font-size:12px}
+.lang [aria-current="page"]{font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.lang a{display:inline-flex;align-items:center;justify-content:flex-start;min-width:44px;min-height:44px;padding-left:6px;color:var(--muted);text-decoration:none}
+.lang a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+.lang-sep{color:var(--border-strong)}
+.hero{padding-top:clamp(40px, 6vw, 64px);scroll-margin-top:80px}
+.hero-grid{display:grid;grid-template-columns:minmax(0, 1fr) minmax(260px, 320px);gap:clamp(32px, 5vw, 56px);align-items:start}
+.avail{
+  position:relative;display:inline-block;max-width:100%;
+  margin:0 0 14px;padding-left:14px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;
+  text-wrap:balance;
+}
+.avail::before{content:"";position:absolute;left:0;top:0.62em;width:6px;height:6px;background:var(--accent)}
+.hero h1{margin:0;font-size:var(--step-6);line-height:1.02;letter-spacing:-0.035em}
+.role{margin:18px 0 0;font-size:18px;font-weight:600;letter-spacing:-0.01em;line-height:1.3}
+.focus{margin:4px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
+.lead{margin:22px 0 0;max-width:47ch;font-size:clamp(1.125rem, 1.7vw, 1.25rem);line-height:1.55;letter-spacing:-0.005em}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 20px;
+  background:var(--accent);color:var(--accent-fg);
+  border:1px solid var(--accent);border-radius:var(--radius);
+  font-size:15px;font-weight:600;letter-spacing:0.01em;text-decoration:none;white-space:nowrap;
+  transition:background-color .14s ease, border-color .14s ease, transform .08s ease;
+}
+.btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn:active{transform:translateY(1px)}
+.link-quiet{
+  display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;
+  font-size:14px;text-decoration:underline;
+  text-decoration-color:var(--border-strong);text-decoration-thickness:1px;text-underline-offset:4px;
+}
+.link-quiet:hover{text-decoration-color:var(--fg)}
+.record{border-top:2px solid var(--fg)}
+.record-list{margin:0}
+.record-list > div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.record-list dt{font-family:var(--font-mono);font-size:11px;line-height:1.5;color:var(--muted);padding-top:2px}
+.record-list dd{margin:0;font-size:14px;line-height:1.45}
+.note{margin:16px 0 0;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.evidence{
+  grid-column:1 / -1;
+  display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));
+  margin:0;padding:16px 0 36px;
+  border-top:1px solid var(--border-strong);
+}
+.evidence > div{padding-right:24px;min-width:0}
+.evidence > div + div{border-left:1px solid var(--border);padding-left:24px}
+.evidence dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;color:var(--muted)}
+.evidence dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:6px 0 0;font-family:var(--font-mono);font-size:18px;letter-spacing:-0.01em;line-height:1.3}
+.ev-label{font-family:var(--font-sans);font-size:12px;letter-spacing:0;color:var(--muted)}
+.section{border-top:1px solid var(--border);padding-block:clamp(48px, 7vw, 72px);scroll-margin-top:80px}
+.section-head h2{margin:0;font-size:var(--step-4);line-height:1.1;letter-spacing:-0.025em}
+.section-head p{max-width:64ch;margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--muted)}
+.case-featured{
+  display:grid;grid-template-columns:minmax(0, 1.02fr) minmax(0, 1fr);
+  gap:clamp(24px, 4vw, 44px);margin-top:36px;padding-top:24px;
+  border-top:1px solid var(--border-strong);
+}
+.case-meta{grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:2px}
+.badge{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;
+  border:1px solid var(--border-strong);border-radius:var(--radius);
+  padding:4px 8px;white-space:nowrap;
+}
+.year{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.case-copy h3{margin:0;font-size:var(--step-3);line-height:1.15;letter-spacing:-0.025em}
+.case-summary{margin:12px 0 0;max-width:60ch;font-size:16px;line-height:1.6}
+.case-link{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:12px;
+  font-size:14px;font-weight:600;text-decoration:underline;
+  text-decoration-color:var(--border-strong);text-decoration-thickness:1px;text-underline-offset:5px;
+}
+.case-link:hover{text-decoration-color:var(--fg)}
+.case-link .arrow{transition:transform .14s ease}
+.case-link:hover .arrow{transform:translateX(3px)}
+.case-media{margin:0;min-width:0}
+.case-media img{width:100%;height:auto;aspect-ratio:2000 / 1250;object-fit:contain;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface)}
+.case-media figcaption{margin-top:8px;font-family:var(--font-mono);font-size:11px;line-height:1.5;color:var(--muted)}
+.case-metrics{
+  grid-column:1 / -1;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));
+  margin:6px 0 0;padding-top:16px;border-top:1px solid var(--border);
+}
+.case-metrics > div{padding-right:20px;min-width:0}
+.case-metrics > div + div{border-left:1px solid var(--border);padding-left:20px}
+.case-metrics dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;color:var(--muted)}
+.case-metrics dd{margin:6px 0 0;font-family:var(--font-mono);font-size:var(--step-2);line-height:1.2;letter-spacing:-0.02em}
+.case-row{margin-top:32px;padding-top:22px;border-top:1px solid var(--border-strong)}
+.case-row .case-meta{padding-bottom:14px}
+.case-row-grid{display:grid;grid-template-columns:minmax(0, 1fr) minmax(260px, 340px);gap:clamp(24px, 5vw, 56px);align-items:start}
+.case-row-grid--media{grid-template-columns:minmax(0, 1fr) minmax(210px, 240px) minmax(240px, 300px);gap:clamp(24px, 3vw, 40px)}
+.metric-stack{margin:0;padding:0;border-top:1px solid var(--border)}
+.metric-stack > div{padding:10px 0;border-bottom:1px solid var(--border)}
+.metric-stack dt{font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;line-height:1.4;color:var(--muted)}
+.metric-stack dd{margin:4px 0 0;font-family:var(--font-mono);font-size:17px;line-height:1.35;letter-spacing:-0.01em}
+.metric-stack dd.is-text{font-family:var(--font-sans);font-size:14px;font-weight:600;line-height:1.4;letter-spacing:0}
+.case-thumb{max-width:440px;margin:0;min-width:0}
+.case-thumb img{width:100%;height:auto;aspect-ratio:1938 / 976;object-fit:contain;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface)}
+.case-thumb figcaption{margin-top:6px;font-family:var(--font-mono);font-size:11px;line-height:1.5;color:var(--muted)}
+.services{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--border-strong)}
+.services li{display:grid;grid-template-columns:56px minmax(220px, 300px) minmax(0, 1fr);gap:clamp(16px, 3vw, 32px);padding:24px 0;border-bottom:1px solid var(--border);align-items:start}
+.service-num{padding-top:4px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.service-title{margin:0;font-size:18px;font-weight:600;line-height:1.35;letter-spacing:-0.01em}
+.service-desc{margin:0;max-width:64ch;font-size:15.5px;line-height:1.6}
+.about-grid{display:grid;grid-template-columns:minmax(0, 1.45fr) minmax(250px, 0.75fr);gap:clamp(32px, 6vw, 64px);margin-top:32px;align-items:start}
+.about-copy p{margin:0 0 18px;max-width:66ch;font-size:17px;line-height:1.65}
+.about-copy p:last-child{margin-bottom:0}
+.facts h3{margin:0 0 10px;font-size:15px;font-weight:600}
+.facts dl{margin:0;border-top:2px solid var(--fg)}
+.facts dl > div{padding:10px 0;border-bottom:1px solid var(--border)}
+.facts dt{font-family:var(--font-mono);font-size:11px;line-height:1.4;color:var(--muted)}
+.facts dd{margin:3px 0 0;font-size:14px;line-height:1.45}
+.contact-lead{max-width:48ch;margin:14px 0 0;font-size:16px;line-height:1.55;color:var(--muted)}
+.email{
+  display:inline-flex;align-items:center;min-height:44px;margin-top:24px;padding-bottom:0;
+  border-bottom:2px solid var(--fg);
+  font-size:clamp(1.75rem, 4.5vw, 2.5rem);font-weight:600;line-height:1.15;letter-spacing:-0.03em;
+  text-decoration:none;overflow-wrap:anywhere;
+}
+.email:hover{border-bottom-color:var(--accent)}
+.contact-links{list-style:none;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));margin:40px 0 0;padding:0;border-top:1px solid var(--border-strong)}
+.contact-links li{border-bottom:1px solid var(--border);min-width:0}
+.contact-links a{display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:64px;padding:12px 16px 12px 0;text-decoration:none}
+.contact-links a:hover .contact-label{text-decoration:underline;text-underline-offset:4px}
+.contact-label{font-size:15px;font-weight:600}
+.contact-url{font-family:var(--font-mono);font-size:11.5px;line-height:1.4;color:var(--muted);overflow-wrap:anywhere}
+.site-footer{border-top:1px solid var(--border);padding-block:24px}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.footer-inner p{margin:0}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-copy{order:1}
+  .evidence{order:2}
+  .record{order:3;max-width:440px}
+  .case-featured{grid-template-columns:1fr}
+  .case-row-grid{grid-template-columns:1fr;gap:20px}
+  .metric-stack{max-width:440px}
+  .about-grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .site-header{position:static}
+  .header-inner{display:grid;grid-template-columns:1fr auto;gap:0 16px;padding-block:10px}
+  .brand{grid-column:1;grid-row:1}
+  .lang{grid-column:2;grid-row:1;justify-self:end;margin-left:0}
+  .nav{grid-column:1 / -1;grid-row:2;margin-left:0;margin-top:8px;padding-top:2px;border-top:1px solid var(--border);gap:24px}
+  .evidence{grid-template-columns:1fr;padding-bottom:28px}
+  .evidence > div{padding:12px 0}
+  .evidence > div + div{border-left:0;padding-left:0;border-top:1px solid var(--border)}
+  .evidence > div:first-child{padding-top:0}
+  .evidence > div:last-child{padding-bottom:0}
+  .case-metrics{grid-template-columns:1fr;padding-top:0;border-top:0}
+  .case-metrics > div{padding:12px 0;border-top:1px solid var(--border)}
+  .case-metrics > div + div{border-left:0;padding-left:0}
+  .services li{grid-template-columns:44px minmax(0, 1fr);gap:8px 12px}
+  .service-desc{grid-column:2}
+  .contact-links{grid-template-columns:1fr}
+  .contact-links a{min-height:60px}
+  .footer-inner{flex-direction:column;gap:4px}
+}
+@media (max-width:420px){
+  .header-inner{gap:0 12px}
+  .brand-name{font-size:14px}
+  .case-meta{gap:10px}
+  .badge{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important}
+  .skip{transition:none}
+  .btn:active{transform:none}
+  .case-link .arrow{transition:none}
+  .case-link:hover .arrow{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header" data-od-id="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="home.html" aria-label="Maxim Kukhto, home">
+      <span class="brand-mark" aria-hidden="true">MK</span>
+      <span class="brand-name">Maxim Kukhto</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <span aria-current="page">EN</span>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <a href="ru/" lang="ru" hreflang="ru">RU</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" data-od-id="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="avail">Available full-time from late November 2026</p>
+          <h1 id="hero-title" data-od-id="hero-title">Maxim Kukhto</h1>
+          <p class="role">Python / AI engineer</p>
+          <p class="focus">CAD/GIS automation, offline RAG, LLM agents, medtech</p>
+          <p class="lead">I build systems that work without internet &mdash; and prove their work with tests, measured latency, and evidence links.</p>
+          <div class="actions">
+            <a class="btn" href="cv.pdf" download data-od-id="download-cv">Download CV (PDF)</a>
+            <a class="link-quiet" href="https://github.com/kukhtik" rel="noopener">GitHub</a>
+            <a class="link-quiet" href="mailto:maxkukhto@gmail.com">Email</a>
+          </div>
+        </div>
+
+        <aside class="record" aria-label="Profile at a glance" data-od-id="profile-record">
+          <dl class="record-list">
+            <div><dt>Based</dt><dd>Mogilev, Belarus</dd></div>
+            <div><dt>Timezone</dt><dd>UTC+3</dd></div>
+            <div><dt>Work</dt><dd>Remote</dd></div>
+            <div><dt>English</dt><dd>B2</dd></div>
+          </dl>
+          <p class="note">Currently a medical-equipment engineer at a radiotherapy centre; leaving in November to do software full-time.</p>
+        </aside>
+
+        <dl class="evidence" aria-label="Selected measured outcomes">
+          <div>
+            <dt>Engineer Companion</dt>
+            <dd><span>96/100</span><span class="ev-label">benchmark accuracy</span></dd>
+          </div>
+          <div>
+            <dt>VETKA_DWG</dt>
+            <dd><span>4 h &rarr; 15 min</span><span class="ev-label">drafting time</span></dd>
+          </div>
+          <div>
+            <dt>GeoConverter</dt>
+            <dd><span>&lt;1 mm</span><span class="ev-label">round-trip error</span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" data-od-id="work-section" aria-labelledby="work-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="work-title" data-od-id="work-heading">Work</h2>
+        <p>Three systems in production. Two under NDA, one with public code.</p>
+      </header>
+
+      <article class="case-featured" data-od-id="case-engineer-companion" aria-labelledby="case-ec-title">
+        <div class="case-meta">
+          <span class="badge">Public code</span>
+          <span class="year">2026</span>
+        </div>
+        <div class="case-copy">
+          <h3 id="case-ec-title">Engineer Companion</h3>
+          <p class="case-summary">Offline RAG over radiotherapy equipment documentation. Hybrid LanceDB + BM25 retrieval, local embeddings and reranker, CPU-only. Answers cite document, page and drawing region.</p>
+          <a class="case-link" href="case.html" data-od-id="view-case-engineer-companion">View case <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+        <figure class="case-media">
+          <img src="img/engineer-companion-chat.png" width="2000" height="1250" loading="lazy" decoding="async" alt="Engineer Companion window: a question about the HDW collimator and an answer citing page 118, with source actions, local-model speed and token counts.">
+          <figcaption>Answer with evidence links: document, page, drawing region.</figcaption>
+        </figure>
+        <dl class="case-metrics">
+          <div><dt>Facts indexed</dt><dd>21,214</dd></div>
+          <div><dt>Benchmark accuracy</dt><dd>96/100</dd></div>
+          <div><dt>p50 latency (CPU)</dt><dd>130 ms</dd></div>
+        </dl>
+      </article>
+
+      <article class="case-row" data-od-id="case-vetka-dwg" aria-labelledby="case-vetka-title">
+        <div class="case-meta">
+          <span class="badge">Source private &middot; NDA</span>
+          <span class="year">2026</span>
+        </div>
+        <div class="case-row-grid">
+          <div class="case-copy">
+            <h3 id="case-vetka-title">VETKA_DWG</h3>
+            <p class="case-summary">Computer-vision pipeline that turns a photo of a hand-drawn survey sketch into a topographic DXF. Marker detection, OCR, block library. Cuts manual drafting from 4 hours to 15 minutes.</p>
+            <a class="case-link" href="mailto:maxkukhto@gmail.com?subject=VETKA_DWG%20walkthrough%20request">Walkthrough on request <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <dl class="metric-stack">
+            <div><dt>Drafting time</dt><dd>4 h &rarr; 15 min</dd></div>
+            <div><dt>Production use</dt><dd>3 surveying companies</dd></div>
+            <div><dt>Block library</dt><dd>444 GUGK blocks</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="case-row" data-od-id="case-geoconverter" aria-labelledby="case-geo-title">
+        <div class="case-meta">
+          <span class="badge">Commercial &middot; NDA</span>
+          <span class="year">2023&ndash;2024</span>
+        </div>
+        <div class="case-row-grid case-row-grid--media">
+          <div class="case-copy">
+            <h3 id="case-geo-title">GeoConverter</h3>
+            <p class="case-summary">Commercial desktop product for sub-millimetre conversion between legacy local coordinate systems and WGS-84. Four-stage numerical calibration, round-trip validation, hardware-locked licensing.</p>
+            <a class="case-link" href="mailto:maxkukhto@gmail.com?subject=GeoConverter%20walkthrough%20request">Walkthrough on request <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <dl class="metric-stack">
+            <div><dt>Round-trip error</dt><dd>&lt;1 mm</dd></div>
+            <div><dt>Local coordinate systems</dt><dd>20+</dd></div>
+            <div><dt>Release</dt><dd class="is-text">Commercial release, government clients</dd></div>
+          </dl>
+          <figure class="case-thumb">
+            <img src="img/geoconverter.png" width="1938" height="976" loading="lazy" decoding="async" alt="GeoConverter v8.3 window with source and result coordinate tables, system selectors and conversion settings.">
+            <figcaption>GeoConverter v8.3, source and result tables.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="services" data-od-id="services-section" aria-labelledby="services-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="services-title" data-od-id="services-heading">What I do</h2>
+      </header>
+      <ol class="services">
+        <li data-od-id="service-rag">
+          <span class="service-num" aria-hidden="true">01</span>
+          <h3 class="service-title">Offline and on-prem RAG</h3>
+          <p class="service-desc">Document ingestion, hybrid retrieval, reranking, local quantized inference (llama.cpp / GGUF, ONNX), evaluation harnesses, evidence-linked answers.</p>
+        </li>
+        <li data-od-id="service-cad">
+          <span class="service-num" aria-hidden="true">02</span>
+          <h3 class="service-title">CAD/GIS automation</h3>
+          <p class="service-desc">DXF/DWG generation, photo-to-drawing CV pipelines, coordinate systems, numerical calibration, desktop tooling with PySide6/PyQt6.</p>
+        </li>
+        <li data-od-id="service-python">
+          <span class="service-num" aria-hidden="true">03</span>
+          <h3 class="service-title">Python backend and desktop</h3>
+          <p class="service-desc">FastAPI services, async pipelines, SQL schemas and migrations, Cloudflare Workers/D1/R2, CI with coverage and mutation gates.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="about" data-od-id="about-section" aria-labelledby="about-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="about-title" data-od-id="about-heading">About</h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I am a medical-equipment engineer at the Mogilev Regional Oncology Dispensary, where I maintain Varian TrueBeam / VitalBeam linear accelerators. That work is safety-critical and documentation-heavy &mdash; which is exactly why I built Engineer Companion: a field engineer in an RF-shielded bunker needs the exact page in seconds, with no internet.</p>
+          <p>I have been building software alongside that role since 2020: a commercial geodetic converter, a production photo-to-DXF pipeline, an offline RAG system, and a live Telegram product. I am leaving the clinical role in November 2026 to work on software full-time.</p>
+          <p>Commercial projects are covered by NDA. I can show architecture, screenshots, and measured results; source stays private.</p>
+        </div>
+        <aside class="facts" aria-labelledby="facts-title" data-od-id="about-facts">
+          <h3 id="facts-title" data-od-id="facts-heading">Facts</h3>
+          <dl>
+            <div><dt>Based</dt><dd>Mogilev, Belarus</dd></div>
+            <div><dt>Timezone</dt><dd>UTC+3</dd></div>
+            <div><dt>Availability</dt><dd>Full-time from late Nov 2026</dd></div>
+            <div><dt>English</dt><dd>B2</dd></div>
+            <div><dt>Focus</dt><dd>RAG &middot; CAD/GIS &middot; Python</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" data-od-id="contact-section" aria-labelledby="contact-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="contact-title" data-od-id="contact-heading">Contact</h2>
+      </header>
+      <p class="contact-lead">Available for full-time roles from late November 2026. Remote, UTC+3.</p>
+      <p><a class="email" href="mailto:maxkukhto@gmail.com" data-od-id="contact-email">maxkukhto@gmail.com</a></p>
+      <ul class="contact-links">
+        <li><a href="https://github.com/kukhtik" rel="noopener"><span class="contact-label">GitHub</span><span class="contact-url">github.com/kukhtik</span></a></li>
+        <li><a href="https://www.linkedin.com/" rel="noopener"><span class="contact-label">LinkedIn</span><span class="contact-url">linkedin.com</span></a></li>
+        <li><a href="cv.pdf" download><span class="contact-label">CV</span><span class="contact-url">PDF</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" data-od-id="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; 2026 Maxim Kukhto</p>
+    <p>static site &middot; no trackers</p>
+  </div>
+</footer>
+</body>
+</html>

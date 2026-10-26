@@ -51,14 +51,14 @@ links:
     url: "https://github.com/kukhtik/Open_space"
 
 images:
-  - src: "images/geoconverter.png"
+  - src: "images/geoconverter.webp"
     alt:
       en: "GeoConverter desktop application main window"
       ru: "GeoConverter — главное окно приложения"
     caption:
       en: "Desktop product: source points, local system, WGS-84 output."
       ru: "Desktop-продукт: исходные точки, локальная система, результат в WGS-84."
-  - src: "images/geoconverter-report.png"
+  - src: "images/geoconverter-report.webp"
     alt:
       en: "GeoConverter generated calibration report"
       ru: "GeoConverter — сгенерированный отчёт калибровки"

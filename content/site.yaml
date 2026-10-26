@@ -25,8 +25,8 @@ cv:
   en: "assets/cv-en.pdf"
   ru: "assets/cv-ru.pdf"
 
-# Set after the first deploy. No trailing slash.
-domain: "https://kukhto.pages.dev"
+# Live host. One line to change when a custom domain is attached. No trailing slash.
+domain: "https://kukhto.is-a.dev"
 
 seo:
   title:
@@ -53,6 +53,29 @@ about:
     - "Я инженер по медицинскому оборудованию в УЗ «Могилёвский областной онкологический диспансер», обслуживаю линейные ускорители Varian TrueBeam / VitalBeam. Работа safety-critical и документационно тяжёлая — поэтому я и построил Engineer Companion: инженеру в бункере без интернета нужна точная страница за секунды."
     - "С 2020 года параллельно строю софт: коммерческий геодезический конвертер, production-пайплайн «фото → DXF», offline-RAG, живой Telegram-продукт. В ноябре 2026 ухожу из клиники в разработку full-time."
     - "Коммерческие проекты под NDA. Могу показать архитектуру, скриншоты и измеренные результаты; исходники остаются закрытыми."
+
+record:
+  - when: "2022 — 11.2026"
+    title:
+      en: "Medical-equipment engineer · Mogilev Regional Oncology Dispensary"
+      ru: "Инженер по медицинскому оборудованию · Могилёвский областной онкодиспансер"
+    text:
+      en: "Maintenance of Varian TrueBeam and VitalBeam linear accelerators: dosimetry checks, MLC and imaging calibration, fault diagnosis in an RF-shielded bunker, service documentation with no margin for error."
+      ru: "Обслуживание линейных ускорителей Varian TrueBeam и VitalBeam: дозиметрический контроль, калибровка MLC и системы визуализации, поиск неисправностей в экранированном бункере, сервисная документация без права на ошибку."
+  - when: "2020 — 2026"
+    title:
+      en: "Software alongside the service work"
+      ru: "Разработка параллельно сервисной работе"
+    text:
+      en: "A commercial geodetic converter, a production photo-to-DXF pipeline for surveyors, an offline RAG system for equipment documentation, and a live Telegram product on Cloudflare."
+      ru: "Коммерческий геодезический конвертер, production-пайплайн «фото → DXF» для геодезистов, offline-RAG по документации оборудования и живой Telegram-продукт на Cloudflare."
+  - when: "11.2026 →"
+    title:
+      en: "Software full-time"
+      ru: "Разработка full-time"
+    text:
+      en: "Leaving the clinical role to build software with the same constraint I worked under for four years: the result has to be verifiable."
+      ru: "Ухожу из клиники, чтобы заниматься разработкой с тем же требованием, что и четыре года в сервисе: результат должен быть проверяемым."
 
 facts:
   - label: {en: "Based", ru: "База"}
