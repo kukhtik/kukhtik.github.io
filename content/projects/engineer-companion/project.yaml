@@ -1,0 +1,75 @@
+slug: engineer-companion
+order: 1
+published: true
+featured: true
+status: public
+year: "2026"
+
+title:
+  en: "Engineer Companion — offline RAG"
+  ru: "Engineer Companion — offline-RAG"
+
+summary:
+  en: "Offline RAG over radiotherapy equipment documentation. Hybrid LanceDB + BM25 retrieval, local embeddings and reranker, CPU-only. Answers cite document, page and drawing region."
+  ru: "Offline-RAG по документации радиотерапевтического оборудования. Гибридный поиск LanceDB + BM25, локальные эмбеддинги и реранкер, CPU-only. Ответы цитируют документ, страницу и область чертежа."
+
+problem:
+  en: "A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds — out of tens of thousands of pages of manuals."
+  ru: "Инженер, обслуживающий клинический линейный ускоритель, работает в экранированном бункере без интернета и должен за секунды найти точную страницу спецификации среди десятков тысяч страниц руководств."
+
+approach:
+  en:
+    - "One Python core: PDF indexing, chunking, embeddings, LanceDB retrieval and a fact catalogue."
+    - "Hybrid retrieval: dense vectors + BM25, with a cross-encoder reranker."
+    - "Local quantized inference (Gemma-3-4B, GGUF / llama.cpp); every answer carries an evidence link to document, page and drawing region."
+  ru:
+    - "Одно Python-ядро: индексация PDF, чанкинг, эмбеддинги, поиск в LanceDB и каталог фактов."
+    - "Гибридный поиск: dense-векторы + BM25, с кросс-энкодерным реранкером."
+    - "Локальный квантованный инференс (Gemma-3-4B, GGUF / llama.cpp); каждый ответ несёт ссылку на документ, страницу и область чертежа."
+
+results:
+  - value: "21,214"
+    label: {en: "facts indexed", ru: "фактов в индексе"}
+  - value: "96/100"
+    label: {en: "benchmark accuracy", ru: "точность на бенчмарке"}
+  - value: "130 ms"
+    label: {en: "p50 latency · CPU", ru: "p50 · CPU"}
+  - value: "768/775"
+    label: {en: "tests passing", ru: "тестов проходят"}
+
+stack:
+  - "Python"
+  - "LanceDB"
+  - "BM25"
+  - "multilingual-e5-small"
+  - "mmarco reranker"
+  - "Gemma-3-4B (GGUF)"
+  - "llama.cpp"
+  - "PySide6"
+  - "pytest"
+
+confidentiality:
+  en: "Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal."
+  ru: "Публичный код. В репозитории — код поиска и генерации и тесты; бенчмарк-харнесс внутренний."
+
+links:
+  - label: {en: "Public code", ru: "Публичный код"}
+    url: "https://github.com/kukhtik/engineer-companion"
+  - label: {en: "Architecture notes", ru: "Архитектура"}
+    url: "https://github.com/kukhtik/Open_space"
+
+images:
+  - src: "images/engineer-companion-chat.png"
+    alt:
+      en: "Engineer Companion chat answering with document and page citations"
+      ru: "Engineer Companion — ответ со ссылками на документ и страницу"
+    caption:
+      en: "Answer with evidence links: document, page, drawing region."
+      ru: "Ответ со ссылками: документ, страница, область чертежа."
+  - src: "images/engineer-companion-library.png"
+    alt:
+      en: "Engineer Companion document library and index statistics"
+      ru: "Engineer Companion — библиотека документов и статистика индекса"
+    caption:
+      en: "Document library and index statistics."
+      ru: "Библиотека документов и статистика индекса."

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="case">
+  <div class="wrap">
+    <a class="back" href="{{ home_url }}#work">← {{ ui.actions.back_to_work[lang] }}</a>
+
+    <header class="case-head">
+      <div class="card-kicker">
+        <span class="status status-{{ project.status }}">{{ status_label(project.status, lang) }}</span>
+        <span class="year">{{ project.year }}</span>
+      </div>
+      <h1>{{ t(project.title, lang) }}</h1>
+      <p class="lead">{{ t(project.summary, lang) }}</p>
+    </header>
+
+    <figure class="case-cover">
+      <img src="{{ project.cover }}" alt="{{ t(project.images[0].alt, lang) }}" width="1600" height="1000">
+      <figcaption>{{ t(project.images[0].caption, lang) }}</figcaption>
+    </figure>
+
+    <div class="case-grid">
+      <div class="case-main">
+        <section>
+          <h2>{{ ui.sections.problem[lang] }}</h2>
+          <p>{{ t(project.problem, lang) }}</p>
+        </section>
+
+        <section>
+          <h2>{{ ui.sections.approach[lang] }}</h2>
+          <ul class="bullets">
+            {% for item in project.approach[lang] %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section>
+          <h2>{{ ui.sections.results[lang] }}</h2>
+          <div class="result-grid">
+            {% for r in project.results %}
+            <div class="result">
+              <strong>{{ r.value }}</strong>
+              <span>{{ t(r.label, lang) }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section>
+          <h2>{{ ui.sections.stack[lang] }}</h2>
+          <ul class="chips">
+            {% for s in project.stack %}
+            <li>{{ s }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section>
+          <h2>{{ ui.sections.confidentiality[lang] }}</h2>
+          <p>{{ t(project.confidentiality, lang) }}</p>
+        </section>
+      </div>
+
+      <aside class="case-side">
+        <h2>{{ ui.sections.links[lang] }}</h2>
+        <ul class="side-links">
+          {% for l in project.links %}
+          <li><a href="{{ l.url }}">{{ t(l.label, lang) }} →</a></li>
+          {% endfor %}
+        </ul>
+
+        {% if project.gallery %}
+        <h2>{{ ui.sections.gallery[lang] }}</h2>
+        {% for img in project.gallery %}
+        <figure class="side-figure">
+          <img src="{{ img.url }}" alt="{{ t(img.alt, lang) }}" loading="lazy" width="1600" height="1000">
+          <figcaption>{{ t(img.caption, lang) }}</figcaption>
+        </figure>
+        {% endfor %}
+        {% endif %}
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock %}

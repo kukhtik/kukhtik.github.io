@@ -1,0 +1,67 @@
+slug: geoconverter
+order: 3
+published: true
+featured: true
+status: commercial
+year: "2023–2024"
+
+title:
+  en: "GeoConverter — geodetic coordinate conversion"
+  ru: "GeoConverter — конвертация геодезических координат"
+
+summary:
+  en: "Commercial desktop product for sub-millimetre conversion between legacy local coordinate systems and WGS-84. Four-stage numerical calibration, round-trip validation, hardware-locked licensing."
+  ru: "Коммерческий desktop-продукт для субмиллиметровой конвертации между локальными системами координат и WGS-84. Четырёхстадийная численная калибровка, проверка невязки, аппаратная привязка лицензий."
+
+problem:
+  en: "Converting coordinates between legacy local systems and modern global datums requires sub-millimetre precision under strong non-linear distortions. Off-the-shelf tools either lose precision or require a server."
+  ru: "Конвертация координат между локальными системами и современными глобальными датумами требует субмиллиметровой точности при сильных нелинейных искажениях. Готовые инструменты либо теряют точность, либо требуют сервера."
+
+approach:
+  en:
+    - "Four-stage pipeline: Helmert/SVD → Levenberg-Marquardt → Nelder-Mead, tolerance 1e-12."
+    - "Round-trip error validation: the closed route must return within millimetres."
+    - "PyQt6 desktop product with hardware-locked activation keys and an offline license issuer."
+  ru:
+    - "Четырёхстадийный пайплайн: Helmert/SVD → Левенберг-Марквардт → Нелдер-Мид, допуск 1e-12."
+    - "Проверка невязки: замкнутый маршрут должен вернуться с миллиметровой точностью."
+    - "Desktop-продукт на PyQt6 с аппаратной привязкой ключей и офлайн-генератором лицензий."
+
+results:
+  - value: "<1 mm"
+    label: {en: "round-trip error", ru: "погрешность замкнутого маршрута"}
+  - value: "20+"
+    label: {en: "local coordinate systems", ru: "локальных систем координат"}
+  - value: "Commercial"
+    label: {en: "release, government clients", ru: "релиз, государственные заказчики"}
+
+stack:
+  - "Python"
+  - "NumPy / SciPy"
+  - "PyQt6"
+  - "PyInstaller / Nuitka"
+  - "Hardware-locked licensing"
+
+confidentiality:
+  en: "Source private. Commercial product; client systems and licensing details under NDA."
+  ru: "Исходники закрыты. Коммерческий продукт; заказчики и детали лицензирования под NDA."
+
+links:
+  - label: {en: "Case notes", ru: "Описание кейса"}
+    url: "https://github.com/kukhtik/Open_space"
+
+images:
+  - src: "images/geoconverter.png"
+    alt:
+      en: "GeoConverter desktop application main window"
+      ru: "GeoConverter — главное окно приложения"
+    caption:
+      en: "Desktop product: source points, local system, WGS-84 output."
+      ru: "Desktop-продукт: исходные точки, локальная система, результат в WGS-84."
+  - src: "images/geoconverter-report.png"
+    alt:
+      en: "GeoConverter generated calibration report"
+      ru: "GeoConverter — сгенерированный отчёт калибровки"
+    caption:
+      en: "Generated calibration report with round-trip residuals."
+      ru: "Сгенерированный отчёт калибровки с невязками."

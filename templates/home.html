@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">{{ t(site.role, lang) }}</p>
+    <h1>{{ t(site.name, lang) }}</h1>
+    <p class="lead">{{ t(site.hero.lead, lang) }}</p>
+    <p class="hero-note">{{ t(site.hero.note, lang) }}</p>
+
+    <div class="meta" aria-label="{{ ui.meta.status[lang] }}">
+      <span>{{ t(site.location, lang) }}</span>
+      <span>{{ site.timezone }}</span>
+      <span class="meta-availability">{{ t(site.availability, lang) }}</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/{{ site.cv[lang] }}">{{ ui.actions.download_cv[lang] }}</a>
+      <a class="btn ghost" href="{{ site.github }}">GitHub</a>
+      <a class="btn ghost" href="mailto:{{ site.email }}">{{ ui.actions.email[lang] }}</a>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ ui.sections.selected_work[lang] }}</h2>
+      <p>{{ ui.sections.selected_work_note[lang] }}</p>
+    </div>
+
+    <div class="cards">
+      {% for p in projects %}
+      <article class="card">
+        <a class="card-link" href="{{ p.url }}">
+          <div class="card-media">
+            <img src="{{ p.cover }}" alt="{{ t(p.images[0].alt, lang) }}" loading="lazy" width="1600" height="1000">
+          </div>
+          <div class="card-body">
+            <div class="card-kicker">
+              <span class="status status-{{ p.status }}">{{ status_label(p.status, lang) }}</span>
+              <span class="year">{{ p.year }}</span>
+            </div>
+            <h3>{{ t(p.title, lang) }}</h3>
+            <p>{{ t(p.summary, lang) }}</p>
+            <ul class="metrics" aria-label="{{ ui.sections.results[lang] }}">
+              {% for r in p.results[:3] %}
+              <li><strong>{{ r.value }}</strong><span>{{ t(r.label, lang) }}</span></li>
+              {% endfor %}
+            </ul>
+            <span class="card-cta">{{ ui.actions.view_case[lang] }} →</span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.more %}
+    <div class="more">
+      <h3>{{ ui.sections.more[lang] }}</h3>
+      <ul>
+        {% for item in site.more %}
+        <li>
+          <a href="{{ item.url }}">{{ t(item.title, lang) }}</a>
+          <span>{{ t(item.text, lang) }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section id="do" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ ui.sections.what_i_do[lang] }}</h2>
+      <p>{{ ui.sections.what_i_do_note[lang] }}</p>
+    </div>
+    <div class="services">
+      {% for s in site.services %}
+      <div class="service">
+        <span class="service-num">{{ s.number }}</span>
+        <h3>{{ t(s.title, lang) }}</h3>
+        <p>{{ t(s.text, lang) }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="wrap about">
+    <div class="about-main">
+      <h2>{{ ui.sections.about[lang] }}</h2>
+      {% for para in site.about[lang] %}
+      <p>{{ para }}</p>
+      {% endfor %}
+    </div>
+    <aside class="facts">
+      <dl>
+        {% for f in site.facts %}
+        <dt>{{ t(f.label, lang) }}</dt>
+        <dd>{{ t(f.value, lang) }}</dd>
+        {% endfor %}
+        <dt>{{ ui.sections.links[lang] }}</dt>
+        <dd><a href="{{ site.github }}">GitHub</a> · <a href="{{ site.linkedin }}">LinkedIn</a></dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="wrap contact-inner">
+    <div>
+      <h2>{{ ui.sections.contact[lang] }}</h2>
+      <p>{{ ui.sections.contact_note[lang] }}</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:{{ site.email }}"><span>{{ ui.actions.email[lang] }}</span>{{ site.email }}</a>
+      <a href="{{ site.github }}"><span>GitHub</span>github.com/kukhtik</a>
+      <a href="{{ site.linkedin }}"><span>LinkedIn</span>max-kukhto-517091337</a>
+      <a href="/{{ site.cv[lang] }}"><span>CV</span>{{ ui.actions.download_cv[lang] }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

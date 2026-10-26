@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="wrap not-found">
+    <p class="eyebrow">404</p>
+    <h1>{{ ui.not_found.title[lang] }}</h1>
+    <p class="lead">{{ ui.not_found.text[lang] }}</p>
+    <p><a class="btn" href="{{ home_url }}">{{ ui.actions.back_home[lang] }}</a></p>
+  </div>
+</section>
+{% endblock %}

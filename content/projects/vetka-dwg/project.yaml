@@ -1,0 +1,61 @@
+slug: vetka-dwg
+order: 2
+published: true
+featured: true
+status: nda
+year: "2026"
+
+title:
+  en: "VETKA_DWG — photo of a survey sketch → DXF"
+  ru: "VETKA_DWG — фото абриса → DXF"
+
+summary:
+  en: "Computer-vision pipeline that turns a photo of a hand-drawn survey sketch into a topographic DXF. Marker detection, OCR, block library. Cuts manual drafting from 4 hours to 15 minutes."
+  ru: "CV-пайплайн, который превращает фото рукописного абриса в топографический DXF. Детекция маркеров, OCR, библиотека блоков. Ручное черчение: 4 часа → 15 минут."
+
+problem:
+  en: "A surveyor draws a field abris by hand, then spends hours transferring numbered points and symbols into CAD. The process is slow, repetitive and error-prone."
+  ru: "Геодезист рисует абрис от руки, а потом часы переносит точки и условные знаки в CAD. Процесс медленный, монотонный и подверженный ошибкам."
+
+approach:
+  en:
+    - "Marker and text detection on a phone photo, followed by OCR for point numbers and labels."
+    - "A 444-block GUGK sign library with a fidelity audit against the reference template."
+    - "DXF generation with a PySide6/QML desktop shell and CI quality gates."
+  ru:
+    - "Детекция маркеров и текста на фото с телефона, OCR для номеров точек и подписей."
+    - "Библиотека из 444 блоков ГУГК с аудитом точности относительно эталонного шаблона."
+    - "Генерация DXF, desktop-оболочка на PySide6/QML и quality gates в CI."
+
+results:
+  - value: "4 h → 15 min"
+    label: {en: "manual drafting time", ru: "время ручного черчения"}
+  - value: "3"
+    label: {en: "surveying companies in production", ru: "геодезические компании в production"}
+  - value: "444"
+    label: {en: "GUGK blocks in the library", ru: "блока ГУГК в библиотеке"}
+
+stack:
+  - "Python"
+  - "OpenCV"
+  - "PaddleOCR"
+  - "ezdxf"
+  - "PySide6 / QML"
+  - "CI quality gates"
+
+confidentiality:
+  en: "Source private. Commercial use and government clients under NDA; architecture, screenshots and measured results are shown here."
+  ru: "Исходники закрыты. Коммерческое использование и государственные заказчики под NDA; здесь показаны архитектура, скриншоты и измеренные результаты."
+
+links:
+  - label: {en: "Case notes", ru: "Описание кейса"}
+    url: "https://github.com/kukhtik/Open_space"
+
+images:
+  - src: "images/vetka-dwg-library.png"
+    alt:
+      en: "VETKA_DWG block library audit console"
+      ru: "VETKA_DWG — консоль аудита библиотеки блоков"
+    caption:
+      en: "Block-library audit: 444 / 444 blocks pass all five fidelity axes."
+      ru: "Аудит библиотеки: 444 / 444 блока проходят все пять проверок точности."

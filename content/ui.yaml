@@ -1,0 +1,54 @@
+nav:
+  label: {en: "Main navigation", ru: "Основная навигация"}
+  home: {en: "Home", ru: "Главная"}
+  work: {en: "Work", ru: "Работы"}
+  about: {en: "About", ru: "Обо мне"}
+  contact: {en: "Contact", ru: "Контакты"}
+
+actions:
+  skip: {en: "Skip to content", ru: "К содержанию"}
+  download_cv: {en: "Download CV (PDF)", ru: "Скачать CV (PDF)"}
+  email: {en: "Email", ru: "Email"}
+  github: {en: "GitHub", ru: "GitHub"}
+  linkedin: {en: "LinkedIn", ru: "LinkedIn"}
+  view_case: {en: "View case", ru: "Смотреть кейс"}
+  back_to_work: {en: "All work", ru: "Все работы"}
+  back_home: {en: "Back to home", ru: "На главную"}
+
+sections:
+  selected_work: {en: "Selected work", ru: "Избранные проекты"}
+  selected_work_note:
+    en: "Three systems with different constraints: no internet, millimetre precision, and a live product. Source is public where possible; commercial work is under NDA."
+    ru: "Три системы с разными ограничениями: без интернета, миллиметровая точность и живой продукт. Код открыт там, где можно; коммерческие проекты — под NDA."
+  what_i_do: {en: "What I do", ru: "Что делаю"}
+  what_i_do_note:
+    en: "I take a problem from prototype to a release that can be checked — not a demo that only works on the happy path."
+    ru: "Беру задачу от прототипа до релиза, который можно проверить — а не демо, работающее только на счастливом пути."
+  about: {en: "About", ru: "Обо мне"}
+  contact: {en: "Let's talk", ru: "Давайте поговорим"}
+  contact_note:
+    en: "Looking for a remote Python/AI role in CAD/GIS automation, RAG/LLM systems, or medtech. I can start full-time from late November 2026."
+    ru: "Ищу remote-роль Python/AI-инженера в CAD/GIS-автоматизации, RAG/LLM или medtech. Могу начать full-time с конца ноября 2026."
+  more: {en: "Also", ru: "Ещё"}
+  problem: {en: "Problem", ru: "Задача"}
+  approach: {en: "Approach", ru: "Что сделал"}
+  results: {en: "Results", ru: "Результат"}
+  stack: {en: "Stack", ru: "Стек"}
+  links: {en: "Links", ru: "Ссылки"}
+  gallery: {en: "Screenshots", ru: "Скриншоты"}
+  confidentiality: {en: "What is public", ru: "Что публично"}
+
+meta:
+  role: {en: "Role", ru: "Роль"}
+  year: {en: "Year", ru: "Год"}
+  status: {en: "Status", ru: "Статус"}
+
+footer:
+  rights: {en: "Python / AI engineer", ru: "Python / AI-инженер"}
+  built: {en: "Static site · no trackers", ru: "Статическая страница · без трекеров"}
+
+not_found:
+  title: {en: "Page not found", ru: "Страница не найдена"}
+  text:
+    en: "The page you are looking for does not exist. It may have moved, or the link may be wrong."
+    ru: "Страницы, которую вы ищете, нет. Возможно, она переехала или ссылка неверная."
