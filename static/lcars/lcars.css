@@ -79,7 +79,8 @@
   border-radius:calc(var(--lh,22px)/2);overflow:hidden;background:var(--c,var(--lc-amber));
   max-width:100%}
 .l-plate .pl-label{display:inline-flex;align-items:center;padding:0 clamp(10px,1.4vw,18px);
-  background:rgba(0,0,0,.22);color:var(--lc-on);
+  /* the reference sets the label block in a DIFFERENT family, not a shade of the bar */
+  background:var(--lc-label,var(--lc-lavender));color:var(--lc-on);
   font-family:var(--font-panel,"PT Sans Narrow",sans-serif);font-weight:700;
   font-size:clamp(11.5px,1.1vw,14px);letter-spacing:0.07em;text-transform:uppercase;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

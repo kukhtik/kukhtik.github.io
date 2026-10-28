@@ -7,7 +7,7 @@
 </div>
 
 <section class="panelbox" id="header" data-od-id="header">
-  <span class="l-plate" style="--w:66%;--c:var(--lc-amber)"><span class="pl-bar"></span><span class="pl-label">00 · SYSTEM ID · {{ site.domain | replace('https://','') | upper }}</span></span>
+  <span class="l-plate" style="--w:66%;--c:var(--lc-amber);--lc-label:var(--lc-lavender)"><span class="pl-bar"></span><span class="pl-label">00 · SYSTEM ID · {{ site.domain | replace('https://','') | upper }}</span></span>
   <div class="header-grid">
     <div class="header-main">
       {% set nm = t(site.name, lang).split(' ') %}
@@ -15,34 +15,6 @@
       <p class="lead">{{ t(site.hero.lead, lang) }}</p>
       <p class="note">{{ t(site.hero.note, lang) }}</p>
     </div>
-    <div class="header-side" style="--c:var(--lc-blue)">
-      <span class="hs-t">{{ ui.lcars.side_role[lang] }}</span>
-      <span class="hs-b">{{ t(site.role, lang) }}</span>
-      <span class="hs-l">{{ t(site.location, lang) }} · {{ site.timezone }}</span>
-    </div>
-  </div>
-  <div class="bandrow">
-    <span class="l-band">
-      <span style="--c:var(--lc-amber);--w:3">OFFLINE RAG</span>
-      <span style="--c:var(--lc-coral);--w:2">CAD / GIS</span>
-      <span style="--c:var(--lc-blue);--w:2">PYTHON</span>
-      <span style="--c:var(--lc-pink);--w:2">LINAC FIELD</span>
-    </span>
-  </div>
-  <nav class="l-iconcluster" aria-label="{{ ui.nav.label[lang] }}">
-    <a class="l-med" href="#hero" style="--c:var(--lc-amber)" title="{{ ui.lcars.nav_instruments[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.2-5.6"/><circle cx="12" cy="17" r="1.3"/></svg><span class="sr-only">{{ ui.lcars.nav_instruments[lang] }}</span></a>
-    <a class="l-med" href="#projects" style="--c:var(--lc-coral)" title="{{ ui.lcars.nav_projects[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M10 4v16"/></svg><span class="sr-only">{{ ui.lcars.nav_projects[lang] }}</span></a>
-    <a class="l-med" href="#skills" style="--c:var(--lc-blue)" title="{{ ui.lcars.nav_capabilities[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><span class="sr-only">{{ ui.lcars.nav_capabilities[lang] }}</span></a>
-    <a class="l-med" href="#record" style="--c:var(--lc-violet)" title="{{ ui.lcars.nav_log[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span class="sr-only">{{ ui.lcars.nav_log[lang] }}</span></a>
-    <a class="l-med" href="#facts" style="--c:var(--lc-slate)" title="{{ ui.lcars.nav_facts[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V11M9 19V5M14 19v-6M19 19V8"/><path d="M3 21h18"/></svg><span class="sr-only">{{ ui.lcars.nav_facts[lang] }}</span></a>
-    <a class="l-med" href="#contact" style="--c:var(--lc-rose)" title="{{ ui.lcars.nav_contacts[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 7l9 6 9-6"/></svg><span class="sr-only">{{ ui.lcars.nav_contacts[lang] }}</span></a>
-  </nav>
-</section>
-
-<section class="panelbox" id="hero" data-od-id="hero">
-  <span class="l-elbow" style="--c:var(--lc-amber);--l-long:22%;--l-stub:12%;--l-thick:var(--lc-thick)"><i></i><i></i></span>
-  <span class="l-plate" style="--w:58%;--c:var(--lc-coral)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_hero[lang] }}</span></span>
-  <div class="hero-grid">
     <div class="statement">
       <span class="st-t">{{ t(site.role, lang) }}</span>
       <span class="st-b">{{ t(site.hero.lead, lang) }}</span>
@@ -68,22 +40,46 @@
       <p class="sheet-cap">{{ ui.lcars.caption_blueprint[lang] }}</p>
       <p class="fig-legend"><span><i></i>{{ ui.lcars.legend_gantry[lang] }}</span><span><i></i>{{ ui.lcars.legend_beam[lang] }}</span><span><i></i>{{ ui.lcars.legend_isocentre[lang] }}</span></p>
     </div>
+
   </div>
-  <div class="l-panel" style="--c:var(--lc-blue)">
-    <p class="panel-leg">ISODOSE DISTRIBUTION · TREATMENT BEAM</p>
-    <figure class="sheetfig"><svg class="isodose" id="isodose-hero" viewBox="0 0 320 180" aria-hidden="true"></svg></figure>
-    <p class="sheet-cap">{{ ui.lcars.caption_isodose[lang] }}</p>
+  <div class="bandrow">
+    <span class="l-band">
+      <span style="--c:var(--lc-amber);--w:3">OFFLINE RAG</span>
+      <span style="--c:var(--lc-coral);--w:2">CAD / GIS</span>
+      <span style="--c:var(--lc-blue);--w:2">PYTHON</span>
+      <span style="--c:var(--lc-pink);--w:2">LINAC FIELD</span>
+    </span>
   </div>
-  <ul class="domains">
-    {% for s in site.services %}
-    <li><span class="dm-k">{{ t(s.title, lang) }}</span><span class="dm-v">{{ t(s.text, lang) }}</span></li>
-    {% endfor %}
-  </ul>
+  <nav class="l-iconcluster" aria-label="{{ ui.nav.label[lang] }}">
+    <a class="l-med" href="#hero" style="--c:var(--lc-amber)" title="{{ ui.lcars.nav_instruments[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.2-5.6"/><circle cx="12" cy="17" r="1.3"/></svg><span class="sr-only">{{ ui.lcars.nav_instruments[lang] }}</span></a>
+    <a class="l-med" href="#projects" style="--c:var(--lc-coral)" title="{{ ui.lcars.nav_projects[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M10 4v16"/></svg><span class="sr-only">{{ ui.lcars.nav_projects[lang] }}</span></a>
+    <a class="l-med" href="#skills" style="--c:var(--lc-blue)" title="{{ ui.lcars.nav_capabilities[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><span class="sr-only">{{ ui.lcars.nav_capabilities[lang] }}</span></a>
+    <a class="l-med" href="#record" style="--c:var(--lc-violet)" title="{{ ui.lcars.nav_log[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><span class="sr-only">{{ ui.lcars.nav_log[lang] }}</span></a>
+    <a class="l-med" href="#facts" style="--c:var(--lc-slate)" title="{{ ui.lcars.nav_facts[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V11M9 19V5M14 19v-6M19 19V8"/><path d="M3 21h18"/></svg><span class="sr-only">{{ ui.lcars.nav_facts[lang] }}</span></a>
+    <a class="l-med" href="#contact" style="--c:var(--lc-rose)" title="{{ ui.lcars.nav_contacts[lang] }}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 7l9 6 9-6"/></svg><span class="sr-only">{{ ui.lcars.nav_contacts[lang] }}</span></a>
+  </nav>
+</section>
+
+<section class="panelbox" id="hero" data-od-id="hero">
+  <span class="l-plate" style="--w:58%;--c:var(--lc-coral);--lc-label:var(--lc-lavender)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_hero[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_hero[lang] }}</p>
+  <span class="l-elbow" style="--c:var(--lc-amber);--l-long:22%;--l-stub:12%;--l-thick:var(--lc-thick)"><i></i><i></i></span>
+  [lang] }}</span></span>
+  <div class="hero-grid">
+
+    <div class="l-panel" style="--c:var(--lc-blue)">
+      <p class="panel-leg">ISODOSE DISTRIBUTION · TREATMENT BEAM</p>
+      <figure class="sheetfig"><svg class="isodose" id="isodose-hero" viewBox="0 0 320 180" aria-hidden="true"></svg></figure>
+      <p class="sheet-cap">{{ ui.lcars.caption_isodose[lang] }}</p>
+    </div>
+  </div>
 </section>
 
 <section class="panelbox" id="projects" data-od-id="projects">
+  <span class="l-plate" style="--w:72%;--c:var(--lc-blue);--lc-label:var(--lc-pink)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_projects[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_projects[lang] }}</p>
   <span class="l-elbow" data-dir="right" style="--c:var(--lc-coral);--l-long:18%;--l-stub:10%;--l-thick:var(--lc-thick)"><i></i><i></i></span>
-  <span class="l-plate" style="--w:72%;--c:var(--lc-blue)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_projects[lang] }}</span></span>
+  [lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_projects[lang] }}</h2>
   {% for p in projects %}
   <article class="proj" id="proj-{{ p.slug }}">
@@ -119,7 +115,9 @@
 </section>
 
 <section class="panelbox" id="skills" data-od-id="skills">
-  <span class="l-plate" style="--w:48%;--c:var(--lc-violet)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_skills[lang] }}</span></span>
+  <span class="l-plate" style="--w:48%;--c:var(--lc-violet);--lc-label:var(--lc-amber)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_skills[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_skills[lang] }}</p>
+  [lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_skills[lang] }}</h2>
   <ul class="cap">
     {% for s in site.services %}
@@ -130,7 +128,9 @@
 </section>
 
 <section class="panelbox" id="record" data-od-id="record">
-  <span class="l-plate" style="--w:62%;--c:var(--lc-amber)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_record[lang] }}</span></span>
+  <span class="l-plate" style="--w:62%;--c:var(--lc-amber);--lc-label:var(--lc-coral)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_record[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_record[lang] }}</p>
+  [lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_record[lang] }}</h2>
   <div class="log">
     {% for r in site.record %}
@@ -141,7 +141,9 @@
 </section>
 
 <section class="panelbox" id="facts" data-od-id="facts">
-  <span class="l-plate" style="--w:40%;--c:var(--lc-slate)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_facts[lang] }}</span></span>
+  <span class="l-plate" style="--w:40%;--c:var(--lc-slate);--lc-label:var(--lc-amber)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_facts[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_facts[lang] }}</p>
+  [lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_facts[lang] }}</h2>
   <table class="facts">
     {% for f in site.facts %}
@@ -151,8 +153,10 @@
 </section>
 
 <section class="panelbox" id="contact" data-od-id="contact">
+  <span class="l-plate" style="--w:54%;--c:var(--lc-coral);--lc-label:var(--lc-lavender)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_contact[lang] }}</span></span>
+  <p class="leg">{{ ui.lcars.legend_contact[lang] }}</p>
   <span class="l-elbow" style="--c:var(--lc-violet);--l-long:16%;--l-stub:9%;--l-thick:var(--lc-cap)"><i></i><i></i></span>
-  <span class="l-plate" style="--w:54%;--c:var(--lc-coral)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_contact[lang] }}</span></span>
+  [lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_contact[lang] }}</h2>
   <div class="contacts">
     <a href="mailto:{{ site.email }}" class="l-cmd"><span class="l-dot" style="--c:var(--lc-amber)"></span>{{ site.email }}</a>

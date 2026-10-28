@@ -220,8 +220,10 @@ main{display:flex;flex-direction:column;gap:26px}
 
 /* the header: the name on the left, a big colour mass on the right - the
    reference's tall column, reduced to the width of the text block */
-.header-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
-  gap:clamp(16px,2.4vw,38px);align-items:stretch;margin-top:clamp(10px,1.6vw,22px)}
+.header-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:clamp(14px,2vw,30px);align-items:stretch;margin-top:clamp(10px,1.6vw,22px)}
+.header-side{display:grid;gap:clamp(10px,1.4vw,20px);align-content:start}
+.header-side .statement{min-height:clamp(150px,22vh,240px)}
 @media (max-width:760px){.header-grid{grid-template-columns:1fr}}
 .header-side{display:grid;align-content:space-between;gap:clamp(10px,1.4vw,18px);
   background:var(--c,var(--lc-blue));color:var(--lc-on);
