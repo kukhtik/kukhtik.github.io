@@ -139,9 +139,11 @@ def main() -> int:
                 errors.append(f"sitemap: {loc} has no file")
 
     for required in ["index.html", "ru/index.html", "404.html", "robots.txt", "_headers", "_redirects",
-                     "assets/lcars/app.css", "assets/lcars/lcars.css", "assets/lcars/fonts.css",
-    "assets/lcars/app.js", "assets/lcars/vendor/gsap.min.js",
-    "assets/lcars/vendor/ScrollTrigger.min.js",
+                     "assets/lcars/app.css", "assets/lcars/fonts.css",
+                     "assets/lcars/app.js", "assets/lcars/vendor/gsap.min.js",
+                     "assets/lcars/vendor/ScrollTrigger.min.js",
+                     "assets/lcars/assets/linac.svg", "assets/lcars/assets/isodose.svg",
+                     "assets/lcars/assets/mlc.svg", "assets/lcars/assets/wave.svg",
     "assets/cv-en.pdf", "assets/cv-ru.pdf"]:
         if not (DIST / required).exists():
             errors.append(f"dist/{required} is missing")

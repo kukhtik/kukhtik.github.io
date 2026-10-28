@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Beam on pulse train</title>
+<desc id="dsc">Squared beam on pulse train of a six MV linac: six pulses of 2.8 ms in an 8 ms period, giving a 35 % duty cycle.</desc>
+<style>
+.ln{fill:none;stroke:#575F6A;stroke-width:1.4}
+.ln-hi{fill:none;stroke:#8A939C;stroke-width:1.4}
+.ln-2{fill:none;stroke:#384B56;stroke-width:1.2}
+.ln-fine{fill:none;stroke:#384B56;stroke-width:0.8}
+.leaf{fill:none;stroke:#BFC3C7;stroke-width:0.9}
+.lead{fill:none;stroke:#6E7783;stroke-width:1.1}
+.rule{fill:none;stroke:#BFC3C7;stroke-width:5;stroke-linecap:butt}
+.dim{fill:none;stroke:#8A939C;stroke-width:0.8;stroke-dasharray:6 4}
+.dimline{fill:none;stroke:#BFC3C7;stroke-width:1}
+.grid{fill:none;stroke:#384B56;stroke-width:0.6;stroke-dasharray:3 5}
+.axis{fill:none;stroke:#575F6A;stroke-width:0.8}
+.lbl{fill:#BFC3C7;font-family:'Arial Narrow','Helvetica Neue Condensed','Liberation Sans Narrow',sans-serif;font-size:12px;letter-spacing:0.09em}
+.lbl-hi{fill:#D8DCDE}
+.lbl-dim{fill:#9AA2AA;font-size:11px;letter-spacing:0.07em}
+.lbl-mono{fill:#BFC3C7;font-family:'IBM Plex Mono','Consolas',monospace;font-size:11px;letter-spacing:0.04em}
+.iso-90{fill:none;stroke:#FFAE01;stroke-width:1.5}
+.iso-80{fill:none;stroke:#F09A3C;stroke-width:1.4}
+.iso-70{fill:none;stroke:#E5863F;stroke-width:1.3}
+.iso-60{fill:none;stroke:#DC7046;stroke-width:1.3}
+.iso-50{fill:none;stroke:#DD616E;stroke-width:1.4}
+.iso-40{fill:none;stroke:#B85A72;stroke-width:1.2}
+.iso-30{fill:none;stroke:#A8567A;stroke-width:1.2}
+.iso-20{fill:none;stroke:#8E5F7B;stroke-width:1.1}
+.iso-10{fill:none;stroke:#6E5A6B;stroke-width:1.1}
+.wave{fill:none;stroke:#BFC3C7;stroke-width:1.6}
+.wave-hi{fill:none;stroke:#D8DCDE;stroke-width:1.8}
+</style>
+<g class="drawing">
+<path class="axis" d="M 112 254 L 112 300 L 846 300"/>
+<path class="dim" d="M 112 254 L 112 116"/>
+<text class="lbl-dim" x="100" y="215" text-anchor="middle" transform="rotate(-90 100 215)">BEAM ON</text>
+<path class="wave-hi" d="M 130 300 L 130 130 L 170.83 130 L 170.83 300"/>
+<path class="wave-hi" d="M 246.67 300 L 246.67 130 L 287.5 130 L 287.5 300"/>
+<path class="wave-hi" d="M 363.33 300 L 363.33 130 L 404.17 130 L 404.17 300"/>
+<path class="wave-hi" d="M 480 300 L 480 130 L 520.83 130 L 520.83 300"/>
+<path class="wave-hi" d="M 596.67 300 L 596.67 130 L 637.5 130 L 637.5 300"/>
+<path class="wave-hi" d="M 713.33 300 L 713.33 130 L 754.17 130 L 754.17 300"/>
+<path class="dimline" d="M 130 340 L 246.67 340"/>
+<path class="dim" d="M 130 300 L 130 346 M 246.67 300 L 246.67 346"/>
+<text class="lbl-dim" x="188.33" y="360" text-anchor="middle">PERIOD 8 ms</text>
+<path class="dimline" d="M 130 96 L 170.83 96"/>
+<path class="dim" d="M 130 130 L 130 90 M 170.83 130 L 170.83 90"/>
+<text class="lbl-dim" x="150.42" y="84" text-anchor="middle">PULSE 2.8 ms</text>
+<path class="lead" d="M 287.5 146 L 287.5 62 L 357.5 62"/>
+<text class="lbl" x="367.5" y="66">DUTY CYCLE 35 %</text>
+<text class="lbl" x="846" y="306">TIME (ms)</text>
+<text class="lbl-dim" x="112" y="60">6 MV PHOTON</text>
+<text class="lbl-dim" x="112" y="42">600 MU/min</text>
+</g>
+</svg>

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Multileaf collimator leaf pattern</title>
+<desc id="dsc">Aperture plane view of a multileaf collimator: two banks of tungsten leaves closing down on a 10 by 10 cm field. Every leaf is drawn individually with a fine gap between neighbours, the aperture outline is highlighted and the leaf index is ticked.</desc>
+<style>
+.ln{fill:none;stroke:#575F6A;stroke-width:1.4}
+.ln-hi{fill:none;stroke:#8A939C;stroke-width:1.4}
+.ln-2{fill:none;stroke:#384B56;stroke-width:1.2}
+.ln-fine{fill:none;stroke:#384B56;stroke-width:0.8}
+.leaf{fill:none;stroke:#BFC3C7;stroke-width:0.9}
+.lead{fill:none;stroke:#6E7783;stroke-width:1.1}
+.rule{fill:none;stroke:#BFC3C7;stroke-width:5;stroke-linecap:butt}
+.dim{fill:none;stroke:#8A939C;stroke-width:0.8;stroke-dasharray:6 4}
+.dimline{fill:none;stroke:#BFC3C7;stroke-width:1}
+.grid{fill:none;stroke:#384B56;stroke-width:0.6;stroke-dasharray:3 5}
+.axis{fill:none;stroke:#575F6A;stroke-width:0.8}
+.lbl{fill:#BFC3C7;font-family:'Arial Narrow','Helvetica Neue Condensed','Liberation Sans Narrow',sans-serif;font-size:12px;letter-spacing:0.09em}
+.lbl-hi{fill:#D8DCDE}
+.lbl-dim{fill:#9AA2AA;font-size:11px;letter-spacing:0.07em}
+.lbl-mono{fill:#BFC3C7;font-family:'IBM Plex Mono','Consolas',monospace;font-size:11px;letter-spacing:0.04em}
+.iso-90{fill:none;stroke:#FFAE01;stroke-width:1.5}
+.iso-80{fill:none;stroke:#F09A3C;stroke-width:1.4}
+.iso-70{fill:none;stroke:#E5863F;stroke-width:1.3}
+.iso-60{fill:none;stroke:#DC7046;stroke-width:1.3}
+.iso-50{fill:none;stroke:#DD616E;stroke-width:1.4}
+.iso-40{fill:none;stroke:#B85A72;stroke-width:1.2}
+.iso-30{fill:none;stroke:#A8567A;stroke-width:1.2}
+.iso-20{fill:none;stroke:#8E5F7B;stroke-width:1.1}
+.iso-10{fill:none;stroke:#6E5A6B;stroke-width:1.1}
+.wave{fill:none;stroke:#BFC3C7;stroke-width:1.6}
+.wave-hi{fill:none;stroke:#D8DCDE;stroke-width:1.8}
+</style>
+<g class="drawing">
+<path class="leaf" d="M 150 195 L 388 195 L 388 207 L 150 207 Z"/>
+<path class="leaf" d="M 150 209.5 L 383.72 209.5 L 383.72 221.5 L 150 221.5 Z"/>
+<path class="leaf" d="M 150 224 L 378.45 224 L 378.45 236 L 150 236 Z"/>
+<path class="leaf" d="M 150 238.5 L 373.25 238.5 L 373.25 250.5 L 150 250.5 Z"/>
+<path class="leaf" d="M 150 253 L 368.65 253 L 368.65 265 L 150 265 Z"/>
+<path class="leaf" d="M 150 267.5 L 365.06 267.5 L 365.06 279.5 L 150 279.5 Z"/>
+<path class="leaf" d="M 150 282 L 362.78 282 L 362.78 294 L 150 294 Z"/>
+<path class="leaf" d="M 150 296.5 L 362 296.5 L 362 308.5 L 150 308.5 Z"/>
+<path class="leaf" d="M 150 311 L 362.78 311 L 362.78 323 L 150 323 Z"/>
+<path class="leaf" d="M 150 325.5 L 365.06 325.5 L 365.06 337.5 L 150 337.5 Z"/>
+<path class="leaf" d="M 150 340 L 368.65 340 L 368.65 352 L 150 352 Z"/>
+<path class="leaf" d="M 150 354.5 L 373.25 354.5 L 373.25 366.5 L 150 366.5 Z"/>
+<path class="leaf" d="M 150 369 L 378.45 369 L 378.45 381 L 150 381 Z"/>
+<path class="leaf" d="M 150 383.5 L 383.72 383.5 L 383.72 395.5 L 150 395.5 Z"/>
+<path class="leaf" d="M 150 398 L 388 398 L 388 410 L 150 410 Z"/>
+<path class="leaf" d="M 512 195 L 750 195 L 750 207 L 512 207 Z"/>
+<path class="leaf" d="M 516.28 209.5 L 750 209.5 L 750 221.5 L 516.28 221.5 Z"/>
+<path class="leaf" d="M 521.55 224 L 750 224 L 750 236 L 521.55 236 Z"/>
+<path class="leaf" d="M 526.75 238.5 L 750 238.5 L 750 250.5 L 526.75 250.5 Z"/>
+<path class="leaf" d="M 531.35 253 L 750 253 L 750 265 L 531.35 265 Z"/>
+<path class="leaf" d="M 534.94 267.5 L 750 267.5 L 750 279.5 L 534.94 279.5 Z"/>
+<path class="leaf" d="M 537.22 282 L 750 282 L 750 294 L 537.22 294 Z"/>
+<path class="leaf" d="M 538 296.5 L 750 296.5 L 750 308.5 L 538 308.5 Z"/>
+<path class="leaf" d="M 537.22 311 L 750 311 L 750 323 L 537.22 323 Z"/>
+<path class="leaf" d="M 534.94 325.5 L 750 325.5 L 750 337.5 L 534.94 337.5 Z"/>
+<path class="leaf" d="M 531.35 340 L 750 340 L 750 352 L 531.35 352 Z"/>
+<path class="leaf" d="M 526.75 354.5 L 750 354.5 L 750 366.5 L 526.75 366.5 Z"/>
+<path class="leaf" d="M 521.55 369 L 750 369 L 750 381 L 521.55 381 Z"/>
+<path class="leaf" d="M 516.28 383.5 L 750 383.5 L 750 395.5 L 516.28 395.5 Z"/>
+<path class="leaf" d="M 512 398 L 750 398 L 750 410 L 512 410 Z"/>
+<path class="ln-2" d="M 108 118 L 142 118 L 142 486 L 108 486 Z"/>
+<path class="ln-2" d="M 758 118 L 792 118 L 792 486 L 758 486 Z"/>
+<path class="ln-fine" d="M 120 118 L 120 486 M 780 118 L 780 486"/>
+<path class="ln-hi" d="M 388 195 L 383.72 209.5 L 378.45 224 L 373.25 238.5 L 368.65 253 L 365.06 267.5 L 362.78 282 L 362 296.5 L 362.78 311 L 365.06 325.5 L 368.65 340 L 373.25 354.5 L 378.45 369 L 383.72 383.5 L 388 398 L 512 410 L 516.28 395.5 L 521.55 381 L 526.75 366.5 L 531.35 352 L 534.94 337.5 L 537.22 323 L 538 308.5 L 537.22 294 L 534.94 279.5 L 531.35 265 L 526.75 250.5 L 521.55 236 L 516.28 221.5 L 512 207 Z"/>
+<path class="axis" d="M 78 118 L 78 486"/>
+<path class="axis" d="M 70 201 L 78 201"/>
+<path class="ln-fine" d="M 78 201 L 96 201"/>
+<path class="axis" d="M 70 215.5 L 78 215.5"/>
+<path class="ln-fine" d="M 78 215.5 L 96 215.5"/>
+<path class="axis" d="M 70 230 L 78 230"/>
+<path class="ln-fine" d="M 78 230 L 96 230"/>
+<path class="axis" d="M 70 244.5 L 78 244.5"/>
+<path class="ln-fine" d="M 78 244.5 L 96 244.5"/>
+<path class="axis" d="M 70 259 L 78 259"/>
+<path class="ln-fine" d="M 78 259 L 96 259"/>
+<path class="axis" d="M 70 273.5 L 78 273.5"/>
+<path class="ln-fine" d="M 78 273.5 L 96 273.5"/>
+<path class="axis" d="M 70 288 L 78 288"/>
+<path class="ln-fine" d="M 78 288 L 96 288"/>
+<path class="axis" d="M 70 302.5 L 78 302.5"/>
+<path class="ln-fine" d="M 78 302.5 L 96 302.5"/>
+<path class="axis" d="M 70 317 L 78 317"/>
+<path class="ln-fine" d="M 78 317 L 96 317"/>
+<path class="axis" d="M 70 331.5 L 78 331.5"/>
+<path class="ln-fine" d="M 78 331.5 L 96 331.5"/>
+<path class="axis" d="M 70 346 L 78 346"/>
+<path class="ln-fine" d="M 78 346 L 96 346"/>
+<path class="axis" d="M 70 360.5 L 78 360.5"/>
+<path class="ln-fine" d="M 78 360.5 L 96 360.5"/>
+<path class="axis" d="M 70 375 L 78 375"/>
+<path class="ln-fine" d="M 78 375 L 96 375"/>
+<path class="axis" d="M 70 389.5 L 78 389.5"/>
+<path class="ln-fine" d="M 78 389.5 L 96 389.5"/>
+<path class="axis" d="M 70 404 L 78 404"/>
+<path class="ln-fine" d="M 78 404 L 96 404"/>
+<text class="lbl-dim" x="66" y="205" text-anchor="end">1</text>
+<text class="lbl-dim" x="66" y="248.5" text-anchor="end">4</text>
+<text class="lbl-dim" x="66" y="292" text-anchor="end">7</text>
+<text class="lbl-dim" x="66" y="335.5" text-anchor="end">10</text>
+<text class="lbl-dim" x="66" y="379" text-anchor="end">13</text>
+<text class="lbl-dim" x="20" y="110">LEAF</text>
+<text class="lbl-dim" x="20" y="124">INDEX</text>
+<path class="dim" d="M 388 300 L 388 540 M 512 300 L 512 540"/>
+<path class="dimline" d="M 388 540 L 512 540"/>
+<path class="dimline" d="M 386 534 L 390 546 M 514 534 L 510 546"/>
+<text class="lbl-dim" x="450" y="562" text-anchor="middle">FIELD 10 x 10 cm AT ISO</text>
+<path class="dimline" d="M 388 195 L 388 412.5"/>
+<path class="dim" d="M 388 195 L 354 195 M 388 412.5 L 354 412.5"/>
+<text class="lbl-dim" x="344" y="303.75" text-anchor="middle" transform="rotate(-90 344 303.75)">10 cm</text>
+<path class="dimline" d="M 156 500 L 156 512"/>
+<text class="lbl-dim" x="146" y="528">LEAF GAP 0.5 mm</text>
+<text class="lbl" x="250" y="150" text-anchor="end">LEAF BANK A</text><path class="rule" d="M 258 146 L 276 146"/><path class="lead" d="M 276 146 L 200 168"/><path class="lead" d="M 195 163 L 205 173 M 195 173 L 205 163"/>
+<text class="lbl" x="250" y="596" text-anchor="end">TUNGSTEN LEAF</text><path class="rule" d="M 258 592 L 276 592"/><path class="lead" d="M 276 592 L 240 440"/><path class="lead" d="M 235 435 L 245 445 M 235 445 L 245 435"/>
+<text class="lbl" x="650" y="150" text-anchor="start">LEAF BANK B</text><path class="rule" d="M 622 146 L 640 146"/><path class="lead" d="M 622 146 L 700 168"/><path class="lead" d="M 705 163 L 695 173 M 705 173 L 695 163"/>
+<text class="lbl" x="650" y="300" text-anchor="start">FIELD APERTURE</text><path class="rule" d="M 622 296 L 640 296"/><path class="lead" d="M 622 296 L 520 296"/><path class="lead" d="M 525 291 L 515 301 M 525 301 L 515 291"/>
+</g>
+</svg>

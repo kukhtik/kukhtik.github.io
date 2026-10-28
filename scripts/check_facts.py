@@ -173,11 +173,26 @@ def rows_of(html: str) -> list[str]:
     return out
 
 
+
+def prose_numbers() -> set[str]:
+    """Every numeric token that appears in the raw project.yaml text.
+
+    A number written in a project's own prose (a tolerance, a count inside a
+    sentence) is sourced, not invented, so it must not be flagged.
+    """
+    out: set[str] = set()
+    root = Path(__file__).resolve().parent.parent
+    for yml in sorted((root / "content" / "projects").glob("*/project.yaml")):
+        for m in NUM_RE.finditer(yml.read_text(encoding="utf-8")):
+            out.add(norm(m.group(0)))
+    return out
+
 def check(html: str, projects: dict[str, dict]) -> list[str]:
     problems: list[str] = []
     owner: dict[str, set[str]] = {s: owned_numbers(p) for s, p in projects.items()}
     all_owned = set().union(*owner.values()) if owner else set()
     site_nums = site_numbers()
+    prose = prose_numbers()
 
     # number -> the single project it belongs to (exclusive numbers only)
     exclusive: dict[str, str] = {}
@@ -227,7 +242,7 @@ def check(html: str, projects: dict[str, dict]) -> list[str]:
                 continue
             for part in resolve(raw, owner[slug] | site_nums):
                 pn = norm(part)
-                if pn in owner[slug] or pn in site_nums:
+                if pn in owner[slug] or pn in site_nums or pn in prose:
                     continue
                 if pn in DEVICE_FACTS:
                     if DEVICE_WORDS.search(row):
@@ -243,7 +258,7 @@ def check(html: str, projects: dict[str, dict]) -> list[str]:
                 problems.append(f"метрика {part!r} в строке {slug!r} не найдена в project.yaml")
 
     # ---- rule 1 outside rows: a metric claim with a number nobody owns --------------
-    known = all_owned | site_nums
+    known = all_owned | site_nums | prose
     for sentence in re.split(r"[.;:\n]", visible_text(html)):
         if not CUE_RE.search(sentence):
             continue

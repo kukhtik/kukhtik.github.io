@@ -1,324 +1,523 @@
+/* ================================================================
+   LCARS portfolio - behaviour
+   - bilingual rendering from content-contract.json (one markup)
+   - L-elbows generated as ONE connected path per framed block
+   - GSAP + ScrollTrigger: runs extend, sections reveal, counters
+     count, the linac schematic draws itself line by line
+   ================================================================ */
+(function () {
+  'use strict';
 
-(function(){
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const qs = (s, r=document) => r.querySelector(s);
+  var CONTRACT = JSON.parse(document.getElementById('contract').textContent);
+  var S = CONTRACT.site;
 
-  // Draw isodose curves in hero SVG
-  function drawIsodose() {
-    const svg = document.getElementById('isodose-hero');
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    // the dose ramp, in the new five families: hot centre, cool fringe
-    const curves = [
-      {r:30, c:'#e06068'}, {r:46, c:'#f88078'}, {r:62, c:'#f8a808'},
-      {r:78, c:'#f89838'}, {r:94, c:'#b0c8f8'}
-    ];
-    curves.forEach((cur,i)=>{
-      const p = document.createElementNS(ns,'ellipse');
-      p.setAttribute('cx','160'); p.setAttribute('cy','90');
-      p.setAttribute('rx',cur.r*1.4); p.setAttribute('ry',cur.r);
-      p.setAttribute('fill','none'); p.setAttribute('stroke',cur.c);
-      p.setAttribute('stroke-width','2');
-      // pathLength normalises the dash maths: the ellipse perimeter is ~716px, so a
-      // hard-coded 1000 left a permanent gap and the trace never finished drawing.
-      p.setAttribute('pathLength','1');
-      p.setAttribute('stroke-dasharray','1'); p.setAttribute('stroke-dashoffset','1');
-      p.classList.add('iso-curve');
-      svg.appendChild(p);
+  /* ---------- interface copy (not in the contract) ---------- */
+  var UI = {
+    'ui.record':        { en: 'Service record',        ru: 'Служебная запись' },
+    'ui.instrument':    { en: 'Linear accelerator · TrueBeam', ru: 'Линейный ускоритель · TrueBeam' },
+    'ui.instrumentNote':{ en: 'Schematic · not to scale', ru: 'Схема · не в масштабе' },
+    'ui.isodose':       { en: 'Isodose · central axis', ru: 'Изодоза · центральная ось' },
+    'ui.mlc':           { en: 'MLC leaf pattern',       ru: 'Раскладка лепестков MLC' },
+    'ui.wave':          { en: 'Beam-on pulse train',    ru: 'Импульсы пучка' },
+    'ui.capabilities':  { en: 'Capabilities',           ru: 'Возможности' },
+    'ui.availability':  { en: 'Availability',           ru: 'Доступность' },
+    'ui.email':         { en: 'Email',                  ru: 'Почта' },
+    'ui.github':        { en: 'GitHub',                 ru: 'GitHub' },
+    'ui.location':      { en: 'Location',               ru: 'Город' },
+    'ui.cta':           { en: 'Email me',               ru: 'Написать' },
+    'ui.projects':      { en: 'Selected work',          ru: 'Избранные работы' },
+    'ui.projectsNote':  { en: 'Measured results · NDA-safe', ru: 'Измеренные результаты · под NDA' },
+    'ui.about':         { en: 'About',                  ru: 'Обо мне' },
+    'ui.foot':          { en: 'Portfolio',              ru: 'Портфолио' },
+    'ui.open':          { en: 'Open',                  ru: 'Открыть' },
+    'ui.approach':      { en: 'Approach',               ru: 'Подход' },
+    'ui.confidentiality':{ en: 'Disclosure',            ru: 'О раскрытии' },
+    'ui.stack':         { en: 'Stack',                  ru: 'Стек' },
+    'ui.machine':       { en: 'Machine readout',        ru: 'Показания установки' },
+    'ro.gantry':        { en: 'Gantry angle',           ru: 'Угол гантри' },
+    'ro.sad':           { en: 'SAD',                    ru: 'SAD' },
+    'ro.field':         { en: 'Field at isocentre',     ru: 'Поле в изоцентре' },
+    'ro.mlc':           { en: 'MLC aperture',           ru: 'Апертура MLC' },
+    'ro.iso':           { en: 'Isocentre offset',       ru: 'Смещение изоцентра' },
+    'ro.dmax':          { en: 'Dose d-max',             ru: 'Доза d-max' },
+    'ro.d90':           { en: 'Depth d90',              ru: 'Глубина d90' },
+    'ro.d50':           { en: 'Depth d50',              ru: 'Глубина d50' }
+  };
+
+  /* machine readouts - every value is read off the drawings in assets/ */
+  var READOUTS = [
+    { k: 'ro.gantry', v: '000', u: '°' },
+    { k: 'ro.sad',    v: '100', u: 'cm' },
+    { k: 'ro.field',  v: '20',  u: 'cm' },
+    { k: 'ro.mlc',    v: '10 × 10', u: 'cm', plain: true },
+    { k: 'ro.iso',    v: '0.0', u: 'mm' },
+    { k: 'ro.dmax',   v: '1.5', u: 'cm' },
+    { k: 'ro.d90',    v: '6.0', u: 'cm' },
+    { k: 'ro.d50',    v: '17.4', u: 'cm' }
+  ];
+
+  /* the locale comes from the path, so /ru/ is the Russian build on first paint */
+  var LANG = /\/ru(\/|$)/.test(location.pathname) ? 'ru' : 'en';
+
+  /* ---------- helpers ---------- */
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $$(sel, root) {
+    if (!root) return Array.prototype.slice.call(document.querySelectorAll(sel));
+    if (root.nodeType) return Array.prototype.slice.call(root.querySelectorAll(sel));
+    return Array.prototype.slice.call(root);
+  }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+  function pick(obj) {
+    if (obj && typeof obj === 'object' && (obj.en !== undefined || obj.ru !== undefined)) {
+      return obj[LANG] !== undefined ? obj[LANG] : obj.en;
+    }
+    return obj;
+  }
+  function t(key) {
+    if (UI[key]) return UI[key][LANG];
+    var parts = key.split('.'), node = CONTRACT;
+    for (var i = 0; i < parts.length; i++) {
+      if (node === undefined || node === null) return '';
+      node = node[parts[i]];
+    }
+    return pick(node);
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  /* ---------- counters ---------- */
+  function counterHTML(value) {
+    /* every numeric token inside the value counts up from zero */
+    return String(value).replace(/\d[\d,]*/g, function (tok) {
+      var target = parseInt(tok.replace(/,/g, ''), 10);
+      var comma = tok.indexOf(',') > -1;
+      return '<span class="cnt" data-to="' + target + '" data-comma="' + (comma ? 1 : 0) + '">0</span>';
     });
-    // crosshairs
-    const line = (x1,y1,x2,y2)=>{const l=document.createElementNS(ns,'line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke','#2a3438');l.setAttribute('stroke-width','1');svg.appendChild(l);};
-    line(0,90,320,90); line(160,0,160,180);
+  }
+  function formatNum(n, comma) {
+    var s = String(n);
+    if (comma) {
+      s = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    return s;
   }
 
-  // MLC leaves
-  function drawMLC() {
-    const svg = document.getElementById('mlc');
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    for(let i=0;i<8;i++){
-      const top = document.createElementNS(ns,'rect');
-      top.setAttribute('x', 20 + i*46); top.setAttribute('y', 10);
-      top.setAttribute('width','38'); top.setAttribute('height','46');
-      top.setAttribute('fill','#e06068'); top.setAttribute('opacity','0.7');
-      top.setAttribute('rx','2');
-      svg.appendChild(top);
-      const bot = document.createElementNS(ns,'rect');
-      bot.setAttribute('x', 20 + i*46); bot.setAttribute('y', 64);
-      bot.setAttribute('width','38'); bot.setAttribute('height','46');
-      bot.setAttribute('fill','#f8a808'); bot.setAttribute('opacity','0.7');
-      bot.setAttribute('rx','2');
-      svg.appendChild(bot);
-    }
+  /* ---------- rendering ---------- */
+  function renderFacts() {
+    var box = $('#facts');
+    box.innerHTML = '';
+    S.facts.forEach(function (f, i) {
+      var row = el('div', 'fact');
+      row.appendChild(el('span', 'fact__k', pick(f.label)));
+      var v = el('span', 'fact__v' + (i === 2 ? ' fact__v--accent' : ''), pick(f.value));
+      row.appendChild(v);
+      box.appendChild(row);
+    });
   }
 
-  // field map (Engineer Companion retrieval field)
-  function drawFieldmap(id) {
-    const svg = document.getElementById(id);
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    for(let i=0;i<6;i++){
-      const r = document.createElementNS(ns,'circle');
-      r.setAttribute('cx', 40+ (i%3)*70 + (Math.random()*10));
-      r.setAttribute('cy', 30 + Math.floor(i/3)*50);
-      r.setAttribute('r', 8 + i*2);
-      r.setAttribute('fill','none'); r.setAttribute('stroke','#b0c8f8'); r.setAttribute('stroke-width','1.5');
-      r.classList.add('field-node');
-      svg.appendChild(r);
-    }
-    for(let i=0;i<5;i++){
-      const l = document.createElementNS(ns,'line');
-      l.setAttribute('x1',40+(i%3)*70); l.setAttribute('y1',30+Math.floor(i/3)*50);
-      l.setAttribute('x2',40+((i+1)%3)*70); l.setAttribute('y2',30+Math.floor((i+1)/3)*50);
-      l.setAttribute('stroke','#8fb4f0'); l.setAttribute('stroke-width','1');
-      l.setAttribute('stroke-dasharray','200'); l.setAttribute('stroke-dashoffset','200');
-      l.classList.add('field-edge');
-      svg.appendChild(l);
-    }
+  function renderRecord() {
+    var box = $('#record');
+    box.innerHTML = '';
+    var colours = ['bar--coral', 'bar--salmon', 'bar--amber'];
+    S.record.forEach(function (r, i) {
+      var row = el('div', 'rec__row');
+      var bar = el('span', 'bar ' + colours[i % colours.length]);
+      bar.setAttribute('data-od-id', 'record-bar-' + (i + 1));
+      row.appendChild(bar);
+      var body = el('div');
+      body.appendChild(el('div', 'rec__when', r.when));
+      body.appendChild(el('div', 'rec__title', pick(r.title)));
+      body.appendChild(el('p', 'rec__text', pick(r.text)));
+      row.appendChild(body);
+      box.appendChild(row);
+    });
   }
 
-  // vec: vectorization markers
-  function drawVec() {
-    const svg = document.getElementById('vec');
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    for(let i=0;i<12;i++){
-      const r = document.createElementNS(ns,'rect');
-      r.setAttribute('x', 10 + (i%4)*60); r.setAttribute('y', 10 + Math.floor(i/4)*32);
-      r.setAttribute('width','48'); r.setAttribute('height','24');
-      r.setAttribute('fill','none'); r.setAttribute('stroke','#f89838'); r.setAttribute('stroke-width','1.2');
-      r.setAttribute('rx','1');
-      svg.appendChild(r);
-    }
+  function renderServices() {
+    var box = $('#services');
+    box.innerHTML = '';
+    S.services.forEach(function (s) {
+      var row = el('div', 'cap__row');
+      var top = el('div', 'cap__top');
+      top.appendChild(el('span', 'cap__num', s.number));
+      top.appendChild(el('span', 'cap__title', pick(s.title)));
+      row.appendChild(top);
+      row.appendChild(el('p', 'cap__text', pick(s.text)));
+      box.appendChild(row);
+    });
   }
 
-  // lattice with residual dot
-  function drawLatt() {
-    const svg = document.getElementById('latt');
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    for(let x=0;x<8;x++){
-      for(let y=0;y<4;y++){
-        const c = document.createElementNS(ns,'circle');
-        c.setAttribute('cx', 20 + x*30); c.setAttribute('cy', 20 + y*28);
-        c.setAttribute('r','2'); c.setAttribute('fill','#2a3438');
-        svg.appendChild(c);
+  function renderMore() {
+    var box = $('#more');
+    box.innerHTML = '';
+    S.more.forEach(function (m, i) {
+      var row = el('div', 'more__row');
+      row.setAttribute('data-od-id', 'more-row-' + (i + 1));
+      row.appendChild(el('span', 'bar ' + (i === 0 ? 'bar--amber' : 'bar--lavender')));
+      var body = el('div');
+      body.appendChild(el('div', 'more__t', pick(m.title)));
+      body.appendChild(el('p', 'more__x', pick(m.text)));
+      row.appendChild(body);
+      var a = el('a', 'link', t('ui.open'));
+      a.href = m.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      row.appendChild(a);
+      box.appendChild(row);
+    });
+  }
+
+  function renderReadouts() {
+    var box = $('#readouts');
+    box.innerHTML = '';
+    READOUTS.forEach(function (r, i) {
+      var cell = el('div', 'ro');
+      cell.setAttribute('data-od-id', 'readout-' + (i + 1));
+      cell.appendChild(el('div', 'ro__k', t(r.k)));
+      var v = el('div', 'ro__v');
+      v.textContent = r.v;
+      v.appendChild(el('span', 'ro__u', r.u));
+      cell.appendChild(v);
+      box.appendChild(cell);
+    });
+  }
+
+  function renderCards() {
+    var box = $('#cards');
+    box.innerHTML = '';
+    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
+    var accents = ['bar--periwinkle', 'bar--coral', 'bar--amber'];
+    order.forEach(function (key, idx) {
+      var p = CONTRACT.projects[key];
+      var card = el('article', 'card');
+      card.setAttribute('data-od-id', 'card-' + p.slug);
+
+      var top = el('div', 'card__top');
+      top.appendChild(el('span', 'bar ' + accents[idx]));
+      top.appendChild(el('span', 'card__idx', '0' + (idx + 1)));
+      var st = el('span', 'card__status card__status--' + p.status, t('ui.' + p.status) || pick(S.status_labels[p.status]));
+      st.textContent = pick(S.status_labels[p.status]);
+      top.appendChild(st);
+      card.appendChild(top);
+
+      card.appendChild(el('h3', 'card__title', pick(p.title)));
+      card.appendChild(el('p', 'card__summary', pick(p.summary)));
+
+      var metrics = el('div', 'metrics');
+      p.results.forEach(function (r) {
+        var m = el('div', 'metric');
+        var v = el('div', 'metric__v');
+        v.innerHTML = counterHTML(r.value);
+        m.appendChild(v);
+        m.appendChild(el('div', 'metric__l', pick(r.label)));
+        metrics.appendChild(m);
+      });
+      card.appendChild(metrics);
+
+      var chips = el('div', 'chips');
+      p.stack.forEach(function (s) { chips.appendChild(el('span', 'chip', s)); });
+      card.appendChild(chips);
+
+      var det = el('details');
+      det.appendChild(el('summary', null, t('ui.approach')));
+      det.appendChild(el('p', 'detail__p', pick(p.problem)));
+      var ul = el('ul');
+      pick(p.approach).forEach(function (a) { ul.appendChild(el('li', 'detail__li', a)); });
+      det.appendChild(ul);
+      det.appendChild(el('p', 'detail__p', pick(p.confidentiality)));
+      card.appendChild(det);
+
+      var links = el('div', 'card__links');
+      p.links.forEach(function (l) {
+        var a = el('a', 'link', pick(l.label));
+        a.href = l.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        links.appendChild(a);
+      });
+      card.appendChild(links);
+      box.appendChild(card);
+    });
+  }
+
+  function renderAbout() {
+    var box = $('#about');
+    box.innerHTML = '';
+    pick(S.about).forEach(function (p) {
+      var para = el('p', 'about__p', p);
+      box.appendChild(para);
+    });
+  }
+
+  function renderStaticText() {
+    $$('[data-i18n]').forEach(function (node) {
+      var v = t(node.getAttribute('data-i18n'));
+      if (v !== '' && v !== undefined) node.textContent = v;
+    });
+    document.documentElement.setAttribute('lang', LANG);
+    document.title = pick(S.seo.title);
+    var md = $('#meta-desc');
+    if (md) md.setAttribute('content', pick(S.seo.description));
+    $$('.lang__btn').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG ? 'true' : 'false');
+    });
+  }
+
+  function renderAll() {
+    renderStaticText();
+    renderFacts();
+    renderRecord();
+    renderServices();
+    renderMore();
+    renderReadouts();
+    renderCards();
+    renderAbout();
+  }
+
+  /* ---------- language routing ---------- */
+  function routeFor(lang) { return lang === 'ru' ? '/ru/' : '/'; }
+  function applyLang(lang, push) {
+    LANG = lang;
+    renderAll();
+    buildElbows();
+    if (push) {
+      try {
+        history.pushState({ lang: lang }, '', routeFor(lang));
+      } catch (e) {
+        /* file:// preview - keep the hash so the state survives a reload */
+        location.hash = lang === 'ru' ? '#ru' : '#en';
       }
     }
-    const res = document.createElementNS(ns,'circle');
-    res.setAttribute('cx','160'); res.setAttribute('cy','60'); res.setAttribute('r','6');
-    res.setAttribute('fill','#e06068'); res.setAttribute('class','residual');
-    svg.appendChild(res);
+    try { localStorage.setItem('lcars-lang', lang); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('lcars:lang', { detail: { lang: lang } }));
   }
 
-  // wave
-  function drawWave() {
-    const svg = document.getElementById('wave');
-    if(!svg) return;
-    const ns='http://www.w3.org/2000/svg';
-    let d='M0,40 ';
-    for(let x=0;x<=600;x+=6){
-      const y = 40 + 16*Math.sin(x/30) + 6*Math.cos(x/11);
-      d += `L${x},${y} `;
-    }
-    const p = document.createElementNS(ns,'path');
-    p.setAttribute('d', d); p.setAttribute('fill','none');
-    p.setAttribute('stroke','#b0c8f8'); p.setAttribute('stroke-width','2');
-    p.setAttribute('stroke-dasharray','1200'); p.setAttribute('stroke-dashoffset', reduce?'0':'1200');
-    p.classList.add('wave-path');
-    svg.appendChild(p);
+  /* ---------- L-elbows: one connected path per framed block ---------- */
+  var ELBOW_COLOUR = {
+    amber: 'var(--amber)',
+    coral: 'var(--coral)',
+    periwinkle: 'var(--periwinkle)',
+    iris: 'var(--iris)'
+  };
+
+  /* horizontal run -> 90 deg -> vertical run, one continuous outline,
+     rounded outer AND inner corner, semicircular caps (radius = t/2) */
+  function elbowPath(W, H, t, r, armLen) {
+    var c = t / 2;
+    var d = [];
+    d.push('M ' + r + ' 0');
+    d.push('H ' + (armLen - c));
+    d.push('A ' + c + ' ' + c + ' 0 0 1 ' + (armLen - c) + ' ' + t);
+    d.push('H ' + (t + r));
+    d.push('A ' + r + ' ' + r + ' 0 0 0 ' + t + ' ' + (t + r));
+    d.push('V ' + (H - c));
+    d.push('A ' + c + ' ' + c + ' 0 0 1 0 ' + (H - c));
+    d.push('V ' + r);
+    d.push('A ' + r + ' ' + r + ' 0 0 1 ' + r + ' 0');
+    d.push('Z');
+    return d.join(' ');
   }
 
-  drawIsodose(); drawMLC(); drawFieldmap('fieldmap-ec'); drawVec(); drawLatt(); drawWave();
-
-  // counter helper
-  function countUp(el, target, duration, suffix){
-    if(reduce){ el.textContent = target; return; }
-    const start = performance.now();
-    const num = parseInt(String(target).replace(/\s/g,'').replace(',',''));
-    if(isNaN(num)){ el.textContent = target; return; }
-    function tick(now){
-      const t = Math.min(1,(now-start)/duration);
-      const eased = 1 - Math.pow(1-t,3);
-      el.textContent = Math.round(num*eased).toLocaleString('ru-RU');
-      if(t<1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  // gauge
-  const gaugeNeedle = document.querySelector('.gauge-needle');
-  const gaugeVal = document.getElementById('gaugeVal');
-  const gaugeArc = document.querySelector('.gauge-arc');
-  if(gaugeArc){ gaugeArc.setAttribute('stroke-dashoffset', reduce ? '0' : '251'); }
-
-  // report printing
-  const reportLines = document.querySelectorAll('.report-line');
-  let printed = false;
-
-  function runMotion(){
-    if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){ runFallback(); return; }
-    gsap.registerPlugin(ScrollTrigger);
-
-    // ---- the runs EXTEND out of the edge of the screen ---------------------
-    // A LCARS bar is not drawn on the page, it grows: it starts collapsed
-    // against one edge and runs across. The same code runs on a phone, where
-    // the run is simply thinner and the trigger is the same.
-    const grow = (el, from, trigger, delay) => {
-      const horiz = (from === 'left' || from === 'right');
-      if(reduce){ gsap.set(el, horiz ? {scaleX:1} : {scaleY:1}); return; }
-      gsap.set(el, horiz
-        ? {scaleX:0, transformOrigin: from + ' center'}
-        : {scaleY:0, transformOrigin: 'center ' + from});
-      const tween = {duration:1.15, ease:'power3.out', delay: delay || 0};
-      if(horiz) tween.scaleX = 1; else tween.scaleY = 1;
-      if(trigger){
-        tween.scrollTrigger = {trigger:trigger, start:'top 84%', once:true};
-        tween.overwrite = 'auto';
-      }
-      gsap.to(el, tween);
-    };
-
-    // the screen frame: it is always on screen, so it grows on load
-    const frame = qs('.lcars-frame');
-    if(frame){
-      grow(qs('.run-top', frame), 'left');
-      grow(qs('.run-foot', frame), 'left', null, .12);
-      grow(qs('.run-left', frame), 'top', null, .16);
-      grow(qs('.run-right', frame), 'top', null, .24);
-      grow(qs('.run-block', frame), 'top', null, .32);
-      grow(qs('.frame-label', frame), 'right', null, .4);
-    }
-
-    // the runs that frame each panel
-    document.querySelectorAll('.l-run').forEach((run)=>{
-      const host = run.closest('.panelbox') || run;
-      const arm = run.querySelector('i:first-child');
-      const stub = run.querySelector('i:last-child');
-      const fromRight = run.dataset.dir === 'right';
-      if(arm) grow(arm, fromRight ? 'right' : 'left', host);
-      if(stub) grow(stub, 'top', host, .12);
+  function buildElbows() {
+    $$('.panel--elbow').forEach(function (panel) {
+      var host = $('.elbow', panel);
+      if (!host) return;
+      var box = panel.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      var t = 20, r = 8;
+      var armLen = Math.max(84, Math.round(box.width * 0.42));
+      var W = Math.round(box.width), H = Math.round(box.height);
+      host.style.color = ELBOW_COLOUR[panel.getAttribute('data-elbow')] || 'var(--coral)';
+      host.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" ' +
+        'style="width:100%;height:100%;overflow:visible" aria-hidden="true">' +
+        '<path d="' + elbowPath(W, H, t, r, armLen) + '"></path></svg>';
     });
+  }
 
-    // the segmented bars: each segment extends from its own edge
-    document.querySelectorAll('.l-bar').forEach((bar)=>{
-      const segs = bar.querySelectorAll('i');
-      segs.forEach((seg,i)=>{
-        const last = i === segs.length - 1;
-        grow(seg, last ? 'right' : 'left', bar, i * 0.06);
+  /* ---------- SVG draw-in ---------- */
+  function drawableNodes(svg) {
+    return $$('.drawing path, .drawing line, .drawing polyline, .drawing ellipse, .drawing circle', svg)
+      .filter(function (n) {
+        if (n.closest('.dim') !== null) return false;      /* dashed dimension lines fade in */
+        if (n.classList.contains('dim')) return false;
+        return true;
+      });
+  }
+
+  function prepareDraw(svg) {
+    var nodes = drawableNodes(svg);
+    nodes.forEach(function (n) {
+      var len = 0;
+      try { len = n.getTotalLength(); } catch (e) { len = 0; }
+      if (!len) return;
+      n.style.strokeDasharray = len + ' ' + len;
+      n.style.strokeDashoffset = len;
+    });
+    return nodes;
+  }
+
+  function playDraw(svg, tl) {
+    var nodes = drawableNodes(svg);
+    nodes.forEach(function (n) {
+      var len = 0;
+      try { len = n.getTotalLength(); } catch (e) { len = 0; }
+      if (!len) return;
+      tl.to(n, { strokeDashoffset: 0, duration: 0.9, ease: 'none' }, '<' + (Math.random() * 0.25));
+    });
+    $$('.drawing text', svg).forEach(function (t2, i) {
+      tl.to(t2, { opacity: 1, duration: 0.35 }, '<' + (0.3 + i * 0.03));
+    });
+    $$('.drawing .dim', svg).forEach(function (d) {
+      tl.to(d, { opacity: 1, duration: 0.4 }, '<0.2');
+    });
+  }
+
+  /* ---------- counters ---------- */
+  function runCounters(scope) {
+    var nodes = (scope && scope.nodeType) ? $$( '.cnt', scope) : (scope || []).length ? scope : $$('.cnt');
+    nodes.forEach(function (node) {
+      if (node.dataset.done) return;
+      node.dataset.done = '1';
+      var to = parseFloat(node.getAttribute('data-to'));
+      var comma = node.getAttribute('data-comma') === '1';
+      var obj = { n: 0 };
+      gsap.to(obj, {
+        n: to,
+        duration: 1.4,
+        ease: 'power2.out',
+        onUpdate: function () { node.textContent = formatNum(Math.round(obj.n), comma); },
+        onComplete: function () { node.textContent = formatNum(to, comma); }
       });
     });
+  }
 
-    // the plates: a bar with a label in its end, extending from the screen edge
-    document.querySelectorAll('.l-plate').forEach((plate)=>{
-      const bar = plate.querySelector('.pl-bar');
-      const label = plate.querySelector('.pl-label');
-      const host = plate.closest('.panelbox') || plate;
-      if(bar) grow(bar, 'left', host);
-      if(label) grow(label, 'right', host, .18);
-    });
+  /* ---------- motion ---------- */
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // the labelled band blocks
-    document.querySelectorAll('.l-band').forEach((band)=>{
-      band.querySelectorAll('span').forEach((cell,i)=> grow(cell, 'left', band, i*0.07));
-    });
+  function initMotion() {
+    if (!window.gsap) { revealFallback(); return; }
+    if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-    // the solid colour masses appear as masses, they do not slide in
-    document.querySelectorAll('.statement').forEach((block)=>{
-      if(reduce){ gsap.set(block, {opacity:1}); return; }
-      gsap.set(block, {opacity:0, scale:.97});
-      gsap.to(block, {opacity:1, scale:1, duration:.7, ease:'power2.out',
-        scrollTrigger:{trigger:block, start:'top 88%', once:true}});
-    });
+    /* the top bar grows out of the left edge of the screen */
+    gsap.from('.rail__bar', { scaleX: 0, duration: 1.1, ease: 'power3.out', transformOrigin: 'left center' });
+    gsap.from('.rail__name', { xPercent: 40, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.35 });
+    gsap.from('.rail__meta, .lang', { opacity: 0, duration: 0.6, delay: 0.55 });
 
-    // the gauge and the lead readouts read their targets from the markup, so a
-    // number can never drift away from content/projects/*/project.yaml
-    const gaugeTarget = parseFloat((gaugeVal && gaugeVal.dataset.gauge) || '96') || 0;
-    if(gaugeNeedle){
-      const angle = -90 + (gaugeTarget/100)*180;
-      if(reduce){ gsap.set(gaugeNeedle,{rotation:angle,transformOrigin:'100px 100px'}); }
-      else {
-        gsap.fromTo(gaugeNeedle,{rotation:-90,transformOrigin:'100px 100px'},{rotation:angle,transformOrigin:'100px 100px',duration:1.4,ease:'power2.out',scrollTrigger:{trigger:'#hero',start:'top 70%'}});
-      }
-    }
-    if(gaugeVal){
-      if(reduce){ gaugeVal.textContent=String(gaugeTarget); }
-      else {
-        ScrollTrigger.create({trigger:'#hero',start:'top 70%',once:true,onEnter:()=>countUp(gaugeVal,String(gaugeTarget),1200)});
-      }
-    }
-    if(gaugeArc){
-      if(reduce){ gsap.set(gaugeArc,{strokeDashoffset:0}); }
-      else {
-        gsap.to(gaugeArc,{strokeDashoffset: 251*(1-gaugeTarget/100), duration:1.4, ease:'power2.out', scrollTrigger:{trigger:'#hero',start:'top 70%'}});
-      }
-    }
-
-    // the lead readouts read their targets from the markup as well
-    const lead=(id, thousands)=>{
-      const el=document.getElementById(id); if(!el) return;
-      const n=parseFloat((el.dataset.target||'0').replace(/[^0-9.]/g,''))||0;
-      const txt = thousands ? n.toLocaleString('ru-RU').replace(/\u00a0/g,' ') : String(n);
-      el.textContent = txt;
-      if(!reduce) countUp(el, txt, 1200);
-    };
-
-    // counters
-    if(!reduce){
-      ScrollTrigger.create({trigger:'#hero',start:'top 70%',once:true,onEnter:()=>{
-        lead('cnt-latency'); lead('cnt-facts', true); lead('cnt-tests');
-      }});
-    } else {
-      lead('cnt-latency'); lead('cnt-facts', true); lead('cnt-tests');
-    }
-
-    // isodose curves draw
-    document.querySelectorAll('.iso-curve').forEach((el,i)=>{
-      if(reduce){ gsap.set(el,{strokeDashoffset:0}); }
-      else {
-        gsap.to(el,{strokeDashoffset:0,duration:1.6,ease:'power2.out',delay:i*0.12,scrollTrigger:{trigger:'#header',start:'top 60%'}});
+    /* runs extend across the screen edge */
+    $$('.run--bleed').forEach(function (r) {
+      gsap.set(r, { scaleX: 0, transformOrigin: 'left center' });
+      if (window.ScrollTrigger) {
+        gsap.to(r, {
+          scaleX: 1, duration: 1.1, ease: 'power2.out',
+          scrollTrigger: { trigger: r, start: 'top 92%', toggleActions: 'play none none reverse' }
+        });
+      } else {
+        gsap.to(r, { scaleX: 1, duration: 1.1, ease: 'power2.out' });
       }
     });
 
-    // field edges draw
-    document.querySelectorAll('.field-edge').forEach((el,i)=>{
-      if(reduce){ gsap.set(el,{strokeDashoffset:0}); }
-      else {
-        gsap.to(el,{strokeDashoffset:0,duration:1.2,ease:'power2.out',delay:i*0.1,scrollTrigger:{trigger:'#projects',start:'top 70%'}});
-      }
-    });
-
-    // wave draw
-    const wave = document.querySelector('.wave-path');
-    if(wave){
-      if(reduce){ gsap.set(wave,{strokeDashoffset:0}); }
-      else { gsap.to(wave,{strokeDashoffset:0,duration:2,ease:'power2.out',scrollTrigger:{trigger:'#record',start:'top 70%'}}); }
-    }
-
-    // l-bar fill on scroll
-    document.querySelectorAll('[data-fillbar]').forEach(bar=>{
-      const segs = bar.querySelectorAll('i');
-      segs.forEach((seg,i)=>{
-        gsap.set(seg,{scaleX: reduce?1:0});
-        if(!reduce){
-          gsap.to(seg,{scaleX:1,duration:0.8,delay:i*0.08,ease:'power2.out',scrollTrigger:{trigger:bar,start:'top 80%'}});
+    /* sections reveal */
+    var targets = $$('.panel, .card, .more__row, .about__p, .readouts .ro, .instrument');
+    if (window.ScrollTrigger) {
+      ScrollTrigger.batch(targets, {
+        start: 'top 90%',
+        once: true,
+        onEnter: function (batch) {
+          gsap.fromTo(batch, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, ease: 'power3.out', clearProps: 'transform' });
+          runCounters(batch);
         }
       });
-    });
+    } else {
+      gsap.set(targets, { opacity: 1, y: 0 });
+      runCounters(document);
+    }
 
-    // report printing
-    const report = document.getElementById('report');
-    if(report){
-      if(reduce){ reportLines.forEach(l=>l.classList.add('printed')); }
-      else {
-        ScrollTrigger.create({trigger:report,start:'top 80%',once:true,onEnter:()=>{
-          reportLines.forEach((l,i)=>setTimeout(()=>l.classList.add('printed'), i*220));
-        }});
+    /* the linac schematic draws itself, line by line */
+    var linac = $('#stage-linac svg');
+    if (linac) {
+      prepareDraw(linac);
+      var tl = gsap.timeline({ paused: true });
+      playDraw(linac, tl);
+      if (window.ScrollTrigger) {
+        ScrollTrigger.create({ trigger: '#stage-linac', start: 'top 82%', once: true, onEnter: function () { tl.play(0); } });
+      } else {
+        tl.play(0);
       }
+    }
+
+    /* the isodose section draws after it is reached */
+    var iso = $('#stage-isodose svg');
+    if (iso) {
+      prepareDraw(iso);
+      var tl2 = gsap.timeline({ paused: true });
+      playDraw(iso, tl2);
+      if (window.ScrollTrigger) {
+        ScrollTrigger.create({ trigger: '#stage-isodose', start: 'top 88%', once: true, onEnter: function () { tl2.play(0); } });
+      } else {
+        tl2.play(0);
+      }
+    }
+
+    runCounters(document);
+  }
+
+  function revealFallback() {
+    $$('[data-anim="up"]').forEach(function (n) { n.style.opacity = 1; n.style.transform = 'none'; });
+    $$('.cnt').forEach(function (n) {
+      n.textContent = formatNum(parseFloat(n.getAttribute('data-to')), n.getAttribute('data-comma') === '1');
+    });
+  }
+
+  /* ---------- boot ---------- */
+  function initialLang() {
+    var p = location.pathname || '';
+    if (/\/ru\/?$/.test(p) || /\/ru(\/|$)/.test(p)) return 'ru';
+    if (location.hash === '#ru') return 'ru';
+    try {
+      var saved = localStorage.getItem('lcars-lang');
+      if (saved === 'ru' || saved === 'en') return saved;
+    } catch (e) {}
+    return 'en';
+  }
+
+  function boot() {
+    applyLang(initialLang(), false);
+    initMotion();
+
+    $$('.lang__btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        applyLang(b.getAttribute('data-lang'), true);
+      });
+    });
+    window.addEventListener('popstate', function () { applyLang(initialLang(), false); });
+
+    /* elbows follow the box they frame */
+    var tmr;
+    window.addEventListener('resize', function () {
+      clearTimeout(tmr);
+      tmr = setTimeout(function () {
+        buildElbows();
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+      }, 120);
+    });
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function () { buildElbows(); });
+      $$('.panel--elbow').forEach(function (p) { ro.observe(p); });
+    }
+    if (window.ScrollTrigger) {
+      setTimeout(function () { ScrollTrigger.refresh(); }, 400);
     }
   }
 
-  function runFallback(){ if(reduce){ document.querySelectorAll('.report-line').forEach(l=>l.classList.add('printed')); } }
-
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', runMotion); } else { runMotion(); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })();

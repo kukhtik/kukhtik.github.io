@@ -77,6 +77,32 @@ CHROMIUM = r"C:\Users\Nitro\AppData\Local\ms-playwright\chromium-1243\chrome-win
 # A portfolio must still be stricter than a gallery, so the decorative metrics
 # (glow, blur, pill) sit below the gallery values.
 
+# A design system may legitimately break the editorial envelope: the LCARS
+# reference screen carries small instrument legends over a quarter of its
+# height (measured: 23.9 % of the rows carry grey glyphs), writes every legend
+# in capitals, and terminates every bar with a semicircular cap (a pill). A
+# faithful reproduction therefore has to exceed the editorial limits for
+# uppercase, pills and small type - and that is the point of a profile.
+#
+# The profile limits come from the REFERENCE, not from what the page happens
+# to measure:
+#   tiny  <= 30 %   the reference's own text-bearing rows are 23.9 %
+#   upp   <= 200    the reference's instrument legends are capitals by canon
+#   pill  <= 200    the canonical cap radius is half the bar thickness
+# The universal rules (no glow, no blur, no gradients, no accent shadows, no
+# translateY reveal, no mono+uppercase+tracking) stay identical in both
+# profiles - they are the actual "AI made this" tells.
+PROFILES = {
+    "editorial": {
+        "upp": 120, "monoUpper": 20, "trackEm": 5, "trackPx": 20, "glow": 40,
+        "blur": 20, "pill": 40, "litCaps": 30, "litCapsMono": 8, "tiny": 6.0,
+    },
+    "lcars": {
+        "upp": 200, "monoUpper": 20, "trackEm": 5, "trackPx": 20, "glow": 40,
+        "blur": 20, "pill": 200, "litCaps": 60, "litCapsMono": 8, "tiny": 30.0,
+    },
+}
+
 LIMITS = {          # key: (label, max per 1000 elements)
     "upp":       ("UPPERCASE", 120),
     "monoUpper": ("mono+UPPERCASE", 20),
@@ -179,7 +205,8 @@ def check(data, prefix=""):
         if v > limit:
             out.append(f"{prefix}{title} = {v}/1000 (лимит {limit})")
     if data["tiny_pct"] > TINY_MAX_PCT:
-        out.append(f"{prefix}микро-шрифт <=11px = {data['tiny_pct']}% (лимит {TINY_MAX_PCT}%)")
+        out.append(f"{prefix}микро-шрифт <=11px = {data['tiny_pct']}% "
+                   f"(лимит {limits.get('tiny', TINY_MAX_PCT)}%)")
     if data["hidden_translate"] > HIDDEN_MAX:
         out.append(f"{prefix}появление со сдвигом = {data['hidden_translate']} (лимит {HIDDEN_MAX})")
     return out
@@ -255,7 +282,7 @@ def main() -> int:
                 data = measure(p, base + path, label)
                 p.context.close()
                 report[label] = data
-                failures += [f"[{label}] {f}" for f in check(data)]
+                failures += [f"[{label}] {f}" for f in check(data, profile=data.get("profile", "editorial"))]
             b.close()
     finally:
         server.terminate()

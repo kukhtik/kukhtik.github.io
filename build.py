@@ -205,25 +205,20 @@ def main() -> int:
     DIST.mkdir(parents=True)
 
     # --- home pages -----------------------------------------------------
+    # The home is the LCARS build: one static page that reads its locale from
+    # the path, so / is the English build and /ru/ the Russian one.
+    home_src = ROOT / "src" / "lcars-home.html"
+    home_html = home_src.read_text(encoding="utf-8")
     for lang in LANGS:
         home_url = "/" if lang == "en" else "/ru/"
-        canonical = domain + home_url
-        ctx = base_ctx(
-            lang,
-            other_url="/ru/" if lang == "en" else "/",
-            home_url=home_url,
-            canonical=canonical,
-            alternate_en=domain + "/",
-            alternate_ru=domain + "/ru/",
-            seo_title=L(site["seo"]["title"], lang),
-            seo_description=L(site["seo"]["description"], lang),
-            og_image=featured[0]["cover"] if featured else "/assets/placeholder.svg",
-            projects=featured,
-            stack_all=stack_all,
-        )
         out = DIST / ("index.html" if lang == "en" else "ru/index.html")
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(env.get_template("home_lcars.html").render(**ctx), encoding="utf-8")
+        canonical = "https://kukhto.is-a.dev" + home_url
+        page = home_html.replace('lang="en"', 'lang="%s"' % lang, 1)
+        if "data-design-system" not in page:
+            page = page.replace("<html", '<html data-design-system="lcars"', 1)
+        page = page.replace("__CANONICAL__", canonical)
+        out.write_text(page, encoding="utf-8")
 
     # --- project pages --------------------------------------------------
     for index, project in enumerate(projects):

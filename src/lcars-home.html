@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html data-design-system="lcars" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maxim Kukhto — Python / AI engineer · offline RAG, CAD/GIS</title>
+<meta name="description" content="Python / AI engineer building offline RAG systems, LLM agents and CAD/GIS automation. Public code, measured results, NDA-safe case studies. Remote, UTC+3." id="meta-desc">
+<link rel="canonical" href="__CANONICAL__">
+<link rel="alternate" hreflang="en" href="https://kukhto.is-a.dev/">
+<link rel="alternate" hreflang="ru" href="https://kukhto.is-a.dev/ru/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0c'/%3E%3Crect x='4' y='6' width='18' height='5' rx='2.5' fill='%23ffae01'/%3E%3Crect x='4' y='14' width='11' height='5' rx='2.5' fill='%23dd616e'/%3E%3Crect x='4' y='22' width='15' height='4' rx='2' fill='%239e9cfc'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/lcars/app.css">
+</head>
+<body>
+<!-- ============================ HEADER RAIL ============================ -->
+<header class="rail" data-od-id="header-rail">
+  <div class="rail__in">
+    <div class="rail__bar" data-od-id="rail-bar">
+      <span class="rail__name" data-od-id="rail-name" data-i18n="site.name">Maxim Kukhto</span>
+    </div>
+    <div class="rail__meta" data-od-id="rail-meta">
+      <b data-i18n="site.location">Mogilev, Belarus</b>
+      <span data-i18n="site.timezone">UTC+3</span>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button class="lang__btn" type="button" data-lang="en" aria-pressed="true" data-od-id="lang-en">EN</button>
+      <button class="lang__btn" type="button" data-lang="ru" aria-pressed="false" data-od-id="lang-ru">RU</button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="run run--bleed" data-od-id="run-under-rail"></div>
+
+  <div class="cols">
+    <!-- ================= LEFT COLUMN ================= -->
+    <div class="col col--left">
+      <section class="panel panel--black panel--elbow" data-od-id="block-identity" data-elbow="amber">
+        <div class="elbow" aria-hidden="true"></div>
+        <h1 class="identity__name" data-od-id="identity-name" data-i18n="site.name">Maxim Kukhto</h1>
+        <p class="identity__role" data-od-id="identity-role" data-i18n="site.role">Python / AI engineer — offline RAG, CAD/GIS automation, LLM agents</p>
+        <p class="identity__lead" data-od-id="identity-lead" data-i18n="hero.lead">I build systems that work without internet — and prove their work with tests, measured latency, and evidence links.</p>
+        <p class="identity__note" data-od-id="identity-note" data-i18n="hero.note">Currently a medical-equipment engineer at a radiotherapy center; leaving in November to do software full-time.</p>
+        <div class="identity__facts" id="facts" data-od-id="identity-facts"></div>
+      </section>
+
+      <section class="panel panel--dark panel--elbow" data-od-id="block-record" data-elbow="coral">
+        <div class="elbow" aria-hidden="true"></div>
+        <div class="panel__head">
+          <span class="legend" data-i18n="ui.record" data-od-id="record-title">Service record</span>
+          <span class="legend legend--idx">2020 — 2026</span>
+        </div>
+        <div class="rec" id="record" data-od-id="record-list"></div>
+      </section>
+    </div>
+
+    <!-- ================= CENTRE: THE MACHINE ================= -->
+    <div class="col col--center">
+      <section class="instrument" data-od-id="block-instrument">
+        <div class="instrument__head">
+          <span class="legend" data-i18n="ui.instrument" data-od-id="instrument-title">Linear accelerator · TrueBeam</span>
+          <span class="instrument__note" data-i18n="ui.instrumentNote" data-od-id="instrument-note">Schematic · not to scale</span>
+        </div>
+        <div class="stage" data-od-id="stage-linac" data-anim="draw">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 800" role="img" aria-labelledby="ttl-linac dsc-linac">
+<title id="ttl-linac">Medical linear accelerator, side elevation</title>
+<desc id="dsc-linac">Side elevation of a Varian style medical linear accelerator. The gantry is a C shaped rotating arm centred on the isocentre. The treatment head rides on the gantry, the multi leaf collimator sits in the head, the beam cone runs from the MLC to the patient lying on the couch. Dimension rules give the SAD of 100 cm and the 20 cm field at the isocentre.</desc>
+<style>
+.ln{fill:none;stroke:#575F6A;stroke-width:1.4}
+.ln-hi{fill:none;stroke:#8A939C;stroke-width:1.4}
+.ln-2{fill:none;stroke:#384B56;stroke-width:1.2}
+.ln-fine{fill:none;stroke:#384B56;stroke-width:0.8}
+.leaf{fill:none;stroke:#BFC3C7;stroke-width:0.9}
+.lead{fill:none;stroke:#6E7783;stroke-width:1.1}
+.rule{fill:none;stroke:#BFC3C7;stroke-width:5;stroke-linecap:butt}
+.dim{fill:none;stroke:#8A939C;stroke-width:0.8;stroke-dasharray:6 4}
+.dimline{fill:none;stroke:#BFC3C7;stroke-width:1}
+.grid{fill:none;stroke:#384B56;stroke-width:0.6;stroke-dasharray:3 5}
+.axis{fill:none;stroke:#575F6A;stroke-width:0.8}
+.lbl{fill:#BFC3C7;font-family:'Arial Narrow','Helvetica Neue Condensed','Liberation Sans Narrow',sans-serif;font-size:12px;letter-spacing:0.09em}
+.lbl-hi{fill:#D8DCDE}
+.lbl-dim{fill:#9AA2AA;font-size:11px;letter-spacing:0.07em}
+.lbl-mono{fill:#BFC3C7;font-family:'IBM Plex Mono','Consolas',monospace;font-size:11px;letter-spacing:0.04em}
+.iso-90{fill:none;stroke:#FFAE01;stroke-width:1.5}
+.iso-80{fill:none;stroke:#F09A3C;stroke-width:1.4}
+.iso-70{fill:none;stroke:#E5863F;stroke-width:1.3}
+.iso-60{fill:none;stroke:#DC7046;stroke-width:1.3}
+.iso-50{fill:none;stroke:#DD616E;stroke-width:1.4}
+.iso-40{fill:none;stroke:#B85A72;stroke-width:1.2}
+.iso-30{fill:none;stroke:#A8567A;stroke-width:1.2}
+.iso-20{fill:none;stroke:#8E5F7B;stroke-width:1.1}
+.iso-10{fill:none;stroke:#6E5A6B;stroke-width:1.1}
+.wave{fill:none;stroke:#BFC3C7;stroke-width:1.6}
+.wave-hi{fill:none;stroke:#D8DCDE;stroke-width:1.8}
+</style>
+<g class="drawing">
+<path class="ln-2" d="M 311.86 543.69 A 340 340 0 1 1 928.14 543.69 L 888.27 525.1 A 296 296 0 1 0 351.73 525.1 Z"/>
+<circle class="ln-fine" cx="620" cy="400" r="14"/>
+<path class="ln-fine" d="M 407.22 163.68 A 318 318 0 0 1 500.88 105.16"/>
+<path class="ln-fine" d="M 500.88 105.16 L 488.49 130.36 L 566.17 94.71"/>
+<path class="ln" d="M 120 560 L 300 560 L 300 714 L 120 714 Z"/>
+<path class="ln-fine" d="M 120 660 L 300 660 M 140 560 L 140 660 M 250 660 L 250 714"/>
+<path class="ln-fine" d="M 268 596 L 292 596 M 268 612 L 292 612"/>
+<path class="ln" d="M 292 560 L 292 470 L 340 470"/>
+<path class="ln-fine" d="M 120 714 L 100 714 M 300 714 L 320 714"/>
+<path class="ln-fine" d="M 80 714 L 1180 714"/>
+<path class="ln-fine" d="M 92 714 L 84 724 M 140 714 L 132 724 M 188 714 L 180 724 M 236 714 L 228 724 M 284 714 L 276 724 M 332 714 L 324 724 M 380 714 L 372 724 M 428 714 L 420 724 M 476 714 L 468 724 M 524 714 L 516 724 M 572 714 L 564 724 M 620 714 L 612 724 M 668 714 L 660 724 M 716 714 L 708 724 M 764 714 L 756 724 M 812 714 L 804 724 M 860 714 L 852 724 M 908 714 L 900 724 M 956 714 L 948 724 M 1004 714 L 996 724 M 1052 714 L 1044 724 M 1100 714 L 1092 724"/>
+<path class="ln" d="M 548 104 L 692 104 L 692 296 L 548 296 Z"/>
+<path class="ln-fine" d="M 548 120 L 692 120"/>
+<path class="ln-fine" d="M 564 104 L 564 296"/>
+<path class="ln-fine" d="M 676 104 L 676 296"/>
+<path class="ln-hi" d="M 614 140 L 626 140 M 620 134 L 620 146"/>
+<path class="leaf" d="M 564 290 L 586 290 L 586 308 L 564 308 Z"/>
+<path class="leaf" d="M 654 290 L 676 290 L 676 308 L 654 308 Z"/>
+<path class="ln-fine" d="M 567.67 292 L 567.67 306"/>
+<path class="ln-fine" d="M 657.67 292 L 657.67 306"/>
+<path class="ln-fine" d="M 571.33 292 L 571.33 306"/>
+<path class="ln-fine" d="M 661.33 292 L 661.33 306"/>
+<path class="ln-fine" d="M 575 292 L 575 306"/>
+<path class="ln-fine" d="M 665 292 L 665 306"/>
+<path class="ln-fine" d="M 578.67 292 L 578.67 306"/>
+<path class="ln-fine" d="M 668.67 292 L 668.67 306"/>
+<path class="ln-fine" d="M 582.33 292 L 582.33 306"/>
+<path class="ln-fine" d="M 672.33 292 L 672.33 306"/>
+<path class="ln-fine" d="M 586 292 L 586 306"/>
+<path class="ln-fine" d="M 676 292 L 676 306"/>
+<path class="ln-hi" d="M 586 308 L 654 308"/>
+<path class="ln-hi" d="M 586 308 L 594 400"/>
+<path class="ln-hi" d="M 654 308 L 646 400"/>
+<path class="dim" d="M 620 140 L 620 440"/>
+<path class="ln-hi" d="M 609 400 L 631 400 M 620 389 L 620 411"/>
+<path class="ln" d="M 546 366 C 556 344 592 336 626 342 C 654 347 676 360 684 386 C 690 408 682 428 662 430 L 556 430 C 540 428 534 404 538 386 C 540 374 542 370 546 366 Z"/>
+<ellipse class="ln" cx="506" cy="386" rx="22" ry="26"/>
+<path class="ln-fine" d="M 486 372 C 494 366 506 366 514 372"/>
+<path class="ln-fine" d="M 552 366 L 586 418"/>
+<path class="ln" d="M 678 380 C 716 372 748 372 782 380 L 812 390"/>
+<path class="ln" d="M 678 406 C 716 404 748 404 780 410 L 808 416"/>
+<path class="ln-fine" d="M 812 390 L 826 396 M 808 416 L 822 422"/>
+<path class="ln" d="M 480 430 L 880 430 L 880 452 L 480 452 Z"/>
+<path class="ln-fine" d="M 486 426 L 874 426 M 486 456 L 874 456"/>
+<path class="ln-fine" d="M 540 452 L 540 460 M 700 452 L 700 460 M 840 452 L 840 460"/>
+<path class="ln" d="M 600 452 L 680 452 L 706 700 L 574 700 Z"/>
+<path class="ln-fine" d="M 560 700 L 720 700"/>
+<path class="dimline" d="M 490 140 L 490 400"/>
+<path class="dim" d="M 620 140 L 482 140 M 620 400 L 482 400"/>
+<path class="dimline" d="M 484 146 L 496 134 M 484 394 L 496 406"/>
+<text class="lbl-dim" x="472" y="270" text-anchor="middle" transform="rotate(-90 472 270)">SAD 100 cm</text>
+<path class="dim" d="M 594 400 L 594 336 M 646 400 L 646 336"/>
+<path class="dimline" d="M 594 336 L 646 336"/>
+<path class="dimline" d="M 596 330 L 592 342 M 648 330 L 644 342"/>
+<text class="lbl-dim" x="658" y="340">FIELD 20 cm</text>
+<text class="lbl" x="250" y="170" text-anchor="end">GANTRY</text><path class="rule" d="M 258 166 L 276 166"/><path class="lead" d="M 276 166 L 380 160"/><path class="lead" d="M 375 155 L 385 165 M 375 165 L 385 155"/>
+<text class="lbl" x="990" y="150" text-anchor="start">TREATMENT HEAD</text><path class="rule" d="M 962 146 L 980 146"/><path class="lead" d="M 962 146 L 692 146"/><path class="lead" d="M 697 141 L 687 151 M 697 151 L 687 141"/>
+<text class="lbl" x="990" y="270" text-anchor="start">MLC</text><path class="rule" d="M 962 266 L 980 266"/><path class="lead" d="M 962 266 L 682 300"/><path class="lead" d="M 687 295 L 677 305 M 687 305 L 677 295"/>
+<text class="lbl" x="250" y="330" text-anchor="end">BEAM</text><path class="rule" d="M 258 326 L 276 326"/><path class="lead" d="M 276 326 L 590 352"/><path class="lead" d="M 585 347 L 595 357 M 585 357 L 595 347"/>
+<text class="lbl" x="990" y="402" text-anchor="start">ISOCENTRE</text><path class="rule" d="M 962 398 L 980 398"/><path class="lead" d="M 962 398 L 633 398"/><path class="lead" d="M 638 393 L 628 403 M 638 403 L 628 393"/>
+<text class="lbl" x="250" y="560" text-anchor="end">PATIENT</text><path class="rule" d="M 258 556 L 276 556"/><path class="lead" d="M 276 556 L 492 366"/><path class="lead" d="M 487 361 L 497 371 M 487 371 L 497 361"/>
+<text class="lbl" x="990" y="542" text-anchor="start">COUCH</text><path class="rule" d="M 962 538 L 980 538"/><path class="lead" d="M 962 538 L 862 444"/><path class="lead" d="M 867 439 L 857 449 M 867 449 L 857 439"/>
+</g>
+</svg>
+        </div>
+        <div class="readouts" id="readouts" data-od-id="readouts"></div>
+        <div class="subgrid">
+          <div class="sub">
+            <div class="sub__head"><span class="legend" data-i18n="ui.isodose" data-od-id="isodose-title">Isodose · central axis</span></div>
+            <div class="sub__stage" data-od-id="stage-isodose" data-anim="draw">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="ttl-iso dsc-iso">
+<title id="ttl-iso">Isodose distribution and central axis dose profile</title>
+<desc id="dsc-iso">Sagittal isodose section around the primary beam axis with a colour ramp from the hot amber centre through coral to the cold fringe, above a central axis depth dose profile with the 90 % and 50 % isodose levels and their depths marked.</desc>
+<style>
+.ln{fill:none;stroke:#575F6A;stroke-width:1.4}
+.ln-hi{fill:none;stroke:#8A939C;stroke-width:1.4}
+.ln-2{fill:none;stroke:#384B56;stroke-width:1.2}
+.ln-fine{fill:none;stroke:#384B56;stroke-width:0.8}
+.leaf{fill:none;stroke:#BFC3C7;stroke-width:0.9}
+.lead{fill:none;stroke:#6E7783;stroke-width:1.1}
+.rule{fill:none;stroke:#BFC3C7;stroke-width:5;stroke-linecap:butt}
+.dim{fill:none;stroke:#8A939C;stroke-width:0.8;stroke-dasharray:6 4}
+.dimline{fill:none;stroke:#BFC3C7;stroke-width:1}
+.grid{fill:none;stroke:#384B56;stroke-width:0.6;stroke-dasharray:3 5}
+.axis{fill:none;stroke:#575F6A;stroke-width:0.8}
+.lbl{fill:#BFC3C7;font-family:'Arial Narrow','Helvetica Neue Condensed','Liberation Sans Narrow',sans-serif;font-size:12px;letter-spacing:0.09em}
+.lbl-hi{fill:#D8DCDE}
+.lbl-dim{fill:#9AA2AA;font-size:11px;letter-spacing:0.07em}
+.lbl-mono{fill:#BFC3C7;font-family:'IBM Plex Mono','Consolas',monospace;font-size:11px;letter-spacing:0.04em}
+.iso-90{fill:none;stroke:#FFAE01;stroke-width:1.5}
+.iso-80{fill:none;stroke:#F09A3C;stroke-width:1.4}
+.iso-70{fill:none;stroke:#E5863F;stroke-width:1.3}
+.iso-60{fill:none;stroke:#DC7046;stroke-width:1.3}
+.iso-50{fill:none;stroke:#DD616E;stroke-width:1.4}
+.iso-40{fill:none;stroke:#B85A72;stroke-width:1.2}
+.iso-30{fill:none;stroke:#A8567A;stroke-width:1.2}
+.iso-20{fill:none;stroke:#8E5F7B;stroke-width:1.1}
+.iso-10{fill:none;stroke:#6E5A6B;stroke-width:1.1}
+.wave{fill:none;stroke:#BFC3C7;stroke-width:1.6}
+.wave-hi{fill:none;stroke:#D8DCDE;stroke-width:1.8}
+</style>
+<g class="drawing">
+<path class="dim" d="M 430 52 L 430 352"/>
+<path class="ln-hi" d="M 421 210 L 439 210 M 430 201 L 430 219"/>
+<ellipse class="iso-100" cx="430" cy="210" rx="11" ry="15"/>
+<ellipse class="iso-90" cx="434" cy="213" rx="27" ry="35"/>
+<ellipse class="iso-80" cx="438" cy="216" rx="39" ry="50"/>
+<ellipse class="iso-70" cx="442" cy="219" rx="50" ry="64"/>
+<ellipse class="iso-60" cx="446" cy="222" rx="60" ry="78"/>
+<ellipse class="iso-50" cx="450" cy="225" rx="71" ry="93"/>
+<ellipse class="iso-40" cx="454" cy="228" rx="82" ry="107"/>
+<ellipse class="iso-30" cx="458" cy="231" rx="93" ry="121"/>
+<ellipse class="iso-20" cx="462" cy="234" rx="106" ry="137"/>
+<ellipse class="iso-10" cx="466" cy="237" rx="120" ry="154"/>
+<text class="lbl-dim" x="403" y="202.5">90 %</text>
+<text class="lbl-dim" x="375" y="197.1">50 %</text>
+<text class="lbl-dim" x="352" y="192.9">20 %</text>
+<text class="lbl" x="372" y="46">PRIMARY BEAM AXIS</text>
+<text class="lbl-dim" x="444" y="196">ISOCENTRE</text>
+<path class="axis" d="M 120 446 L 120 690 L 830 690"/>
+<path class="axis" d="M 120 690 L 120 697"/>
+<text class="lbl-dim" x="120" y="710" text-anchor="middle">0</text>
+<path class="axis" d="M 207.5 690 L 207.5 697"/>
+<text class="lbl-dim" x="207.5" y="710" text-anchor="middle">5</text>
+<path class="axis" d="M 295 690 L 295 697"/>
+<text class="lbl-dim" x="295" y="710" text-anchor="middle">10</text>
+<path class="axis" d="M 382.5 690 L 382.5 697"/>
+<text class="lbl-dim" x="382.5" y="710" text-anchor="middle">15</text>
+<path class="axis" d="M 470 690 L 470 697"/>
+<text class="lbl-dim" x="470" y="710" text-anchor="middle">20</text>
+<path class="axis" d="M 557.5 690 L 557.5 697"/>
+<text class="lbl-dim" x="557.5" y="710" text-anchor="middle">25</text>
+<path class="axis" d="M 645 690 L 645 697"/>
+<text class="lbl-dim" x="645" y="710" text-anchor="middle">30</text>
+<path class="axis" d="M 732.5 690 L 732.5 697"/>
+<text class="lbl-dim" x="732.5" y="710" text-anchor="middle">35</text>
+<path class="axis" d="M 820 690 L 820 697"/>
+<text class="lbl-dim" x="820" y="710" text-anchor="middle">40</text>
+<path class="axis" d="M 113 690 L 120 690"/>
+<text class="lbl-dim" x="109" y="694" text-anchor="end">0 %</text>
+<path class="axis" d="M 113 648.18 L 120 648.18"/>
+<text class="lbl-dim" x="109" y="652.18" text-anchor="end">20 %</text>
+<path class="axis" d="M 113 606.36 L 120 606.36"/>
+<text class="lbl-dim" x="109" y="610.36" text-anchor="end">40 %</text>
+<path class="axis" d="M 113 564.55 L 120 564.55"/>
+<text class="lbl-dim" x="109" y="568.55" text-anchor="end">60 %</text>
+<path class="axis" d="M 113 522.73 L 120 522.73"/>
+<text class="lbl-dim" x="109" y="526.73" text-anchor="end">80 %</text>
+<path class="axis" d="M 113 480.91 L 120 480.91"/>
+<text class="lbl-dim" x="109" y="484.91" text-anchor="end">100 %</text>
+<text class="lbl" x="470" y="732" text-anchor="middle">DEPTH IN WATER (cm)</text>
+<text class="lbl" x="34" y="575" text-anchor="middle" transform="rotate(-90 34 575)">RELATIVE DOSE (%)</text>
+<path class="iso-90" d="M 120 501.82 L 824 501.82"/>
+<path class="iso-50" d="M 120 585.45 L 824 585.45"/>
+<text class="lbl" x="834" y="505.82">90 %</text>
+<text class="lbl" x="834" y="589.45">50 %</text>
+<path class="dim" d="M 225 501.82 L 225 690"/>
+<text class="lbl-dim" x="225" y="682" text-anchor="middle">d90 = 6.0 cm</text>
+<path class="dim" d="M 423.63 585.45 L 423.63 690"/>
+<text class="lbl-dim" x="423.63" y="682" text-anchor="middle">d50 = 17.4 cm</text>
+<path class="dim" d="M 146.25 664 L 146.25 480.91"/>
+<text class="lbl-dim" x="154.25" y="466.91">dmax 1.5 cm</text>
+<path class="wave-hi" d="M 120 690 L 124.38 618.56 L 128.75 575 L 133.12 541.55 L 137.5 508.09 L 141.88 490.67 L 146.25 480.91 L 150.62 480.91 L 155 480.91 L 159.38 481.43 L 163.75 481.95 L 168.12 482.48 L 172.5 483 L 176.88 484.05 L 181.25 485.09 L 185.62 486.14 L 190 487.18 L 194.38 489.01 L 198.75 490.84 L 203.12 492.67 L 207.5 494.5 L 211.88 496.33 L 216.25 498.16 L 220.62 499.99 L 225 501.82 L 229.38 503.39 L 233.75 504.95 L 238.12 506.52 L 242.5 508.09 L 246.88 509.92 L 251.25 511.75 L 255.62 513.58 L 260 515.41 L 264.38 517.24 L 268.75 519.07 L 273.12 520.9 L 277.5 522.73 L 281.88 524.82 L 286.25 526.91 L 290.62 529 L 295 531.09 L 299.38 533.18 L 303.75 535.27 L 308.12 537.36 L 312.5 539.45 L 316.88 541.55 L 321.25 543.64 L 325.62 545.73 L 330 547.82 L 334.38 549.65 L 338.75 551.48 L 343.12 553.31 L 347.5 555.14 L 351.88 556.97 L 356.25 558.8 L 360.62 560.62 L 365 562.45 L 369.38 564.28 L 373.75 566.11 L 378.12 567.94 L 382.5 569.77 L 386.88 571.47 L 391.25 573.17 L 395.62 574.87 L 400 576.57 L 404.38 578.27 L 408.75 579.97 L 413.12 581.66 L 417.5 583.36 L 421.88 584.76 L 426.25 586.15 L 430.62 587.55 L 435 588.94 L 439.38 590.33 L 443.75 591.73 L 448.12 593.12 L 452.5 594.52 L 456.88 595.91 L 461.25 597.3 L 465.62 598.7 L 470 600.09 L 474.38 601.24 L 478.75 602.39 L 483.12 603.54 L 487.5 604.69 L 491.88 605.84 L 496.25 606.99 L 500.62 608.14 L 505 609.29 L 509.38 610.44 L 513.75 611.59 L 518.12 612.74 L 522.5 613.89 L 526.88 615.04 L 531.25 616.19 L 535.62 617.34 L 540 618.49 L 544.38 619.64 L 548.75 620.79 L 553.12 621.94 L 557.5 623.09 L 561.88 623.93 L 566.25 624.76 L 570.62 625.6 L 575 626.44 L 579.38 627.27 L 583.75 628.11 L 588.12 628.95 L 592.5 629.78 L 596.88 630.62 L 601.25 631.45 L 605.62 632.29 L 610 633.13 L 614.38 633.96 L 618.75 634.8 L 623.12 635.64 L 627.5 636.47 L 631.88 637.31 L 636.25 638.15 L 640.62 638.98 L 645 639.82 L 649.38 640.45 L 653.75 641.07 L 658.12 641.7 L 662.5 642.33 L 666.88 642.95 L 671.25 643.58 L 675.62 644.21 L 680 644.84 L 684.38 645.46 L 688.75 646.09 L 693.12 646.72 L 697.5 647.35 L 701.88 647.97 L 706.25 648.6 L 710.62 649.23 L 715 649.85 L 719.38 650.48 L 723.75 651.11 L 728.12 651.74 L 732.5 652.36 L 736.88 652.83 L 741.25 653.3 L 745.62 653.77 L 750 654.25 L 754.38 654.72 L 758.75 655.19 L 763.12 655.66 L 767.5 656.13 L 771.88 656.6 L 776.25 657.07 L 780.62 657.54 L 785 658.01 L 789.38 658.48 L 793.75 658.95 L 798.12 659.42 L 802.5 659.89 L 806.88 660.36 L 811.25 660.83 L 815.62 661.3 L 820 661.77"/>
+<text class="lbl" x="120" y="430">CENTRAL AXIS DOSE PROFILE</text>
+</g>
+</svg>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="sub">
+              <div class="sub__head"><span class="legend" data-i18n="ui.mlc" data-od-id="mlc-title">MLC leaf pattern</span></div>
+              <div class="sub__stage"><img src="/assets/lcars/assets/mlc.svg" alt="Multileaf collimator leaf pattern closing on a 10 by 10 cm field" data-od-id="img-mlc" width="900" height="620"></div>
+            </div>
+            <div class="sub">
+              <div class="sub__head"><span class="legend" data-i18n="ui.wave" data-od-id="wave-title">Beam-on pulse train</span></div>
+              <div class="sub__stage"><img src="/assets/lcars/assets/wave.svg" alt="Beam-on pulse train of six 2.8 ms pulses in an 8 ms period" data-od-id="img-wave" width="900" height="460"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= RIGHT COLUMN ================= -->
+    <div class="col col--right">
+      <section class="panel panel--elbow" data-od-id="block-capabilities" data-elbow="periwinkle">
+        <div class="elbow" aria-hidden="true"></div>
+        <div class="panel__head">
+          <span class="legend" data-i18n="ui.capabilities" data-od-id="capabilities-title">Capabilities</span>
+          <span class="legend legend--idx">01 — 03</span>
+        </div>
+        <div class="caps" id="services" data-od-id="services-list"></div>
+      </section>
+
+      <section class="contact" data-od-id="block-contact">
+        <p class="legend" data-i18n="ui.availability" data-od-id="contact-legend">Availability</p>
+        <h2 class="contact__head" data-od-id="contact-head" data-i18n="site.availability">Available full-time from late November 2026</h2>
+        <p class="contact__sub" data-od-id="contact-sub" data-i18n="hero.note">Currently a medical-equipment engineer at a radiotherapy center; leaving in November to do software full-time.</p>
+        <ul class="contact__list" data-od-id="contact-list">
+          <li><span data-i18n="ui.email">Email</span><b>maxkukhto@gmail.com</b></li>
+          <li><span data-i18n="ui.github">GitHub</span><b>kukhtik</b></li>
+          <li><span data-i18n="ui.location">Location</span><b data-i18n="site.location">Mogilev, Belarus</b></li>
+        </ul>
+        <a class="cta" href="mailto:maxkukhto@gmail.com" data-od-id="cta-email" data-i18n="ui.cta">Email me</a>
+      </section>
+
+      <div class="more" id="more" data-od-id="more-list"></div>
+    </div>
+  </div>
+
+  <div class="run run--bleed" data-od-id="run-under-cols"></div>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="sect" data-od-id="block-projects">
+    <div class="sect__head">
+      <h2 class="sect__title" data-od-id="projects-title" data-i18n="ui.projects">Selected work</h2>
+      <span class="sect__note" data-i18n="ui.projectsNote" data-od-id="projects-note">Measured results · NDA-safe</span>
+    </div>
+    <div class="cards" id="cards" data-od-id="project-cards"></div>
+  </section>
+
+  <div class="run run--bleed" data-od-id="run-under-projects"></div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="sect" data-od-id="block-about">
+    <div class="sect__head">
+      <h2 class="sect__title" data-od-id="about-title" data-i18n="ui.about">About</h2>
+    </div>
+    <div class="about" id="about" data-od-id="about-body"></div>
+  </section>
+</main>
+
+<footer class="foot" data-od-id="footer">
+  <span data-i18n="ui.foot">Maxim Kukhto · Python / AI engineer — offline RAG, CAD/GIS automation, LLM agents</span>
+  <nav class="foot__nav">
+    <a href="https://github.com/kukhtik" data-od-id="foot-github">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-kukhto-517091337/" data-od-id="foot-linkedin">LinkedIn</a>
+    <a href="mailto:maxkukhto@gmail.com" data-od-id="foot-email">Email</a>
+  </nav>
+</footer>
+
+<script id="contract" type="application/json">{"site": {"name": {"en": "Maxim Kukhto", "ru": "Максим Кухто"}, "role": {"en": "Python / AI engineer — offline RAG, CAD/GIS automation, LLM agents", "ru": "Python / AI-инженер — offline-RAG, автоматизация CAD/GIS, LLM-агенты"}, "location": {"en": "Mogilev, Belarus", "ru": "Могилёв, Беларусь"}, "timezone": "UTC+3", "availability": {"en": "Available full-time from late November 2026", "ru": "Доступен full-time с конца ноября 2026"}, "email": "maxkukhto@gmail.com", "github": "https://github.com/kukhtik", "linkedin": "https://www.linkedin.com/in/max-kukhto-517091337/", "telegram": "", "cv": {"en": "assets/cv-en.pdf", "ru": "assets/cv-ru.pdf"}, "domain": "https://kukhto.is-a.dev", "seo": {"title": {"en": "Maxim Kukhto — Python / AI engineer · offline RAG, CAD/GIS", "ru": "Максим Кухто — Python / AI-инженер · offline-RAG, CAD/GIS"}, "description": {"en": "Python / AI engineer building offline RAG systems, LLM agents and CAD/GIS automation. Public code, measured results, NDA-safe case studies. Remote, UTC+3.", "ru": "Python / AI-инженер: offline-RAG, LLM-агенты, автоматизация CAD/GIS. Публичный код, измеренные результаты, кейсы под NDA. Remote, UTC+3."}}, "hero": {"lead": {"en": "I build systems that work without internet — and prove their work with tests, measured latency, and evidence links.", "ru": "Строю системы, которые работают без интернета — и доказывают результат тестами, измеренной задержкой и ссылками на источники."}, "note": {"en": "Currently a medical-equipment engineer at a radiotherapy center; leaving in November to do software full-time.", "ru": "Сейчас — инженер по медоборудованию в онкоцентре; в ноябре ухожу, чтобы заниматься разработкой full-time."}}, "about": {"en": ["I am a medical-equipment engineer at the Mogilev Regional Oncology Dispensary, where I maintain Varian TrueBeam / VitalBeam linear accelerators. That work is safety-critical and documentation-heavy — which is exactly why I built Engineer Companion: a field engineer in an RF-shielded bunker needs the exact page in seconds, with no internet.", "I have been building software alongside that role since 2020: a commercial geodetic converter, a production photo-to-DXF pipeline, an offline RAG system, and a live Telegram product. I am leaving the clinical role in November 2026 to work on software full-time.", "Commercial projects are covered by NDA. I can show architecture, screenshots, and measured results; source stays private."], "ru": ["Я инженер по медицинскому оборудованию в УЗ «Могилёвский областной онкологический диспансер», обслуживаю линейные ускорители Varian TrueBeam / VitalBeam. Работа safety-critical и документационно тяжёлая — поэтому я и построил Engineer Companion: инженеру в бункере без интернета нужна точная страница за секунды.", "С 2020 года параллельно строю софт: коммерческий геодезический конвертер, production-пайплайн «фото → DXF», offline-RAG, живой Telegram-продукт. В ноябре 2026 ухожу из клиники в разработку full-time.", "Коммерческие проекты под NDA. Могу показать архитектуру, скриншоты и измеренные результаты; исходники остаются закрытыми."]}, "record": [{"when": "2022 — 11.2026", "title": {"en": "Medical-equipment engineer · Mogilev Regional Oncology Dispensary", "ru": "Инженер по медицинскому оборудованию · Могилёвский областной онкодиспансер"}, "text": {"en": "Maintenance of Varian TrueBeam and VitalBeam linear accelerators: dosimetry checks, MLC and imaging calibration, fault diagnosis in an RF-shielded bunker, service documentation with no margin for error.", "ru": "Обслуживание линейных ускорителей Varian TrueBeam и VitalBeam: дозиметрический контроль, калибровка MLC и системы визуализации, поиск неисправностей в экранированном бункере, сервисная документация без права на ошибку."}}, {"when": "2020 — 2026", "title": {"en": "Software alongside the service work", "ru": "Разработка параллельно сервисной работе"}, "text": {"en": "A commercial geodetic converter, a production photo-to-DXF pipeline for surveyors, an offline RAG system for equipment documentation, and a live Telegram product on Cloudflare.", "ru": "Коммерческий геодезический конвертер, production-пайплайн «фото → DXF» для геодезистов, offline-RAG по документации оборудования и живой Telegram-продукт на Cloudflare."}}, {"when": "11.2026 →", "title": {"en": "Software full-time", "ru": "Разработка full-time"}, "text": {"en": "Leaving the clinical role to build software with the same constraint I worked under for four years: the result has to be verifiable.", "ru": "Ухожу из клиники, чтобы заниматься разработкой с тем же требованием, что и четыре года в сервисе: результат должен быть проверяемым."}}], "facts": [{"label": {"en": "Based", "ru": "База"}, "value": {"en": "Mogilev, Belarus", "ru": "Могилёв, Беларусь"}}, {"label": {"en": "Timezone", "ru": "Часовой пояс"}, "value": {"en": "UTC+3", "ru": "UTC+3"}}, {"label": {"en": "Availability", "ru": "Доступность"}, "value": {"en": "Full-time from late Nov 2026", "ru": "Full-time с конца ноября 2026"}}, {"label": {"en": "English", "ru": "Английский"}, "value": {"en": "B2", "ru": "B2"}}, {"label": {"en": "Focus", "ru": "Фокус"}, "value": {"en": "RAG · CAD/GIS · Python", "ru": "RAG · CAD/GIS · Python"}}], "services": [{"number": "01", "title": {"en": "Offline and on-prem RAG", "ru": "Offline и on-prem RAG"}, "text": {"en": "Document ingestion, hybrid retrieval, reranking, local quantized inference (llama.cpp / GGUF, ONNX), evaluation harnesses, evidence-linked answers.", "ru": "Индексация документов, гибридный поиск, реранкинг, локальный инференс (llama.cpp / GGUF, ONNX), evaluation-харнессы, ответы со ссылками на источники."}}, {"number": "02", "title": {"en": "CAD/GIS automation", "ru": "Автоматизация CAD/GIS"}, "text": {"en": "DXF/DWG generation, photo-to-drawing CV pipelines, coordinate systems, numerical calibration, desktop tooling with PySide6/PyQt6.", "ru": "Генерация DXF/DWG, CV-пайплайны «фото → чертёж», системы координат, численная калибровка, desktop-инструменты на PySide6/PyQt6."}}, {"number": "03", "title": {"en": "Python backend and desktop", "ru": "Python backend и desktop"}, "text": {"en": "FastAPI services, async pipelines, SQL schemas and migrations, Cloudflare Workers/D1/R2, CI with coverage and mutation gates.", "ru": "Сервисы на FastAPI, асинхронные пайплайны, схемы и миграции SQL, Cloudflare Workers/D1/R2, CI с coverage и mutation gates."}}], "more": [{"title": {"en": "PenaPivo — live Telegram bot + Mini App", "ru": "PenaPivo — живой Telegram-бот + Mini App"}, "text": {"en": "Serverless product on Cloudflare Workers / D1 / R2; CI with ≥84% branch coverage gate and mutation testing.", "ru": "Serverless-продукт на Cloudflare Workers / D1 / R2; CI с coverage gate ≥84% и mutation testing."}, "url": "https://t.me/PenaPivo_bot"}, {"title": {"en": "Open Space — full project index", "ru": "Open Space — полный индекс проектов"}, "text": {"en": "Architecture notes and screenshots for the projects that are not on this page.", "ru": "Архитектура и скриншоты проектов, которых нет на этой странице."}, "url": "https://github.com/kukhtik/Open_space"}], "status_labels": {"public": {"en": "Public code", "ru": "Публичный код"}, "nda": {"en": "Source private · NDA", "ru": "Исходники закрыты · NDA"}, "commercial": {"en": "Commercial · NDA", "ru": "Коммерческий · NDA"}, "rnd": {"en": "R&D · proprietary", "ru": "R&D · закрытый код"}}}, "projects": {"engineer-companion": {"slug": "engineer-companion", "title": {"en": "Engineer Companion — offline RAG", "ru": "Engineer Companion — offline-RAG"}, "summary": {"en": "Offline RAG over radiotherapy equipment documentation. Hybrid LanceDB + BM25 retrieval, local embeddings and reranker, CPU-only. Answers cite document, page and drawing region.", "ru": "Offline-RAG по документации радиотерапевтического оборудования. Гибридный поиск LanceDB + BM25, локальные эмбеддинги и реранкер, CPU-only. Ответы цитируют документ, страницу и область чертежа."}, "problem": {"en": "A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds — out of tens of thousands of pages of manuals.", "ru": "Инженер, обслуживающий клинический линейный ускоритель, работает в экранированном бункере без интернета и должен за секунды найти точную страницу спецификации среди десятков тысяч страниц руководств."}, "approach": {"en": ["One Python core: PDF indexing, chunking, embeddings, LanceDB retrieval and a fact catalogue.", "Hybrid retrieval: dense vectors + BM25, with a cross-encoder reranker.", "Local quantized inference (Gemma-3-4B, GGUF / llama.cpp); every answer carries an evidence link to document, page and drawing region."], "ru": ["Одно Python-ядро: индексация PDF, чанкинг, эмбеддинги, поиск в LanceDB и каталог фактов.", "Гибридный поиск: dense-векторы + BM25, с кросс-энкодерным реранкером.", "Локальный квантованный инференс (Gemma-3-4B, GGUF / llama.cpp); каждый ответ несёт ссылку на документ, страницу и область чертежа."]}, "results": [{"value": "21,214", "label": {"en": "facts indexed", "ru": "фактов в индексе"}}, {"value": "96/100", "label": {"en": "benchmark accuracy", "ru": "точность на бенчмарке"}}, {"value": "130 ms", "label": {"en": "p50 latency · CPU", "ru": "p50 · CPU"}}, {"value": "768/775", "label": {"en": "tests passing", "ru": "тестов проходят"}}], "stack": ["Python", "LanceDB", "BM25", "multilingual-e5-small", "mmarco reranker", "Gemma-3-4B (GGUF)", "llama.cpp", "PySide6", "pytest"], "confidentiality": {"en": "Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal.", "ru": "Публичный код. В репозитории — код поиска и генерации и тесты; бенчмарк-харнесс внутренний."}, "status": "public", "year": "2026", "visual": "rag", "links": [{"label": {"en": "Public code", "ru": "Публичный код"}, "url": "https://github.com/kukhtik/engineer-companion"}, {"label": {"en": "Architecture notes", "ru": "Архитектура"}, "url": "https://github.com/kukhtik/Open_space"}]}, "vetka-dwg": {"slug": "vetka-dwg", "title": {"en": "VETKA_DWG — photo of a survey sketch → DXF", "ru": "VETKA_DWG — фото абриса → DXF"}, "summary": {"en": "Computer-vision pipeline that turns a photo of a hand-drawn survey sketch into a topographic DXF. Marker detection, OCR, block library. Cuts manual drafting from 4 hours to 15 minutes.", "ru": "CV-пайплайн, который превращает фото рукописного абриса в топографический DXF. Детекция маркеров, OCR, библиотека блоков. Ручное черчение: 4 часа → 15 минут."}, "problem": {"en": "A surveyor draws a field abris by hand, then spends hours transferring numbered points and symbols into CAD. The process is slow, repetitive and error-prone.", "ru": "Геодезист рисует абрис от руки, а потом часы переносит точки и условные знаки в CAD. Процесс медленный, монотонный и подверженный ошибкам."}, "approach": {"en": ["Marker and text detection on a phone photo, followed by OCR for point numbers and labels.", "A 444-block GUGK sign library with a fidelity audit against the reference template.", "DXF generation with a PySide6/QML desktop shell and CI quality gates."], "ru": ["Детекция маркеров и текста на фото с телефона, OCR для номеров точек и подписей.", "Библиотека из 444 блоков ГУГК с аудитом точности относительно эталонного шаблона.", "Генерация DXF, desktop-оболочка на PySide6/QML и quality gates в CI."]}, "results": [{"value": "4 h → 15 min", "label": {"en": "manual drafting time", "ru": "время ручного черчения"}}, {"value": "3", "label": {"en": "surveying companies in production", "ru": "геодезические компании в production"}}, {"value": "444", "label": {"en": "GUGK blocks in the library", "ru": "блока ГУГК в библиотеке"}}], "stack": ["Python", "OpenCV", "PaddleOCR", "ezdxf", "PySide6 / QML", "CI quality gates"], "confidentiality": {"en": "Source private. Commercial use and government clients under NDA; architecture, screenshots and measured results are shown here.", "ru": "Исходники закрыты. Коммерческое использование и государственные заказчики под NDA; здесь показаны архитектура, скриншоты и измеренные результаты."}, "status": "nda", "year": "2026", "visual": "vetka", "links": [{"label": {"en": "Case notes", "ru": "Описание кейса"}, "url": "https://github.com/kukhtik/Open_space"}]}, "geoconverter": {"slug": "geoconverter", "title": {"en": "GeoConverter — geodetic coordinate conversion", "ru": "GeoConverter — конвертация геодезических координат"}, "summary": {"en": "Commercial desktop product for sub-millimetre conversion between legacy local coordinate systems and WGS-84. Four-stage numerical calibration, round-trip validation, hardware-locked licensing.", "ru": "Коммерческий desktop-продукт для субмиллиметровой конвертации между локальными системами координат и WGS-84. Четырёхстадийная численная калибровка, проверка невязки, аппаратная привязка лицензий."}, "problem": {"en": "Converting coordinates between legacy local systems and modern global datums requires sub-millimetre precision under strong non-linear distortions. Off-the-shelf tools either lose precision or require a server.", "ru": "Конвертация координат между локальными системами и современными глобальными датумами требует субмиллиметровой точности при сильных нелинейных искажениях. Готовые инструменты либо теряют точность, либо требуют сервера."}, "approach": {"en": ["Four-stage pipeline: Helmert/SVD → Levenberg-Marquardt → Nelder-Mead, tolerance 1e-12.", "Round-trip error validation: the closed route must return within millimetres.", "PyQt6 desktop product with hardware-locked activation keys and an offline license issuer."], "ru": ["Четырёхстадийный пайплайн: Helmert/SVD → Левенберг-Марквардт → Нелдер-Мид, допуск 1e-12.", "Проверка невязки: замкнутый маршрут должен вернуться с миллиметровой точностью.", "Desktop-продукт на PyQt6 с аппаратной привязкой ключей и офлайн-генератором лицензий."]}, "results": [{"value": "<1 mm", "label": {"en": "round-trip error", "ru": "погрешность замкнутого маршрута"}}, {"value": "20+", "label": {"en": "local coordinate systems", "ru": "локальных систем координат"}}, {"value": "Commercial", "label": {"en": "release, government clients", "ru": "релиз, государственные заказчики"}}], "stack": ["Python", "NumPy / SciPy", "PyQt6", "PyInstaller / Nuitka", "Hardware-locked licensing"], "confidentiality": {"en": "Source private. Commercial product; client systems and licensing details under NDA.", "ru": "Исходники закрыты. Коммерческий продукт; заказчики и детали лицензирования под NDA."}, "status": "commercial", "year": "2023–2024", "visual": "geo", "links": [{"label": {"en": "Case notes", "ru": "Описание кейса"}, "url": "https://github.com/kukhtik/Open_space"}]}}}</script>
+<script src="/assets/lcars/vendor/gsap.min.js"></script>
+<script src="/assets/lcars/vendor/ScrollTrigger.min.js"></script>
+<script src="/assets/lcars/app.js"></script>
+</body>
+</html>
