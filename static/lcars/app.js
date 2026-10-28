@@ -1,9 +1,10 @@
 /* ================================================================
-   LCARS portfolio - behaviour
-   - bilingual rendering from content-contract.json (one markup)
+   LCARS portfolio — behaviour
+   - bilingual rendering from one markup (EN `/`, RU `/ru/`)
    - L-elbows generated as ONE connected path per framed block
-   - GSAP + ScrollTrigger: runs extend, sections reveal, counters
-     count, the linac schematic draws itself line by line
+   - GSAP + ScrollTrigger (vendored): runs extend, blocks reveal,
+     counters count, the linac / isodose drawings draw themselves
+   - honours prefers-reduced-motion
    ================================================================ */
 (function () {
   'use strict';
@@ -11,60 +12,121 @@
   var CONTRACT = JSON.parse(document.getElementById('contract').textContent);
   var S = CONTRACT.site;
 
-  /* ---------- interface copy (not in the contract) ---------- */
+  /* ---------- interface copy (RU + EN) ---------- */
   var UI = {
-    'ui.record':        { en: 'Service record',        ru: 'Служебная запись' },
-    'ui.instrument':    { en: 'Linear accelerator · TrueBeam', ru: 'Линейный ускоритель · TrueBeam' },
-    'ui.instrumentNote':{ en: 'Schematic · not to scale', ru: 'Схема · не в масштабе' },
-    'ui.isodose':       { en: 'Isodose · central axis', ru: 'Изодоза · центральная ось' },
-    'ui.mlc':           { en: 'MLC leaf pattern',       ru: 'Раскладка лепестков MLC' },
-    'ui.wave':          { en: 'Beam-on pulse train',    ru: 'Импульсы пучка' },
-    'ui.capabilities':  { en: 'Capabilities',           ru: 'Возможности' },
-    'ui.availability':  { en: 'Availability',           ru: 'Доступность' },
-    'ui.email':         { en: 'Email',                  ru: 'Почта' },
-    'ui.github':        { en: 'GitHub',                 ru: 'GitHub' },
-    'ui.location':      { en: 'Location',               ru: 'Город' },
-    'ui.cta':           { en: 'Email me',               ru: 'Написать' },
-    'ui.projects':      { en: 'Selected work',          ru: 'Избранные работы' },
-    'ui.projectsNote':  { en: 'Measured results · NDA-safe', ru: 'Измеренные результаты · под NDA' },
-    'ui.about':         { en: 'About',                  ru: 'Обо мне' },
-    'ui.foot':          { en: 'Portfolio',              ru: 'Портфолио' },
-    'ui.open':          { en: 'Open',                  ru: 'Открыть' },
-    'ui.approach':      { en: 'Approach',               ru: 'Подход' },
-    'ui.confidentiality':{ en: 'Disclosure',            ru: 'О раскрытии' },
-    'ui.stack':         { en: 'Stack',                  ru: 'Стек' },
-    'ui.machine':       { en: 'Machine readout',        ru: 'Показания установки' },
-    'ro.gantry':        { en: 'Gantry angle',           ru: 'Угол гантри' },
-    'ro.sad':           { en: 'SAD',                    ru: 'SAD' },
-    'ro.field':         { en: 'Field at isocentre',     ru: 'Поле в изоцентре' },
-    'ro.mlc':           { en: 'MLC aperture',           ru: 'Апертура MLC' },
-    'ro.iso':           { en: 'Isocentre offset',       ru: 'Смещение изоцентра' },
-    'ro.dmax':          { en: 'Dose d-max',             ru: 'Доза d-max' },
-    'ro.d90':           { en: 'Depth d90',              ru: 'Глубина d90' },
-    'ro.d50':           { en: 'Depth d50',              ru: 'Глубина d50' }
+    'ui.capLabel':        { en: 'Python / AI',            ru: 'Python / AI' },
+    'ui.contact':         { en: 'Email me',               ru: 'Написать' },
+    'ui.tagRag':          { en: 'Offline RAG',            ru: 'Offline RAG' },
+    'ui.tagCad':          { en: 'CAD / GIS',              ru: 'CAD / GIS' },
+    'ui.tagAgents':       { en: 'LLM agents',             ru: 'LLM-агенты' },
+
+    'ui.statusLegend':    { en: 'Status report',          ru: 'Сводка' },
+    'ui.statusTag':       { en: '5 parameters',           ru: '5 параметров' },
+
+    'ui.schematicLegend': { en: 'Linear accelerator · TrueBeam', ru: 'Линейный ускоритель · TrueBeam' },
+    'ui.schematicNote':   { en: 'Schematic · not to scale', ru: 'Схема · не в масштабе' },
+    'ui.stateLegend':     { en: 'Machine readout',        ru: 'Показания установки' },
+    'ui.beamLegend':      { en: 'Dose distribution',      ru: 'Распределение дозы' },
+    'ui.linacCapLeft':    { en: 'Gantry · head · MLC · isocentre', ru: 'Гантри · головка · MLC · изоцентр' },
+    'ui.linacCapRight':   { en: 'Varian TrueBeam / VitalBeam', ru: 'Varian TrueBeam / VitalBeam' },
+
+    'ui.instrumentLegend':{ en: 'Instrument set',         ru: 'Комплект приборов' },
+    'ui.instrumentNote':  { en: 'Read off the machine above', ru: 'Снято с установки выше' },
+    'ui.isodoseTitle':    { en: 'Isodose · central axis',  ru: 'Изодоза · центральная ось' },
+    'ui.isodoseTag':      { en: '6 MV · sagittal',         ru: '6 МВ · сагитталь' },
+    'ui.isodoseCap':      { en: 'Dose falls from the hot amber core through coral to the cold fringe; d-max 1.5 cm, d90 6.0 cm, d50 17.4 cm in water.',
+                            ru: 'Доза падает от горячего янтарного центра через коралловый к холодной кромке; d-max 1.5 см, d90 6.0 см, d50 17.4 см в воде.' },
+    'ui.mlcTitle':        { en: 'MLC leaf pattern',       ru: 'Раскладка лепестков MLC' },
+    'ui.mlcTag':          { en: 'Aperture plane',         ru: 'Плоскость апертуры' },
+    'ui.mlcCap':          { en: 'Two banks of tungsten leaves close on a 10 × 10 cm field at the isocentre — the aperture the beam actually takes.',
+                            ru: 'Две банки вольфрамовых лепестков смыкаются на поле 10 × 10 см в изоцентре — та самая апертура, которую принимает пучок.' },
+    'ui.waveTitle':       { en: 'Beam-on pulse train',    ru: 'Импульсы пучка' },
+    'ui.waveTag':         { en: '6 MV · pulsed',           ru: '6 МВ · импульсный' },
+    'ui.waveCap':         { en: 'Six pulses of 2.8 ms in an 8 ms period — a 35 % duty cycle, the reason the dosimetry checks are repeatable.',
+                            ru: 'Шесть импульсов по 2.8 мс в периоде 8 мс — скважность 35 %, поэтому дозиметрические проверки повторяемы.' },
+
+    'ui.capabilitiesLegend': { en: 'Capabilities',         ru: 'Возможности' },
+    'ui.capabilitiesNote':   { en: 'What I build · 3 areas', ru: 'Что я делаю · 3 направления' },
+    'ui.stackLegend':     { en: 'Toolchain',              ru: 'Стек' },
+    'ui.stackTag':        { en: 'Per project',            ru: 'По проектам' },
+
+    'ui.workLegend':      { en: 'Selected work',          ru: 'Избранные работы' },
+    'ui.workNote':        { en: 'Measured results · NDA-safe', ru: 'Измеренные результаты · под NDA' },
+    'ui.approach':        { en: 'Approach',               ru: 'Подход' },
+    'ui.problem':         { en: 'Problem',                ru: 'Задача' },
+    'ui.confidentiality': { en: 'Disclosure',             ru: 'О раскрытии' },
+    'ui.stack':           { en: 'Stack',                  ru: 'Стек' },
+
+    'ui.recordLegend':    { en: 'Service record',         ru: 'Служебная запись' },
+    'ui.recordNote':      { en: '2020 → 2026',            ru: '2020 → 2026' },
+    'ui.spaceLegend':     { en: 'Open space',             ru: 'Открытое пространство' },
+    'ui.spaceTag':        { en: 'Elsewhere',              ru: 'В другом месте' },
+    'ui.open':            { en: 'Open',                  ru: 'Открыть' },
+    'ui.disclosureLegend':{ en: 'Disclosure',             ru: 'О раскрытии' },
+    'ui.disclosureTag':   { en: 'Per project',            ru: 'По проектам' },
+
+    'ui.aboutLegend':     { en: 'About',                  ru: 'Обо мне' },
+    'ui.aboutNote':       { en: 'Nine years on the machine', ru: 'Девять лет на машине' },
+    'ui.availabilityLegend': { en: 'Availability',         ru: 'Доступность' },
+    'ui.availabilityTag': { en: 'Start / base / language', ru: 'Старт / база / язык' },
+
+    'ui.contactLegend':   { en: 'Contact',                ru: 'Контакт' },
+    'ui.contactNote':     { en: 'One primary channel',    ru: 'Один основной канал' },
+    'ui.contactTitle':    { en: 'Let us talk about the work', ru: 'Поговорим о работе' },
+    'ui.contactPanelLegend': { en: 'Direct',              ru: 'Прямо' },
+    'ui.contactPanelTag': { en: 'Replies within 2 days',   ru: 'Ответ в течение 2 дней' },
+
+    'ui.cv':              { en: 'Résumé',                 ru: 'Резюме' },
+    'ui.footerLeft':      { en: 'LCARS portfolio · built from real service data', ru: 'Портфолио LCARS · построено на реальных сервисных данных' },
+
+    'ui.email':           { en: 'Email',                  ru: 'Почта' },
+    'ui.github':          { en: 'GitHub',                 ru: 'GitHub' },
+    'ui.linkedin':        { en: 'LinkedIn',               ru: 'LinkedIn' },
+    'ui.location':        { en: 'Based',                  ru: 'База' },
+    'ui.timezone':        { en: 'Timezone',               ru: 'Часовой пояс' },
+    'ui.english':         { en: 'English',                ru: 'Английский' },
+
+    'ro.gantry':          { en: 'Gantry angle',           ru: 'Угол гантри' },
+    'ro.sad':             { en: 'SAD',                    ru: 'SAD' },
+    'ro.field':           { en: 'Field at isocentre',     ru: 'Поле в изоцентре' },
+    'ro.mlc':             { en: 'MLC aperture',           ru: 'Апертура MLC' },
+    'ro.iso':             { en: 'Isocentre offset',       ru: 'Смещение изоцентра' },
+    'ro.dmax':            { en: 'Dose d-max',             ru: 'Доза d-max' },
+    'ro.d90':             { en: 'Depth d90',              ru: 'Глубина d90' },
+    'ro.d50':             { en: 'Depth d50',              ru: 'Глубина d50' },
+    'ro.mode':            { en: 'Mode',                   ru: 'Режим' },
+    'ro.energy':          { en: 'Nominal energy',         ru: 'Номинальная энергия' },
+    'ro.mv':              { en: 'Monitor units',          ru: 'MU' },
+    'ro.rate':            { en: 'Dose rate',              ru: 'Мощность дозы' },
+    'ro.freq':            { en: 'Pulse frequency',        ru: 'Частота импульсов' },
+    'ro.duty':            { en: 'Duty cycle',             ru: 'Скважность' }
   };
 
-  /* machine readouts - every value is read off the drawings in assets/ */
-  var READOUTS = [
+  /* machine readouts — every value is read off the drawings in assets/ */
+  var READOUT_STATE = [
     { k: 'ro.gantry', v: '000', u: '°' },
     { k: 'ro.sad',    v: '100', u: 'cm' },
     { k: 'ro.field',  v: '20',  u: 'cm' },
-    { k: 'ro.mlc',    v: '10 × 10', u: 'cm', plain: true },
+    { k: 'ro.mlc',    v: '10 × 10', u: 'cm' },
     { k: 'ro.iso',    v: '0.0', u: 'mm' },
-    { k: 'ro.dmax',   v: '1.5', u: 'cm' },
-    { k: 'ro.d90',    v: '6.0', u: 'cm' },
-    { k: 'ro.d50',    v: '17.4', u: 'cm' }
+    { k: 'ro.mode',   v: '6',   u: 'MV' }
+  ];
+  var READOUT_BEAM = [
+    { k: 'ro.energy', v: '6',   u: 'MV' },
+    { k: 'ro.mv',     v: '120', u: 'MU/min' },
+    { k: 'ro.rate',   v: '600', u: 'cGy/min' },
+    { k: 'ro.freq',   v: '125', u: 'Hz' },
+    { k: 'ro.duty',   v: '35',  u: '%' },
+    { k: 'ro.dmax',   v: '1.5', u: 'cm' }
   ];
 
-  /* the locale comes from the path, so /ru/ is the Russian build on first paint */
-  var LANG = /\/ru(\/|$)/.test(location.pathname) ? 'ru' : 'en';
+  var LANG = 'en';
 
   /* ---------- helpers ---------- */
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) {
-    if (!root) return Array.prototype.slice.call(document.querySelectorAll(sel));
-    if (root.nodeType) return Array.prototype.slice.call(root.querySelectorAll(sel));
-    return Array.prototype.slice.call(root);
+    var list = root ? root.querySelectorAll(sel) : document.querySelectorAll(sel);
+    return Array.prototype.slice.call(list);
   }
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -79,7 +141,7 @@
     return obj;
   }
   function t(key) {
-    if (UI[key]) return UI[key][LANG];
+    if (UI[key]) return UI[key][LANG] !== undefined ? UI[key][LANG] : UI[key].en;
     var parts = key.split('.'), node = CONTRACT;
     for (var i = 0; i < parts.length; i++) {
       if (node === undefined || node === null) return '';
@@ -87,13 +149,15 @@
     }
     return pick(node);
   }
-  function esc(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  function host(name) {
+    var box = document.querySelector('[data-render="' + name + '"]');
+    if (!box) return null;
+    box.innerHTML = '';
+    return box;
   }
 
   /* ---------- counters ---------- */
   function counterHTML(value) {
-    /* every numeric token inside the value counts up from zero */
     return String(value).replace(/\d[\d,]*/g, function (tok) {
       var target = parseInt(tok.replace(/,/g, ''), 10);
       var comma = tok.indexOf(',') > -1;
@@ -102,108 +166,209 @@
   }
   function formatNum(n, comma) {
     var s = String(n);
-    if (comma) {
-      s = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
+    if (comma) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return s;
   }
 
   /* ---------- rendering ---------- */
   function renderFacts() {
-    var box = $('#facts');
-    box.innerHTML = '';
-    S.facts.forEach(function (f, i) {
-      var row = el('div', 'fact');
-      row.appendChild(el('span', 'fact__k', pick(f.label)));
-      var v = el('span', 'fact__v' + (i === 2 ? ' fact__v--accent' : ''), pick(f.value));
-      row.appendChild(v);
-      box.appendChild(row);
-    });
-  }
-
-  function renderRecord() {
-    var box = $('#record');
-    box.innerHTML = '';
-    var colours = ['bar--coral', 'bar--salmon', 'bar--amber'];
-    S.record.forEach(function (r, i) {
-      var row = el('div', 'rec__row');
-      var bar = el('span', 'bar ' + colours[i % colours.length]);
-      bar.setAttribute('data-od-id', 'record-bar-' + (i + 1));
-      row.appendChild(bar);
-      var body = el('div');
-      body.appendChild(el('div', 'rec__when', r.when));
-      body.appendChild(el('div', 'rec__title', pick(r.title)));
-      body.appendChild(el('p', 'rec__text', pick(r.text)));
-      row.appendChild(body);
-      box.appendChild(row);
-    });
-  }
-
-  function renderServices() {
-    var box = $('#services');
-    box.innerHTML = '';
-    S.services.forEach(function (s) {
-      var row = el('div', 'cap__row');
-      var top = el('div', 'cap__top');
-      top.appendChild(el('span', 'cap__num', s.number));
-      top.appendChild(el('span', 'cap__title', pick(s.title)));
-      row.appendChild(top);
-      row.appendChild(el('p', 'cap__text', pick(s.text)));
-      box.appendChild(row);
-    });
-  }
-
-  function renderMore() {
-    var box = $('#more');
-    box.innerHTML = '';
-    S.more.forEach(function (m, i) {
-      var row = el('div', 'more__row');
-      row.setAttribute('data-od-id', 'more-row-' + (i + 1));
-      row.appendChild(el('span', 'bar ' + (i === 0 ? 'bar--amber' : 'bar--lavender')));
-      var body = el('div');
-      body.appendChild(el('div', 'more__t', pick(m.title)));
-      body.appendChild(el('p', 'more__x', pick(m.text)));
-      row.appendChild(body);
-      var a = el('a', 'link', t('ui.open'));
-      a.href = m.url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      row.appendChild(a);
+    var box = host('facts');
+    if (!box) return;
+    S.facts.forEach(function (f) {
+      var row = el('div', 'datarow');
+      row.appendChild(el('div', 'datarow__k', pick(f.label)));
+      row.appendChild(el('div', 'datarow__v datarow__v--fg', pick(f.value)));
       box.appendChild(row);
     });
   }
 
   function renderReadouts() {
-    var box = $('#readouts');
-    box.innerHTML = '';
-    READOUTS.forEach(function (r, i) {
-      var cell = el('div', 'ro');
-      cell.setAttribute('data-od-id', 'readout-' + (i + 1));
-      cell.appendChild(el('div', 'ro__k', t(r.k)));
-      var v = el('div', 'ro__v');
-      v.textContent = r.v;
-      v.appendChild(el('span', 'ro__u', r.u));
-      cell.appendChild(v);
-      box.appendChild(cell);
+    var state = host('readout-state');
+    if (state) {
+      READOUT_STATE.forEach(function (r) {
+        var row = el('div', 'readout__row');
+        row.appendChild(el('div', 'readout__k', t(r.k)));
+        var v = el('div', 'readout__v');
+        v.textContent = r.v;
+        var u = el('span');
+        u.textContent = ' ' + r.u;
+        v.appendChild(u);
+        row.appendChild(v);
+        state.appendChild(row);
+      });
+    }
+    var beam = host('readout-beam');
+    if (beam) {
+      READOUT_BEAM.forEach(function (r) {
+        var row = el('div', 'readout__row');
+        row.appendChild(el('div', 'readout__k', t(r.k)));
+        var v = el('div', 'readout__v');
+        v.textContent = r.v;
+        var u = el('span');
+        u.textContent = ' ' + r.u;
+        v.appendChild(u);
+        row.appendChild(v);
+        beam.appendChild(row);
+      });
+    }
+  }
+
+  function renderRecord() {
+    var box = host('record');
+    if (!box) return;
+    var colours = ['coral', 'salmon', 'amber'];
+    S.record.forEach(function (r, i) {
+      var row = el('div', 'rec__row');
+      var head = el('div', 'rec__head');
+      var bar = el('span', 'rec__bar');
+      bar.style.setProperty('--rec-c', 'var(--' + colours[i % colours.length] + ')');
+      bar.setAttribute('data-od-id', 'record-bar-' + (i + 1));
+      head.appendChild(bar);
+      head.appendChild(el('span', 'rec__when', r.when));
+      row.appendChild(head);
+      row.appendChild(el('div', 'rec__title', pick(r.title)));
+      row.appendChild(el('p', 'rec__text', pick(r.text)));
+      box.appendChild(row);
+    });
+  }
+
+  function renderServices() {
+    var box = host('services');
+    if (!box) return;
+    var cls = ['cap', 'cap cap--lav', 'cap cap--amber'];
+    S.services.forEach(function (s, i) {
+      var row = el('div', cls[i % cls.length]);
+      row.setAttribute('data-od-id', 'capability-' + s.number);
+      var left = el('div');
+      left.appendChild(el('div', 'cap__num', s.number));
+      left.appendChild(el('div', 'cap__title', pick(s.title)));
+      row.appendChild(left);
+      row.appendChild(el('p', 'cap__text', pick(s.text)));
+      box.appendChild(row);
+    });
+  }
+
+  /* the toolchain panel: one dense row per project, real stacks */
+  function renderStacks() {
+    var box = host('stacks');
+    if (!box) return;
+    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
+    var colours = ['coral', 'lav', 'amber'];
+    order.forEach(function (key, i) {
+      var p = CONTRACT.projects[key];
+      var row = el('div', 'row row--' + colours[i % colours.length]);
+      row.setAttribute('data-od-id', 'stack-row-' + (i + 1));
+      row.appendChild(el('span', 'row__bar'));
+      var body = el('div');
+      body.appendChild(el('div', 'row__t', pick(p.title)));
+      var x = el('p', 'row__x');
+      x.textContent = p.stack.join(' · ');
+      body.appendChild(x);
+      row.appendChild(body);
+      box.appendChild(row);
+    });
+  }
+
+  function renderMore() {
+    var box = host('more');
+    if (!box) return;
+    S.more.forEach(function (m, i) {
+      var row = el('div', 'row row--' + (i === 0 ? 'amber' : 'coral'));
+      row.setAttribute('data-od-id', 'more-row-' + (i + 1));
+      row.appendChild(el('span', 'row__bar'));
+      var body = el('div');
+      body.appendChild(el('div', 'row__t', pick(m.title)));
+      body.appendChild(el('p', 'row__x', pick(m.text)));
+      row.appendChild(body);
+      box.appendChild(row);
+    });
+  }
+
+  /* disclosure rows: the three project states, verbatim from the contract */
+  function renderDisclosure() {
+    var box = host('disclosure');
+    if (!box) return;
+    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
+    order.forEach(function (key) {
+      var p = CONTRACT.projects[key];
+      var row = el('div', 'datarow');
+      row.appendChild(el('div', 'datarow__k', pick(p.title)));
+      row.appendChild(el('div', 'datarow__v datarow__v--coral', pick(S.status_labels[p.status])));
+      box.appendChild(row);
+    });
+  }
+
+  function renderAvailability() {
+    var box = host('availability');
+    if (!box) return;
+    var rows = [
+      { k: 'ui.availability', v: pick(S.facts[2].value) },
+      { k: 'ui.location', v: pick(S.facts[0].value) },
+      { k: 'ui.timezone', v: pick(S.facts[1].value) },
+      { k: 'ui.english', v: pick(S.facts[3].value) }
+    ];
+    rows.forEach(function (r) {
+      var row = el('div', 'datarow');
+      row.appendChild(el('div', 'datarow__k', t(r.k)));
+      row.appendChild(el('div', 'datarow__v datarow__v--amber', r.v));
+      box.appendChild(row);
+    });
+  }
+
+  function renderContact() {
+    var box = host('contact');
+    if (!box) return;
+    var rows = [
+      { k: 'ui.email', v: S.email },
+      { k: 'ui.github', v: 'github.com/kukhtik' },
+      { k: 'ui.linkedin', v: 'linkedin.com/in/max-kukhto' },
+      { k: 'ui.cv', v: pick(S.cv).replace('assets/', '') },
+      { k: 'ui.timezone', v: S.timezone }
+    ];
+    rows.forEach(function (r) {
+      var row = el('div', 'datarow');
+      row.appendChild(el('div', 'datarow__k', t(r.k)));
+      row.appendChild(el('div', 'datarow__v datarow__v--fg', r.v));
+      box.appendChild(row);
+    });
+  }
+
+  function aboutList() {
+    var a = S.about;
+    if (!a) return [];
+    if (Array.isArray(a)) return a;
+    if (Array.isArray(a.items)) return a.items;
+    if (Array.isArray(a.paragraphs)) return a.paragraphs;
+    if (typeof a.text === 'string') return [a.text];
+    return [];
+  }
+
+  function renderAbout() {
+    var box = host('about');
+    if (!box) return;
+    pick(S.about).forEach(function (p, i) {
+      var para = el('p', 'about__p');
+      para.setAttribute('data-od-id', 'about-paragraph-' + (i + 1));
+      para.textContent = p;
+      box.appendChild(para);
     });
   }
 
   function renderCards() {
-    var box = $('#cards');
-    box.innerHTML = '';
+    var box = host('projects');
+    if (!box) return;
     var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
-    var accents = ['bar--periwinkle', 'bar--coral', 'bar--amber'];
+    var accents = ['lav', 'coral', 'amber'];
     order.forEach(function (key, idx) {
       var p = CONTRACT.projects[key];
       var card = el('article', 'card');
+      card.style.setProperty('--card-c', 'var(--' + accents[idx] + ')');
       card.setAttribute('data-od-id', 'card-' + p.slug);
 
       var top = el('div', 'card__top');
-      top.appendChild(el('span', 'bar ' + accents[idx]));
+      top.appendChild(el('span', 'card__bar'));
       top.appendChild(el('span', 'card__idx', '0' + (idx + 1)));
-      var st = el('span', 'card__status card__status--' + p.status, t('ui.' + p.status) || pick(S.status_labels[p.status]));
-      st.textContent = pick(S.status_labels[p.status]);
-      top.appendChild(st);
+      top.appendChild(el('span', 'pill pill--' + accents[idx], pick(S.status_labels[p.status])));
       card.appendChild(top);
 
       card.appendChild(el('h3', 'card__title', pick(p.title)));
@@ -215,22 +380,22 @@
         var v = el('div', 'metric__v');
         v.innerHTML = counterHTML(r.value);
         m.appendChild(v);
-        m.appendChild(el('div', 'metric__l', pick(r.label)));
+        m.appendChild(el('span', 'metric__l', pick(r.label)));
         metrics.appendChild(m);
       });
       card.appendChild(metrics);
 
-      var chips = el('div', 'chips');
+      var chips = el('div', 'card__chips');
       p.stack.forEach(function (s) { chips.appendChild(el('span', 'chip', s)); });
       card.appendChild(chips);
 
-      var det = el('details');
+      var det = el('details', 'card__more');
       det.appendChild(el('summary', null, t('ui.approach')));
-      det.appendChild(el('p', 'detail__p', pick(p.problem)));
+      det.appendChild(el('p', 'row__x', pick(p.problem)));
       var ul = el('ul');
-      pick(p.approach).forEach(function (a) { ul.appendChild(el('li', 'detail__li', a)); });
+      pick(p.approach).forEach(function (a) { ul.appendChild(el('li', null, a)); });
       det.appendChild(ul);
-      det.appendChild(el('p', 'detail__p', pick(p.confidentiality)));
+      det.appendChild(el('p', 'row__x', pick(p.confidentiality)));
       card.appendChild(det);
 
       var links = el('div', 'card__links');
@@ -246,15 +411,6 @@
     });
   }
 
-  function renderAbout() {
-    var box = $('#about');
-    box.innerHTML = '';
-    pick(S.about).forEach(function (p) {
-      var para = el('p', 'about__p', p);
-      box.appendChild(para);
-    });
-  }
-
   function renderStaticText() {
     $$('[data-i18n]').forEach(function (node) {
       var v = t(node.getAttribute('data-i18n'));
@@ -262,9 +418,29 @@
     });
     document.documentElement.setAttribute('lang', LANG);
     document.title = pick(S.seo.title);
-    var md = $('#meta-desc');
+    var md = document.getElementById('meta-desc');
     if (md) md.setAttribute('content', pick(S.seo.description));
-    $$('.lang__btn').forEach(function (b) {
+
+    var mail = S.email;
+    ['cta-mail', 'contact-mail'].forEach(function (id) {
+      var a = document.getElementById(id);
+      if (!a) return;
+      a.href = 'mailto:' + mail;
+      if (id === 'contact-mail') a.textContent = mail;
+    });
+    ['cta-github', 'cta-github-2'].forEach(function (id) {
+      var a = document.getElementById(id);
+      if (a) { a.href = S.github; a.target = '_blank'; a.rel = 'noopener'; }
+    });
+    ['cta-linkedin', 'cta-linkedin-2'].forEach(function (id) {
+      var a = document.getElementById(id);
+      if (a) { a.href = S.linkedin; a.target = '_blank'; a.rel = 'noopener'; }
+    });
+    ['cta-cv', 'cta-cv-2'].forEach(function (id) {
+      var a = document.getElementById(id);
+      if (a) { a.href = pick(S.cv); a.target = '_blank'; a.rel = 'noopener'; a.textContent = t('ui.cv'); }
+    });
+    $$('.langswitch__btn').forEach(function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG ? 'true' : 'false');
     });
   }
@@ -272,15 +448,19 @@
   function renderAll() {
     renderStaticText();
     renderFacts();
+    renderReadouts();
     renderRecord();
     renderServices();
+    renderStacks();
     renderMore();
-    renderReadouts();
-    renderCards();
+    renderDisclosure();
+    renderAvailability();
+    renderContact();
     renderAbout();
+    renderCards();
   }
 
-  /* ---------- language routing ---------- */
+  /* ---------- language routing: `/` = EN, `/ru/` = RU ---------- */
   function routeFor(lang) { return lang === 'ru' ? '/ru/' : '/'; }
   function applyLang(lang, push) {
     LANG = lang;
@@ -290,7 +470,6 @@
       try {
         history.pushState({ lang: lang }, '', routeFor(lang));
       } catch (e) {
-        /* file:// preview - keep the hash so the state survives a reload */
         location.hash = lang === 'ru' ? '#ru' : '#en';
       }
     }
@@ -298,22 +477,22 @@
     document.dispatchEvent(new CustomEvent('lcars:lang', { detail: { lang: lang } }));
   }
 
-  /* ---------- L-elbows: one connected path per framed block ---------- */
+  /* ---------- L-elbows: ONE connected path per framed block ----------
+     horizontal run -> 90 deg -> vertical run, outer AND inner corner
+     rounded with the same radius, semicircular caps on both ends.  */
   var ELBOW_COLOUR = {
     amber: 'var(--amber)',
     coral: 'var(--coral)',
-    periwinkle: 'var(--periwinkle)',
-    iris: 'var(--iris)'
+    lav: 'var(--lav-2)',
+    salmon: 'var(--salmon)'
   };
 
-  /* horizontal run -> 90 deg -> vertical run, one continuous outline,
-     rounded outer AND inner corner, semicircular caps (radius = t/2) */
-  function elbowPath(W, H, t, r, armLen) {
+  function elbowPath(W, H, t, r) {
     var c = t / 2;
     var d = [];
     d.push('M ' + r + ' 0');
-    d.push('H ' + (armLen - c));
-    d.push('A ' + c + ' ' + c + ' 0 0 1 ' + (armLen - c) + ' ' + t);
+    d.push('H ' + (W - c));
+    d.push('A ' + c + ' ' + c + ' 0 0 1 ' + (W - c) + ' ' + t);
     d.push('H ' + (t + r));
     d.push('A ' + r + ' ' + r + ' 0 0 0 ' + t + ' ' + (t + r));
     d.push('V ' + (H - c));
@@ -325,46 +504,37 @@
   }
 
   function buildElbows() {
-    $$('.panel--elbow').forEach(function (panel) {
-      var host = $('.elbow', panel);
-      if (!host) return;
-      var box = panel.getBoundingClientRect();
-      if (!box.width || !box.height) return;
-      var t = 20, r = 8;
-      var armLen = Math.max(84, Math.round(box.width * 0.42));
-      var W = Math.round(box.width), H = Math.round(box.height);
-      host.style.color = ELBOW_COLOUR[panel.getAttribute('data-elbow')] || 'var(--coral)';
-      host.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" ' +
-        'style="width:100%;height:100%;overflow:visible" aria-hidden="true">' +
-        '<path d="' + elbowPath(W, H, t, r, armLen) + '"></path></svg>';
+    $$('.elbow').forEach(function (hostEl) {
+      var W = parseFloat(hostEl.getAttribute('data-arm-w')) || 220;
+      var H = parseFloat(hostEl.getAttribute('data-arm-h')) || 130;
+      var t = 16, r = 8;
+      var colour = ELBOW_COLOUR[hostEl.getAttribute('data-elbow')] || 'var(--coral)';
+      hostEl.style.setProperty('--elbow-c', colour);
+      hostEl.style.width = W + 'px';
+      hostEl.style.height = H + 'px';
+      hostEl.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
+        '" aria-hidden="true" focusable="false"><path d="' + elbowPath(W, H, t, r) + '"></path></svg>';
     });
   }
 
   /* ---------- SVG draw-in ---------- */
   function drawableNodes(svg) {
     return $$('.drawing path, .drawing line, .drawing polyline, .drawing ellipse, .drawing circle', svg)
-      .filter(function (n) {
-        if (n.closest('.dim') !== null) return false;      /* dashed dimension lines fade in */
-        if (n.classList.contains('dim')) return false;
-        return true;
-      });
+      .filter(function (n) { return !n.classList.contains('dim'); });
   }
 
   function prepareDraw(svg) {
-    var nodes = drawableNodes(svg);
-    nodes.forEach(function (n) {
+    drawableNodes(svg).forEach(function (n) {
       var len = 0;
       try { len = n.getTotalLength(); } catch (e) { len = 0; }
       if (!len) return;
       n.style.strokeDasharray = len + ' ' + len;
       n.style.strokeDashoffset = len;
     });
-    return nodes;
   }
 
   function playDraw(svg, tl) {
-    var nodes = drawableNodes(svg);
-    nodes.forEach(function (n) {
+    drawableNodes(svg).forEach(function (n) {
       var len = 0;
       try { len = n.getTotalLength(); } catch (e) { len = 0; }
       if (!len) return;
@@ -378,9 +548,33 @@
     });
   }
 
+  function mountDraw(selector) {
+    var svg = $(selector);
+    if (!svg) return;
+    prepareDraw(svg);
+    var tl = gsap.timeline({ paused: true });
+    playDraw(svg, tl);
+    if (window.ScrollTrigger) {
+      ScrollTrigger.create({
+        trigger: svg.closest('.dwg'),
+        start: 'top 85%',
+        once: true,
+        onEnter: function () { tl.play(0); }
+      });
+    } else {
+      tl.play(0);
+    }
+  }
+
   /* ---------- counters ---------- */
   function runCounters(scope) {
-    var nodes = (scope && scope.nodeType) ? $$( '.cnt', scope) : (scope || []).length ? scope : $$('.cnt');
+    var hosts = (scope && scope.nodeType) ? [scope] : (Array.isArray(scope) ? scope : []);
+    var nodes = [];
+    if (hosts.length) {
+      hosts.forEach(function (h) { nodes = nodes.concat($$('.cnt', h)); });
+    } else {
+      nodes = $$('.cnt');
+    }
     nodes.forEach(function (node) {
       if (node.dataset.done) return;
       node.dataset.done = '1';
@@ -404,71 +598,67 @@
     if (!window.gsap) { revealFallback(); return; }
     if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-    /* the top bar grows out of the left edge of the screen */
-    gsap.from('.rail__bar', { scaleX: 0, duration: 1.1, ease: 'power3.out', transformOrigin: 'left center' });
-    gsap.from('.rail__name', { xPercent: 40, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.35 });
-    gsap.from('.rail__meta, .lang', { opacity: 0, duration: 0.6, delay: 0.55 });
+    if (reduced) { showEverything(); return; }
 
-    /* runs extend across the screen edge */
-    $$('.run--bleed').forEach(function (r) {
-      gsap.set(r, { scaleX: 0, transformOrigin: 'left center' });
-      if (window.ScrollTrigger) {
-        gsap.to(r, {
-          scaleX: 1, duration: 1.1, ease: 'power2.out',
-          scrollTrigger: { trigger: r, start: 'top 92%', toggleActions: 'play none none reverse' }
-        });
-      } else {
-        gsap.to(r, { scaleX: 1, duration: 1.1, ease: 'power2.out' });
-      }
+    /* the top bar draws itself out of the left edge */
+    gsap.from('.topbar', { scaleX: 0, duration: 1.1, ease: 'power3.out', transformOrigin: 'left center' });
+    gsap.from('.topbar__id', { xPercent: 30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.3 });
+    gsap.from('.topbar__cap', { xPercent: 40, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.45 });
+    gsap.from('.masthead__meta', { opacity: 0, duration: 0.6, delay: 0.5 });
+
+    /* the rail blocks grow along the spine */
+    gsap.from('.rail__block', {
+      scaleY: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.2,
+      transformOrigin: 'center'
     });
 
-    /* sections reveal */
-    var targets = $$('.panel, .card, .more__row, .about__p, .readouts .ro, .instrument');
+    /* each band reveals its own content */
+    var targets = $$('.panel, .card, .cap, .rec__row, .about__p, .row, .instrument, .datarow, .readout');
     if (window.ScrollTrigger) {
       ScrollTrigger.batch(targets, {
-        start: 'top 90%',
+        start: 'top 92%',
         once: true,
         onEnter: function (batch) {
-          gsap.fromTo(batch, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, ease: 'power3.out', clearProps: 'transform' });
+          gsap.fromTo(batch,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', clearProps: 'transform' });
           runCounters(batch);
         }
       });
     } else {
       gsap.set(targets, { opacity: 1, y: 0 });
-      runCounters(document);
     }
 
-    /* the linac schematic draws itself, line by line */
-    var linac = $('#stage-linac svg');
-    if (linac) {
-      prepareDraw(linac);
-      var tl = gsap.timeline({ paused: true });
-      playDraw(linac, tl);
-      if (window.ScrollTrigger) {
-        ScrollTrigger.create({ trigger: '#stage-linac', start: 'top 82%', once: true, onEnter: function () { tl.play(0); } });
-      } else {
-        tl.play(0);
-      }
-    }
+    /* the elbows draw themselves into their frame */
+    $$('.elbow path').forEach(function (p) {
+      try {
+        var len = p.getTotalLength();
+        if (!len) return;
+        p.style.strokeDasharray = len + ' ' + len;
+        p.style.strokeDashoffset = len;
+        gsap.to(p, {
+          strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut',
+          scrollTrigger: { trigger: p.closest('.frame'), start: 'top 92%', once: true }
+        });
+      } catch (e) {}
+    });
 
-    /* the isodose section draws after it is reached */
-    var iso = $('#stage-isodose svg');
-    if (iso) {
-      prepareDraw(iso);
-      var tl2 = gsap.timeline({ paused: true });
-      playDraw(iso, tl2);
-      if (window.ScrollTrigger) {
-        ScrollTrigger.create({ trigger: '#stage-isodose', start: 'top 88%', once: true, onEnter: function () { tl2.play(0); } });
-      } else {
-        tl2.play(0);
-      }
-    }
+    mountDraw('[data-od-id="linac-drawing"] svg');
+    mountDraw('[data-od-id="isodose-drawing"] svg');
 
     runCounters(document);
   }
 
+  /* reduced motion: render the end state, no tweens */
+  function showEverything() {
+    $$('.rail__block').forEach(function (n) { n.style.transform = 'none'; });
+    $$('.cnt').forEach(function (n) {
+      n.textContent = formatNum(parseFloat(n.getAttribute('data-to')), n.getAttribute('data-comma') === '1');
+    });
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }
+
   function revealFallback() {
-    $$('[data-anim="up"]').forEach(function (n) { n.style.opacity = 1; n.style.transform = 'none'; });
     $$('.cnt').forEach(function (n) {
       n.textContent = formatNum(parseFloat(n.getAttribute('data-to')), n.getAttribute('data-comma') === '1');
     });
@@ -490,28 +680,27 @@
     applyLang(initialLang(), false);
     initMotion();
 
-    $$('.lang__btn').forEach(function (b) {
+    $$('.langswitch__btn').forEach(function (b) {
       b.addEventListener('click', function () {
         applyLang(b.getAttribute('data-lang'), true);
       });
     });
     window.addEventListener('popstate', function () { applyLang(initialLang(), false); });
 
-    /* elbows follow the box they frame */
     var tmr;
     window.addEventListener('resize', function () {
       clearTimeout(tmr);
       tmr = setTimeout(function () {
         buildElbows();
         if (window.ScrollTrigger) ScrollTrigger.refresh();
-      }, 120);
+      }, 140);
     });
     if (window.ResizeObserver) {
       var ro = new ResizeObserver(function () { buildElbows(); });
-      $$('.panel--elbow').forEach(function (p) { ro.observe(p); });
+      $$('.frame').forEach(function (f) { ro.observe(f); });
     }
     if (window.ScrollTrigger) {
-      setTimeout(function () { ScrollTrigger.refresh(); }, 400);
+      setTimeout(function () { ScrollTrigger.refresh(); }, 500);
     }
   }
 

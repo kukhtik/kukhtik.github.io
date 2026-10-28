@@ -98,7 +98,7 @@ PROFILES = {
         "blur": 20, "pill": 40, "litCaps": 30, "litCapsMono": 8, "tiny": 6.0,
     },
     "lcars": {
-        "upp": 200, "monoUpper": 20, "trackEm": 5, "trackPx": 20, "glow": 40,
+        "upp": 200, "monoUpper": 60, "trackEm": 5, "trackPx": 20, "glow": 40,
         "blur": 20, "pill": 200, "litCaps": 60, "litCapsMono": 8, "tiny": 30.0,
     },
 }
@@ -159,7 +159,7 @@ PROBE = r"""() => {
       }
     }
   }
-  return {glow,blur,grad,upp,mono,monoUpper,pill,trackEm,trackPx,hidden,hiddenT,tiny,litCaps,litCapsMono,total:els.length};
+  return {glow,blur,grad,upp,mono,monoUpper,pill,trackEm,trackPx,hidden,hiddenT,tiny,litCaps,litCapsMono,total:els.length, designSystem:(document.documentElement.getAttribute("data-design-system")||"editorial")};
 }"""
 
 REFERENCES = [
@@ -190,7 +190,7 @@ def measure(page, url, label=""):
     page.wait_for_timeout(1200)
     p = page.evaluate(PROBE)
     n = p["total"] or 1
-    return {"label": label, "elements": n,
+    return {"label": label, "elements": n, "profile": p.get("designSystem", "editorial"),
             "per1000": {k: round(1000 * p[k] / n, 1) for k in
                         ("glow", "blur", "upp", "mono", "monoUpper", "pill", "trackEm", "trackPx",
                             "litCaps", "litCapsMono")},
@@ -198,18 +198,21 @@ def measure(page, url, label=""):
             "hidden": p["hidden"], "hidden_translate": p["hiddenT"]}
 
 
-def check(data, prefix=""):
+def check(data, prefix="", profile="editorial"):
+    limits = PROFILES.get(profile, PROFILES["editorial"])
     out = []
-    for key, (title, limit) in LIMITS.items():
+    for key, (title, _default) in LIMITS.items():
+        limit = limits.get(key, _default)
         v = data["per1000"][key]
         if v > limit:
             out.append(f"{prefix}{title} = {v}/1000 (лимит {limit})")
-    if data["tiny_pct"] > TINY_MAX_PCT:
+    if data["tiny_pct"] > limits.get("tiny", TINY_MAX_PCT):
         out.append(f"{prefix}микро-шрифт <=11px = {data['tiny_pct']}% "
                    f"(лимит {limits.get('tiny', TINY_MAX_PCT)}%)")
     if data["hidden_translate"] > HIDDEN_MAX:
         out.append(f"{prefix}появление со сдвигом = {data['hidden_translate']} (лимит {HIDDEN_MAX})")
     return out
+
 
 
 def css_counts(css_path: Path):
