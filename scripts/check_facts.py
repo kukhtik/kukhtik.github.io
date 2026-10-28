@@ -1,1 +1,322 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJGYWN0LWNoZWNrIHRoZSBsYWIgZnJhZ21lbnRzIGFnYWluc3QgdGhlIHJlYWwgcHJvamVjdCBkYXRhLgoKVGhlIGZhaWx1cmUgbW9kZSB0aGlzIGNhdGNoZXMgaXMgdGhlIG9uZSB0aGF0IGFjdHVhbGx5IGhhcHBlbmVkOiBub3QgaW52ZW50ZWQKbnVtYmVycywgYnV0IFJFQUwgbnVtYmVycyBhdHRhY2hlZCB0byB0aGUgV1JPTkcgcHJvamVjdC4gQSBmcmFnbWVudCB0aGF0IGdhdmUKR2VvQ29udmVydGVyIHRoZSBSQUcgYmVuY2htYXJrIHNjb3JlICg5Ni8xMDApIGFuZCBWRVRLQV9EV0cgdGhlIHRlc3QgY291bnQKKDc2OC83NzUpIHJlYWRzIGFzIGltcHJlc3NpdmUgYW5kIGlzIGEgbGllLiBBIHZhbHVlLW9ubHkgY2hlY2sgY2Fubm90IHNlZSB0aGF0IC0KaXQgbmVlZHMgYXR0cmlidXRpb24uCgpSdWxlczoKICAxLiBOTyBJTlZFTlRFRCBOVU1CRVJTICAtIGEgcHJvamVjdCBtZXRyaWMgbXVzdCBleGlzdCBpbiBwcm9qZWN0LnlhbWwuCiAgMi4gTk8gTUlTLUFUVFJJQlVUSU9OICAgIC0gYSBudW1iZXIgdGhhdCBiZWxvbmdzIHRvIHByb2plY3QgWCBtdXN0IG5vdCBhcHBlYXIgaW4KICAgICBhIHJvdyBhYm91dCBwcm9qZWN0IFkgKG9ubHkgZm9yIG51bWJlcnMgZXhjbHVzaXZlIHRvIG9uZSBwcm9qZWN0LCBzbyBzaGFyZWQKICAgICBzbWFsbCB2YWx1ZXMgbGlrZSAiMyIgZG8gbm90IHByb2R1Y2UgZmFsc2UgcG9zaXRpdmVzKS4KICAzLiBOTyBJTlZFTlRFRCBQUk9KRUNUUyAgLSBhIHByb2plY3QgaWRlbnRpZmllciB0aGF0IGlzIG5vdCBpbiBwcm9qZWN0LnlhbWwgaXMgYQogICAgIGZhYnJpY2F0aW9uIGV2ZW4gd2hlbiBpdHMgbnVtYmVycyBhcmUgcmVhbC4KICA0LiBERVZJQ0UgRkFDVFMgQVJFIFNDT1BFRCAtIDAuNSBtbSBpcyBhIHRydWUgZmFjdCBhYm91dCB0aGUgbGluYWMgKGlzb2NlbnRyZSkKICAgICBidXQgYSBmYWJyaWNhdGVkIHRvbGVyYW5jZSB3aGVuIGl0IHNpdHMgbmV4dCB0byAi0LTQvtC/0YPRgdC6IiBpbiBhIHByb2plY3Qgcm93LgoKVGhlIGdhdGUgbXVzdCBiZSBhYmxlIHRvIGZhaWw6IGAtLXNlbGYtdGVzdGAgcnVucyBpdCBhZ2FpbnN0IGRlbGliZXJhdGVseSBXUk9ORwpzbmlwcGV0cyBhbmQgYXNzZXJ0cyBldmVyeSBvbmUgaXMgY2F1Z2h0LgoKVXNhZ2U6CiAgICBweXRob24gc2NyaXB0cy9jaGVja19mYWN0cy5weQogICAgcHl0aG9uIHNjcmlwdHMvY2hlY2tfZmFjdHMucHkgb3V0L2xhYi9fdl9kb3MuaHRtbAogICAgcHl0aG9uIHNjcmlwdHMvY2hlY2tfZmFjdHMucHkgLS1zZWxmLXRlc3QKIiIiCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCByZQppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKaW1wb3J0IHlhbWwKClJPT1QgPSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50LnBhcmVudApMQUIgPSBST09UIC8gIm91dCIgLyAibGFiIgpQUk9KRUNUUyA9IFJPT1QgLyAiY29udGVudCIgLyAicHJvamVjdHMiCgojIE51bWJlcnMgdGhhdCBkZXNjcmliZSB0aGUgTUFDSElORS4gQWxsb3dlZCBvbmx5IG5lYXIgbWFjaGluZSB3b3Jkcy4KREVWSUNFX0ZBQ1RTID0geyIxMDAwIiwgIjEyMCIsICIwLjUiLCAiMTE4IiwgIjEuMCIsICIwLjMiLCAiMjQiLCAiMi4wMCIsICIxLjg0IiwgIjEyLjQiLAogICAgICAgICAgICAgICAgIjUwIiwgIjI1IiwgIjQwIiwgIjIwMCIsICI5MCIsICIxODAiLCAiMzYwIiwgIjQ1IiwgIjI4IiwgIjE2In0KREVWSUNFX1dPUkRTID0gcmUuY29tcGlsZSgKICAgIHIic2FkfG1sY3zQuNC30L7RhtC10L3RgtGAfGlzb2NlbnRyfHRydWViZWFtfHZpdGFsYmVhbXzRg9GB0LrQvtGA0LjRgtC10Lt8YWNjZWxlcmF0b3J80LPQsNC90YLRgNC4fGdhbnRyeXwiCiAgICByItC90L7QvNC10L3QutC70LDRgtGD0YB80YTQvtGC0L7QvXxwaG90b2580LzQtdCyfG1ldnxneXzQs9GAXGJ80LzQs9GAfHN2fNC30LjQstC10YDRgiIsIHJlLkkpCgojIExheW91dC1vbmx5IG51bWJlcnM6IHZpZXdwb3J0IHdpZHRocywgcGl4ZWwgc2l6ZXMsIHBlcmNlbnRhZ2VzIG9mIG5vdGhpbmcuCkxBWU9VVCA9IHJlLmNvbXBpbGUociJweFxifHZ3XGJ8dmhcYnwlIikKCkNMQUlNX0NVRVMgPSAoCiAgICByItGE0LDQutGCXHcqIiwgciLRgtC+0YfQvVx3KiIsIHIi0LHQtdC90YfQvNCw0YDQulx3KiIsIHIicDUwIiwgciLQu9Cw0YLQtdC90YJcdyoiLCByItC30LDQtNC10YDQttC6XHcqIiwKICAgIHIi0YLQtdGB0YJcdyoiLCByItC80YFcYiIsIHIi0LzQvFxiIiwgciJweFxiIiwgciLQsdC70L7Qulx3KiIsIHIi0YHQuNGB0YLQtdC8XHcqIiwgciLQutC+0LzQv9Cw0L3QuFx3KiIsCiAgICByItGH0LDRgdC+0LIiLCByIlxi0YdcYiIsIHIi0LzQuNC9XGIiLCByIi8xMDAiLCByItC40LfQvtC00L7Qt1x3KiIsIHIi0LTQvtC/0YPRgdC6XHcqIiwgciLQuNC30LzQtdGA0LXQvVx3KiIsCiAgICByItC/0L7Qs9GA0LXRiNC90L7RgdGCXHcqIiwgciLQvtGB0YLQsNGCXHcqIiwgciLQtNC+0LfQsFx3KiIsIHIi0L3QvtGA0LxcdyoiLCByItC30LDQv9Cw0YFcdyoiLCByItC/0YDQtdC00LXQu1x3KiIsCiAgICByItC/0LvQsNC9XHcqIiwgciLQutC+0L3RgtGA0L7Qu1x3KiIsIHIi0YHQtdCw0L3RgVx3KiIsIHIi0LrQsNC70LjQsdGA0L7QstC6XHcqIiwgciLQvtGC0LrQu9C+0L3QtdC90LhcdyoiLCByItC60LDRgNGCXHcqIiwKICAgIHIi0YTRgNCw0LrRhtC4XHcqIiwgciLQs9GA0LXQuVx3KiIsIHIi0LjQvdC00LXQutGBXHcqIiwgciLQstGL0LTQsNGHXHcqIiwgciLQv9C+0LjRgdC6XHcqIiwgciLQvtC/0LXRgNCw0YZcdyoiLAogICAgciLRgdC+0LPQu9Cw0YFcdyoiLCByItC/0YDQuNCy0LXQtFx3KiIsIHIi0LrQvtC90LLQtdGA0YJcdyoiLCByItCy0LXQutGC0L7RgFx3KiIsIHIi0YfQtdGA0YJb0LXRkV3Qtlx3KiIsIHIi0LDQsdGA0LjRgVx3KiIsCiAgICByItC/0L7QutGA0YvRglx3KiIsIHIi0YHQtdGCXHcqIiwgciLRgtC+0YfQulx3KiIsIHIi0LrQvtC80LzQtdGA0YdcdyoiLCByIm5kYSIsIHIicm5kIiwgciLQsdC70L7Qulx3KiIsCiAgICByItGA0LXQu9C40LdcdyoiLCByItC/0YDQvtC40LfQstC+0LTRgdGC0LJcdyoiLAopCkNVRV9SRSA9IHJlLmNvbXBpbGUoInwiLmpvaW4oQ0xBSU1fQ1VFUyksIHJlLkkpCk5VTV9SRSA9IHJlLmNvbXBpbGUociJcZHsxLDN9KD86WyBcdTAwYTBdXGR7M30pKyg/OlsuLF1cZCspP3wiCiAgICAgICAgICAgICAgICAgICAgIHIiXGQrKD86Wy4sXVxkKyk/KD86W2VFXVstK10/XGQrKT8iKQpUU19SRSA9IHJlLmNvbXBpbGUociJcW1xzKlxkezEsMn06XGR7Mn0oPzpbLjpdXGQrKT9ccypcXSIpCiMgYW4gaW52ZW50ZWQgcHJvZHVjdCBpZGVudGlmaWVyOiBsb3dlcmNhc2UsIGRhc2hlZCwgYW5kIGNhcnJ5aW5nIGEgZGlnaXQKIyAoInRlcnJhLTQ0NCIgaXMgY2F1Z2h0OyAiV0dTLTg0IiwgIkNQVS1vbmx5IiwgItGB0LrRgNC+0LvQuy3QvNC10YXQsNC90LjQutCwIiBhcmUgbm90IHByb2plY3RzKQpQUk9KSURfUkUgPSByZS5jb21waWxlKHIiXGJbYS16XVthLXowLTldKig/Oi1bYS16MC05XSspKlswLTldW2EtejAtOV0qKD86LVthLXowLTldKykqXGIiKQoKCmRlZiBub3JtKHRvazogc3RyKSAtPiBzdHI6CiAgICByZXR1cm4gdG9rLnJlcGxhY2UoIiAiLCAiIikucmVwbGFjZSgiLCIsICIiKS5sb3dlcigpCgoKZGVmIGlzX3llYXIobjogc3RyKSAtPiBib29sOgogICAgcmV0dXJuIGxlbihuKSA9PSA0IGFuZCBuLmlzZGlnaXQoKSBhbmQgbi5zdGFydHN3aXRoKCIyMCIpCgoKZGVmIHJlc29sdmUocmF3OiBzdHIsIGtub3duOiBzZXRbc3RyXSkgLT4gbGlzdFtzdHJdOgogICAgIiIiUmV0dXJuIHRoZSBwYXJ0cyBvZiBhIG51bWVyaWMgdG9rZW4gdGhhdCBhcmUgTk9UIGluIGBrbm93bmAuCgogICAgQSB0b2tlbiBsaWtlICI1MCAxMzAiIGNhbiBiZSB0d28gYWRqYWNlbnQgbnVtYmVycyByYXRoZXIgdGhhbiBvbmUgZ3JvdXBlZAogICAgbnVtYmVyLCBzbyBhIHRva2VuIHRoYXQgaXMgdW5rbm93biBpcyByZS1zcGxpdCBvbiBzcGFjZXMgYW5kIGVhY2ggcGFydCBpcwogICAgY2hlY2tlZCBvbiBpdHMgb3duLiBPbmx5IHRoZSBwYXJ0cyB0aGF0IGFyZSBnZW51aW5lbHkgdW5rbm93biBjb21lIGJhY2suCiAgICAiIiIKICAgIG4gPSBub3JtKHJhdykKICAgIGlmIG4gaW4ga25vd246CiAgICAgICAgcmV0dXJuIFtdCiAgICBwYXJ0cyA9IFt4IGZvciB4IGluIHJlLnNwbGl0KHIiWyBcdTAwYTBdKyIsIHJhdy5zdHJpcCgpKSBpZiB4XQogICAgaWYgbGVuKHBhcnRzKSA+IDE6CiAgICAgICAgYmFkID0gW10KICAgICAgICBmb3IgcGFydCBpbiBwYXJ0czoKICAgICAgICAgICAgcG4gPSBub3JtKHBhcnQpCiAgICAgICAgICAgIGlmIHBuIG5vdCBpbiBrbm93biBhbmQgbm90IGlzX3llYXIocG4pOgogICAgICAgICAgICAgICAgYmFkLmFwcGVuZChwYXJ0KQogICAgICAgIHJldHVybiBiYWQKICAgIGlmIGlzX3llYXIobik6CiAgICAgICAgcmV0dXJuIFtdCiAgICByZXR1cm4gW3Jhdy5zdHJpcCgpXQoKCmRlZiBsb2FkX3Byb2plY3RzKCkgLT4gZGljdFtzdHIsIGRpY3RdOgogICAgb3V0ID0ge30KICAgIGZvciBwZmlsZSBpbiBzb3J0ZWQoUFJPSkVDVFMuZ2xvYigiKi9wcm9qZWN0LnlhbWwiKSk6CiAgICAgICAgZCA9IHlhbWwuc2FmZV9sb2FkKHBmaWxlLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSkgb3Ige30KICAgICAgICBkWyJfc2x1ZyJdID0gZC5nZXQoInNsdWciLCBwZmlsZS5wYXJlbnQubmFtZSkKICAgICAgICBvdXRbZFsiX3NsdWciXV0gPSBkCiAgICByZXR1cm4gb3V0CgoKZGVmIGFsaWFzZXMocHJvajogZGljdCkgLT4gbGlzdFtzdHJdOgogICAgIiIiRXZlcnkgc3RyaW5nIHRoZSBzaXRlIG1heSB1c2UgdG8gcmVmZXIgdG8gdGhpcyBwcm9qZWN0LiIiIgogICAgbmFtZXM6IHNldFtzdHJdID0ge3Byb2pbIl9zbHVnIl0sIHByb2pbIl9zbHVnIl0ucmVwbGFjZSgiLSIsICIgIil9CiAgICBmb3IgdCBpbiAocHJvai5nZXQoInRpdGxlIikgb3Ige30pLnZhbHVlcygpOgogICAgICAgIGlmIGlzaW5zdGFuY2UodCwgc3RyKToKICAgICAgICAgICAgbmFtZXMuYWRkKHQpCiAgICAgICAgICAgIG5hbWVzLmFkZCh0LnNwbGl0KCLigJQiKVswXS5zcGxpdCgiIC0gIilbMF0uc3RyaXAoKSkgICMgc2hvcnQgbmFtZQogICAgZm9yIGtleSBpbiAoIm5hbWUiLCAic2hvcnQiLCAibGFiZWwiKToKICAgICAgICB2ID0gcHJvai5nZXQoa2V5KQogICAgICAgIGlmIGlzaW5zdGFuY2Uodiwgc3RyKToKICAgICAgICAgICAgbmFtZXMuYWRkKHYpCiAgICByZXR1cm4gc29ydGVkKHtuIGZvciBuIGluIG5hbWVzIGlmIG4gYW5kIGxlbihuKSA+IDJ9LCBrZXk9bGVuLCByZXZlcnNlPVRydWUpCgoKZGVmIG93bmVkX251bWJlcnMocHJvajogZGljdCkgLT4gc2V0W3N0cl06CiAgICB0b2tzOiBzZXRbc3RyXSA9IHNldCgpCgogICAgZGVmIGFkZChyYXc6IHN0cikgLT4gTm9uZToKICAgICAgICBzID0gc3RyKHJhdykucmVwbGFjZSgiLCIsICIgIikucmVwbGFjZSgiwqAiLCAiICIpLnN0cmlwKCkKICAgICAgICBpZiBub3QgczoKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgdG9rcy5hZGQobm9ybShzKSkKICAgICAgICBmb3IgcGllY2UgaW4gcmUuZmluZGFsbChyIlxkW1xkLixdKiIsIHMpOgogICAgICAgICAgICB0b2tzLmFkZChub3JtKHBpZWNlKSkKICAgICAgICAgICAgdG9rcy5hZGQobm9ybShwaWVjZS5yZXBsYWNlKCIsIiwgIiAiKSkpCgogICAgZm9yIHIgaW4gcHJvai5nZXQoInJlc3VsdHMiKSBvciBbXToKICAgICAgICBhZGQoci5nZXQoInZhbHVlIiwgIiIpKQogICAgcmV0dXJuIHRva3MKCgpkZWYgc2l0ZV9udW1iZXJzKCkgLT4gc2V0W3N0cl06CiAgICB0b2tzOiBzZXRbc3RyXSA9IHNldCgpCiAgICBmb3IgbmFtZSBpbiAoInNpdGUueWFtbCIsICJ1aS55YW1sIik6CiAgICAgICAgdGV4dCA9IChST09UIC8gImNvbnRlbnQiIC8gbmFtZSkucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpCiAgICAgICAgZm9yIHBpZWNlIGluIHJlLmZpbmRhbGwociJcZFtcZC4sXSoiLCB0ZXh0KToKICAgICAgICAgICAgdG9rcy5hZGQobm9ybShwaWVjZSkpCiAgICByZXR1cm4gdG9rcwoKCmRlZiB2aXNpYmxlX3RleHQoaHRtbDogc3RyKSAtPiBzdHI6CiAgICBodG1sID0gcmUuc3ViKHInKGRhdGEtKD86dG98Y291bnQpPSIoW1xkLl0rKSIpW14+XSo+XHMqMFxzKjwnLCByIlwxPlwyPCIsIGh0bWwpCiAgICBhc3NpZ25zID0gZGljdChyZS5maW5kYWxsKAogICAgICAgIHInKD86Y29uc3R8bGV0fHZhcik/XHMqKFtcdy1dKylcLnRleHRDb250ZW50XHMqPVxzKlteO10qP1w/XHMqW1wnIl0oW1xkLl0rKVtcJyJdJywgaHRtbCkpCiAgICBmb3IgdmlkLCBmaW5hbCBpbiBhc3NpZ25zLml0ZW1zKCk6CiAgICAgICAgaHRtbCA9IHJlLnN1YihyJyhpZD0iJXMiW14+XSo+KVxzKltcZC5dK1xzKjwnICUgcmUuZXNjYXBlKHZpZCksIHIiXGc8MT4lczwiICUgZmluYWwsIGh0bWwpCiAgICBodG1sID0gVFNfUkUuc3ViKCIgIiwgaHRtbCkKICAgIHQgPSByZS5zdWIociI8c3R5bGU+Lio/PC9zdHlsZT4iLCAiICIsIGh0bWwsIGZsYWdzPXJlLlMpCiAgICB0ID0gcmUuc3ViKHIiPHNjcmlwdD4uKj88L3NjcmlwdD4iLCAiICIsIHQsIGZsYWdzPXJlLlMpCiAgICB0ID0gcmUuc3ViKHIiPHN2Zy4qPzwvc3ZnPiIsICIgIiwgdCwgZmxhZ3M9cmUuUykKICAgIHQgPSByZS5zdWIociI8IS0tLio/LS0+IiwgIiAiLCB0LCBmbGFncz1yZS5TKQogICAgdCA9IHJlLnN1YihyIjxbXj5dKz4iLCAiICIsIHQpCiAgICB0ID0gcmUuc3ViKHIiJlthLXpdKzsiLCAiICIsIHQpCiAgICByZXR1cm4gcmUuc3ViKHIiWyBcdF0rIiwgIiAiLCB0KQoKCmRlZiByb3dzX29mKGh0bWw6IHN0cikgLT4gbGlzdFtzdHJdOgogICAgIiIiVGV4dCBvZiBlYWNoIHRhYmxlIHJvdyAvIGxpc3QgaXRlbSAtIHRoZSBuYXR1cmFsIHVuaXQgb2YgYXR0cmlidXRpb24uIiIiCiAgICBvdXQgPSBbXQogICAgZm9yIG0gaW4gcmUuZmluZGl0ZXIociI8dHJcYi4qPzwvdHI+fDxsaVxiLio/PC9saT58PGRkXGIuKj88L2RkPiIsIGh0bWwsIHJlLlMgfCByZS5JKToKICAgICAgICB0eHQgPSB2aXNpYmxlX3RleHQobS5ncm91cCgwKSkKICAgICAgICBpZiB0eHQuc3RyaXAoKToKICAgICAgICAgICAgb3V0LmFwcGVuZCh0eHQuc3RyaXAoKSkKICAgIHJldHVybiBvdXQKCgpkZWYgY2hlY2soaHRtbDogc3RyLCBwcm9qZWN0czogZGljdFtzdHIsIGRpY3RdKSAtPiBsaXN0W3N0cl06CiAgICBwcm9ibGVtczogbGlzdFtzdHJdID0gW10KICAgIG93bmVyOiBkaWN0W3N0ciwgc2V0W3N0cl1dID0ge3M6IG93bmVkX251bWJlcnMocCkgZm9yIHMsIHAgaW4gcHJvamVjdHMuaXRlbXMoKX0KICAgIGFsbF9vd25lZCA9IHNldCgpLnVuaW9uKCpvd25lci52YWx1ZXMoKSkgaWYgb3duZXIgZWxzZSBzZXQoKQogICAgc2l0ZV9udW1zID0gc2l0ZV9udW1iZXJzKCkKCiAgICAjIG51bWJlciAtPiB0aGUgc2luZ2xlIHByb2plY3QgaXQgYmVsb25ncyB0byAoZXhjbHVzaXZlIG51bWJlcnMgb25seSkKICAgIGV4Y2x1c2l2ZTogZGljdFtzdHIsIHN0cl0gPSB7fQogICAgZm9yIHNsdWcsIG51bXMgaW4gb3duZXIuaXRlbXMoKToKICAgICAgICBmb3IgbiBpbiBudW1zOgogICAgICAgICAgICBpZiBuIGluIGV4Y2x1c2l2ZSBhbmQgZXhjbHVzaXZlW25dICE9IHNsdWc6CiAgICAgICAgICAgICAgICBleGNsdXNpdmVbbl0gPSAiKnNoYXJlZCoiICAgICAgIyBhcHBlYXJzIGluIHR3byBwcm9qZWN0czogbm90IGRpYWdub3N0aWMKICAgICAgICAgICAgZWxpZiBuIG5vdCBpbiBleGNsdXNpdmU6CiAgICAgICAgICAgICAgICBleGNsdXNpdmVbbl0gPSBzbHVnCgogICAgYWxpYXNfbWFwOiBkaWN0W3N0ciwgc3RyXSA9IHt9CiAgICBmb3Igc2x1ZywgcHJvaiBpbiBwcm9qZWN0cy5pdGVtcygpOgogICAgICAgIGZvciBhIGluIGFsaWFzZXMocHJvaik6CiAgICAgICAgICAgIGFsaWFzX21hcFthLmxvd2VyKCldID0gc2x1ZwoKICAgICMgLS0tLSBydWxlIDM6IGludmVudGVkIHByb2plY3RzIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KICAgIGZvciBtIGluIFBST0pJRF9SRS5maW5kaXRlcih2aXNpYmxlX3RleHQoaHRtbCkpOgogICAgICAgIGNhbmQgPSBtLmdyb3VwKDApCiAgICAgICAgbG93ID0gY2FuZC5sb3dlcigpCiAgICAgICAgaWYgbG93IGluIGFsaWFzX21hcDoKICAgICAgICAgICAgY29udGludWUKICAgICAgICBpZiBhbnkobG93IGluIGEgZm9yIGEgaW4gYWxpYXNfbWFwKToKICAgICAgICAgICAgY29udGludWUKICAgICAgICBpZiByZS5zZWFyY2gociJcYig/OnJuZHxuZGF8cHVibGljfGNvbW1lcmNpYWx8b2ZmbGluZXxyYWd8ZHdnfGR4ZnxnZW98Y2FkfHFtbHwiCiAgICAgICAgICAgICAgICAgICAgIHIidHJ1ZWJlYW18dml0YWxiZWFtfHB5fHB5cXR8cHlzaWRlfG9wZW5jdnxvY3J8c3FsaXRlfHBvc3RncmVzfCIKICAgICAgICAgICAgICAgICAgICAgciJodG1sfGNzc3xqc3xqc29ufHlhbWx8bWR8dHh0fGRvY3h8cGRmfHV0Znxhc2NpaXxpc298YXBpfCIKICAgICAgICAgICAgICAgICAgICAgciJwNTB8cDk1fHA5OXxsYXRlbmN5fG1zfGNwdXxncHV8Ym0yNXxsbG18cmFnKVxiIiwgbG93KToKICAgICAgICAgICAgY29udGludWUKICAgICAgICB0YWlsID0gdmlzaWJsZV90ZXh0KGh0bWwpW20uZW5kKCk6bS5lbmQoKSArIDUwXQogICAgICAgIGlmIENVRV9SRS5zZWFyY2godGFpbCkgYW5kIHJlLnNlYXJjaChyIlxkIiwgdGFpbCk6CiAgICAgICAgICAgIHByb2JsZW1zLmFwcGVuZChmItCy0YvQtNGD0LzQsNC90L3Ri9C5INC/0YDQvtC10LrRgjoge2NhbmQhcn0gKNC90LXRgiDRgtCw0LrQvtCz0L4g0LIgcHJvamVjdC55YW1sKSIpCgogICAgIyAtLS0tIHJ1bGVzIDEsIDIsIDQgaW5zaWRlIHByb2plY3Qgcm93cyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KICAgIGZvciByb3cgaW4gcm93c19vZihodG1sKToKICAgICAgICBsb3dfcm93ID0gcm93Lmxvd2VyKCkKICAgICAgICBoaXQgPSBbYWxpYXNfbWFwW2FdIGZvciBhIGluIGFsaWFzX21hcCBpZiBhIGluIGxvd19yb3ddCiAgICAgICAgaGl0ID0gW3MgZm9yIHMgaW4gaGl0IGlmIHMgIT0gIipzaGFyZWQqIl0KICAgICAgICBpZiBub3QgaGl0OgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHNsdWcgPSBoaXRbMF0KICAgICAgICByb3dfc2NhbiA9IHJlLnN1YihyIlxicFxkK1xiIiwgInAiLCByb3cpCiAgICAgICAgIyBhIHBpeGVsIGZpZ3VyZSBpcyBhIG1lYXN1cmVtZW50IGhlcmUgd2hlbiB0aGUgcm93IHRhbGtzIGFib3V0IHRvbGVyYW5jZQogICAgICAgIHRvbGVyYW5jZV9jdHggPSBib29sKHJlLnNlYXJjaChyItC00L7Qv9GD0YHQunzQvtGC0LrQu9C+0L3QtdC90Lh80YLQvtGH0L180L3QvtGA0LwiLCByb3csIHJlLkkpKQogICAgICAgIGZvciBtIGluIE5VTV9SRS5maW5kaXRlcihyb3dfc2Nhbik6CiAgICAgICAgICAgIHJhdyA9IG0uZ3JvdXAoMCkuc3RyaXAoKQogICAgICAgICAgICBpZiBMQVlPVVQuc2VhcmNoKHJvd19zY2FuW20uZW5kKCk6bS5lbmQoKSArIDRdKSBhbmQgbm90IHRvbGVyYW5jZV9jdHg6CiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBmb3IgcGFydCBpbiByZXNvbHZlKHJhdywgb3duZXJbc2x1Z10gfCBzaXRlX251bXMpOgogICAgICAgICAgICAgICAgcG4gPSBub3JtKHBhcnQpCiAgICAgICAgICAgICAgICBpZiBwbiBpbiBvd25lcltzbHVnXSBvciBwbiBpbiBzaXRlX251bXM6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIGlmIHBuIGluIERFVklDRV9GQUNUUzoKICAgICAgICAgICAgICAgICAgICBpZiBERVZJQ0VfV09SRFMuc2VhcmNoKHJvdyk6CiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgICAgICAgICAgcHJvYmxlbXMuYXBwZW5kKGYi0YbQuNGE0YDQsCDQv9GA0LjQsdC+0YDQsCB7cGFydCFyfSDQsiDRgdGC0YDQvtC60LUg0L/RgNC+0LXQutGC0LAge3NsdWchcn0g0LHQtdC3INGB0LvQvtCyINC+INC/0YDQuNCx0L7RgNC1IikKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgZXggPSBleGNsdXNpdmUuZ2V0KHBuKQogICAgICAgICAgICAgICAgaWYgZXggYW5kIGV4IG5vdCBpbiAoIipzaGFyZWQqIiwgc2x1Zyk6CiAgICAgICAgICAgICAgICAgICAgcHJvYmxlbXMuYXBwZW5kKGYi0LzQtdGC0YDQuNC60LAge3BhcnQhcn0g0L/RgNC40L3QsNC00LvQtdC20LjRgiDQv9GA0L7QtdC60YLRgyB7ZXghcn0sINCwINGB0YLQvtC40YIg0LIg0YHRgtGA0L7QutC1IHtzbHVnIXJ9IikKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgaWYgcmUuZnVsbG1hdGNoKHIiXGR7MSwyfSIsIHBuKSBhbmQgbm90IHRvbGVyYW5jZV9jdHg6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIHByb2JsZW1zLmFwcGVuZChmItC80LXRgtGA0LjQutCwIHtwYXJ0IXJ9INCyINGB0YLRgNC+0LrQtSB7c2x1ZyFyfSDQvdC1INC90LDQudC00LXQvdCwINCyIHByb2plY3QueWFtbCIpCgogICAgIyAtLS0tIHJ1bGUgMSBvdXRzaWRlIHJvd3M6IGEgbWV0cmljIGNsYWltIHdpdGggYSBudW1iZXIgbm9ib2R5IG93bnMgLS0tLS0tLS0tLS0tLS0KICAgIGtub3duID0gYWxsX293bmVkIHwgc2l0ZV9udW1zCiAgICBmb3Igc2VudGVuY2UgaW4gcmUuc3BsaXQociJbLjs6XG5dIiwgdmlzaWJsZV90ZXh0KGh0bWwpKToKICAgICAgICBpZiBub3QgQ1VFX1JFLnNlYXJjaChzZW50ZW5jZSk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgc2NhbiA9IHJlLnN1YihyIlxicFxkK1xiIiwgInAiLCBzZW50ZW5jZSkKICAgICAgICBmb3IgbSBpbiBOVU1fUkUuZmluZGl0ZXIoc2Nhbik6CiAgICAgICAgICAgIHJhdyA9IG0uZ3JvdXAoMCkuc3RyaXAoKQogICAgICAgICAgICBpZiBMQVlPVVQuc2VhcmNoKHNjYW5bbS5lbmQoKTptLmVuZCgpICsgNF0pOgogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgZm9yIHBhcnQgaW4gcmVzb2x2ZShyYXcsIGtub3duKToKICAgICAgICAgICAgICAgIHBuID0gbm9ybShwYXJ0KQogICAgICAgICAgICAgICAgaWYgcG4gaW4ga25vd24gb3IgcG4gaW4gREVWSUNFX0ZBQ1RTIG9yIGlzX3llYXIocG4pOgogICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgICAgICBpZiByZS5mdWxsbWF0Y2gociJcZHsxLDJ9IiwgcG4pOgogICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgICAgICBwcm9ibGVtcy5hcHBlbmQoZiLQvNC10YLRgNC40LrQsCB7cGFydCFyfSDQvdC1INC90LDQudC00LXQvdCwINCyINC00LDQvdC90YvRhSDQv9GA0L7QtdC60YLQvtCyIikKICAgIHJldHVybiBwcm9ibGVtcwoKClNFTEZfVEVTVCA9IFsKICgiUkFHIHNjb3JlIG9uIEdlb0NvbnZlcnRlciIsCiAgJzx0cj48dGQ+R2VvQ29udmVydGVyPC90ZD48dGQ+OTYvMTAwINGC0L7Rh9C90L7RgdGC0Yw8L3RkPjx0ZD4yMSAyMTQg0YTQsNC60YLQvtCyPC90ZD48L3RyPicpLAogKCJSQUcgdGVzdCBjb3VudCBvbiBWRVRLQV9EV0ciLAogICc8dHI+PHRkPlZFVEtBX0RXRzwvdGQ+PHRkPjc2OC83NzUg0YLQtdGB0YLQvtCyPC90ZD48dGQ+NCDRhyDQsiAxNSDQvNC40L08L3RkPjwvdHI+JyksCiAoImludmVudGVkIHRvbGVyYW5jZSBvbiBHZW9Db252ZXJ0ZXIiLAogICc8dHI+PHRkPkdlb0NvbnZlcnRlcjwvdGQ+PHRkPtC00L7Qv9GD0YHQuiAwLjUgcHg8L3RkPjwvdHI+JyksCiAoImludmVudGVkIHByb2plY3QgdGVycmEtNDQ0IiwKICAnPHRyPjx0ZD50ZXJyYS00NDQ8L3RkPjx0ZD4xMzAg0LzRgSBwNTA8L3RkPjwvdHI+JyksCiAoImludmVudGVkIG51bWJlciA0MiAwMDAiLAogICc8dHI+PHRkPkVuZ2luZWVyIENvbXBhbmlvbjwvdGQ+PHRkPjQyIDAwMCDRhNCw0LrRgtC+0LI8L3RkPjwvdHI+JyksCiAoImNvcnJlY3Qgcm93IG11c3QgTk9UIGJlIGZsYWdnZWQiLAogICc8dHI+PHRkPlZFVEtBX0RXRzwvdGQ+PHRkPjQg0Ycg4oaSIDE1INC80LjQvTwvdGQ+PHRkPjQ0NCDQsdC70L7QutCwINCT0KPQk9CaPC90ZD48L3RyPicpLApdCgoKZGVmIG1haW4oKSAtPiBpbnQ6CiAgICBpZiAiLS1zZWxmLXRlc3QiIGluIHN5cy5hcmd2OgogICAgICAgIHByb2plY3RzID0gbG9hZF9wcm9qZWN0cygpCiAgICAgICAgb2sgPSBUcnVlCiAgICAgICAgZm9yIGxhYmVsLCBzbmlwcGV0IGluIFNFTEZfVEVTVDoKICAgICAgICAgICAgcHJvYmxlbXMgPSBjaGVjayhzbmlwcGV0LCBwcm9qZWN0cykKICAgICAgICAgICAgZXhwZWN0X2NsZWFuID0gbGFiZWwuc3RhcnRzd2l0aCgiY29ycmVjdCByb3ciKQogICAgICAgICAgICBpZiBleHBlY3RfY2xlYW4gYW5kIHByb2JsZW1zOgogICAgICAgICAgICAgICAgcHJpbnQoZiIgICBGQUxTRSBQT1NJVElWRSBbe2xhYmVsfV06IHtwcm9ibGVtc1swXX0iKQogICAgICAgICAgICAgICAgb2sgPSBGYWxzZQogICAgICAgICAgICBlbGlmIG5vdCBleHBlY3RfY2xlYW4gYW5kIG5vdCBwcm9ibGVtczoKICAgICAgICAgICAgICAgIHByaW50KGYiICAgTUlTU0VEIFt7bGFiZWx9XSAtIHRoZSBnYXRlIGlzIHRvbyB3ZWFrIikKICAgICAgICAgICAgICAgIG9rID0gRmFsc2UKICAgICAgICAgICAgZWxpZiBub3QgZXhwZWN0X2NsZWFuOgogICAgICAgICAgICAgICAgcHJpbnQoZiIgICBjYXVnaHQgW3tsYWJlbH1dOiB7cHJvYmxlbXNbMF19IikKICAgICAgICBpZiBub3Qgb2s6CiAgICAgICAgICAgIHByaW50KCJTRUxGLVRFU1QgRkFJTEVEIikKICAgICAgICAgICAgcmV0dXJuIDEKICAgICAgICBwcmludChmIlNFTEYtVEVTVCBPSzoge2xlbihTRUxGX1RFU1QpIC0gMX0gd3Jvbmcgc25pcHBldHMgY2F1Z2h0LCAxIGNvcnJlY3Qgcm93IGFjY2VwdGVkIikKICAgICAgICByZXR1cm4gMAoKICAgIGFyZ3MgPSBbYSBmb3IgYSBpbiBzeXMuYXJndlsxOl0gaWYgYSAhPSAiLS1zZWxmLXRlc3QiXQogICAgZmlsZXMgPSBbUGF0aChhKSBmb3IgYSBpbiBhcmdzXSBvciBzb3J0ZWQoTEFCLmdsb2IoIl92XyouaHRtbCIpKQogICAgcHJvamVjdHMgPSBsb2FkX3Byb2plY3RzKCkKICAgIGZhaWxlZCA9IFtdCiAgICBmb3IgZiBpbiBmaWxlczoKICAgICAgICBpZiBub3QgZi5pc19maWxlKCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgcHJvYmxlbXMgPSBjaGVjayhmLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSwgcHJvamVjdHMpCiAgICAgICAgaWYgcHJvYmxlbXM6CiAgICAgICAgICAgIGZhaWxlZC5hcHBlbmQoKGYsIHByb2JsZW1zKSkKICAgIGZvciBmLCBwcm9ibGVtcyBpbiBmYWlsZWQ6CiAgICAgICAgcHJpbnQoZiJGQUlMIHtmfSIpCiAgICAgICAgZm9yIHByIGluIHByb2JsZW1zOgogICAgICAgICAgICBwcmludChmIiAgIC0ge3ByfSIpCiAgICBpZiBub3QgZmFpbGVkOgogICAgICAgIHByaW50KGYiRkFDVC1DSEVDSyBPSzoge2xlbihmaWxlcyl9INGE0YDQsNCz0LzQtdC90YIo0L7Qsik6INC80LXRgtGA0LjQutC4INGB0YPRidC10YHRgtCy0YPRjtGCINC4INC/0YDQuNC90LDQtNC70LXQttCw0YIg0LLQtdGA0L3QvtC80YMg0L/RgNC+0LXQutGC0YMiKQogICAgcmV0dXJuIDEgaWYgZmFpbGVkIGVsc2UgMAoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICByYWlzZSBTeXN0ZW1FeGl0KG1haW4oKSkK
+#!/usr/bin/env python3
+"""Fact-check the lab fragments against the real project data.
+
+The failure mode this catches is the one that actually happened: not invented
+numbers, but REAL numbers attached to the WRONG project. A fragment that gave
+GeoConverter the RAG benchmark score (96/100) and VETKA_DWG the test count
+(768/775) reads as impressive and is a lie. A value-only check cannot see that -
+it needs attribution.
+
+Rules:
+  1. NO INVENTED NUMBERS  - a project metric must exist in project.yaml.
+  2. NO MIS-ATTRIBUTION    - a number that belongs to project X must not appear in
+     a row about project Y (only for numbers exclusive to one project, so shared
+     small values like "3" do not produce false positives).
+  3. NO INVENTED PROJECTS  - a project identifier that is not in project.yaml is a
+     fabrication even when its numbers are real.
+  4. DEVICE FACTS ARE SCOPED - 0.5 mm is a true fact about the linac (isocentre)
+     but a fabricated tolerance when it sits next to "допуск" in a project row.
+
+The gate must be able to fail: `--self-test` runs it against deliberately WRONG
+snippets and asserts every one is caught.
+
+Usage:
+    python scripts/check_facts.py
+    python scripts/check_facts.py out/lab/_v_dos.html
+    python scripts/check_facts.py --self-test
+"""
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent
+LAB = ROOT / "out" / "lab"
+PROJECTS = ROOT / "content" / "projects"
+
+# Numbers that describe the MACHINE. Allowed only near machine words.
+DEVICE_FACTS = {"1000", "120", "0.5", "118", "1.0", "0.3", "24", "2.00", "1.84", "12.4",
+                "50", "25", "40", "200", "90", "180", "360", "45", "28", "16"}
+DEVICE_WORDS = re.compile(
+    r"sad|mlc|изоцентр|isocentr|truebeam|vitalbeam|ускорител|accelerator|гантри|gantry|"
+    r"номенклатур|фотон|photon|мев|mev|gy|гр\b|мгр|sv|зиверт", re.I)
+
+# Layout-only numbers: viewport widths, pixel sizes, percentages of nothing.
+LAYOUT = re.compile(r"px\b|vw\b|vh\b|%")
+
+CLAIM_CUES = (
+    r"факт\w*", r"точн\w*", r"бенчмарк\w*", r"p50", r"латент\w*", r"задержк\w*",
+    r"тест\w*", r"мс\b", r"мм\b", r"px\b", r"блок\w*", r"систем\w*", r"компани\w*",
+    r"часов", r"\bч\b", r"мин\b", r"/100", r"изодоз\w*", r"допуск\w*", r"измерен\w*",
+    r"погрешност\w*", r"остат\w*", r"доза\w*", r"норм\w*", r"запас\w*", r"предел\w*",
+    r"план\w*", r"контрол\w*", r"сеанс\w*", r"калибровк\w*", r"отклонени\w*", r"карт\w*",
+    r"фракци\w*", r"грей\w*", r"индекс\w*", r"выдач\w*", r"поиск\w*", r"операц\w*",
+    r"соглас\w*", r"привед\w*", r"конверт\w*", r"вектор\w*", r"черт[её]ж\w*", r"абрис\w*",
+    r"покрыт\w*", r"сет\w*", r"точк\w*", r"коммерч\w*", r"nda", r"rnd", r"блок\w*",
+    r"релиз\w*", r"производств\w*",
+)
+CUE_RE = re.compile("|".join(CLAIM_CUES), re.I)
+NUM_RE = re.compile(r"\d{1,3}(?:[ \u00a0]\d{3})+(?:[.,]\d+)?|"
+                     r"\d+(?:[.,]\d+)?(?:[eE][-+]?\d+)?")
+TS_RE = re.compile(r"\[\s*\d{1,2}:\d{2}(?:[.:]\d+)?\s*\]")
+# an invented product identifier: lowercase, dashed, and carrying a digit
+# ("terra-444" is caught; "WGS-84", "CPU-only", "скролл-механика" are not projects)
+PROJID_RE = re.compile(r"\b[a-z][a-z0-9]*(?:-[a-z0-9]+)*[0-9][a-z0-9]*(?:-[a-z0-9]+)*\b")
+
+
+def norm(tok: str) -> str:
+    return tok.replace(" ", "").replace(",", "").lower()
+
+
+def is_year(n: str) -> bool:
+    return len(n) == 4 and n.isdigit() and n.startswith("20")
+
+
+def resolve(raw: str, known: set[str]) -> list[str]:
+    """Return the parts of a numeric token that are NOT in `known`.
+
+    A token like "50 130" can be two adjacent numbers rather than one grouped
+    number, so a token that is unknown is re-split on spaces and each part is
+    checked on its own. Only the parts that are genuinely unknown come back.
+    """
+    n = norm(raw)
+    if n in known:
+        return []
+    parts = [x for x in re.split(r"[ \u00a0]+", raw.strip()) if x]
+    if len(parts) > 1:
+        bad = []
+        for part in parts:
+            pn = norm(part)
+            if pn not in known and not is_year(pn):
+                bad.append(part)
+        return bad
+    if is_year(n):
+        return []
+    return [raw.strip()]
+
+
+def load_projects() -> dict[str, dict]:
+    out = {}
+    for pfile in sorted(PROJECTS.glob("*/project.yaml")):
+        d = yaml.safe_load(pfile.read_text(encoding="utf-8")) or {}
+        d["_slug"] = d.get("slug", pfile.parent.name)
+        out[d["_slug"]] = d
+    return out
+
+
+def aliases(proj: dict) -> list[str]:
+    """Every string the site may use to refer to this project."""
+    names: set[str] = {proj["_slug"], proj["_slug"].replace("-", " ")}
+    for t in (proj.get("title") or {}).values():
+        if isinstance(t, str):
+            names.add(t)
+            names.add(t.split("—")[0].split(" - ")[0].strip())  # short name
+    for key in ("name", "short", "label"):
+        v = proj.get(key)
+        if isinstance(v, str):
+            names.add(v)
+    return sorted({n for n in names if n and len(n) > 2}, key=len, reverse=True)
+
+
+def owned_numbers(proj: dict) -> set[str]:
+    toks: set[str] = set()
+
+    def add(raw: str) -> None:
+        s = str(raw).replace(",", " ").replace(" ", " ").strip()
+        if not s:
+            return
+        toks.add(norm(s))
+        for piece in re.findall(r"\d[\d.,]*", s):
+            toks.add(norm(piece))
+            toks.add(norm(piece.replace(",", " ")))
+
+    for r in proj.get("results") or []:
+        add(r.get("value", ""))
+    return toks
+
+
+def site_numbers() -> set[str]:
+    toks: set[str] = set()
+    for name in ("site.yaml", "ui.yaml"):
+        text = (ROOT / "content" / name).read_text(encoding="utf-8")
+        for piece in re.findall(r"\d[\d.,]*", text):
+            toks.add(norm(piece))
+    return toks
+
+
+def visible_text(html: str) -> str:
+    html = re.sub(r'(data-(?:to|count)="([\d.]+)")[^>]*>\s*0\s*<', r"\1>\2<", html)
+    assigns = dict(re.findall(
+        r'(?:const|let|var)?\s*([\w-]+)\.textContent\s*=\s*[^;]*?\?\s*[\'"]([\d.]+)[\'"]', html))
+    for vid, final in assigns.items():
+        html = re.sub(r'(id="%s"[^>]*>)\s*[\d.]+\s*<' % re.escape(vid), r"\g<1>%s<" % final, html)
+    html = TS_RE.sub(" ", html)
+    t = re.sub(r"<style>.*?</style>", " ", html, flags=re.S)
+    t = re.sub(r"<script>.*?</script>", " ", t, flags=re.S)
+    t = re.sub(r"<svg.*?</svg>", " ", t, flags=re.S)
+    t = re.sub(r"<!--.*?-->", " ", t, flags=re.S)
+    t = re.sub(r"<[^>]+>", " ", t)
+    t = re.sub(r"&[a-z]+;", " ", t)
+    return re.sub(r"[ \t]+", " ", t)
+
+
+def rows_of(html: str) -> list[str]:
+    """Text of each table row / list item - the natural unit of attribution."""
+    out = []
+    for m in re.finditer(r"<tr\b.*?</tr>|<li\b.*?</li>|<dd\b.*?</dd>", html, re.S | re.I):
+        txt = visible_text(m.group(0))
+        if txt.strip():
+            out.append(txt.strip())
+    return out
+
+
+def check(html: str, projects: dict[str, dict]) -> list[str]:
+    problems: list[str] = []
+    owner: dict[str, set[str]] = {s: owned_numbers(p) for s, p in projects.items()}
+    all_owned = set().union(*owner.values()) if owner else set()
+    site_nums = site_numbers()
+
+    # number -> the single project it belongs to (exclusive numbers only)
+    exclusive: dict[str, str] = {}
+    for slug, nums in owner.items():
+        for n in nums:
+            if n in exclusive and exclusive[n] != slug:
+                exclusive[n] = "*shared*"      # appears in two projects: not diagnostic
+            elif n not in exclusive:
+                exclusive[n] = slug
+
+    alias_map: dict[str, str] = {}
+    for slug, proj in projects.items():
+        for a in aliases(proj):
+            alias_map[a.lower()] = slug
+
+    # ---- rule 3: invented projects -------------------------------------------------
+    for m in PROJID_RE.finditer(visible_text(html)):
+        cand = m.group(0)
+        low = cand.lower()
+        if low in alias_map:
+            continue
+        if any(low in a for a in alias_map):
+            continue
+        if re.search(r"\b(?:rnd|nda|public|commercial|offline|rag|dwg|dxf|geo|cad|qml|"
+                     r"truebeam|vitalbeam|py|pyqt|pyside|opencv|ocr|sqlite|postgres|"
+                     r"html|css|js|json|yaml|md|txt|docx|pdf|utf|ascii|iso|api|"
+                     r"p50|p95|p99|latency|ms|cpu|gpu|bm25|llm|rag)\b", low):
+            continue
+        tail = visible_text(html)[m.end():m.end() + 50]
+        if CUE_RE.search(tail) and re.search(r"\d", tail):
+            problems.append(f"выдуманный проект: {cand!r} (нет такого в project.yaml)")
+
+    # ---- rules 1, 2, 4 inside project rows ------------------------------------------
+    for row in rows_of(html):
+        low_row = row.lower()
+        hit = [alias_map[a] for a in alias_map if a in low_row]
+        hit = [s for s in hit if s != "*shared*"]
+        if not hit:
+            continue
+        slug = hit[0]
+        row_scan = re.sub(r"\bp\d+\b", "p", row)
+        # a pixel figure is a measurement here when the row talks about tolerance
+        tolerance_ctx = bool(re.search(r"допуск|отклонени|точн|норм", row, re.I))
+        for m in NUM_RE.finditer(row_scan):
+            raw = m.group(0).strip()
+            if LAYOUT.search(row_scan[m.end():m.end() + 4]) and not tolerance_ctx:
+                continue
+            for part in resolve(raw, owner[slug] | site_nums):
+                pn = norm(part)
+                if pn in owner[slug] or pn in site_nums:
+                    continue
+                if pn in DEVICE_FACTS:
+                    if DEVICE_WORDS.search(row):
+                        continue
+                    problems.append(f"цифра прибора {part!r} в строке проекта {slug!r} без слов о приборе")
+                    continue
+                ex = exclusive.get(pn)
+                if ex and ex not in ("*shared*", slug):
+                    problems.append(f"метрика {part!r} принадлежит проекту {ex!r}, а стоит в строке {slug!r}")
+                    continue
+                if re.fullmatch(r"\d{1,2}", pn) and not tolerance_ctx:
+                    continue
+                problems.append(f"метрика {part!r} в строке {slug!r} не найдена в project.yaml")
+
+    # ---- rule 1 outside rows: a metric claim with a number nobody owns --------------
+    known = all_owned | site_nums
+    for sentence in re.split(r"[.;:\n]", visible_text(html)):
+        if not CUE_RE.search(sentence):
+            continue
+        scan = re.sub(r"\bp\d+\b", "p", sentence)
+        for m in NUM_RE.finditer(scan):
+            raw = m.group(0).strip()
+            if LAYOUT.search(scan[m.end():m.end() + 4]):
+                continue
+            for part in resolve(raw, known):
+                pn = norm(part)
+                if pn in known or pn in DEVICE_FACTS or is_year(pn):
+                    continue
+                if re.fullmatch(r"\d{1,2}", pn):
+                    continue
+                problems.append(f"метрика {part!r} не найдена в данных проектов")
+    return problems
+
+
+SELF_TEST = [
+ ("RAG score on GeoConverter",
+  '<tr><td>GeoConverter</td><td>96/100 точность</td><td>21 214 фактов</td></tr>'),
+ ("RAG test count on VETKA_DWG",
+  '<tr><td>VETKA_DWG</td><td>768/775 тестов</td><td>4 ч в 15 мин</td></tr>'),
+ ("invented tolerance on GeoConverter",
+  '<tr><td>GeoConverter</td><td>допуск 0.5 px</td></tr>'),
+ ("invented project terra-444",
+  '<tr><td>terra-444</td><td>130 мс p50</td></tr>'),
+ ("invented number 42 000",
+  '<tr><td>Engineer Companion</td><td>42 000 фактов</td></tr>'),
+ ("correct row must NOT be flagged",
+  '<tr><td>VETKA_DWG</td><td>4 ч → 15 мин</td><td>444 блока ГУГК</td></tr>'),
+]
+
+
+def main() -> int:
+    if "--self-test" in sys.argv:
+        projects = load_projects()
+        ok = True
+        for label, snippet in SELF_TEST:
+            problems = check(snippet, projects)
+            expect_clean = label.startswith("correct row")
+            if expect_clean and problems:
+                print(f"   FALSE POSITIVE [{label}]: {problems[0]}")
+                ok = False
+            elif not expect_clean and not problems:
+                print(f"   MISSED [{label}] - the gate is too weak")
+                ok = False
+            elif not expect_clean:
+                print(f"   caught [{label}]: {problems[0]}")
+        if not ok:
+            print("SELF-TEST FAILED")
+            return 1
+        print(f"SELF-TEST OK: {len(SELF_TEST) - 1} wrong snippets caught, 1 correct row accepted")
+        return 0
+
+    args = [a for a in sys.argv[1:] if a != "--self-test"]
+    files = [Path(a) for a in args] or sorted(LAB.glob("_v_*.html"))
+    projects = load_projects()
+    failed = []
+    for f in files:
+        if not f.is_file():
+            continue
+        problems = check(f.read_text(encoding="utf-8"), projects)
+        if problems:
+            failed.append((f, problems))
+    for f, problems in failed:
+        print(f"FAIL {f}")
+        for pr in problems:
+            print(f"   - {pr}")
+    if not failed:
+        print(f"FACT-CHECK OK: {len(files)} фрагмент(ов): метрики существуют и принадлежат верному проекту")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

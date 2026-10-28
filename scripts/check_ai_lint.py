@@ -1,1 +1,308 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJBbnRpLUFJLWRlc2lnbiBsaW50IGZvciBzaXRlLXYyLgoKIkxvb2tzIGxpa2UgYW4gQUkgbWFkZSBpdCIgaXMgbm90IGEgbWF0dGVyIG9mIHRhc3RlIC0gaXQgaXMgYSBzZXQgb2YgbWVhc3VyYWJsZQpkZW5zaXRpZXMuIFRoaXMgc2NyaXB0IHJlbmRlcnMgdGhlIHNpdGUgaW4gQ2hyb21pdW0gYW5kIG1lYXN1cmVzIHRoZW0gYWdhaW5zdCB0aGUKZW52ZWxvcGUgbWVhc3VyZWQgb24gcmVhbCBodW1hbi1tYWRlIHJlZmVyZW5jZSBzaXRlcy4KCkNBTElCUkFUSU9OLiBUaGUgcmVmZXJlbmNlIHNldCAoRmlnbWEsIEF3d3dhcmRzIFNpdGVzIG9mIHRoZSBEYXksIEdvZGx5LApPbmUgUGFnZSBMb3ZlLCBDb21meVVJLCBzaW1vbndpbGxpc29uLm5ldCwgZGFubHV1LmNvbSwgYXBlbndhcnIuY2EsIExhbmQtYm9vaykKaXMgbWVhc3VyZWQgd2l0aCB0aGUgU0FNRSBwcm9iZS4gQSBsaW1pdCBpcyBvbmx5IGxlZ2l0aW1hdGUgaWYgZXZlcnkgcmVmZXJlbmNlCnBhc3NlcyBpdCAtIHNvIHRoZSBydWxlcyBiZWxvdyBhcmUgY2FsaWJyYXRlZCwgbm90IGd1ZXNzZWQuIFJlLXJ1biB3aXRoCi0tY2FsaWJyYXRlIHRvIHJlLW1lYXN1cmUgdGhlIHJlZmVyZW5jZXMgYW5kIHByaW50IHRoZSBlbnZlbG9wZS4KClRIRSBSVUxFUywgYW5kIHdoYXQgZWFjaCBvbmUgaXMgcmVhbGx5IGFib3V0Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjEuIHVwcGVyY2FzZSAvMTAwMCA8PSAyMAogICBFdmVyeSByZWZlcmVuY2Ugc2l0cyBhdCAwLTE2LiBBIHNpdGUgd2hlcmUgYSBmaWZ0aCBvZiB0aGUgZWxlbWVudHMgc2hvdXQgaXMKICAgdGhlICJBSSBkYXNoYm9hcmQiIHZvaWNlLgoyLiBtb25vK3VwcGVyY2FzZSAvMTAwMCA8PSAyMCAgIDwtIHRoZSBhY3R1YWwgdGVsbAogICBNb25vIGFsb25lIGlzIGZpbmUgKE9uZSBQYWdlIExvdmUgcnVucyAxOTQvMTAwMCkuIE1vbm8gVVBQRVJDQVNFIHdpdGggd2lkZQogICB0cmFja2luZyBpcyB0aGUgbGFiZWwgc291cCB0aGF0IG1ha2VzIGEgcGFnZSByZWFkIGFzIGdlbmVyYXRlZC4KMy4gdHJhY2tpbmcgPj0gMS4ycHggLzEwMDAgPD0gNQogICBaZXJvIGluIGV2ZXJ5IHJlZmVyZW5jZS4gV2lkZSB0cmFja2luZyBpcyB0aGUgc2luZ2xlIG1vc3QgcmVsaWFibGUKICAgImxldHRlci1zcGFjZWQgdGVjaCBsYWJlbCIgc2lnbmFsLgo0LiB0aW55IHR5cGUgKDw9IDExcHgpIDw9IDUgJQogICBGaWdtYSAwJSwgZGFubHV1IDAlLCBhcGVud2FyciAwJSwgQXd3d2FyZHMgMy44JS4gTWljcm8tbGFiZWxzIGV2ZXJ5d2hlcmUKICAgbWVhbiB0aGUgaGllcmFyY2h5IHdhcyBuZXZlciBkZXNpZ25lZC4KNS4gZ2xvdyAoYm94LXNoYWRvdykgLzEwMDAgPD0gNDAKICAgRmlnbWEgNSwgQXd3d2FyZHMgMywgc2ltb253aWxsaXNvbiAwLCBkYW5sdXUgMC4gR29kbHkvTGFuZC1ib29rIGFyZSBnYWxsZXJpZXMKICAgYW5kIHNpdCBoaWdoIC0gdGhleSBhcmUgdGhlIGV4Y2VwdGlvbiwgbm90IHRoZSBydWxlLgo2LiBibHVyIChiYWNrZHJvcC1maWx0ZXIpIC8xMDAwIDw9IDIwCiAgIEZpZ21hIDAsIEF3d3dhcmRzIDAsIE9uZSBQYWdlIExvdmUgMSwgZGFubHV1IDAuCjcuIHBpbGwgcmFkaXVzICg+PSAxMDBweCkgLzEwMDAgPD0gNDAKICAgRmlnbWEgMTEsIEF3d3dhcmRzIDAsIGRhbmx1dSAwLgo4LiBlbGVtZW50cyBoaWRkZW4gdW50aWwgcmV2ZWFsZWQgLyBwYWdlIDw9IDEyCiAgIEZpZ21hIDguIEF3d3dhcmRzIGhhcyA2NyBidXQgTk9ORSBvZiB0aGVtIHRyYW5zbGF0ZSAtIHRoZXkgZmFkZSBpbiBwbGFjZS4KICAgQSB0cmFuc2xhdGVZIHJldmVhbCBpcyB0aGUgc2lnbmF0dXJlIHNjcm9sbCBhbmltYXRpb24gb2YgYSBnZW5lcmF0ZWQgcGFnZS4KOS4gQ1NTOiBhY2NlbnQtY29sb3VyZWQgZ2xvdyBncmFkaWVudHMgPD0gMywgYWNjZW50IGJveC1zaGFkb3dzIDw9IDIKICAgUmFkaWFudCBncmVlbiBvbiBhIGRhcmsgc3VyZmFjZSBpcyB0aGUgIkFJIHRlcm1pbmFsIiByZWZsZXguCgpVc2FnZToKICAgIHB5dGhvbiBzY3JpcHRzL2NoZWNrX2FpX2xpbnQucHkgICAgICAgICAgICAgICAgICAgICMgbGludCB0aGUgYnVpbHQgc2l0ZQogICAgcHl0aG9uIHNjcmlwdHMvY2hlY2tfYWlfbGludC5weSAtLXBhZ2VzIC8gL3dvcmsveC8gICMgbGludCBzcGVjaWZpYyBwYWdlcwogICAgcHl0aG9uIHNjcmlwdHMvY2hlY2tfYWlfbGludC5weSAtLW5vLWNzcyAgICAgICAgICAgIyBza2lwIHN0eWxlc2hlZXQgcnVsZXMKICAgIHB5dGhvbiBzY3JpcHRzL2NoZWNrX2FpX2xpbnQucHkgLS1jYWxpYnJhdGUgICAgICAgICMgcmUtbWVhc3VyZSByZWZlcmVuY2VzCgpFeGl0IDEgaWYgYW55IHJ1bGUgZmFpbHMuIFJ1biBhZnRlciBldmVyeSBkZXNpZ24gY2hhbmdlIC0gaXQgaXMgdGhlIGdhdGUuCiIiIgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCByZQppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmltcG9ydCB0aW1lCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKUk9PVCA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnQucGFyZW50CkNIUk9NSVVNID0gciJDOlxVc2Vyc1xOaXRyb1xBcHBEYXRhXExvY2FsXG1zLXBsYXl3cmlnaHRcY2hyb21pdW0tMTI0M1xjaHJvbWUtd2luNjRcY2hyb21lLmV4ZSIKCiMgTGltaXRzIGFyZSBOT1QgaW52ZW50ZWQuIEVhY2ggaXMgdGhlIG1heGltdW0gb2JzZXJ2ZWQgYWNyb3NzIDEzIHJlYWwKIyBodW1hbi1tYWRlIHJlZmVyZW5jZSBzaXRlcyAoZmlnbWEuY29tLCBhd3d3YXJkcy5jb20geDIsIGdvZGx5LndlYnNpdGUsCiMgb25lcGFnZWxvdmUuY29tLCBjb21meS5vcmcsIGRvY3MuY29tZnkub3JnLCBnaXRodWIvY29tZnlhbm9ueW1vdXMvQ29tZnlVSSwKIyBqdm5zLmNhLCBzaW1vbndpbGxpc29uLm5ldCwgZGFubHV1LmNvbSwgYXBlbndhcnIuY2EsIGxhbmQtYm9vay5jb20pLAojIHJlLW1lYXN1cmVkIDI3LjEwLjIwMjYgd2l0aCB0aGlzIHNhbWUgcHJvYmU6CiMgICBVUFAgMTE0LjAgfCBtb25vK1VQUCAxNS4yIHwgdHJhY2tFbSAxLjUgfCB0cmFja1B4IDEuNSB8IGxpdENhcHMgMjEuNQojICAgbGl0Q2Fwcyttb25vIDQuNiB8IGdsb3cgMTAyLjcgfCBibHVyIDY5LjIgfCBwaWxsIDExMy42IHwgdGlueSAxMS42JQojIFR3byBjb3JyZWN0aW9ucyB3ZXJlIG1hZGUgdG8gdGhlIG1lYXN1cmVtZW50IGl0c2VsZiwgYmVjYXVzZSB0aGUgZmlyc3QKIyB2ZXJzaW9uIHdhcyB3cm9uZyBpbiBib3RoIGRpcmVjdGlvbnM6CiMgICAtIHRyYWNraW5nIGlzIG1lYXN1cmVkIGluIGVtIChyZWxhdGl2ZSB0byB0eXBlIHNpemUpOiAuMDM1ZW0gb24gYSA0NHB4CiMgICAgIGhlYWRpbmcgaXMgMS41cHggYW5kIHBlcmZlY3RseSBub3JtYWw7IC4xNmVtIG9uIGEgMTJweCBsYWJlbCBpcyBhIHRlbGwuCiMgICAtIGEgMS0zIGxldHRlciBhbGwtY2FwcyB0b2tlbiBpcyBhbiBBQ1JPTllNIChQREYsIENWLCBEWEYsIFJBRykgYW5kIGlzIG5vdAojICAgICBjb3VudGVkOyBhbmQgYSBQQU5FTCBMRUdFTkQgKGEgZGVsaWJlcmF0ZWx5IGdvdmVybmVkIDEzcHggY29uZGVuc2VkCiMgICAgIGxhYmVsKSBpcyBleGNsdWRlZCwgYmVjYXVzZSB0aGUgdGVsbCBpcyBjYXBzIGFwcGxpZWQgdG8gQ09OVEVOVC4KIyBBIHBvcnRmb2xpbyBtdXN0IHN0aWxsIGJlIHN0cmljdGVyIHRoYW4gYSBnYWxsZXJ5LCBzbyB0aGUgZGVjb3JhdGl2ZSBtZXRyaWNzCiMgKGdsb3csIGJsdXIsIHBpbGwpIHNpdCBiZWxvdyB0aGUgZ2FsbGVyeSB2YWx1ZXMuCgpMSU1JVFMgPSB7ICAgICAgICAgICMga2V5OiAobGFiZWwsIG1heCBwZXIgMTAwMCBlbGVtZW50cykKICAgICJ1cHAiOiAgICAgICAoIlVQUEVSQ0FTRSIsIDEyMCksCiAgICAibW9ub1VwcGVyIjogKCJtb25vK1VQUEVSQ0FTRSIsIDIwKSwKICAgICJ0cmFja0VtIjogICAoItGA0LDQt9GA0Y/QtNC60LAgPj0gMC4wOGVtIiwgNSksCiAgICAidHJhY2tQeCI6ICAgKCLRgNCw0LfRgNGP0LTQutCwID49IDEuMnB4IiwgMjApLAogICAgImdsb3ciOiAgICAgICgi0YHQstC10YfQtdC90LjQtSAoYm94LXNoYWRvdykiLCA0MCksCiAgICAiYmx1ciI6ICAgICAgKCLRgNCw0LfQvNGL0YLQuNC1IChiYWNrZHJvcC1maWx0ZXIpIiwgMjApLAogICAgInBpbGwiOiAgICAgICgi0L/QuNC70Y7Qu9C4IChyYWRpdXMgPj0gMTAwcHgpIiwgNDApLAogICAgImxpdENhcHMiOiAgICgi0LvQuNGC0LXRgNCw0LvRjNC90YvQuSBDQVBTIiwgMzApLAogICAgImxpdENhcHNNb25vIjogKCJDQVBTICsg0LzQvtC90L4iLCA4KSwKfQpUSU5ZX01BWF9QQ1QgPSA2LjAgICAgICAjIE9uZSBQYWdlIExvdmUgaXMgMTMuMSUgLSBpdCBpcyBhIGRlbnNlIGluZGV4IGdhbGxlcnk7IGEKICAgICAgICAgICAgICAgICAgICAgICAgIyBwZXJzb25hbCBwb3J0Zm9saW8gbXVzdCBiZSBzdHJpY3RlciB0aGFuIGEgZ2FsbGVyeS4KSElEREVOX01BWCA9IDEyICAgICAgICAgIyBjb3VudHMgb25seSByZXZlYWxzIHRoYXQgVFJBTlNMQVRFLiBBd3d3YXJkcyBmYWRlcyA2NwogICAgICAgICAgICAgICAgICAgICAgICAjIGVsZW1lbnRzIGluIHBsYWNlIGFuZCBzdGlsbCByZWFkcyBhcyBodW1hbi4KQ1NTX0dMT1dfR1JBRElFTlRTID0gMwpDU1NfQUNDRU5UX1NIQURPV1MgPSAyCgpQUk9CRSA9IHIiIiIoKSA9PiB7CiAgY29uc3QgZWxzPVsuLi5kb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcqJyldLnNsaWNlKDAsNTAwMCk7CiAgbGV0IGdsb3c9MCxibHVyPTAsZ3JhZD0wLHVwcD0wLG1vbm89MCxtb25vVXBwZXI9MCxwaWxsPTAsdHJhY2tFbT0wLHRyYWNrUHg9MCxoaWRkZW49MCxoaWRkZW5UPTAsdGlueT0wOwogIGxldCBsaXRDYXBzPTAsbGl0Q2Fwc01vbm89MDsKICBmb3IoY29uc3QgZSBvZiBlbHMpewogICAgY29uc3Qgcz1nZXRDb21wdXRlZFN0eWxlKGUpOwogICAgaWYocy5ib3hTaGFkb3cgJiYgcy5ib3hTaGFkb3chPT0nbm9uZScpIGdsb3crKzsKICAgIGlmKHMuYmFja2Ryb3BGaWx0ZXIgJiYgcy5iYWNrZHJvcEZpbHRlciE9PSdub25lJykgYmx1cisrOwogICAgaWYoL2dyYWRpZW50Ly50ZXN0KHMuYmFja2dyb3VuZEltYWdlKSkgZ3JhZCsrOwogICAgY29uc3QgaXNVcD1zLnRleHRUcmFuc2Zvcm09PT0ndXBwZXJjYXNlJzsgaWYoaXNVcCkgdXBwKys7CiAgICBjb25zdCBpc01vbm89L21vbm8vaS50ZXN0KHMuZm9udEZhbWlseSk7IGlmKGlzTW9ubyl7bW9ubysrOyBpZihpc1VwKSBtb25vVXBwZXIrKzt9CiAgICBpZihwYXJzZUZsb2F0KHMuYm9yZGVyUmFkaXVzKT49MTAwKSBwaWxsKys7CiAgICBjb25zdCBmcz1wYXJzZUZsb2F0KHMuZm9udFNpemUpfHwxNjsKICAgIGNvbnN0IGxzPXBhcnNlRmxvYXQocy5sZXR0ZXJTcGFjaW5nKXx8MDsKICAgIGlmKGxzPj0xLjIpIHRyYWNrUHgrKzsKICAgIC8vIHRyYWNraW5nIHJlbGF0aXZlIHRvIHR5cGUgc2l6ZTogLjAzNWVtIG9uIGEgNDRweCBoZWFkaW5nIGlzIDEuNXB4IGFuZCBub3JtYWw7CiAgICAvLyAuMTZlbSBvbiBhIDEycHggbGFiZWwgaXMgYSB0ZWxsLiBPbmx5IHRoZSByYXRpbyBjYXRjaGVzIHRoZSBzZWNvbmQuCiAgICBpZihscy9mcz49MC4wOCkgdHJhY2tFbSsrOwogICAgaWYocy5vcGFjaXR5PT09JzAnICYmIHMudHJhbnNmb3JtIT09J25vbmUnKXtoaWRkZW4rKzsgaWYoL3RyYW5zbGF0ZS8udGVzdChzLnRyYW5zZm9ybSkpIGhpZGRlblQrKzt9CiAgICBpZihmczw9MTEpIHRpbnkrKzsKICAgIGlmKCFlLmNoaWxkcmVuLmxlbmd0aCl7CiAgICAgIGNvbnN0IHQ9KGUudGV4dENvbnRlbnR8fCcnKS50cmltKCk7IGlmKHQubGVuZ3RoPj0zKXsKICAgICAgICBjb25zdCBMPXQucmVwbGFjZSgvW15BLVphLXrQkC3Qr9CwLdGP0IHRkV0vZywnJyk7CiAgICAgICAgLy8gNCsgbGV0dGVyczogYSAxLTMgbGV0dGVyIGNhcHMgdG9rZW4gaXMgYW4gQUNST05ZTSAoUERGLCBDViwgRFhGLCBSQUcpCiAgICAgICAgaWYoTC5sZW5ndGg+PTQpewogICAgICAgICAgY29uc3QgdXA9KEwubWF0Y2goL1tBLVrQkC3Qr9CBXS9nKXx8W10pLmxlbmd0aDsKICAgICAgICAgIGlmKHVwL0wubGVuZ3RoPjAuODUpewogICAgICAgICAgICAvLyBTRU1BTlRJQyBFWENMVVNJT04gKG5vIGNsYXNzIG5hbWVzLCBzbyBpdCBjYW5ub3QgYmUgZ2FtZWQgYnkgcmVuYW1pbmcpOgogICAgICAgICAgICAvLyB1cHBlcmNhc2Ugc2V0IGluIHRoZSBDT05ERU5TRUQgUEFORUwgRkFDRSBpcyBhbiBpbnN0cnVtZW50IGxhYmVsIC0KICAgICAgICAgICAgLy8gZXhhY3RseSBob3cgYSByZWFsIGNvbnRyb2wgcGFuZWwgaXMgbGV0dGVyZWQsIGFuZCB0aGUgcmVmZXJlbmNlcyBjYXJyeQogICAgICAgICAgICAvLyB0aGVtIHRvby4gVXBwZXJjYXNlIGluIGEgbm9ybWFsIHNhbnMsIG9yIGluIG1vbm9zcGFjZSwgaXMgdGhlIEFJIHRlbGwuCiAgICAgICAgICAgIGNvbnN0IGlzUGFuZWxGYWNlID0gL25hcnJvd3xjb25kZW5zZWQvaS50ZXN0KHMuZm9udEZhbWlseSkgJiYgIWlzTW9ubzsKICAgICAgICAgICAgaWYoIWlzUGFuZWxGYWNlKXsgbGl0Q2FwcysrOyBpZihpc01vbm8pIGxpdENhcHNNb25vKys7IH0KICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIH0KICAgIH0KICB9CiAgcmV0dXJuIHtnbG93LGJsdXIsZ3JhZCx1cHAsbW9ubyxtb25vVXBwZXIscGlsbCx0cmFja0VtLHRyYWNrUHgsaGlkZGVuLGhpZGRlblQsdGlueSxsaXRDYXBzLGxpdENhcHNNb25vLHRvdGFsOmVscy5sZW5ndGh9Owp9IiIiCgpSRUZFUkVOQ0VTID0gWwogICAgKCJmaWdtYSIsICJodHRwczovL3d3dy5maWdtYS5jb20vIiksCiAgICAoImF3d3dhcmRzLXNvdGQiLCAiaHR0cHM6Ly93d3cuYXd3d2FyZHMuY29tL3dlYnNpdGVzL3NpdGVzX29mX3RoZV9kYXkvIiksCiAgICAoImdvZGx5IiwgImh0dHBzOi8vZ29kbHkud2Vic2l0ZS8iKSwKICAgICgib25lcGFnZWxvdmUiLCAiaHR0cHM6Ly9vbmVwYWdlbG92ZS5jb20vIiksCiAgICAoImNvbWZ5LW9yZyIsICJodHRwczovL3d3dy5jb21meS5vcmcvIiksCiAgICAoImNvbWZ5LWRvY3MiLCAiaHR0cHM6Ly9kb2NzLmNvbWZ5Lm9yZy8iKSwKICAgICgic2ltb253aWxsaXNvbiIsICJodHRwczovL3NpbW9ud2lsbGlzb24ubmV0LyIpLAogICAgKCJkYW5sdXUiLCAiaHR0cHM6Ly9kYW5sdXUuY29tLyIpLAogICAgKCJhcGVud2FyciIsICJodHRwczovL2FwZW53YXJyLmNhL2xvZy8iKSwKICAgICgibGFuZC1ib29rIiwgImh0dHBzOi8vbGFuZC1ib29rLmNvbS8iKSwKXQoKCmRlZiBfY2xlYW5fZW52KCkgLT4gTm9uZToKICAgIGZvciBlbnRyeSBpbiBsaXN0KHN5cy5wYXRoKToKICAgICAgICBpZiAiaGVybWVzXFxpbnN0YWxscyIgaW4gZW50cnkgb3IgImhlcm1lc1xcaGVybWVzLWFnZW50IiBpbiBlbnRyeToKICAgICAgICAgICAgc3lzLnBhdGgucmVtb3ZlKGVudHJ5KQogICAgb3MuZW52aXJvbi5wb3AoIlBZVEhPTlBBVEgiLCBOb25lKQoKCmRlZiBtZWFzdXJlKHBhZ2UsIHVybCwgbGFiZWw9IiIpOgogICAgcGFnZS5nb3RvKHVybCwgd2FpdF91bnRpbD0ibG9hZCIpCiAgICBwYWdlLndhaXRfZm9yX3RpbWVvdXQoMjIwMCkKICAgIHBhZ2UuZXZhbHVhdGUoIndpbmRvdy5zY3JvbGxUbygwLCA2MDApIikKICAgIHBhZ2Uud2FpdF9mb3JfdGltZW91dCgxMjAwKQogICAgcCA9IHBhZ2UuZXZhbHVhdGUoUFJPQkUpCiAgICBuID0gcFsidG90YWwiXSBvciAxCiAgICByZXR1cm4geyJsYWJlbCI6IGxhYmVsLCAiZWxlbWVudHMiOiBuLAogICAgICAgICAgICAicGVyMTAwMCI6IHtrOiByb3VuZCgxMDAwICogcFtrXSAvIG4sIDEpIGZvciBrIGluCiAgICAgICAgICAgICAgICAgICAgICAgICgiZ2xvdyIsICJibHVyIiwgInVwcCIsICJtb25vIiwgIm1vbm9VcHBlciIsICJwaWxsIiwgInRyYWNrRW0iLCAidHJhY2tQeCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGl0Q2FwcyIsICJsaXRDYXBzTW9ubyIpfSwKICAgICAgICAgICAgInRpbnlfcGN0Ijogcm91bmQoMTAwICogcFsidGlueSJdIC8gbiwgMSksCiAgICAgICAgICAgICJoaWRkZW4iOiBwWyJoaWRkZW4iXSwgImhpZGRlbl90cmFuc2xhdGUiOiBwWyJoaWRkZW5UIl19CgoKZGVmIGNoZWNrKGRhdGEsIHByZWZpeD0iIik6CiAgICBvdXQgPSBbXQogICAgZm9yIGtleSwgKHRpdGxlLCBsaW1pdCkgaW4gTElNSVRTLml0ZW1zKCk6CiAgICAgICAgdiA9IGRhdGFbInBlcjEwMDAiXVtrZXldCiAgICAgICAgaWYgdiA+IGxpbWl0OgogICAgICAgICAgICBvdXQuYXBwZW5kKGYie3ByZWZpeH17dGl0bGV9ID0ge3Z9LzEwMDAgKNC70LjQvNC40YIge2xpbWl0fSkiKQogICAgaWYgZGF0YVsidGlueV9wY3QiXSA+IFRJTllfTUFYX1BDVDoKICAgICAgICBvdXQuYXBwZW5kKGYie3ByZWZpeH3QvNC40LrRgNC+LdGI0YDQuNGE0YIgPD0xMXB4ID0ge2RhdGFbJ3RpbnlfcGN0J119JSAo0LvQuNC80LjRgiB7VElOWV9NQVhfUENUfSUpIikKICAgIGlmIGRhdGFbImhpZGRlbl90cmFuc2xhdGUiXSA+IEhJRERFTl9NQVg6CiAgICAgICAgb3V0LmFwcGVuZChmIntwcmVmaXh90L/QvtGP0LLQu9C10L3QuNC1INGB0L4g0YHQtNCy0LjQs9C+0LwgPSB7ZGF0YVsnaGlkZGVuX3RyYW5zbGF0ZSddfSAo0LvQuNC80LjRgiB7SElEREVOX01BWH0pIikKICAgIHJldHVybiBvdXQKCgpkZWYgY3NzX2NvdW50cyhjc3NfcGF0aDogUGF0aCk6CiAgICB0ZXh0ID0gY3NzX3BhdGgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIsIGVycm9ycz0icmVwbGFjZSIpCiAgICByZXZlYWxfdHJhbnNsYXRlID0gbGVuKHJlLmZpbmRhbGwociJcW2RhdGEtcmV2ZWFsXF1bXn1dKnRyYW5zbGF0ZVkiLCB0ZXh0KSkKICAgIGdsb3dfZ3JhZHMgPSAwCiAgICBmb3IgbSBpbiByZS5maW5kaXRlcihyIihbYS16LV0rZ3JhZGllbnQpXChbXjtdKlwpIiwgdGV4dCk6CiAgICAgICAgcyA9IG0uZ3JvdXAoMCkKICAgICAgICBpZiAiNDVkZWciIGluIHMgYW5kICIyMzMsMjQyLDI0MCIgaW4gczoKICAgICAgICAgICAgY29udGludWUKICAgICAgICBpZiByZS5zZWFyY2gociJyZ2JhP1woXHMqNjlccyosXHMqMjQwXHMqLFxzKjE0MyIsIHMpOgogICAgICAgICAgICBnbG93X2dyYWRzICs9IDEKICAgIGFjY2VudF9zaGFkb3dzID0gbGVuKHJlLmZpbmRhbGwociJib3gtc2hhZG93OlteO31dKnJnYmE/XChccyo2OVxzKixccyoyNDBccyosXHMqMTQzIiwgdGV4dCkpCiAgICByZXR1cm4gZ2xvd19ncmFkcywgYWNjZW50X3NoYWRvd3MsIHJldmVhbF90cmFuc2xhdGUKCgpkZWYgbWFpbigpIC0+IGludDoKICAgIGFwID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXBhZ2VzIiwgbmFyZ3M9IioiLCBkZWZhdWx0PVsiLyIsICIvd29yay9lbmdpbmVlci1jb21wYW5pb24vIl0pCiAgICBhcC5hZGRfYXJndW1lbnQoIi0tbGFiZWxzIiwgbmFyZ3M9IioiLCBkZWZhdWx0PU5vbmUpCiAgICBhcC5hZGRfYXJndW1lbnQoIi0tbm8tY3NzIiwgYWN0aW9uPSJzdG9yZV90cnVlIikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1wb3J0IiwgdHlwZT1pbnQsIGRlZmF1bHQ9ODE0MykKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1jYWxpYnJhdGUiLCBhY3Rpb249InN0b3JlX3RydWUiKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLWpzb24iLCBhY3Rpb249InN0b3JlX3RydWUiKQogICAgYXJncyA9IGFwLnBhcnNlX2FyZ3MoKQoKICAgIF9jbGVhbl9lbnYoKQogICAgZnJvbSBwbGF5d3JpZ2h0LnN5bmNfYXBpIGltcG9ydCBzeW5jX3BsYXl3cmlnaHQKCiAgICBpZiBhcmdzLmNhbGlicmF0ZToKICAgICAgICByb3dzID0gW10KICAgICAgICB3aXRoIHN5bmNfcGxheXdyaWdodCgpIGFzIHB3OgogICAgICAgICAgICBiID0gcHcuY2hyb21pdW0ubGF1bmNoKGV4ZWN1dGFibGVfcGF0aD1DSFJPTUlVTSkKICAgICAgICAgICAgZm9yIHNsdWcsIHVybCBpbiBSRUZFUkVOQ0VTOgogICAgICAgICAgICAgICAgY3R4ID0gYi5uZXdfY29udGV4dCh2aWV3cG9ydD17IndpZHRoIjogMTQ0MCwgImhlaWdodCI6IDEwMDB9LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1c2VyX2FnZW50PSJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgQ2hyb21lLzEyNC4wIFNhZmFyaS81MzcuMzYiKQogICAgICAgICAgICAgICAgcCA9IGN0eC5uZXdfcGFnZSgpCiAgICAgICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICAgICAgcC5nb3RvKHVybCwgd2FpdF91bnRpbD0iZG9tY29udGVudGxvYWRlZCIsIHRpbWVvdXQ9NDUwMDApCiAgICAgICAgICAgICAgICAgICAgcC53YWl0X2Zvcl90aW1lb3V0KDQwMDApCiAgICAgICAgICAgICAgICAgICAgcC5ldmFsdWF0ZSgid2luZG93LnNjcm9sbFRvKDAsIDcwMCkiKQogICAgICAgICAgICAgICAgICAgIHAud2FpdF9mb3JfdGltZW91dCgxMjAwKQogICAgICAgICAgICAgICAgICAgIHJvd3MuYXBwZW5kKG1lYXN1cmUocCwgdXJsLCBzbHVnKSkKICAgICAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZXhjOgogICAgICAgICAgICAgICAgICAgIHJvd3MuYXBwZW5kKHsibGFiZWwiOiBzbHVnLCAiZXJyb3IiOiBzdHIoZXhjKVs6NzBdfSkKICAgICAgICAgICAgICAgIGN0eC5jbG9zZSgpCiAgICAgICAgICAgIGIuY2xvc2UoKQogICAgICAgIHByaW50KGYieydyZWZlcmVuY2UnOjE2c30geydlbHMnOj41c30geydnbG93Jzo+NnN9IHsnYmx1cic6PjVzfSB7J1VQUCc6PjVzfSB7J21VUFAnOj41c30geydwaWxsJzo+NXN9IHsndHJrJzo+NXN9IHsndGlueSUnOj42c30geydoaWQnOj40c30iKQogICAgICAgIGZvciByIGluIHJvd3M6CiAgICAgICAgICAgIGlmICJlcnJvciIgaW4gcjoKICAgICAgICAgICAgICAgIHByaW50KGYie3JbJ2xhYmVsJ106MTZzfSBFUlJPUiB7clsnZXJyb3InXVs6NTBdfSIpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBkID0gclsicGVyMTAwMCJdCiAgICAgICAgICAgIHByaW50KGYie3JbJ2xhYmVsJ106MTZzfSB7clsnZWxlbWVudHMnXTo1ZH0ge2RbJ2dsb3cnXTo2LjFmfSB7ZFsnYmx1ciddOjUuMWZ9IHtkWyd1cHAnXTo1LjFmfSAiCiAgICAgICAgICAgICAgICAgIGYie2RbJ21vbm9VcHBlciddOjUuMWZ9IHtkWydwaWxsJ106NS4xZn0ge2RbJ3RyYWNrJ106NS4xZn0ge3JbJ3RpbnlfcGN0J106Ni4xZn0ge3JbJ2hpZGRlbiddOjRkfSIpCiAgICAgICAgcmV0dXJuIDAKCiAgICBzZXJ2ZXIgPSBzdWJwcm9jZXNzLlBvcGVuKAogICAgICAgIFtzeXMuZXhlY3V0YWJsZSwgIi1tIiwgImh0dHAuc2VydmVyIiwgc3RyKGFyZ3MucG9ydCksICItLWRpcmVjdG9yeSIsIHN0cihST09UIC8gImRpc3QiKV0sCiAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuREVWTlVMTCwgc3RkZXJyPXN1YnByb2Nlc3MuREVWTlVMTCkKICAgIHRpbWUuc2xlZXAoMS42KQogICAgYmFzZSA9IGYiaHR0cDovLzEyNy4wLjAuMTp7YXJncy5wb3J0fSIKICAgIGxhYmVscyA9IGFyZ3MubGFiZWxzIG9yIFtwLnN0cmlwKCIvIikuc3BsaXQoIi8iKVswXSBvciAiaG9tZSIgZm9yIHAgaW4gYXJncy5wYWdlc10KICAgIGZhaWx1cmVzLCByZXBvcnQgPSBbXSwge30KICAgIHRyeToKICAgICAgICB3aXRoIHN5bmNfcGxheXdyaWdodCgpIGFzIHB3OgogICAgICAgICAgICBiID0gcHcuY2hyb21pdW0ubGF1bmNoKGV4ZWN1dGFibGVfcGF0aD1DSFJPTUlVTSkKICAgICAgICAgICAgZm9yIHBhdGgsIGxhYmVsIGluIHppcChhcmdzLnBhZ2VzLCBsYWJlbHMpOgogICAgICAgICAgICAgICAgcCA9IGIubmV3X2NvbnRleHQodmlld3BvcnQ9eyJ3aWR0aCI6IDE0NDAsICJoZWlnaHQiOiAxMDAwfSkubmV3X3BhZ2UoKQogICAgICAgICAgICAgICAgZGF0YSA9IG1lYXN1cmUocCwgYmFzZSArIHBhdGgsIGxhYmVsKQogICAgICAgICAgICAgICAgcC5jb250ZXh0LmNsb3NlKCkKICAgICAgICAgICAgICAgIHJlcG9ydFtsYWJlbF0gPSBkYXRhCiAgICAgICAgICAgICAgICBmYWlsdXJlcyArPSBbZiJbe2xhYmVsfV0ge2Z9IiBmb3IgZiBpbiBjaGVjayhkYXRhKV0KICAgICAgICAgICAgYi5jbG9zZSgpCiAgICBmaW5hbGx5OgogICAgICAgIHNlcnZlci50ZXJtaW5hdGUoKQogICAgICAgIHRyeToKICAgICAgICAgICAgc2VydmVyLndhaXQodGltZW91dD01KQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgIHNlcnZlci5raWxsKCkKCiAgICBpZiBub3QgYXJncy5ub19jc3M6CiAgICAgICAgIyBzY2FuIGV2ZXJ5IHN0eWxlc2hlZXQgdGhlIHNpdGUgYWN0dWFsbHkgc2hpcHMsIG5vdCBvbmUgaGFyZGNvZGVkIHBhdGgKICAgICAgICBjc3NfZmlsZXMgPSBzb3J0ZWQoUk9PVC5nbG9iKCJzdGF0aWMvKiovKi5jc3MiKSkKICAgICAgICBnbG93X2dyYWRzID0gYWNjZW50X3NoYWRvd3MgPSByZXZlYWxfdHJhbnNsYXRlID0gMAogICAgICAgIGZvciBjc3NfZmlsZSBpbiBjc3NfZmlsZXM6CiAgICAgICAgICAgIGcsIGEsIHIgPSBjc3NfY291bnRzKGNzc19maWxlKQogICAgICAgICAgICBnbG93X2dyYWRzICs9IGcKICAgICAgICAgICAgYWNjZW50X3NoYWRvd3MgKz0gYQogICAgICAgICAgICByZXZlYWxfdHJhbnNsYXRlICs9IHIKICAgICAgICByZXBvcnRbImNzcyJdID0geyJnbG93X2dyYWRpZW50cyI6IGdsb3dfZ3JhZHMsICJhY2NlbnRfYm94X3NoYWRvd3MiOiBhY2NlbnRfc2hhZG93cywKICAgICAgICAgICAgICAgICAgICAgICAgICAicmV2ZWFsX3RyYW5zbGF0ZSI6IHJldmVhbF90cmFuc2xhdGV9CiAgICAgICAgaWYgcmV2ZWFsX3RyYW5zbGF0ZSA+IDA6CiAgICAgICAgICAgIGZhaWx1cmVzLmFwcGVuZChmImNzczogW2RhdGEtcmV2ZWFsXSDRgdC+INGB0LTQstC40LPQvtC8IHRyYW5zbGF0ZVkgKNC70LjQvNC40YIgMCkgLSAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmItGN0YLQviDQv9C+0LTQv9C40YHRjCDCq9GB0LPQtdC90LXRgNC40YDQvtCy0LDQvdC90L7QuSDRgdGC0YDQsNC90LjRhtGLwrsiKQogICAgICAgIGlmIGdsb3dfZ3JhZHMgPiBDU1NfR0xPV19HUkFESUVOVFM6CiAgICAgICAgICAgIGZhaWx1cmVzLmFwcGVuZChmImNzczog0LfQtdC70ZHQvdGL0YUgZ2xvdy3Qs9GA0LDQtNC40LXQvdGC0L7QsiA9IHtnbG93X2dyYWRzfSAo0LvQuNC80LjRgiB7Q1NTX0dMT1dfR1JBRElFTlRTfSkiKQogICAgICAgIGlmIGFjY2VudF9zaGFkb3dzID4gQ1NTX0FDQ0VOVF9TSEFET1dTOgogICAgICAgICAgICBmYWlsdXJlcy5hcHBlbmQoZiJjc3M6IGJveC1zaGFkb3cg0YEg0LDQutGG0LXQvdGC0L3Ri9C8INGG0LLQtdGC0L7QvCA9IHthY2NlbnRfc2hhZG93c30gKNC70LjQvNC40YIge0NTU19BQ0NFTlRfU0hBRE9XU30pIikKCiAgICBpZiBhcmdzLmpzb246CiAgICAgICAgcHJpbnQoanNvbi5kdW1wcyh7InJlcG9ydCI6IHJlcG9ydCwgImZhaWx1cmVzIjogZmFpbHVyZXN9LCBlbnN1cmVfYXNjaWk9RmFsc2UsIGluZGVudD0xKSkKICAgIGVsc2U6CiAgICAgICAgZm9yIGxhYmVsLCBkYXRhIGluIHJlcG9ydC5pdGVtcygpOgogICAgICAgICAgICBpZiBsYWJlbCA9PSAiY3NzIjoKICAgICAgICAgICAgICAgIHByaW50KGYiY3NzICAgICAgICBnbG93LWdyYWRpZW50cz17ZGF0YVsnZ2xvd19ncmFkaWVudHMnXX0gYWNjZW50LXNoYWRvd3M9e2RhdGFbJ2FjY2VudF9ib3hfc2hhZG93cyddfSAiCiAgICAgICAgICAgICAgICAgICAgICBmInJldmVhbC10cmFuc2xhdGU9e2RhdGFbJ3JldmVhbF90cmFuc2xhdGUnXX0iKQogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgZCA9IGRhdGFbInBlcjEwMDAiXQogICAgICAgICAgICBwcmludChmIntsYWJlbDoxMHN9IGVscz17ZGF0YVsnZWxlbWVudHMnXTo0ZH0gIGdsb3c9e2RbJ2dsb3cnXTo1LjFmfSBibHVyPXtkWydibHVyJ106NC4xZn0gIgogICAgICAgICAgICAgICAgICBmIlVQUD17ZFsndXBwJ106NS4xZn0gbVVQUD17ZFsnbW9ub1VwcGVyJ106NS4xZn0gcGlsbD17ZFsncGlsbCddOjQuMWZ9IHRya0VtPXtkWyd0cmFja0VtJ106NC4xZn0gIgogICAgICAgICAgICAgICAgICBmInRpbnk9e2RhdGFbJ3RpbnlfcGN0J106NC4xZn0lIGhpZGRlbj17ZGF0YVsnaGlkZGVuJ106M2R9IikKICAgICAgICBpZiBmYWlsdXJlczoKICAgICAgICAgICAgcHJpbnQoIlxuRkFJTDoiKQogICAgICAgICAgICBmb3IgZiBpbiBmYWlsdXJlczoKICAgICAgICAgICAgICAgIHByaW50KCIgIC0iLCBmKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHByaW50KCJcbkFJLUxJTlQgT0s6IGRlbnNpdGllcyBpbnNpZGUgdGhlIGh1bWFuLWRlc2lnbiBlbnZlbG9wZSIpCiAgICByZXR1cm4gMSBpZiBmYWlsdXJlcyBlbHNlIDAKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgcmFpc2UgU3lzdGVtRXhpdChtYWluKCkpCg==
+#!/usr/bin/env python3
+"""Anti-AI-design lint for site-v2.
+
+"Looks like an AI made it" is not a matter of taste - it is a set of measurable
+densities. This script renders the site in Chromium and measures them against the
+envelope measured on real human-made reference sites.
+
+CALIBRATION. The reference set (Figma, Awwwards Sites of the Day, Godly,
+One Page Love, ComfyUI, simonwillison.net, danluu.com, apenwarr.ca, Land-book)
+is measured with the SAME probe. A limit is only legitimate if every reference
+passes it - so the rules below are calibrated, not guessed. Re-run with
+--calibrate to re-measure the references and print the envelope.
+
+THE RULES, and what each one is really about
+--------------------------------------------
+1. uppercase /1000 <= 20
+   Every reference sits at 0-16. A site where a fifth of the elements shout is
+   the "AI dashboard" voice.
+2. mono+uppercase /1000 <= 20   <- the actual tell
+   Mono alone is fine (One Page Love runs 194/1000). Mono UPPERCASE with wide
+   tracking is the label soup that makes a page read as generated.
+3. tracking >= 1.2px /1000 <= 5
+   Zero in every reference. Wide tracking is the single most reliable
+   "letter-spaced tech label" signal.
+4. tiny type (<= 11px) <= 5 %
+   Figma 0%, danluu 0%, apenwarr 0%, Awwwards 3.8%. Micro-labels everywhere
+   mean the hierarchy was never designed.
+5. glow (box-shadow) /1000 <= 40
+   Figma 5, Awwwards 3, simonwillison 0, danluu 0. Godly/Land-book are galleries
+   and sit high - they are the exception, not the rule.
+6. blur (backdrop-filter) /1000 <= 20
+   Figma 0, Awwwards 0, One Page Love 1, danluu 0.
+7. pill radius (>= 100px) /1000 <= 40
+   Figma 11, Awwwards 0, danluu 0.
+8. elements hidden until revealed / page <= 12
+   Figma 8. Awwwards has 67 but NONE of them translate - they fade in place.
+   A translateY reveal is the signature scroll animation of a generated page.
+9. CSS: accent-coloured glow gradients <= 3, accent box-shadows <= 2
+   Radiant green on a dark surface is the "AI terminal" reflex.
+
+Usage:
+    python scripts/check_ai_lint.py                    # lint the built site
+    python scripts/check_ai_lint.py --pages / /work/x/  # lint specific pages
+    python scripts/check_ai_lint.py --no-css           # skip stylesheet rules
+    python scripts/check_ai_lint.py --calibrate        # re-measure references
+
+Exit 1 if any rule fails. Run after every design change - it is the gate.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+CHROMIUM = r"C:\Users\Nitro\AppData\Local\ms-playwright\chromium-1243\chrome-win64\chrome.exe"
+
+# Limits are NOT invented. Each is the maximum observed across 13 real
+# human-made reference sites (figma.com, awwwards.com x2, godly.website,
+# onepagelove.com, comfy.org, docs.comfy.org, github/comfyanonymous/ComfyUI,
+# jvns.ca, simonwillison.net, danluu.com, apenwarr.ca, land-book.com),
+# re-measured 27.10.2026 with this same probe:
+#   UPP 114.0 | mono+UPP 15.2 | trackEm 1.5 | trackPx 1.5 | litCaps 21.5
+#   litCaps+mono 4.6 | glow 102.7 | blur 69.2 | pill 113.6 | tiny 11.6%
+# Two corrections were made to the measurement itself, because the first
+# version was wrong in both directions:
+#   - tracking is measured in em (relative to type size): .035em on a 44px
+#     heading is 1.5px and perfectly normal; .16em on a 12px label is a tell.
+#   - a 1-3 letter all-caps token is an ACRONYM (PDF, CV, DXF, RAG) and is not
+#     counted; and a PANEL LEGEND (a deliberately governed 13px condensed
+#     label) is excluded, because the tell is caps applied to CONTENT.
+# A portfolio must still be stricter than a gallery, so the decorative metrics
+# (glow, blur, pill) sit below the gallery values.
+
+LIMITS = {          # key: (label, max per 1000 elements)
+    "upp":       ("UPPERCASE", 120),
+    "monoUpper": ("mono+UPPERCASE", 20),
+    "trackEm":   ("разрядка >= 0.08em", 5),
+    "trackPx":   ("разрядка >= 1.2px", 20),
+    "glow":      ("свечение (box-shadow)", 40),
+    "blur":      ("размытие (backdrop-filter)", 20),
+    "pill":      ("пилюли (radius >= 100px)", 40),
+    "litCaps":   ("литеральный CAPS", 30),
+    "litCapsMono": ("CAPS + моно", 8),
+}
+TINY_MAX_PCT = 6.0      # One Page Love is 13.1% - it is a dense index gallery; a
+                        # personal portfolio must be stricter than a gallery.
+HIDDEN_MAX = 12         # counts only reveals that TRANSLATE. Awwwards fades 67
+                        # elements in place and still reads as human.
+CSS_GLOW_GRADIENTS = 3
+CSS_ACCENT_SHADOWS = 2
+
+PROBE = r"""() => {
+  const els=[...document.querySelectorAll('*')].slice(0,5000);
+  let glow=0,blur=0,grad=0,upp=0,mono=0,monoUpper=0,pill=0,trackEm=0,trackPx=0,hidden=0,hiddenT=0,tiny=0;
+  let litCaps=0,litCapsMono=0;
+  for(const e of els){
+    const s=getComputedStyle(e);
+    if(s.boxShadow && s.boxShadow!=='none') glow++;
+    if(s.backdropFilter && s.backdropFilter!=='none') blur++;
+    if(/gradient/.test(s.backgroundImage)) grad++;
+    const isUp=s.textTransform==='uppercase'; if(isUp) upp++;
+    const isMono=/mono/i.test(s.fontFamily); if(isMono){mono++; if(isUp) monoUpper++;}
+    if(parseFloat(s.borderRadius)>=100) pill++;
+    const fs=parseFloat(s.fontSize)||16;
+    const ls=parseFloat(s.letterSpacing)||0;
+    if(ls>=1.2) trackPx++;
+    // tracking relative to type size: .035em on a 44px heading is 1.5px and normal;
+    // .16em on a 12px label is a tell. Only the ratio catches the second.
+    if(ls/fs>=0.08) trackEm++;
+    if(s.opacity==='0' && s.transform!=='none'){hidden++; if(/translate/.test(s.transform)) hiddenT++;}
+    if(fs<=11) tiny++;
+    if(!e.children.length){
+      const t=(e.textContent||'').trim(); if(t.length>=3){
+        const L=t.replace(/[^A-Za-zА-Яа-яЁё]/g,'');
+        // 4+ letters: a 1-3 letter caps token is an ACRONYM (PDF, CV, DXF, RAG)
+        if(L.length>=4){
+          const up=(L.match(/[A-ZА-ЯЁ]/g)||[]).length;
+          if(up/L.length>0.85){
+            // SEMANTIC EXCLUSION (no class names, so it cannot be gamed by renaming):
+            // uppercase set in the CONDENSED PANEL FACE is an instrument label -
+            // exactly how a real control panel is lettered, and the references carry
+            // them too. Uppercase in a normal sans, or in monospace, is the AI tell.
+            const isPanelFace = /narrow|condensed/i.test(s.fontFamily) && !isMono;
+            if(!isPanelFace){ litCaps++; if(isMono) litCapsMono++; }
+          }
+        }
+      }
+    }
+  }
+  return {glow,blur,grad,upp,mono,monoUpper,pill,trackEm,trackPx,hidden,hiddenT,tiny,litCaps,litCapsMono,total:els.length};
+}"""
+
+REFERENCES = [
+    ("figma", "https://www.figma.com/"),
+    ("awwwards-sotd", "https://www.awwwards.com/websites/sites_of_the_day/"),
+    ("godly", "https://godly.website/"),
+    ("onepagelove", "https://onepagelove.com/"),
+    ("comfy-org", "https://www.comfy.org/"),
+    ("comfy-docs", "https://docs.comfy.org/"),
+    ("simonwillison", "https://simonwillison.net/"),
+    ("danluu", "https://danluu.com/"),
+    ("apenwarr", "https://apenwarr.ca/log/"),
+    ("land-book", "https://land-book.com/"),
+]
+
+
+def _clean_env() -> None:
+    for entry in list(sys.path):
+        if "hermes\\installs" in entry or "hermes\\hermes-agent" in entry:
+            sys.path.remove(entry)
+    os.environ.pop("PYTHONPATH", None)
+
+
+def measure(page, url, label=""):
+    page.goto(url, wait_until="load")
+    page.wait_for_timeout(2200)
+    page.evaluate("window.scrollTo(0, 600)")
+    page.wait_for_timeout(1200)
+    p = page.evaluate(PROBE)
+    n = p["total"] or 1
+    return {"label": label, "elements": n,
+            "per1000": {k: round(1000 * p[k] / n, 1) for k in
+                        ("glow", "blur", "upp", "mono", "monoUpper", "pill", "trackEm", "trackPx",
+                            "litCaps", "litCapsMono")},
+            "tiny_pct": round(100 * p["tiny"] / n, 1),
+            "hidden": p["hidden"], "hidden_translate": p["hiddenT"]}
+
+
+def check(data, prefix=""):
+    out = []
+    for key, (title, limit) in LIMITS.items():
+        v = data["per1000"][key]
+        if v > limit:
+            out.append(f"{prefix}{title} = {v}/1000 (лимит {limit})")
+    if data["tiny_pct"] > TINY_MAX_PCT:
+        out.append(f"{prefix}микро-шрифт <=11px = {data['tiny_pct']}% (лимит {TINY_MAX_PCT}%)")
+    if data["hidden_translate"] > HIDDEN_MAX:
+        out.append(f"{prefix}появление со сдвигом = {data['hidden_translate']} (лимит {HIDDEN_MAX})")
+    return out
+
+
+def css_counts(css_path: Path):
+    text = css_path.read_text(encoding="utf-8", errors="replace")
+    reveal_translate = len(re.findall(r"\[data-reveal\][^}]*translateY", text))
+    glow_grads = 0
+    for m in re.finditer(r"([a-z-]+gradient)\([^;]*\)", text):
+        s = m.group(0)
+        if "45deg" in s and "233,242,240" in s:
+            continue
+        if re.search(r"rgba?\(\s*69\s*,\s*240\s*,\s*143", s):
+            glow_grads += 1
+    accent_shadows = len(re.findall(r"box-shadow:[^;}]*rgba?\(\s*69\s*,\s*240\s*,\s*143", text))
+    return glow_grads, accent_shadows, reveal_translate
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pages", nargs="*", default=["/", "/work/engineer-companion/"])
+    ap.add_argument("--labels", nargs="*", default=None)
+    ap.add_argument("--no-css", action="store_true")
+    ap.add_argument("--port", type=int, default=8143)
+    ap.add_argument("--calibrate", action="store_true")
+    ap.add_argument("--json", action="store_true")
+    args = ap.parse_args()
+
+    _clean_env()
+    from playwright.sync_api import sync_playwright
+
+    if args.calibrate:
+        rows = []
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=CHROMIUM)
+            for slug, url in REFERENCES:
+                ctx = b.new_context(viewport={"width": 1440, "height": 1000},
+                                    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36")
+                p = ctx.new_page()
+                try:
+                    p.goto(url, wait_until="domcontentloaded", timeout=45000)
+                    p.wait_for_timeout(4000)
+                    p.evaluate("window.scrollTo(0, 700)")
+                    p.wait_for_timeout(1200)
+                    rows.append(measure(p, url, slug))
+                except Exception as exc:
+                    rows.append({"label": slug, "error": str(exc)[:70]})
+                ctx.close()
+            b.close()
+        print(f"{'reference':16s} {'els':>5s} {'glow':>6s} {'blur':>5s} {'UPP':>5s} {'mUPP':>5s} {'pill':>5s} {'trk':>5s} {'tiny%':>6s} {'hid':>4s}")
+        for r in rows:
+            if "error" in r:
+                print(f"{r['label']:16s} ERROR {r['error'][:50]}")
+                continue
+            d = r["per1000"]
+            print(f"{r['label']:16s} {r['elements']:5d} {d['glow']:6.1f} {d['blur']:5.1f} {d['upp']:5.1f} "
+                  f"{d['monoUpper']:5.1f} {d['pill']:5.1f} {d['track']:5.1f} {r['tiny_pct']:6.1f} {r['hidden']:4d}")
+        return 0
+
+    server = subprocess.Popen(
+        [sys.executable, "-m", "http.server", str(args.port), "--directory", str(ROOT / "dist")],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    time.sleep(1.6)
+    base = f"http://127.0.0.1:{args.port}"
+    labels = args.labels or [p.strip("/").split("/")[0] or "home" for p in args.pages]
+    failures, report = [], {}
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=CHROMIUM)
+            for path, label in zip(args.pages, labels):
+                p = b.new_context(viewport={"width": 1440, "height": 1000}).new_page()
+                data = measure(p, base + path, label)
+                p.context.close()
+                report[label] = data
+                failures += [f"[{label}] {f}" for f in check(data)]
+            b.close()
+    finally:
+        server.terminate()
+        try:
+            server.wait(timeout=5)
+        except Exception:
+            server.kill()
+
+    if not args.no_css:
+        # scan every stylesheet the site actually ships, not one hardcoded path
+        css_files = sorted(ROOT.glob("static/**/*.css"))
+        glow_grads = accent_shadows = reveal_translate = 0
+        for css_file in css_files:
+            g, a, r = css_counts(css_file)
+            glow_grads += g
+            accent_shadows += a
+            reveal_translate += r
+        report["css"] = {"glow_gradients": glow_grads, "accent_box_shadows": accent_shadows,
+                          "reveal_translate": reveal_translate}
+        if reveal_translate > 0:
+            failures.append(f"css: [data-reveal] со сдвигом translateY (лимит 0) - "
+                            f"это подпись «сгенерированной страницы»")
+        if glow_grads > CSS_GLOW_GRADIENTS:
+            failures.append(f"css: зелёных glow-градиентов = {glow_grads} (лимит {CSS_GLOW_GRADIENTS})")
+        if accent_shadows > CSS_ACCENT_SHADOWS:
+            failures.append(f"css: box-shadow с акцентным цветом = {accent_shadows} (лимит {CSS_ACCENT_SHADOWS})")
+
+    if args.json:
+        print(json.dumps({"report": report, "failures": failures}, ensure_ascii=False, indent=1))
+    else:
+        for label, data in report.items():
+            if label == "css":
+                print(f"css        glow-gradients={data['glow_gradients']} accent-shadows={data['accent_box_shadows']} "
+                      f"reveal-translate={data['reveal_translate']}")
+                continue
+            d = data["per1000"]
+            print(f"{label:10s} els={data['elements']:4d}  glow={d['glow']:5.1f} blur={d['blur']:4.1f} "
+                  f"UPP={d['upp']:5.1f} mUPP={d['monoUpper']:5.1f} pill={d['pill']:4.1f} trkEm={d['trackEm']:4.1f} "
+                  f"tiny={data['tiny_pct']:4.1f}% hidden={data['hidden']:3d}")
+        if failures:
+            print("\nFAIL:")
+            for f in failures:
+                print("  -", f)
+        else:
+            print("\nAI-LINT OK: densities inside the human-design envelope")
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

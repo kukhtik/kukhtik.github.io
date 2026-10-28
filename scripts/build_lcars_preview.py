@@ -1,1 +1,66 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJCdWlsZCBhIGNvbXBsZXRlIHByZXZpZXcgc2l0ZSB3aG9zZSBIT01FIGlzIHRoZSBMQ0FSUyBkZXNpZ24uCgpUaGUgcHJvZHVjdGlvbiBidWlsZCAoYnVpbGQucHkgLT4gZGlzdC8pIGlzIHVudG91Y2hlZDogdGhpcyB3cml0ZXMgdG8gZGlzdC1sY2Fycy8uCkV2ZXJ5dGhpbmcgZWxzZSAtIHByb2plY3QgcGFnZXMsIGFzc2V0cywgQ05BTUUgLSBjb21lcyBmcm9tIHRoZSBub3JtYWwgYnVpbGQsIHNvCnRoZSBwcmV2aWV3IGlzIGEgd29ya2luZyBzaXRlLCBub3QgYSBsb29zZSBIVE1MIGZpbGUuCgpVc2FnZToKICAgIHB5dGhvbiBzY3JpcHRzL2J1aWxkX2xjYXJzX3ByZXZpZXcucHkKIiIiCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCByZQppbXBvcnQgc2h1dGlsCmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCBzeXMKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpST09UID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudC5wYXJlbnQKU1JDID0gUk9PVCAvICJvdXQiIC8gIm9wZW5kZXNpZ24iCkRJU1QgPSBST09UIC8gImRpc3QiCk9VVCA9IFJPT1QgLyAiZGlzdC1sY2FycyIKCgpkZWYgbWFpbigpIC0+IGludDoKICAgIGlmIG5vdCAoU1JDIC8gImluZGV4Lmh0bWwiKS5pc19maWxlKCk6CiAgICAgICAgcHJpbnQoZiJtaXNzaW5nIHtTUkMgLyAnaW5kZXguaHRtbCd9IiwgZmlsZT1zeXMuc3RkZXJyKQogICAgICAgIHJldHVybiAxCiAgICBidWlsZCA9IHN1YnByb2Nlc3MucnVuKFtzeXMuZXhlY3V0YWJsZSwgc3RyKFJPT1QgLyAiYnVpbGQucHkiKV0sIGN3ZD1ST09ULAogICAgICAgICAgICAgICAgICAgICAgICAgICBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUpCiAgICBpZiBidWlsZC5yZXR1cm5jb2RlOgogICAgICAgIHN5cy5zdGRlcnIud3JpdGUoYnVpbGQuc3RkZXJyKQogICAgICAgIHJldHVybiBidWlsZC5yZXR1cm5jb2RlCiAgICBpZiBPVVQuZXhpc3RzKCk6CiAgICAgICAgc2h1dGlsLnJtdHJlZShPVVQpCiAgICBzaHV0aWwuY29weXRyZWUoRElTVCwgT1VUKQoKICAgIGxjYXJzID0gT1VUIC8gImFzc2V0cyIgLyAibGNhcnMiCiAgICBsY2Fycy5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCiAgICBmb3IgbmFtZSBpbiAoImFwcC5jc3MiLCAiYXBwLmpzIiwgImZvbnRzLmNzcyIpOgogICAgICAgIHNodXRpbC5jb3B5MihTUkMgLyBuYW1lLCBsY2FycyAvIG5hbWUpCiAgICBzaHV0aWwuY29weTIoU1JDIC8gImxjYXJzIiAvICJsY2Fycy5jc3MiLCBsY2FycyAvICJsY2Fycy5jc3MiKQogICAgc2h1dGlsLmNvcHl0cmVlKFNSQyAvICJmb250cyIsIGxjYXJzIC8gImZvbnRzIiwgZGlyc19leGlzdF9vaz1UcnVlKQogICAgc2h1dGlsLmNvcHl0cmVlKFNSQyAvICJ2ZW5kb3IiLCBsY2FycyAvICJ2ZW5kb3IiLCBkaXJzX2V4aXN0X29rPVRydWUpCgogICAgcGFnZSA9IChTUkMgLyAiaW5kZXguaHRtbCIpLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgcGFnZSA9IHBhZ2UucmVwbGFjZSgnaHJlZj0iYXBwLmNzcyInLCAnaHJlZj0iL2Fzc2V0cy9sY2Fycy9hcHAuY3NzIicpCiAgICBwYWdlID0gcGFnZS5yZXBsYWNlKCdocmVmPSJsY2Fycy9sY2Fycy5jc3MiJywgJ2hyZWY9Ii9hc3NldHMvbGNhcnMvbGNhcnMuY3NzIicpCiAgICBwYWdlID0gcGFnZS5yZXBsYWNlKCdocmVmPSJmb250cy5jc3MiJywgJ2hyZWY9Ii9hc3NldHMvbGNhcnMvZm9udHMuY3NzIicpCiAgICBwYWdlID0gcGFnZS5yZXBsYWNlKCdzcmM9InZlbmRvci8nLCAnc3JjPSIvYXNzZXRzL2xjYXJzL3ZlbmRvci8nKQogICAgcGFnZSA9IHBhZ2UucmVwbGFjZSgnc3JjPSJhcHAuanMiJywgJ3NyYz0iL2Fzc2V0cy9sY2Fycy9hcHAuanMiJykKCiAgICAoT1VUIC8gImluZGV4Lmh0bWwiKS53cml0ZV90ZXh0KAogICAgICAgIHJlLnN1YihyJ2hyZWY9Iigvd29yay8pJywgJ2hyZWY9Ii93b3JrLycsIHBhZ2UpLCBlbmNvZGluZz0idXRmLTgiKQogICAgKE9VVCAvICJydSIpLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgIChPVVQgLyAicnUiIC8gImluZGV4Lmh0bWwiKS53cml0ZV90ZXh0KAogICAgICAgIHJlLnN1YihyJ2hyZWY9Iigvd29yay8pJywgJ2hyZWY9Ii9ydS93b3JrLycsIHBhZ2UpLCBlbmNvZGluZz0idXRmLTgiKQoKICAgIHByaW50KCJMQ0FSUyBwcmV2aWV3IHNpdGU6ICVzIiAlIE9VVCkKICAgIHByaW50KCIgIGhvbWUgIC8gYW5kIC9ydS8gIChMQ0FSUykiKQogICAgcHJpbnQoIiAgY2FzZSBzdHVkaWVzIGFyZSB0aGUgbm9ybWFsIFlBTUwtZHJpdmVuIHBhZ2VzIikKICAgIHJldHVybiAwCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHJhaXNlIFN5c3RlbUV4aXQobWFpbigpKQo=
+#!/usr/bin/env python3
+"""Build a complete preview site whose HOME is the LCARS design.
+
+The production build (build.py -> dist/) is untouched: this writes to dist-lcars/.
+Everything else - project pages, assets, CNAME - comes from the normal build, so
+the preview is a working site, not a loose HTML file.
+
+Usage:
+    python scripts/build_lcars_preview.py
+"""
+from __future__ import annotations
+
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / "out" / "opendesign"
+DIST = ROOT / "dist"
+OUT = ROOT / "dist-lcars"
+
+
+def main() -> int:
+    if not (SRC / "index.html").is_file():
+        print(f"missing {SRC / 'index.html'}", file=sys.stderr)
+        return 1
+    build = subprocess.run([sys.executable, str(ROOT / "build.py")], cwd=ROOT,
+                           capture_output=True, text=True)
+    if build.returncode:
+        sys.stderr.write(build.stderr)
+        return build.returncode
+    if OUT.exists():
+        shutil.rmtree(OUT)
+    shutil.copytree(DIST, OUT)
+
+    lcars = OUT / "assets" / "lcars"
+    lcars.mkdir(parents=True, exist_ok=True)
+    for name in ("app.css", "app.js", "fonts.css"):
+        shutil.copy2(SRC / name, lcars / name)
+    shutil.copy2(SRC / "lcars" / "lcars.css", lcars / "lcars.css")
+    shutil.copytree(SRC / "fonts", lcars / "fonts", dirs_exist_ok=True)
+    shutil.copytree(SRC / "vendor", lcars / "vendor", dirs_exist_ok=True)
+
+    page = (SRC / "index.html").read_text(encoding="utf-8")
+    page = page.replace('href="app.css"', 'href="/assets/lcars/app.css"')
+    page = page.replace('href="lcars/lcars.css"', 'href="/assets/lcars/lcars.css"')
+    page = page.replace('href="fonts.css"', 'href="/assets/lcars/fonts.css"')
+    page = page.replace('src="vendor/', 'src="/assets/lcars/vendor/')
+    page = page.replace('src="app.js"', 'src="/assets/lcars/app.js"')
+
+    (OUT / "index.html").write_text(
+        re.sub(r'href="(/work/)', 'href="/work/', page), encoding="utf-8")
+    (OUT / "ru").mkdir(parents=True, exist_ok=True)
+    (OUT / "ru" / "index.html").write_text(
+        re.sub(r'href="(/work/)', 'href="/ru/work/', page), encoding="utf-8")
+
+    print("LCARS preview site: %s" % OUT)
+    print("  home  / and /ru/  (LCARS)")
+    print("  case studies are the normal YAML-driven pages")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

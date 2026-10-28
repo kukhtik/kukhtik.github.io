@@ -1,1 +1,17 @@
-eyUgZXh0ZW5kcyAiYmFzZV9sY2Fycy5odG1sIiAlfQp7JSBibG9jayBjb250ZW50ICV9CjxzZWN0aW9uIGNsYXNzPSJwYW5lbGJveCIgaWQ9Im5vdC1mb3VuZCIgZGF0YS1vZC1pZD0ibm90LWZvdW5kIj4KICA8c3BhbiBjbGFzcz0ibC1lbGJvdyIgc3R5bGU9Ii0tYzp2YXIoLS1sYy1yb3NlKTstLWwtbG9uZzo0NiU7LS1sLXN0dWI6MjYlOy0tbC10aGljazoyMnB4Ij48aT48L2k+PGk+PC9pPjwvc3Bhbj4KICA8cCBjbGFzcz0ibGVnIj40MDQgwrcgTk9UIEZPVU5EPC9wPgogIDxoMSBjbGFzcz0iaDIiPnt7IHVpLm5vdF9mb3VuZC50aXRsZVtsYW5nXSB9fTwvaDE+CiAgPHAgY2xhc3M9ImxlYWQiPnt7IHVpLm5vdF9mb3VuZC50ZXh0W2xhbmddIH19PC9wPgogIDxkaXYgY2xhc3M9ImNvbnRhY3RzIj4KICAgIDxhIGhyZWY9Int7IGhvbWVfdXJsIH19IiBjbGFzcz0ibC1jbWQiPjxzcGFuIGNsYXNzPSJsLWRvdCIgc3R5bGU9Ii0tYzp2YXIoLS1sYy1jb3JhbCkiPjwvc3Bhbj57eyB1aS5hY3Rpb25zLmJhY2tfaG9tZVtsYW5nXSB9fTwvYT4KICAgIDxhIGhyZWY9Int7IGhvbWVfdXJsIH19I3Byb2plY3RzIiBjbGFzcz0ibC1jbWQiPjxzcGFuIGNsYXNzPSJsLWRvdCIgc3R5bGU9Ii0tYzp2YXIoLS1sYy1taW50KSI+PC9zcGFuPnt7IHVpLmFjdGlvbnMuYmFja190b193b3JrW2xhbmddIH19PC9hPgogIDwvZGl2Pgo8L3NlY3Rpb24+Cjxmb290ZXIgY2xhc3M9ImZvb3QiPgogIDxzcGFuPsKpIHt7IHQoc2l0ZS5uYW1lLCBsYW5nKSB9fSDCtyB7eyB0KHNpdGUubG9jYXRpb24sIGxhbmcpIH19IMK3IHt7IHNpdGUudGltZXpvbmUgfX08L3NwYW4+CiAgPHNwYW4+e3sgdWkubGNhcnMuZm9vdGVyX2ZvbnRzW2xhbmddIH19PC9zcGFuPgo8L2Zvb3Rlcj4KeyUgZW5kYmxvY2sgJX0K
+{% extends "base_lcars.html" %}
+{% block content %}
+<section class="panelbox" id="not-found" data-od-id="not-found">
+  <span class="l-elbow" style="--c:var(--lc-rose);--l-long:46%;--l-stub:26%;--l-thick:22px"><i></i><i></i></span>
+  <p class="leg">404 · NOT FOUND</p>
+  <h1 class="h2">{{ ui.not_found.title[lang] }}</h1>
+  <p class="lead">{{ ui.not_found.text[lang] }}</p>
+  <div class="contacts">
+    <a href="{{ home_url }}" class="l-cmd"><span class="l-dot" style="--c:var(--lc-coral)"></span>{{ ui.actions.back_home[lang] }}</a>
+    <a href="{{ home_url }}#projects" class="l-cmd"><span class="l-dot" style="--c:var(--lc-mint)"></span>{{ ui.actions.back_to_work[lang] }}</a>
+  </div>
+</section>
+<footer class="foot">
+  <span>© {{ t(site.name, lang) }} · {{ t(site.location, lang) }} · {{ site.timezone }}</span>
+  <span>{{ ui.lcars.footer_fonts[lang] }}</span>
+</footer>
+{% endblock %}

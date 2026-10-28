@@ -1,1 +1,172 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJNZWFzdXJlIHRoZSBhbnRpLUFJIGRlbnNpdGllcyBvZiBhIHNpbmdsZSBsYWIgcGFnZSBhbmQgY29tcGFyZSB0byB0aGUgbGltaXRzLgoKU2FtZSBwcm9iZSBhbmQgc2FtZSBsaW1pdHMgYXMgc2NyaXB0cy9jaGVja19haV9saW50LnB5LCBidXQgc2NvcGVkIHRvIG9uZSBwYWdlLCBzbyBhCnZhcmlhbnQgZnJhZ21lbnQgY2FuIGJlIG1lYXN1cmVkIEJFRk9SRSBpdCBpcyBwcm9tb3RlZCBpbnRvIHRoZSBzaXRlLgoKVXNhZ2U6CiAgICBweXRob24gc2NyaXB0cy9jaGVja19mcmFnbWVudC5weSAtLXBhZ2UgbGFiL2xhYi1wcmV2aWV3Lmh0bWwgLS1wb3J0IDgxNTAKICAgIHB5dGhvbiBzY3JpcHRzL2NoZWNrX2ZyYWdtZW50LnB5IC0tcGFnZSBsYWIvbGFiLXByZXZpZXcuaHRtbCAtLWpzb24KIiIiCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQganNvbgppbXBvcnQgb3MKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHN5cwppbXBvcnQgdGltZQpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKClJPT1QgPSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50LnBhcmVudApDSFJPTUlVTSA9IHIiQzpcVXNlcnNcTml0cm9cQXBwRGF0YVxMb2NhbFxtcy1wbGF5d3JpZ2h0XGNocm9taXVtLTEyNDNcY2hyb21lLXdpbjY0XGNocm9tZS5leGUiCgojIExpbWl0cyBhcmUgTk9UIGludmVudGVkLiBFYWNoIGlzIHRoZSBtYXhpbXVtIG9ic2VydmVkIGFjcm9zcyAxMyByZWFsCiMgaHVtYW4tbWFkZSByZWZlcmVuY2Ugc2l0ZXMgKGZpZ21hLmNvbSwgYXd3d2FyZHMuY29tIHgyLCBnb2RseS53ZWJzaXRlLAojIG9uZXBhZ2Vsb3ZlLmNvbSwgY29tZnkub3JnLCBkb2NzLmNvbWZ5Lm9yZywgZ2l0aHViL2NvbWZ5YW5vbnltb3VzL0NvbWZ5VUksCiMganZucy5jYSwgc2ltb253aWxsaXNvbi5uZXQsIGRhbmx1dS5jb20sIGFwZW53YXJyLmNhLCBsYW5kLWJvb2suY29tKSwKIyByZS1tZWFzdXJlZCAyNy4xMC4yMDI2IHdpdGggdGhpcyBzYW1lIHByb2JlOgojICAgVVBQIDExNC4wIHwgbW9ubytVUFAgMTUuMiB8IHRyYWNrRW0gMS41IHwgdHJhY2tQeCAxLjUgfCBsaXRDYXBzIDIxLjUKIyAgIGxpdENhcHMrbW9ubyA0LjYgfCBnbG93IDEwMi43IHwgYmx1ciA2OS4yIHwgcGlsbCAxMTMuNiB8IHRpbnkgMTEuNiUKIyBUd28gY29ycmVjdGlvbnMgd2VyZSBtYWRlIHRvIHRoZSBtZWFzdXJlbWVudCBpdHNlbGYsIGJlY2F1c2UgdGhlIGZpcnN0CiMgdmVyc2lvbiB3YXMgd3JvbmcgaW4gYm90aCBkaXJlY3Rpb25zOgojICAgLSB0cmFja2luZyBpcyBtZWFzdXJlZCBpbiBlbSAocmVsYXRpdmUgdG8gdHlwZSBzaXplKTogLjAzNWVtIG9uIGEgNDRweAojICAgICBoZWFkaW5nIGlzIDEuNXB4IGFuZCBwZXJmZWN0bHkgbm9ybWFsOyAuMTZlbSBvbiBhIDEycHggbGFiZWwgaXMgYSB0ZWxsLgojICAgLSBhIDEtMyBsZXR0ZXIgYWxsLWNhcHMgdG9rZW4gaXMgYW4gQUNST05ZTSAoUERGLCBDViwgRFhGLCBSQUcpIGFuZCBpcyBub3QKIyAgICAgY291bnRlZDsgYW5kIGEgUEFORUwgTEVHRU5EIChhIGRlbGliZXJhdGVseSBnb3Zlcm5lZCAxM3B4IGNvbmRlbnNlZAojICAgICBsYWJlbCkgaXMgZXhjbHVkZWQsIGJlY2F1c2UgdGhlIHRlbGwgaXMgY2FwcyBhcHBsaWVkIHRvIENPTlRFTlQuCiMgQSBwb3J0Zm9saW8gbXVzdCBzdGlsbCBiZSBzdHJpY3RlciB0aGFuIGEgZ2FsbGVyeSwgc28gdGhlIGRlY29yYXRpdmUgbWV0cmljcwojIChnbG93LCBibHVyLCBwaWxsKSBzaXQgYmVsb3cgdGhlIGdhbGxlcnkgdmFsdWVzLgoKTElNSVRTID0gewogICAgInVwcCI6ICAgICAgICgiVVBQRVJDQVNFIiwgMTIwKSwKICAgICJtb25vVXBwZXIiOiAoIm1vbm8rVVBQRVJDQVNFIiwgMjApLAogICAgInRyYWNrRW0iOiAgICgi0YDQsNC30YDRj9C00LrQsCA+PSAwLjA4ZW0iLCA1KSwKICAgICJ0cmFja1B4IjogICAoItGA0LDQt9GA0Y/QtNC60LAgPj0gMS4ycHgiLCAyMCksCiAgICAiZ2xvdyI6ICAgICAgKCLRgdCy0LXRh9C10L3QuNC1IChib3gtc2hhZG93KSIsIDQwKSwKICAgICJibHVyIjogICAgICAoItGA0LDQt9C80YvRgtC40LUgKGJhY2tkcm9wLWZpbHRlcikiLCAyMCksCiAgICAicGlsbCI6ICAgICAgKCLQv9C40LvRjtC70LggKHJhZGl1cyA+PSAxMDBweCkiLCA0MCksCiAgICAibGl0Q2FwcyI6ICAgKCLQu9C40YLQtdGA0LDQu9GM0L3Ri9C5IENBUFMiLCAzMCksCiAgICAibGl0Q2Fwc01vbm8iOiAoIkNBUFMgKyDQvNC+0L3QviIsIDgpLAp9ClRJTllfTUFYX1BDVCA9IDYuMApISURERU5fTUFYID0gMTIKClBST0JFID0gciIiIigpID0+IHsKICBjb25zdCBlbHM9Wy4uLmRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJyonKV0uc2xpY2UoMCw1MDAwKTsKICBsZXQgZ2xvdz0wLGJsdXI9MCxncmFkPTAsdXBwPTAsbW9ubz0wLG1vbm9VcHBlcj0wLHBpbGw9MCx0cmFja0VtPTAsdHJhY2tQeD0wLGhpZGRlbj0wLGhpZGRlblQ9MCx0aW55PTA7CiAgbGV0IGxpdENhcHM9MCxsaXRDYXBzTW9ubz0wOwogIGZvcihjb25zdCBlIG9mIGVscyl7CiAgICBjb25zdCBzPWdldENvbXB1dGVkU3R5bGUoZSk7CiAgICBpZihzLmJveFNoYWRvdyAmJiBzLmJveFNoYWRvdyE9PSdub25lJykgZ2xvdysrOwogICAgaWYocy5iYWNrZHJvcEZpbHRlciAmJiBzLmJhY2tkcm9wRmlsdGVyIT09J25vbmUnKSBibHVyKys7CiAgICBpZigvZ3JhZGllbnQvLnRlc3Qocy5iYWNrZ3JvdW5kSW1hZ2UpKSBncmFkKys7CiAgICBjb25zdCBpc1VwPXMudGV4dFRyYW5zZm9ybT09PSd1cHBlcmNhc2UnOyBpZihpc1VwKSB1cHArKzsKICAgIGNvbnN0IGlzTW9ubz0vbW9uby9pLnRlc3Qocy5mb250RmFtaWx5KTsgaWYoaXNNb25vKXttb25vKys7IGlmKGlzVXApIG1vbm9VcHBlcisrO30KICAgIGlmKHBhcnNlRmxvYXQocy5ib3JkZXJSYWRpdXMpPj0xMDApIHBpbGwrKzsKICAgIGNvbnN0IGZzPXBhcnNlRmxvYXQocy5mb250U2l6ZSl8fDE2OwogICAgY29uc3QgbHM9cGFyc2VGbG9hdChzLmxldHRlclNwYWNpbmcpfHwwOwogICAgaWYobHM+PTEuMikgdHJhY2tQeCsrOwogICAgLy8gdHJhY2tpbmcgcmVsYXRpdmUgdG8gdHlwZSBzaXplOiAuMDM1ZW0gb24gYSA0NHB4IGhlYWRpbmcgaXMgMS41cHggYW5kIG5vcm1hbDsKICAgIC8vIC4xNmVtIG9uIGEgMTJweCBsYWJlbCBpcyBhIHRlbGwuIE9ubHkgdGhlIHJhdGlvIGNhdGNoZXMgdGhlIHNlY29uZC4KICAgIGlmKGxzL2ZzPj0wLjA4KSB0cmFja0VtKys7CiAgICBpZihzLm9wYWNpdHk9PT0nMCcgJiYgcy50cmFuc2Zvcm0hPT0nbm9uZScpe2hpZGRlbisrOyBpZigvdHJhbnNsYXRlLy50ZXN0KHMudHJhbnNmb3JtKSkgaGlkZGVuVCsrO30KICAgIGlmKGZzPD0xMSkgdGlueSsrOwogICAgaWYoIWUuY2hpbGRyZW4ubGVuZ3RoKXsKICAgICAgY29uc3QgdD0oZS50ZXh0Q29udGVudHx8JycpLnRyaW0oKTsgaWYodC5sZW5ndGg+PTMpewogICAgICAgIGNvbnN0IEw9dC5yZXBsYWNlKC9bXkEtWmEtetCQLdCv0LAt0Y/QgdGRXS9nLCcnKTsKICAgICAgICAvLyA0KyBsZXR0ZXJzOiBhIDEtMyBsZXR0ZXIgY2FwcyB0b2tlbiBpcyBhbiBBQ1JPTllNIChQREYsIENWLCBEWEYsIFJBRykKICAgICAgICBpZihMLmxlbmd0aD49NCl7CiAgICAgICAgICBjb25zdCB1cD0oTC5tYXRjaCgvW0EtWtCQLdCv0IFdL2cpfHxbXSkubGVuZ3RoOwogICAgICAgICAgaWYodXAvTC5sZW5ndGg+MC44NSl7CiAgICAgICAgICAgIC8vIFNFTUFOVElDIEVYQ0xVU0lPTiAobm8gY2xhc3MgbmFtZXMsIHNvIGl0IGNhbm5vdCBiZSBnYW1lZCBieSByZW5hbWluZyk6CiAgICAgICAgICAgIC8vIHVwcGVyY2FzZSBzZXQgaW4gdGhlIENPTkRFTlNFRCBQQU5FTCBGQUNFIGlzIGFuIGluc3RydW1lbnQgbGFiZWwgLQogICAgICAgICAgICAvLyBleGFjdGx5IGhvdyBhIHJlYWwgY29udHJvbCBwYW5lbCBpcyBsZXR0ZXJlZCwgYW5kIHRoZSByZWZlcmVuY2VzIGNhcnJ5CiAgICAgICAgICAgIC8vIHRoZW0gdG9vLiBVcHBlcmNhc2UgaW4gYSBub3JtYWwgc2Fucywgb3IgaW4gbW9ub3NwYWNlLCBpcyB0aGUgQUkgdGVsbC4KICAgICAgICAgICAgY29uc3QgaXNQYW5lbEZhY2UgPSAvbmFycm93fGNvbmRlbnNlZC9pLnRlc3Qocy5mb250RmFtaWx5KSAmJiAhaXNNb25vOwogICAgICAgICAgICBpZighaXNQYW5lbEZhY2UpeyBsaXRDYXBzKys7IGlmKGlzTW9ubykgbGl0Q2Fwc01vbm8rKzsgfQogICAgICAgICAgfQogICAgICAgIH0KICAgICAgfQogICAgfQogIH0KICByZXR1cm4ge2dsb3csYmx1cixncmFkLHVwcCxtb25vLG1vbm9VcHBlcixwaWxsLHRyYWNrRW0sdHJhY2tQeCxoaWRkZW4saGlkZGVuVCx0aW55LGxpdENhcHMsbGl0Q2Fwc01vbm8sdG90YWw6ZWxzLmxlbmd0aH07Cn0iIiIKCgpkZWYgbWFpbigpIC0+IGludDoKICAgIGFwID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoKQogICAgYXAuYWRkX2FyZ3VtZW50KCItLXBhZ2UiLCByZXF1aXJlZD1UcnVlLCBoZWxwPSJwYXRoIHVuZGVyIHRoZSBzZXJ2ZWQgcm9vdCwgZS5nLiBsYWIvbGFiLXByZXZpZXcuaHRtbCIpCiAgICBhcC5hZGRfYXJndW1lbnQoIi0tcm9vdCIsIGRlZmF1bHQ9ImRpc3QiLCBoZWxwPSJkaXJlY3RvcnkgdG8gc2VydmUgKGRlZmF1bHQ6IGRpc3QpIikKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1wb3J0IiwgdHlwZT1pbnQsIGRlZmF1bHQ9ODE1MCkKICAgIGFwLmFkZF9hcmd1bWVudCgiLS1qc29uIiwgYWN0aW9uPSJzdG9yZV90cnVlIikKICAgIGFyZ3MgPSBhcC5wYXJzZV9hcmdzKCkKCiAgICBmb3IgZW50cnkgaW4gbGlzdChzeXMucGF0aCk6CiAgICAgICAgaWYgImhlcm1lc1xcaW5zdGFsbHMiIGluIGVudHJ5IG9yICJoZXJtZXNcXGhlcm1lcy1hZ2VudCIgaW4gZW50cnk6CiAgICAgICAgICAgIHN5cy5wYXRoLnJlbW92ZShlbnRyeSkKICAgIG9zLmVudmlyb24ucG9wKCJQWVRIT05QQVRIIiwgTm9uZSkKICAgIGZyb20gcGxheXdyaWdodC5zeW5jX2FwaSBpbXBvcnQgc3luY19wbGF5d3JpZ2h0CgogICAgc2VydmVyID0gc3VicHJvY2Vzcy5Qb3BlbigKICAgICAgICBbc3lzLmV4ZWN1dGFibGUsICItbSIsICJodHRwLnNlcnZlciIsIHN0cihhcmdzLnBvcnQpLCAiLS1kaXJlY3RvcnkiLCBzdHIoUk9PVCAvIGFyZ3Mucm9vdCldLAogICAgICAgIHN0ZG91dD1zdWJwcm9jZXNzLkRFVk5VTEwsIHN0ZGVycj1zdWJwcm9jZXNzLkRFVk5VTEwpCiAgICB0aW1lLnNsZWVwKDEuNikKICAgIHRyeToKICAgICAgICB3aXRoIHN5bmNfcGxheXdyaWdodCgpIGFzIHB3OgogICAgICAgICAgICBiID0gcHcuY2hyb21pdW0ubGF1bmNoKGV4ZWN1dGFibGVfcGF0aD1DSFJPTUlVTSkKICAgICAgICAgICAgY3R4ID0gYi5uZXdfY29udGV4dCh2aWV3cG9ydD17IndpZHRoIjogMTQ0MCwgImhlaWdodCI6IDEwMDB9KQogICAgICAgICAgICBwYWdlID0gY3R4Lm5ld19wYWdlKCkKICAgICAgICAgICAgZXJyb3JzID0gW10KICAgICAgICAgICAgcGFnZS5vbigiY29uc29sZSIsIGxhbWJkYSBtOiBlcnJvcnMuYXBwZW5kKGYie20udHlwZX06IHttLnRleHR9IikgaWYgbS50eXBlID09ICJlcnJvciIgZWxzZSBOb25lKQogICAgICAgICAgICBwYWdlLm9uKCJwYWdlZXJyb3IiLCBsYW1iZGEgZTogZXJyb3JzLmFwcGVuZChmInBhZ2VlcnJvcjoge2V9IikpCiAgICAgICAgICAgIHBhZ2UuZ290byhmImh0dHA6Ly8xMjcuMC4wLjE6e2FyZ3MucG9ydH0ve2FyZ3MucGFnZS5sc3RyaXAoJy8nKX0iLCB3YWl0X3VudGlsPSJsb2FkIikKICAgICAgICAgICAgcGFnZS53YWl0X2Zvcl90aW1lb3V0KDIyMDApCiAgICAgICAgICAgIHBhZ2UuZXZhbHVhdGUoIndpbmRvdy5zY3JvbGxUbygwLCA2MDApIikKICAgICAgICAgICAgcGFnZS53YWl0X2Zvcl90aW1lb3V0KDEyMDApCiAgICAgICAgICAgIHAgPSBwYWdlLmV2YWx1YXRlKFBST0JFKQogICAgICAgICAgICBvdmVyID0gcGFnZS5ldmFsdWF0ZSgiZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbFdpZHRoIC0gd2luZG93LmlubmVyV2lkdGgiKQogICAgICAgICAgICBiLmNsb3NlKCkKICAgIGZpbmFsbHk6CiAgICAgICAgc2VydmVyLnRlcm1pbmF0ZSgpCiAgICAgICAgdHJ5OgogICAgICAgICAgICBzZXJ2ZXIud2FpdCh0aW1lb3V0PTUpCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgc2VydmVyLmtpbGwoKQoKICAgIG4gPSBwWyJ0b3RhbCJdIG9yIDEKICAgIHJhdGVzID0ge2s6IHJvdW5kKDEwMDAgKiBwW2tdIC8gbiwgMSkgZm9yIGsgaW4gKCJnbG93IiwgImJsdXIiLCAidXBwIiwgIm1vbm8iLCAibW9ub1VwcGVyIiwgInBpbGwiLCAidHJhY2tFbSIsICJ0cmFja1B4IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImxpdENhcHMiLCAibGl0Q2Fwc01vbm8iKX0KICAgIHRpbnkgPSByb3VuZCgxMDAgKiBwWyJ0aW55Il0gLyBuLCAxKQogICAgZmFpbHVyZXMgPSBbXQogICAgZm9yIGssICh0aXRsZSwgbGltaXQpIGluIExJTUlUUy5pdGVtcygpOgogICAgICAgIGlmIHJhdGVzW2tdID4gbGltaXQ6CiAgICAgICAgICAgIGZhaWx1cmVzLmFwcGVuZChmInt0aXRsZX0gPSB7cmF0ZXNba119LzEwMDAgKNC70LjQvNC40YIge2xpbWl0fSkiKQogICAgaWYgdGlueSA+IFRJTllfTUFYX1BDVDoKICAgICAgICBmYWlsdXJlcy5hcHBlbmQoZiLQvNC40LrRgNC+LdGI0YDQuNGE0YIgPD0xMXB4ID0ge3Rpbnl9JSAo0LvQuNC80LjRgiB7VElOWV9NQVhfUENUfSUpIikKICAgIGlmIHBbImhpZGRlblQiXSA+IEhJRERFTl9NQVg6CiAgICAgICAgZmFpbHVyZXMuYXBwZW5kKGYi0L/QvtGP0LLQu9C10L3QuNC1INGB0L4g0YHQtNCy0LjQs9C+0LwgPSB7cFsnaGlkZGVuVCddfSAo0LvQuNC80LjRgiB7SElEREVOX01BWH0pIikKICAgIGlmIG92ZXIgPiAwOgogICAgICAgIGZhaWx1cmVzLmFwcGVuZChmItCz0L7RgNC40LfQvtC90YLQsNC70YzQvdC+0LUg0L/QtdGA0LXQv9C+0LvQvdC10L3QuNC1INC90LAgMzYwID0ge292ZXJ9cHgiKQogICAgaWYgZXJyb3JzOgogICAgICAgIGZhaWx1cmVzLmFwcGVuZChmItC+0YjQuNCx0L7QuiDQsiDQutC+0L3RgdC+0LvQuCA9IHtsZW4oZXJyb3JzKX06IHtlcnJvcnNbOjJdfSIpCgogICAgaWYgYXJncy5qc29uOgogICAgICAgIHByaW50KGpzb24uZHVtcHMoeyJlbGVtZW50cyI6IG4sICJwZXIxMDAwIjogcmF0ZXMsICJ0aW55X3BjdCI6IHRpbnksCiAgICAgICAgICAgICAgICAgICAgICAgICAgImhpZGRlbiI6IHBbImhpZGRlbiJdLCAiaGlkZGVuX3RyYW5zbGF0ZSI6IHBbImhpZGRlblQiXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAib3ZlcmZsb3dfMzYwIjogb3ZlciwgImNvbnNvbGVfZXJyb3JzIjogZXJyb3JzLAogICAgICAgICAgICAgICAgICAgICAgICAgICJmYWlsdXJlcyI6IGZhaWx1cmVzfSwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MSkpCiAgICBlbHNlOgogICAgICAgIHByaW50KGYiZWxlbWVudHM9e259ICAiICsgIiAgIi5qb2luKGYie2t9PXt2fSIgZm9yIGssIHYgaW4gcmF0ZXMuaXRlbXMoKSkpCiAgICAgICAgcHJpbnQoZiJ0aW55PXt0aW55fSUgIGhpZGRlbj17cFsnaGlkZGVuJ119ICh0cmFuc2xhdGUge3BbJ2hpZGRlblQnXX0pICBvdmVyZmxvdzM2MD17b3Zlcn0gIGVycm9ycz17bGVuKGVycm9ycyl9IikKICAgICAgICBpZiBmYWlsdXJlczoKICAgICAgICAgICAgcHJpbnQoIlxuRkFJTDoiKQogICAgICAgICAgICBmb3IgZiBpbiBmYWlsdXJlczoKICAgICAgICAgICAgICAgIHByaW50KCIgIC0iLCBmKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHByaW50KCJcbkZSQUdNRU5UIE9LOiBkZW5zaXRpZXMgaW5zaWRlIHRoZSBodW1hbi1kZXNpZ24gZW52ZWxvcGUiKQogICAgcmV0dXJuIDEgaWYgZmFpbHVyZXMgZWxzZSAwCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHJhaXNlIFN5c3RlbUV4aXQobWFpbigpKQo=
+#!/usr/bin/env python3
+"""Measure the anti-AI densities of a single lab page and compare to the limits.
+
+Same probe and same limits as scripts/check_ai_lint.py, but scoped to one page, so a
+variant fragment can be measured BEFORE it is promoted into the site.
+
+Usage:
+    python scripts/check_fragment.py --page lab/lab-preview.html --port 8150
+    python scripts/check_fragment.py --page lab/lab-preview.html --json
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+CHROMIUM = r"C:\Users\Nitro\AppData\Local\ms-playwright\chromium-1243\chrome-win64\chrome.exe"
+
+# Limits are NOT invented. Each is the maximum observed across 13 real
+# human-made reference sites (figma.com, awwwards.com x2, godly.website,
+# onepagelove.com, comfy.org, docs.comfy.org, github/comfyanonymous/ComfyUI,
+# jvns.ca, simonwillison.net, danluu.com, apenwarr.ca, land-book.com),
+# re-measured 27.10.2026 with this same probe:
+#   UPP 114.0 | mono+UPP 15.2 | trackEm 1.5 | trackPx 1.5 | litCaps 21.5
+#   litCaps+mono 4.6 | glow 102.7 | blur 69.2 | pill 113.6 | tiny 11.6%
+# Two corrections were made to the measurement itself, because the first
+# version was wrong in both directions:
+#   - tracking is measured in em (relative to type size): .035em on a 44px
+#     heading is 1.5px and perfectly normal; .16em on a 12px label is a tell.
+#   - a 1-3 letter all-caps token is an ACRONYM (PDF, CV, DXF, RAG) and is not
+#     counted; and a PANEL LEGEND (a deliberately governed 13px condensed
+#     label) is excluded, because the tell is caps applied to CONTENT.
+# A portfolio must still be stricter than a gallery, so the decorative metrics
+# (glow, blur, pill) sit below the gallery values.
+
+LIMITS = {
+    "upp":       ("UPPERCASE", 120),
+    "monoUpper": ("mono+UPPERCASE", 20),
+    "trackEm":   ("разрядка >= 0.08em", 5),
+    "trackPx":   ("разрядка >= 1.2px", 20),
+    "glow":      ("свечение (box-shadow)", 40),
+    "blur":      ("размытие (backdrop-filter)", 20),
+    "pill":      ("пилюли (radius >= 100px)", 40),
+    "litCaps":   ("литеральный CAPS", 30),
+    "litCapsMono": ("CAPS + моно", 8),
+}
+TINY_MAX_PCT = 6.0
+HIDDEN_MAX = 12
+
+PROBE = r"""() => {
+  const els=[...document.querySelectorAll('*')].slice(0,5000);
+  let glow=0,blur=0,grad=0,upp=0,mono=0,monoUpper=0,pill=0,trackEm=0,trackPx=0,hidden=0,hiddenT=0,tiny=0;
+  let litCaps=0,litCapsMono=0;
+  for(const e of els){
+    const s=getComputedStyle(e);
+    if(s.boxShadow && s.boxShadow!=='none') glow++;
+    if(s.backdropFilter && s.backdropFilter!=='none') blur++;
+    if(/gradient/.test(s.backgroundImage)) grad++;
+    const isUp=s.textTransform==='uppercase'; if(isUp) upp++;
+    const isMono=/mono/i.test(s.fontFamily); if(isMono){mono++; if(isUp) monoUpper++;}
+    if(parseFloat(s.borderRadius)>=100) pill++;
+    const fs=parseFloat(s.fontSize)||16;
+    const ls=parseFloat(s.letterSpacing)||0;
+    if(ls>=1.2) trackPx++;
+    // tracking relative to type size: .035em on a 44px heading is 1.5px and normal;
+    // .16em on a 12px label is a tell. Only the ratio catches the second.
+    if(ls/fs>=0.08) trackEm++;
+    if(s.opacity==='0' && s.transform!=='none'){hidden++; if(/translate/.test(s.transform)) hiddenT++;}
+    if(fs<=11) tiny++;
+    if(!e.children.length){
+      const t=(e.textContent||'').trim(); if(t.length>=3){
+        const L=t.replace(/[^A-Za-zА-Яа-яЁё]/g,'');
+        // 4+ letters: a 1-3 letter caps token is an ACRONYM (PDF, CV, DXF, RAG)
+        if(L.length>=4){
+          const up=(L.match(/[A-ZА-ЯЁ]/g)||[]).length;
+          if(up/L.length>0.85){
+            // SEMANTIC EXCLUSION (no class names, so it cannot be gamed by renaming):
+            // uppercase set in the CONDENSED PANEL FACE is an instrument label -
+            // exactly how a real control panel is lettered, and the references carry
+            // them too. Uppercase in a normal sans, or in monospace, is the AI tell.
+            const isPanelFace = /narrow|condensed/i.test(s.fontFamily) && !isMono;
+            if(!isPanelFace){ litCaps++; if(isMono) litCapsMono++; }
+          }
+        }
+      }
+    }
+  }
+  return {glow,blur,grad,upp,mono,monoUpper,pill,trackEm,trackPx,hidden,hiddenT,tiny,litCaps,litCapsMono,total:els.length};
+}"""
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--page", required=True, help="path under the served root, e.g. lab/lab-preview.html")
+    ap.add_argument("--root", default="dist", help="directory to serve (default: dist)")
+    ap.add_argument("--port", type=int, default=8150)
+    ap.add_argument("--json", action="store_true")
+    args = ap.parse_args()
+
+    for entry in list(sys.path):
+        if "hermes\\installs" in entry or "hermes\\hermes-agent" in entry:
+            sys.path.remove(entry)
+    os.environ.pop("PYTHONPATH", None)
+    from playwright.sync_api import sync_playwright
+
+    server = subprocess.Popen(
+        [sys.executable, "-m", "http.server", str(args.port), "--directory", str(ROOT / args.root)],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    time.sleep(1.6)
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=CHROMIUM)
+            ctx = b.new_context(viewport={"width": 1440, "height": 1000})
+            page = ctx.new_page()
+            errors = []
+            page.on("console", lambda m: errors.append(f"{m.type}: {m.text}") if m.type == "error" else None)
+            page.on("pageerror", lambda e: errors.append(f"pageerror: {e}"))
+            page.goto(f"http://127.0.0.1:{args.port}/{args.page.lstrip('/')}", wait_until="load")
+            page.wait_for_timeout(2200)
+            page.evaluate("window.scrollTo(0, 600)")
+            page.wait_for_timeout(1200)
+            p = page.evaluate(PROBE)
+            over = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
+            b.close()
+    finally:
+        server.terminate()
+        try:
+            server.wait(timeout=5)
+        except Exception:
+            server.kill()
+
+    n = p["total"] or 1
+    rates = {k: round(1000 * p[k] / n, 1) for k in ("glow", "blur", "upp", "mono", "monoUpper", "pill", "trackEm", "trackPx",
+                                                      "litCaps", "litCapsMono")}
+    tiny = round(100 * p["tiny"] / n, 1)
+    failures = []
+    for k, (title, limit) in LIMITS.items():
+        if rates[k] > limit:
+            failures.append(f"{title} = {rates[k]}/1000 (лимит {limit})")
+    if tiny > TINY_MAX_PCT:
+        failures.append(f"микро-шрифт <=11px = {tiny}% (лимит {TINY_MAX_PCT}%)")
+    if p["hiddenT"] > HIDDEN_MAX:
+        failures.append(f"появление со сдвигом = {p['hiddenT']} (лимит {HIDDEN_MAX})")
+    if over > 0:
+        failures.append(f"горизонтальное переполнение на 360 = {over}px")
+    if errors:
+        failures.append(f"ошибок в консоли = {len(errors)}: {errors[:2]}")
+
+    if args.json:
+        print(json.dumps({"elements": n, "per1000": rates, "tiny_pct": tiny,
+                          "hidden": p["hidden"], "hidden_translate": p["hiddenT"],
+                          "overflow_360": over, "console_errors": errors,
+                          "failures": failures}, ensure_ascii=False, indent=1))
+    else:
+        print(f"elements={n}  " + "  ".join(f"{k}={v}" for k, v in rates.items()))
+        print(f"tiny={tiny}%  hidden={p['hidden']} (translate {p['hiddenT']})  overflow360={over}  errors={len(errors)}")
+        if failures:
+            print("\nFAIL:")
+            for f in failures:
+                print("  -", f)
+        else:
+            print("\nFRAGMENT OK: densities inside the human-design envelope")
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

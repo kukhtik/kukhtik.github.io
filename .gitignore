@@ -1,1 +1,13 @@
-IyBnZW5lcmF0ZWQKZGlzdC8KX19weWNhY2hlX18vCioucHljCi50bXAvCiMgbG9jYWwgdG9vbHMKLnZlbnYvCnZlbnYvCiMgZXZpZGVuY2UgYXJ0ZWZhY3RzIGtlcHQgb3V0IG9mIHRoZSByZXBvIChzY3JlZW5zaG90cyBhcmUgdXBsb2FkZWQgdG8gdGhlIHNpdGUpCi5yZXBvcnRzLwojIHJlbmRlciBldmlkZW5jZSAoc2NyZWVuc2hvdHMsIGxpZ2h0aG91c2UganNvbiwgcmVwb3J0Lmpzb24pCm91dC8KZGlzdC1sY2Fycy8K
+# generated
+dist/
+__pycache__/
+*.pyc
+.tmp/
+# local tools
+.venv/
+venv/
+# evidence artefacts kept out of the repo (screenshots are uploaded to the site)
+.reports/
+# render evidence (screenshots, lighthouse json, report.json)
+out/
+dist-lcars/

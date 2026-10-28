@@ -1,1 +1,62 @@
-c2x1ZzogdmV0a2EtZHdnCm9yZGVyOiAyCnB1Ymxpc2hlZDogdHJ1ZQpmZWF0dXJlZDogdHJ1ZQp2aXN1YWw6IHZldGthCnN0YXR1czogbmRhCnllYXI6ICIyMDI2IgoKdGl0bGU6CiAgZW46ICJWRVRLQV9EV0cg4oCUIHBob3RvIG9mIGEgc3VydmV5IHNrZXRjaCDihpIgRFhGIgogIHJ1OiAiVkVUS0FfRFdHIOKAlCDRhNC+0YLQviDQsNCx0YDQuNGB0LAg4oaSIERYRiIKCnN1bW1hcnk6CiAgZW46ICJDb21wdXRlci12aXNpb24gcGlwZWxpbmUgdGhhdCB0dXJucyBhIHBob3RvIG9mIGEgaGFuZC1kcmF3biBzdXJ2ZXkgc2tldGNoIGludG8gYSB0b3BvZ3JhcGhpYyBEWEYuIE1hcmtlciBkZXRlY3Rpb24sIE9DUiwgYmxvY2sgbGlicmFyeS4gQ3V0cyBtYW51YWwgZHJhZnRpbmcgZnJvbSA0IGhvdXJzIHRvIDE1IG1pbnV0ZXMuIgogIHJ1OiAiQ1Yt0L/QsNC50L/Qu9Cw0LnQvSwg0LrQvtGC0L7RgNGL0Lkg0L/RgNC10LLRgNCw0YnQsNC10YIg0YTQvtGC0L4g0YDRg9C60L7Qv9C40YHQvdC+0LPQviDQsNCx0YDQuNGB0LAg0LIg0YLQvtC/0L7Qs9GA0LDRhNC40YfQtdGB0LrQuNC5IERYRi4g0JTQtdGC0LXQutGG0LjRjyDQvNCw0YDQutC10YDQvtCyLCBPQ1IsINCx0LjQsdC70LjQvtGC0LXQutCwINCx0LvQvtC60L7Qsi4g0KDRg9GH0L3QvtC1INGH0LXRgNGH0LXQvdC40LU6IDQg0YfQsNGB0LAg4oaSIDE1INC80LjQvdGD0YIuIgoKcHJvYmxlbToKICBlbjogIkEgc3VydmV5b3IgZHJhd3MgYSBmaWVsZCBhYnJpcyBieSBoYW5kLCB0aGVuIHNwZW5kcyBob3VycyB0cmFuc2ZlcnJpbmcgbnVtYmVyZWQgcG9pbnRzIGFuZCBzeW1ib2xzIGludG8gQ0FELiBUaGUgcHJvY2VzcyBpcyBzbG93LCByZXBldGl0aXZlIGFuZCBlcnJvci1wcm9uZS4iCiAgcnU6ICLQk9C10L7QtNC10LfQuNGB0YIg0YDQuNGB0YPQtdGCINCw0LHRgNC40YEg0L7RgiDRgNGD0LrQuCwg0LAg0L/QvtGC0L7QvCDRh9Cw0YHRiyDQv9C10YDQtdC90L7RgdC40YIg0YLQvtGH0LrQuCDQuCDRg9GB0LvQvtCy0L3Ri9C1INC30L3QsNC60Lgg0LIgQ0FELiDQn9GA0L7RhtC10YHRgSDQvNC10LTQu9C10L3QvdGL0LksINC80L7QvdC+0YLQvtC90L3Ri9C5INC4INC/0L7QtNCy0LXRgNC20LXQvdC90YvQuSDQvtGI0LjQsdC60LDQvC4iCgphcHByb2FjaDoKICBlbjoKICAgIC0gIk1hcmtlciBhbmQgdGV4dCBkZXRlY3Rpb24gb24gYSBwaG9uZSBwaG90bywgZm9sbG93ZWQgYnkgT0NSIGZvciBwb2ludCBudW1iZXJzIGFuZCBsYWJlbHMuIgogICAgLSAiQSA0NDQtYmxvY2sgR1VHSyBzaWduIGxpYnJhcnkgd2l0aCBhIGZpZGVsaXR5IGF1ZGl0IGFnYWluc3QgdGhlIHJlZmVyZW5jZSB0ZW1wbGF0ZS4iCiAgICAtICJEWEYgZ2VuZXJhdGlvbiB3aXRoIGEgUHlTaWRlNi9RTUwgZGVza3RvcCBzaGVsbCBhbmQgQ0kgcXVhbGl0eSBnYXRlcy4iCiAgcnU6CiAgICAtICLQlNC10YLQtdC60YbQuNGPINC80LDRgNC60LXRgNC+0LIg0Lgg0YLQtdC60YHRgtCwINC90LAg0YTQvtGC0L4g0YEg0YLQtdC70LXRhNC+0L3QsCwgT0NSINC00LvRjyDQvdC+0LzQtdGA0L7QsiDRgtC+0YfQtdC6INC4INC/0L7QtNC/0LjRgdC10LkuIgogICAgLSAi0JHQuNCx0LvQuNC+0YLQtdC60LAg0LjQtyA0NDQg0LHQu9C+0LrQvtCyINCT0KPQk9CaINGBINCw0YPQtNC40YLQvtC8INGC0L7Rh9C90L7RgdGC0Lgg0L7RgtC90L7RgdC40YLQtdC70YzQvdC+INGN0YLQsNC70L7QvdC90L7Qs9C+INGI0LDQsdC70L7QvdCwLiIKICAgIC0gItCT0LXQvdC10YDQsNGG0LjRjyBEWEYsIGRlc2t0b3At0L7QsdC+0LvQvtGH0LrQsCDQvdCwIFB5U2lkZTYvUU1MINC4IHF1YWxpdHkgZ2F0ZXMg0LIgQ0kuIgoKcmVzdWx0czoKICAtIHZhbHVlOiAiNCBoIOKGkiAxNSBtaW4iCiAgICBsYWJlbDoge2VuOiAibWFudWFsIGRyYWZ0aW5nIHRpbWUiLCBydTogItCy0YDQtdC80Y8g0YDRg9GH0L3QvtCz0L4g0YfQtdGA0YfQtdC90LjRjyJ9CiAgLSB2YWx1ZTogIjMiCiAgICBsYWJlbDoge2VuOiAic3VydmV5aW5nIGNvbXBhbmllcyBpbiBwcm9kdWN0aW9uIiwgcnU6ICLQs9C10L7QtNC10LfQuNGH0LXRgdC60LjQtSDQutC+0LzQv9Cw0L3QuNC4INCyIHByb2R1Y3Rpb24ifQogIC0gdmFsdWU6ICI0NDQiCiAgICBsYWJlbDoge2VuOiAiR1VHSyBibG9ja3MgaW4gdGhlIGxpYnJhcnkiLCBydTogItCx0LvQvtC60LAg0JPQo9CT0Jog0LIg0LHQuNCx0LvQuNC+0YLQtdC60LUifQoKc3RhY2s6CiAgLSAiUHl0aG9uIgogIC0gIk9wZW5DViIKICAtICJQYWRkbGVPQ1IiCiAgLSAiZXpkeGYiCiAgLSAiUHlTaWRlNiAvIFFNTCIKICAtICJDSSBxdWFsaXR5IGdhdGVzIgoKY29uZmlkZW50aWFsaXR5OgogIGVuOiAiU291cmNlIHByaXZhdGUuIENvbW1lcmNpYWwgdXNlIGFuZCBnb3Zlcm5tZW50IGNsaWVudHMgdW5kZXIgTkRBOyBhcmNoaXRlY3R1cmUsIHNjcmVlbnNob3RzIGFuZCBtZWFzdXJlZCByZXN1bHRzIGFyZSBzaG93biBoZXJlLiIKICBydTogItCY0YHRhdC+0LTQvdC40LrQuCDQt9Cw0LrRgNGL0YLRiy4g0JrQvtC80LzQtdGA0YfQtdGB0LrQvtC1INC40YHQv9C+0LvRjNC30L7QstCw0L3QuNC1INC4INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQtSDQt9Cw0LrQsNC30YfQuNC60Lgg0L/QvtC0IE5EQTsg0LfQtNC10YHRjCDQv9C+0LrQsNC30LDQvdGLINCw0YDRhdC40YLQtdC60YLRg9GA0LAsINGB0LrRgNC40L3RiNC+0YLRiyDQuCDQuNC30LzQtdGA0LXQvdC90YvQtSDRgNC10LfRg9C70YzRgtCw0YLRiy4iCgpsaW5rczoKICAtIGxhYmVsOiB7ZW46ICJDYXNlIG5vdGVzIiwgcnU6ICLQntC/0LjRgdCw0L3QuNC1INC60LXQudGB0LAifQogICAgdXJsOiAiaHR0cHM6Ly9naXRodWIuY29tL2t1a2h0aWsvT3Blbl9zcGFjZSIKCmltYWdlczoKICAtIHNyYzogImltYWdlcy92ZXRrYS1kd2ctbGlicmFyeS53ZWJwIgogICAgYWx0OgogICAgICBlbjogIlZFVEtBX0RXRyBibG9jayBsaWJyYXJ5IGF1ZGl0IGNvbnNvbGUiCiAgICAgIHJ1OiAiVkVUS0FfRFdHIOKAlCDQutC+0L3RgdC+0LvRjCDQsNGD0LTQuNGC0LAg0LHQuNCx0LvQuNC+0YLQtdC60Lgg0LHQu9C+0LrQvtCyIgogICAgY2FwdGlvbjoKICAgICAgZW46ICJCbG9jay1saWJyYXJ5IGF1ZGl0OiA0NDQgLyA0NDQgYmxvY2tzIHBhc3MgYWxsIGZpdmUgZmlkZWxpdHkgYXhlcy4iCiAgICAgIHJ1OiAi0JDRg9C00LjRgiDQsdC40LHQu9C40L7RgtC10LrQuDogNDQ0IC8gNDQ0INCx0LvQvtC60LAg0L/RgNC+0YXQvtC00Y/RgiDQstGB0LUg0L/Rj9GC0Ywg0L/RgNC+0LLQtdGA0L7QuiDRgtC+0YfQvdC+0YHRgtC4LiIK
+slug: vetka-dwg
+order: 2
+published: true
+featured: true
+visual: vetka
+status: nda
+year: "2026"
+
+title:
+  en: "VETKA_DWG — photo of a survey sketch → DXF"
+  ru: "VETKA_DWG — фото абриса → DXF"
+
+summary:
+  en: "Computer-vision pipeline that turns a photo of a hand-drawn survey sketch into a topographic DXF. Marker detection, OCR, block library. Cuts manual drafting from 4 hours to 15 minutes."
+  ru: "CV-пайплайн, который превращает фото рукописного абриса в топографический DXF. Детекция маркеров, OCR, библиотека блоков. Ручное черчение: 4 часа → 15 минут."
+
+problem:
+  en: "A surveyor draws a field abris by hand, then spends hours transferring numbered points and symbols into CAD. The process is slow, repetitive and error-prone."
+  ru: "Геодезист рисует абрис от руки, а потом часы переносит точки и условные знаки в CAD. Процесс медленный, монотонный и подверженный ошибкам."
+
+approach:
+  en:
+    - "Marker and text detection on a phone photo, followed by OCR for point numbers and labels."
+    - "A 444-block GUGK sign library with a fidelity audit against the reference template."
+    - "DXF generation with a PySide6/QML desktop shell and CI quality gates."
+  ru:
+    - "Детекция маркеров и текста на фото с телефона, OCR для номеров точек и подписей."
+    - "Библиотека из 444 блоков ГУГК с аудитом точности относительно эталонного шаблона."
+    - "Генерация DXF, desktop-оболочка на PySide6/QML и quality gates в CI."
+
+results:
+  - value: "4 h → 15 min"
+    label: {en: "manual drafting time", ru: "время ручного черчения"}
+  - value: "3"
+    label: {en: "surveying companies in production", ru: "геодезические компании в production"}
+  - value: "444"
+    label: {en: "GUGK blocks in the library", ru: "блока ГУГК в библиотеке"}
+
+stack:
+  - "Python"
+  - "OpenCV"
+  - "PaddleOCR"
+  - "ezdxf"
+  - "PySide6 / QML"
+  - "CI quality gates"
+
+confidentiality:
+  en: "Source private. Commercial use and government clients under NDA; architecture, screenshots and measured results are shown here."
+  ru: "Исходники закрыты. Коммерческое использование и государственные заказчики под NDA; здесь показаны архитектура, скриншоты и измеренные результаты."
+
+links:
+  - label: {en: "Case notes", ru: "Описание кейса"}
+    url: "https://github.com/kukhtik/Open_space"
+
+images:
+  - src: "images/vetka-dwg-library.webp"
+    alt:
+      en: "VETKA_DWG block library audit console"
+      ru: "VETKA_DWG — консоль аудита библиотеки блоков"
+    caption:
+      en: "Block-library audit: 444 / 444 blocks pass all five fidelity axes."
+      ru: "Аудит библиотеки: 444 / 444 блока проходят все пять проверок точности."

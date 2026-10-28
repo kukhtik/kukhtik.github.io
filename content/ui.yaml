@@ -1,1 +1,106 @@
-bmF2OgogIGxhYmVsOiB7ZW46ICJNYWluIG5hdmlnYXRpb24iLCBydTogItCe0YHQvdC+0LLQvdCw0Y8g0L3QsNCy0LjQs9Cw0YbQuNGPIn0KICBsYW5nX2xhYmVsOiB7ZW46ICJMYW5ndWFnZSIsIHJ1OiAi0K/Qt9GL0LoifQogIHN0YXR1czoge2VuOiAiVVRDKzMgwrcgcmVtb3RlIMK3IGF2YWlsYWJsZSBmcm9tIE5vdmVtYmVyIDIwMjYiLCBydTogIlVUQyszIMK3IHJlbW90ZSDCtyDQtNC+0YHRgtGD0L/QtdC9INGBINC90L7Rj9Cx0YDRjyAyMDI2In0KICBob21lOiB7ZW46ICJIb21lIiwgcnU6ICLQk9C70LDQstC90LDRjyJ9CiAgd29yazoge2VuOiAiV29yayIsIHJ1OiAi0KDQsNCx0L7RgtGLIn0KICBhYm91dDoge2VuOiAiQWJvdXQiLCBydTogItCe0LHQviDQvNC90LUifQogIGNvbnRhY3Q6IHtlbjogIkNvbnRhY3QiLCBydTogItCa0L7QvdGC0LDQutGC0YsifQoKYWN0aW9uczoKICBza2lwOiB7ZW46ICJTa2lwIHRvIGNvbnRlbnQiLCBydTogItCaINGB0L7QtNC10YDQttCw0L3QuNGOIn0KICBkb3dubG9hZF9jdjoge2VuOiAiRG93bmxvYWQgQ1YgKFBERikiLCBydTogItCh0LrQsNGH0LDRgtGMIENWIChQREYpIn0KICBlbWFpbDoge2VuOiAiRW1haWwiLCBydTogIkVtYWlsIn0KICBnaXRodWI6IHtlbjogIkdpdEh1YiIsIHJ1OiAiR2l0SHViIn0KICBsaW5rZWRpbjoge2VuOiAiTGlua2VkSW4iLCBydTogIkxpbmtlZEluIn0KICB2aWV3X2Nhc2U6IHtlbjogIlZpZXcgY2FzZSIsIHJ1OiAi0KHQvNC+0YLRgNC10YLRjCDQutC10LnRgSJ9CiAgYmFja190b193b3JrOiB7ZW46ICJBbGwgd29yayIsIHJ1OiAi0JLRgdC1INGA0LDQsdC+0YLRiyJ9CiAgYmFja19ob21lOiB7ZW46ICJCYWNrIHRvIGhvbWUiLCBydTogItCd0LAg0LPQu9Cw0LLQvdGD0Y4ifQogIGVtYWlsX2Fib3V0OiB7ZW46ICJFbWFpbCBhYm91dCB0aGlzIHByb2plY3QiLCBydTogItCd0LDQv9C40YHQsNGC0Ywg0L4g0L/RgNC+0LXQutGC0LUifQoKc2VjdGlvbnM6CiAgc2VsZWN0ZWRfd29yazoge2VuOiAiU2VsZWN0ZWQgd29yayIsIHJ1OiAi0JjQt9Cx0YDQsNC90L3Ri9C1INC/0YDQvtC10LrRgtGLIn0KICBzZWxlY3RlZF93b3JrX25vdGU6CiAgICBlbjogIlRocmVlIHN5c3RlbXMgd2l0aCBkaWZmZXJlbnQgY29uc3RyYWludHM6IG5vIGludGVybmV0LCBtaWxsaW1ldHJlIHByZWNpc2lvbiwgYW5kIGEgbGl2ZSBwcm9kdWN0LiBTb3VyY2UgaXMgcHVibGljIHdoZXJlIHBvc3NpYmxlOyBjb21tZXJjaWFsIHdvcmsgaXMgdW5kZXIgTkRBLiIKICAgIHJ1OiAi0KLRgNC4INGB0LjRgdGC0LXQvNGLINGBINGA0LDQt9C90YvQvNC4INC+0LPRgNCw0L3QuNGH0LXQvdC40Y/QvNC4OiDQsdC10Lcg0LjQvdGC0LXRgNC90LXRgtCwLCDQvNC40LvQu9C40LzQtdGC0YDQvtCy0LDRjyDRgtC+0YfQvdC+0YHRgtGMINC4INC20LjQstC+0Lkg0L/RgNC+0LTRg9C60YIuINCa0L7QtCDQvtGC0LrRgNGL0YIg0YLQsNC8LCDQs9C00LUg0LzQvtC20L3Qvjsg0LrQvtC80LzQtdGA0YfQtdGB0LrQuNC1INC/0YDQvtC10LrRgtGLIOKAlCDQv9C+0LQgTkRBLiIKICB3aGF0X2lfZG86IHtlbjogIldoYXQgSSBkbyIsIHJ1OiAi0KfRgtC+INC00LXQu9Cw0Y4ifQogIHdoYXRfaV9kb19ub3RlOgogICAgZW46ICJJIHRha2UgYSBwcm9ibGVtIGZyb20gcHJvdG90eXBlIHRvIGEgcmVsZWFzZSB0aGF0IGNhbiBiZSBjaGVja2VkIOKAlCBub3QgYSBkZW1vIHRoYXQgb25seSB3b3JrcyBvbiB0aGUgaGFwcHkgcGF0aC4iCiAgICBydTogItCR0LXRgNGDINC30LDQtNCw0YfRgyDQvtGCINC/0YDQvtGC0L7RgtC40L/QsCDQtNC+INGA0LXQu9C40LfQsCwg0LrQvtGC0L7RgNGL0Lkg0LzQvtC20L3QviDQv9GA0L7QstC10YDQuNGC0Ywg4oCUINCwINC90LUg0LTQtdC80L4sINGA0LDQsdC+0YLQsNGO0YnQtdC1INGC0L7Qu9GM0LrQviDQvdCwINGB0YfQsNGB0YLQu9C40LLQvtC8INC/0YPRgtC4LiIKICBhYm91dDoge2VuOiAiQWJvdXQiLCBydTogItCe0LHQviDQvNC90LUifQogIGNvbnRhY3Q6IHtlbjogIkxldCdzIHRhbGsiLCBydTogItCU0LDQstCw0LnRgtC1INC/0L7Qs9C+0LLQvtGA0LjQvCJ9CiAgY29udGFjdF9ub3RlOgogICAgZW46ICJMb29raW5nIGZvciBhIHJlbW90ZSBQeXRob24vQUkgcm9sZSBpbiBDQUQvR0lTIGF1dG9tYXRpb24sIFJBRy9MTE0gc3lzdGVtcywgb3IgbWVkdGVjaC4gSSBjYW4gc3RhcnQgZnVsbC10aW1lIGZyb20gbGF0ZSBOb3ZlbWJlciAyMDI2LiIKICAgIHJ1OiAi0JjRidGDIHJlbW90ZS3RgNC+0LvRjCBQeXRob24vQUkt0LjQvdC20LXQvdC10YDQsCDQsiBDQUQvR0lTLdCw0LLRgtC+0LzQsNGC0LjQt9Cw0YbQuNC4LCBSQUcvTExNINC40LvQuCBtZWR0ZWNoLiDQnNC+0LPRgyDQvdCw0YfQsNGC0YwgZnVsbC10aW1lINGBINC60L7QvdGG0LAg0L3QvtGP0LHRgNGPIDIwMjYuIgogIG1vcmU6IHtlbjogIkFsc28iLCBydTogItCV0YnRkSJ9CiAgcmVjb3JkOiB7ZW46ICJTZXJ2aWNlIHJlY29yZCIsIHJ1OiAi0KHQu9GD0LbQtdCx0L3QsNGPINC40YHRgtC+0YDQuNGPIn0KICBpbnN0cnVtZW50X25vdGU6CiAgICBlbjogIkZpZWxkIHNlcnZpY2UsIDIwMjLigJQyMDI2IMK3IGxpbmVhciBhY2NlbGVyYXRvcnMiCiAgICBydTogItCh0LXRgNCy0LjRgSwgMjAyMuKAlDIwMjYgwrcg0LvQuNC90LXQudC90YvQtSDRg9GB0LrQvtGA0LjRgtC10LvQuCIKICByZWNvcmRfbm90ZToKICAgIGVuOiAiSSBkbyBub3QgY29tZSB0byBzb2Z0d2FyZSBmcm9tIGEgYm9vdGNhbXAuIEkgY29tZSBmcm9tIGEgcmFkaW90aGVyYXB5IGJ1bmtlcjogbGluZWFyIGFjY2VsZXJhdG9ycywgZG9zaW1ldHJ5LCBhbmQgZG9jdW1lbnRhdGlvbiB0aGF0IGhhcyB0byBiZSByaWdodCB0aGUgZmlyc3QgdGltZS4iCiAgICBydTogItCvINC/0YDQuNGI0ZHQuyDQsiDRgNCw0LfRgNCw0LHQvtGC0LrRgyDQvdC1INGBINC60YPRgNGB0L7Qsi4g0K8g0L/RgNC40YjRkdC7INC40Lcg0LHRg9C90LrQtdGA0LAg0YDQsNC00LjQvtGC0LXRgNCw0L/QuNC4OiDQu9C40L3QtdC50L3Ri9C1INGD0YHQutC+0YDQuNGC0LXQu9C4LCDQtNC+0LfQuNC80LXRgtGA0LjRjyDQuCDQtNC+0LrRg9C80LXQvdGC0LDRhtC40Y8sINC60L7RgtC+0YDQsNGPINC+0LHRj9C30LDQvdCwINCx0YvRgtGMINCy0LXRgNC90L7QuSDRgSDQv9C10YDQstC+0LPQviDRgNCw0LfQsC4iCiAgcHJvYmxlbToge2VuOiAiUHJvYmxlbSIsIHJ1OiAi0JfQsNC00LDRh9CwIn0KICBhcHByb2FjaDoge2VuOiAiQXBwcm9hY2giLCBydTogItCn0YLQviDRgdC00LXQu9Cw0LsifQogIHJlc3VsdHM6IHtlbjogIlJlc3VsdHMiLCBydTogItCg0LXQt9GD0LvRjNGC0LDRgiJ9CiAgc3RhY2s6IHtlbjogIlN0YWNrIiwgcnU6ICLQodGC0LXQuiJ9CiAgbGlua3M6IHtlbjogIkxpbmtzIiwgcnU6ICLQodGB0YvQu9C60LgifQogIGdhbGxlcnk6IHtlbjogIlNjcmVlbnNob3RzIiwgcnU6ICLQodC60YDQuNC90YjQvtGC0YsifQogIGNvbmZpZGVudGlhbGl0eToge2VuOiAiV2hhdCBpcyBwdWJsaWMiLCBydTogItCn0YLQviDQv9GD0LHQu9C40YfQvdC+In0KCm1ldGE6CiAgcm9sZToge2VuOiAiUm9sZSIsIHJ1OiAi0KDQvtC70YwifQogIHllYXI6IHtlbjogIlllYXIiLCBydTogItCT0L7QtCJ9CiAgc3RhdHVzOiB7ZW46ICJTdGF0dXMiLCBydTogItCh0YLQsNGC0YPRgSJ9Cgpmb290ZXI6CiAgcmlnaHRzOiB7ZW46ICJQeXRob24gLyBBSSBlbmdpbmVlciIsIHJ1OiAiUHl0aG9uIC8gQUkt0LjQvdC20LXQvdC10YAifQogIGJ1aWx0OiB7ZW46ICJTdGF0aWMgc2l0ZSDCtyBubyB0cmFja2VycyIsIHJ1OiAi0KHRgtCw0YLQuNGH0LXRgdC60LDRjyDRgdGC0YDQsNC90LjRhtCwIMK3INCx0LXQtyDRgtGA0LXQutC10YDQvtCyIn0KCm5vdF9mb3VuZDoKICB0aXRsZToge2VuOiAiUGFnZSBub3QgZm91bmQiLCBydTogItCh0YLRgNCw0L3QuNGG0LAg0L3QtSDQvdCw0LnQtNC10L3QsCJ9CiAgdGV4dDoKICAgIGVuOiAiVGhlIHBhZ2UgeW91IGFyZSBsb29raW5nIGZvciBkb2VzIG5vdCBleGlzdC4gSXQgbWF5IGhhdmUgbW92ZWQsIG9yIHRoZSBsaW5rIG1heSBiZSB3cm9uZy4iCiAgICBydTogItCh0YLRgNCw0L3QuNGG0YssINC60L7RgtC+0YDRg9GOINCy0Ysg0LjRidC10YLQtSwg0L3QtdGCLiDQktC+0LfQvNC+0LbQvdC+LCDQvtC90LAg0L/QtdGA0LXQtdGF0LDQu9CwINC40LvQuCDRgdGB0YvQu9C60LAg0L3QtdCy0LXRgNC90LDRjy4iCgojIC0tLS0gTENBUlMgaG9tZTogaW5zdHJ1bWVudCBjaHJvbWUgKGJpbGluZ3VhbCkgLS0tLQpsY2FyczoKICBtZXRyaWNzOiB7ZW46ICJtZXRyaWNzIiwgcnU6ICLQvNC10YLRgNC40LoifQogIG5hdl9pbnN0cnVtZW50czoge2VuOiAiSW5zdHJ1bWVudHMiLCBydTogItCf0YDQuNCx0L7RgNGLIn0KICBuYXZfcHJvamVjdHM6IHtlbjogIlByb2plY3RzIiwgcnU6ICLQn9GA0L7QtdC60YLRiyJ9CiAgbmF2X2NhcGFiaWxpdGllczoge2VuOiAiQ2FwYWJpbGl0aWVzIiwgcnU6ICLQktC+0LfQvNC+0LbQvdC+0YHRgtC4In0KICBuYXZfbG9nOiB7ZW46ICJTZXJ2aWNlIGxvZyIsIHJ1OiAi0JbRg9GA0L3QsNC7In0KICBuYXZfZmFjdHM6IHtlbjogIkZhY3RzIiwgcnU6ICLQpNCw0LrRgtGLIn0KICBuYXZfY29udGFjdHM6IHtlbjogIkNvbnRhY3RzIiwgcnU6ICLQmtC+0L3RgtCw0LrRgtGLIn0KICBzdGF0ZV9hdmFpbGFibGU6IHtlbjogInN0YXRlOiBBVkFJTEFCTEUiLCBydTogItGB0L7RgdGC0L7Rj9C90LjQtTog0JTQntCh0KLQo9Cf0JXQnSJ9CiAgbGVnZW5kX2hlcm86IHtlbjogIjAxIMK3IE1FVFJJQyBJTlNUUlVNRU5UIMK3IENPTkZJREVOQ0UgT04gOTYvMTAwIiwgcnU6ICIwMSDCtyBNRVRSSUMgSU5TVFJVTUVOVCDCtyDQotCe0KfQndCe0KHQotCsIDk2LzEwMCJ9CiAgbGVnZW5kX3Byb2plY3RzOiB7ZW46ICIwMiDCtyBQUk9KRUNUUyDCtyAzIE1FQVNVUkVEIElOU1RSVU1FTlRTIiwgcnU6ICIwMiDCtyBQUk9KRUNUUyDCtyAzINCe0JHQqtCV0JrQotCQINCY0JfQnNCV0KDQldCd0JjQryJ9CiAgbGVnZW5kX3NraWxsczoge2VuOiAiMDMgwrcgQ0FQQUJJTElUSUVTIMK3IDMgQkxPQ0tTIiwgcnU6ICIwMyDCtyBDQVBBQklMSVRJRVMgwrcgMyDQkdCb0J7QmtCQIn0KICBsZWdlbmRfcmVjb3JkOiB7ZW46ICIwNCDCtyBTRVJWSUNFIExPRyDCtyBDSFJPTk9MT0dZIiwgcnU6ICIwNCDCtyBTRVJWSUNFIExPRyDCtyBDSFJPTk9MT0dZIn0KICBsZWdlbmRfZmFjdHM6IHtlbjogIjA1IMK3IEZBQ1RTIMK3IFBBUkFNRVRFUlMiLCBydTogIjA1IMK3IEZBQ1RTIMK3INCf0JDQoNCQ0JzQldCi0KDQqyJ9CiAgbGVnZW5kX2NvbnRhY3Q6IHtlbjogIjA2IMK3IENPTlRBQ1QgwrcgRElSRUNUIENIQU5ORUwiLCBydTogIjA2IMK3IENPTlRBQ1Qgwrcg0J/QoNCv0JzQntCZINCa0JDQndCQ0JsifQogIGhfcHJvamVjdHM6IHtlbjogIkhpcyBpbnN0cnVtZW50cyIsIHJ1OiAi0J/RgNC40LHQvtGA0Ysg0LXQs9C+INGA0LDQsdC+0YLRiyJ9CiAgaF9za2lsbHM6IHtlbjogIkNhcGFiaWxpdGllcyIsIHJ1OiAi0JrQvtC80L/QtdGC0LXQvdGG0LjQuCJ9CiAgaF9yZWNvcmQ6IHtlbjogIlNlcnZpY2UgcmVjb3JkIiwgcnU6ICLQodC70YPQttC10LHQvdCw0Y8g0LjRgdGC0L7RgNC40Y8ifQogIGhfZmFjdHM6IHtlbjogIlBhcmFtZXRlcnMiLCBydTogItCf0LDRgNCw0LzQtdGC0YDRiyJ9CiAgaF9jb250YWN0OiB7ZW46ICJDb250YWN0cyIsIHJ1OiAi0JrQvtC90YLQsNC60YLRiyJ9CiAgZ2F1Z2VfbGFiZWw6IHtlbjogIkFDQ1VSQUNZIMK3IEVOR0lORUVSIENPTVBBTklPTiIsIHJ1OiAi0KLQntCn0J3QntCh0KLQrCDCtyBFTkdJTkVFUiBDT01QQU5JT04ifQogIGxlYWRfbGF0ZW5jeToge2VuOiAibGF0ZW50IHA1MCIsIHJ1OiAibGF0ZW50IHA1MCJ9CiAgbGVhZF9mYWN0czoge2VuOiAiZmFjdHMgaW5kZXhlZCIsIHJ1OiAi0YTQsNC60YLQvtCyINCyINC40L3QtNC10LrRgdC1In0KICBsZWFkX3Rlc3RzOiB7ZW46ICJ0ZXN0cyBwYXNzaW5nIiwgcnU6ICLRgtC10YHRgtC+0LIg0L/RgNC+0YXQvtC00LjRgiJ9CiAgbGVhZF9kZXZpYXRpb246IHtlbjogInJvdW5kLXRyaXAgZXJyb3IiLCBydTogInBvZ3Jlc2hub3N0In0KICBjYXBfbWxjOiB7ZW46ICJNTEMgTEVBRiBQQUlSIMK3IEZJRUxEIFJFVFJJRVZBTCIsIHJ1OiAiTUxDIExFQUYgUEFJUiDCtyBGSUVMRCBSRVRSSUVWQUwifQogIGNhcF9maWVsZG1hcDoge2VuOiAiRklFTEQgUkVUUklFVkFMIiwgcnU6ICJGSUVMRCBSRVRSSUVWQUwifQogIGNhcF92ZWM6IHtlbjogIlZFQ1RPUklaSU5HIMK3IE1BUktFUiBERVRFQ1RJT04iLCBydTogIlZFQ1RPUklaSU5HIMK3IE1BUktFUiBERVRFQ1RJT04ifQogIGNhcF9sYXR0OiB7ZW46ICJDT09SRElOQVRFIExBVFRJQ0UgwrcgUkVTSURVQUwiLCBydTogIkNPT1JESU5BVEUgTEFUVElDRSDCtyBSRVNJRFVBTCJ9CiAgYmFyX3N0YXR1czoge2VuOiAic3RhdHVzIMK3IDYvNiBub21pbmFsIiwgcnU6ICJzdGF0dXMgwrcgNi82IG5vbWluYWwifQogIGRvbWFpbl9sYWJlbDoge2VuOiAiRG9tYWluIiwgcnU6ICLQlNC+0LzQtdC9In0KICBjdl9sYWJlbDoge2VuOiAiQ1YiLCBydTogIkNWIn0KICBmb290ZXJfZm9udHM6IHtlbjogIlBUIFNhbnMgTmFycm93IC8gSUJNIFBsZXggU2FucyAvIElCTSBQbGV4IE1vbm8iLCBydTogIlBUIFNhbnMgTmFycm93IC8gSUJNIFBsZXggU2FucyAvIElCTSBQbGV4IE1vbm8ifQogIHJlcG9ydF9sb2FkOiB7ZW46ICJMT0FEIMK3IGZhY3RzIGluZGV4ZWQiLCBydTogIkxPQUQgwrcg0YTQsNC60YLQvtCyIGluZGV4ZWQifQogIHJlcG9ydF92ZXJpZnk6IHtlbjogIlZFUklGWSDCtyB0ZXN0cyBwYXNzIiwgcnU6ICJWRVJJRlkgwrcg0YLQtdGB0YLQvtCyIHBhc3MifQogIHJlcG9ydF9sYXRlbmN5OiB7ZW46ICJMQVRFTkNZIMK3IHA1MCIsIHJ1OiAiTEFURU5DWSDCtyBwNTAifQogIHJlcG9ydF9hY2N1cmFjeToge2VuOiAiQUNDVVJBQ1kiLCBydTogIkFDQ1VSQUNZIn0KICByZXBvcnRfc3RhdHVzOiB7ZW46ICJTVEFUVVMgwrcgQVZBSUxBQkxFIiwgcnU6ICJTVEFUVVMgwrcgQVZBSUxBQkxFIn0KICByZXBvcnRfaW5pdDoge2VuOiAiSU5JVCDCtyBzZXNzaW9uIG1heEBsYWIiLCBydTogIklOSVQgwrcgc2Vzc2lvbiBtYXhAbGFiIn0KICB0YWdfbmRhOiB7ZW46ICJuZGEiLCBydTogIm5kYSJ9Cg==
+nav:
+  label: {en: "Main navigation", ru: "Основная навигация"}
+  lang_label: {en: "Language", ru: "Язык"}
+  status: {en: "UTC+3 · remote · available from November 2026", ru: "UTC+3 · remote · доступен с ноября 2026"}
+  home: {en: "Home", ru: "Главная"}
+  work: {en: "Work", ru: "Работы"}
+  about: {en: "About", ru: "Обо мне"}
+  contact: {en: "Contact", ru: "Контакты"}
+
+actions:
+  skip: {en: "Skip to content", ru: "К содержанию"}
+  download_cv: {en: "Download CV (PDF)", ru: "Скачать CV (PDF)"}
+  email: {en: "Email", ru: "Email"}
+  github: {en: "GitHub", ru: "GitHub"}
+  linkedin: {en: "LinkedIn", ru: "LinkedIn"}
+  view_case: {en: "View case", ru: "Смотреть кейс"}
+  back_to_work: {en: "All work", ru: "Все работы"}
+  back_home: {en: "Back to home", ru: "На главную"}
+  email_about: {en: "Email about this project", ru: "Написать о проекте"}
+
+sections:
+  selected_work: {en: "Selected work", ru: "Избранные проекты"}
+  selected_work_note:
+    en: "Three systems with different constraints: no internet, millimetre precision, and a live product. Source is public where possible; commercial work is under NDA."
+    ru: "Три системы с разными ограничениями: без интернета, миллиметровая точность и живой продукт. Код открыт там, где можно; коммерческие проекты — под NDA."
+  what_i_do: {en: "What I do", ru: "Что делаю"}
+  what_i_do_note:
+    en: "I take a problem from prototype to a release that can be checked — not a demo that only works on the happy path."
+    ru: "Беру задачу от прототипа до релиза, который можно проверить — а не демо, работающее только на счастливом пути."
+  about: {en: "About", ru: "Обо мне"}
+  contact: {en: "Let's talk", ru: "Давайте поговорим"}
+  contact_note:
+    en: "Looking for a remote Python/AI role in CAD/GIS automation, RAG/LLM systems, or medtech. I can start full-time from late November 2026."
+    ru: "Ищу remote-роль Python/AI-инженера в CAD/GIS-автоматизации, RAG/LLM или medtech. Могу начать full-time с конца ноября 2026."
+  more: {en: "Also", ru: "Ещё"}
+  record: {en: "Service record", ru: "Служебная история"}
+  instrument_note:
+    en: "Field service, 2022—2026 · linear accelerators"
+    ru: "Сервис, 2022—2026 · линейные ускорители"
+  record_note:
+    en: "I do not come to software from a bootcamp. I come from a radiotherapy bunker: linear accelerators, dosimetry, and documentation that has to be right the first time."
+    ru: "Я пришёл в разработку не с курсов. Я пришёл из бункера радиотерапии: линейные ускорители, дозиметрия и документация, которая обязана быть верной с первого раза."
+  problem: {en: "Problem", ru: "Задача"}
+  approach: {en: "Approach", ru: "Что сделал"}
+  results: {en: "Results", ru: "Результат"}
+  stack: {en: "Stack", ru: "Стек"}
+  links: {en: "Links", ru: "Ссылки"}
+  gallery: {en: "Screenshots", ru: "Скриншоты"}
+  confidentiality: {en: "What is public", ru: "Что публично"}
+
+meta:
+  role: {en: "Role", ru: "Роль"}
+  year: {en: "Year", ru: "Год"}
+  status: {en: "Status", ru: "Статус"}
+
+footer:
+  rights: {en: "Python / AI engineer", ru: "Python / AI-инженер"}
+  built: {en: "Static site · no trackers", ru: "Статическая страница · без трекеров"}
+
+not_found:
+  title: {en: "Page not found", ru: "Страница не найдена"}
+  text:
+    en: "The page you are looking for does not exist. It may have moved, or the link may be wrong."
+    ru: "Страницы, которую вы ищете, нет. Возможно, она переехала или ссылка неверная."
+
+# ---- LCARS home: instrument chrome (bilingual) ----
+lcars:
+  metrics: {en: "metrics", ru: "метрик"}
+  nav_instruments: {en: "Instruments", ru: "Приборы"}
+  nav_projects: {en: "Projects", ru: "Проекты"}
+  nav_capabilities: {en: "Capabilities", ru: "Возможности"}
+  nav_log: {en: "Service log", ru: "Журнал"}
+  nav_facts: {en: "Facts", ru: "Факты"}
+  nav_contacts: {en: "Contacts", ru: "Контакты"}
+  state_available: {en: "state: AVAILABLE", ru: "состояние: ДОСТУПЕН"}
+  legend_hero: {en: "01 · METRIC INSTRUMENT · CONFIDENCE ON 96/100", ru: "01 · METRIC INSTRUMENT · ТОЧНОСТЬ 96/100"}
+  legend_projects: {en: "02 · PROJECTS · 3 MEASURED INSTRUMENTS", ru: "02 · PROJECTS · 3 ОБЪЕКТА ИЗМЕРЕНИЯ"}
+  legend_skills: {en: "03 · CAPABILITIES · 3 BLOCKS", ru: "03 · CAPABILITIES · 3 БЛОКА"}
+  legend_record: {en: "04 · SERVICE LOG · CHRONOLOGY", ru: "04 · SERVICE LOG · CHRONOLOGY"}
+  legend_facts: {en: "05 · FACTS · PARAMETERS", ru: "05 · FACTS · ПАРАМЕТРЫ"}
+  legend_contact: {en: "06 · CONTACT · DIRECT CHANNEL", ru: "06 · CONTACT · ПРЯМОЙ КАНАЛ"}
+  h_projects: {en: "His instruments", ru: "Приборы его работы"}
+  h_skills: {en: "Capabilities", ru: "Компетенции"}
+  h_record: {en: "Service record", ru: "Служебная история"}
+  h_facts: {en: "Parameters", ru: "Параметры"}
+  h_contact: {en: "Contacts", ru: "Контакты"}
+  gauge_label: {en: "ACCURACY · ENGINEER COMPANION", ru: "ТОЧНОСТЬ · ENGINEER COMPANION"}
+  lead_latency: {en: "latent p50", ru: "latent p50"}
+  lead_facts: {en: "facts indexed", ru: "фактов в индексе"}
+  lead_tests: {en: "tests passing", ru: "тестов проходит"}
+  lead_deviation: {en: "round-trip error", ru: "pogreshnost"}
+  cap_mlc: {en: "MLC LEAF PAIR · FIELD RETRIEVAL", ru: "MLC LEAF PAIR · FIELD RETRIEVAL"}
+  cap_fieldmap: {en: "FIELD RETRIEVAL", ru: "FIELD RETRIEVAL"}
+  cap_vec: {en: "VECTORIZING · MARKER DETECTION", ru: "VECTORIZING · MARKER DETECTION"}
+  cap_latt: {en: "COORDINATE LATTICE · RESIDUAL", ru: "COORDINATE LATTICE · RESIDUAL"}
+  bar_status: {en: "status · 6/6 nominal", ru: "status · 6/6 nominal"}
+  domain_label: {en: "Domain", ru: "Домен"}
+  cv_label: {en: "CV", ru: "CV"}
+  footer_fonts: {en: "PT Sans Narrow / IBM Plex Sans / IBM Plex Mono", ru: "PT Sans Narrow / IBM Plex Sans / IBM Plex Mono"}
+  report_load: {en: "LOAD · facts indexed", ru: "LOAD · фактов indexed"}
+  report_verify: {en: "VERIFY · tests pass", ru: "VERIFY · тестов pass"}
+  report_latency: {en: "LATENCY · p50", ru: "LATENCY · p50"}
+  report_accuracy: {en: "ACCURACY", ru: "ACCURACY"}
+  report_status: {en: "STATUS · AVAILABLE", ru: "STATUS · AVAILABLE"}
+  report_init: {en: "INIT · session max@lab", ru: "INIT · session max@lab"}
+  tag_nda: {en: "nda", ru: "nda"}

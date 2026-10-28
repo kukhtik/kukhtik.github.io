@@ -1,1 +1,68 @@
-c2x1ZzogZ2VvY29udmVydGVyCm9yZGVyOiAzCnB1Ymxpc2hlZDogdHJ1ZQpmZWF0dXJlZDogdHJ1ZQp2aXN1YWw6IGdlbwpzdGF0dXM6IGNvbW1lcmNpYWwKeWVhcjogIjIwMjPigJMyMDI0IgoKdGl0bGU6CiAgZW46ICJHZW9Db252ZXJ0ZXIg4oCUIGdlb2RldGljIGNvb3JkaW5hdGUgY29udmVyc2lvbiIKICBydTogIkdlb0NvbnZlcnRlciDigJQg0LrQvtC90LLQtdGA0YLQsNGG0LjRjyDQs9C10L7QtNC10LfQuNGH0LXRgdC60LjRhSDQutC+0L7RgNC00LjQvdCw0YIiCgpzdW1tYXJ5OgogIGVuOiAiQ29tbWVyY2lhbCBkZXNrdG9wIHByb2R1Y3QgZm9yIHN1Yi1taWxsaW1ldHJlIGNvbnZlcnNpb24gYmV0d2VlbiBsZWdhY3kgbG9jYWwgY29vcmRpbmF0ZSBzeXN0ZW1zIGFuZCBXR1MtODQuIEZvdXItc3RhZ2UgbnVtZXJpY2FsIGNhbGlicmF0aW9uLCByb3VuZC10cmlwIHZhbGlkYXRpb24sIGhhcmR3YXJlLWxvY2tlZCBsaWNlbnNpbmcuIgogIHJ1OiAi0JrQvtC80LzQtdGA0YfQtdGB0LrQuNC5IGRlc2t0b3At0L/RgNC+0LTRg9C60YIg0LTQu9GPINGB0YPQsdC80LjQu9C70LjQvNC10YLRgNC+0LLQvtC5INC60L7QvdCy0LXRgNGC0LDRhtC40Lgg0LzQtdC20LTRgyDQu9C+0LrQsNC70YzQvdGL0LzQuCDRgdC40YHRgtC10LzQsNC80Lgg0LrQvtC+0YDQtNC40L3QsNGCINC4IFdHUy04NC4g0KfQtdGC0YvRgNGR0YXRgdGC0LDQtNC40LnQvdCw0Y8g0YfQuNGB0LvQtdC90L3QsNGPINC60LDQu9C40LHRgNC+0LLQutCwLCDQv9GA0L7QstC10YDQutCwINC90LXQstGP0LfQutC4LCDQsNC/0L/QsNGA0LDRgtC90LDRjyDQv9GA0LjQstGP0LfQutCwINC70LjRhtC10L3Qt9C40LkuIgoKcHJvYmxlbToKICBlbjogIkNvbnZlcnRpbmcgY29vcmRpbmF0ZXMgYmV0d2VlbiBsZWdhY3kgbG9jYWwgc3lzdGVtcyBhbmQgbW9kZXJuIGdsb2JhbCBkYXR1bXMgcmVxdWlyZXMgc3ViLW1pbGxpbWV0cmUgcHJlY2lzaW9uIHVuZGVyIHN0cm9uZyBub24tbGluZWFyIGRpc3RvcnRpb25zLiBPZmYtdGhlLXNoZWxmIHRvb2xzIGVpdGhlciBsb3NlIHByZWNpc2lvbiBvciByZXF1aXJlIGEgc2VydmVyLiIKICBydTogItCa0L7QvdCy0LXRgNGC0LDRhtC40Y8g0LrQvtC+0YDQtNC40L3QsNGCINC80LXQttC00YMg0LvQvtC60LDQu9GM0L3Ri9C80Lgg0YHQuNGB0YLQtdC80LDQvNC4INC4INGB0L7QstGA0LXQvNC10L3QvdGL0LzQuCDQs9C70L7QsdCw0LvRjNC90YvQvNC4INC00LDRgtGD0LzQsNC80Lgg0YLRgNC10LHRg9C10YIg0YHRg9Cx0LzQuNC70LvQuNC80LXRgtGA0L7QstC+0Lkg0YLQvtGH0L3QvtGB0YLQuCDQv9GA0Lgg0YHQuNC70YzQvdGL0YUg0L3QtdC70LjQvdC10LnQvdGL0YUg0LjRgdC60LDQttC10L3QuNGP0YUuINCT0L7RgtC+0LLRi9C1INC40L3RgdGC0YDRg9C80LXQvdGC0Ysg0LvQuNCx0L4g0YLQtdGA0Y/RjtGCINGC0L7Rh9C90L7RgdGC0YwsINC70LjQsdC+INGC0YDQtdCx0YPRjtGCINGB0LXRgNCy0LXRgNCwLiIKCmFwcHJvYWNoOgogIGVuOgogICAgLSAiRm91ci1zdGFnZSBwaXBlbGluZTogSGVsbWVydC9TVkQg4oaSIExldmVuYmVyZy1NYXJxdWFyZHQg4oaSIE5lbGRlci1NZWFkLCB0b2xlcmFuY2UgMWUtMTIuIgogICAgLSAiUm91bmQtdHJpcCBlcnJvciB2YWxpZGF0aW9uOiB0aGUgY2xvc2VkIHJvdXRlIG11c3QgcmV0dXJuIHdpdGhpbiBtaWxsaW1ldHJlcy4iCiAgICAtICJQeVF0NiBkZXNrdG9wIHByb2R1Y3Qgd2l0aCBoYXJkd2FyZS1sb2NrZWQgYWN0aXZhdGlvbiBrZXlzIGFuZCBhbiBvZmZsaW5lIGxpY2Vuc2UgaXNzdWVyLiIKICBydToKICAgIC0gItCn0LXRgtGL0YDRkdGF0YHRgtCw0LTQuNC50L3Ri9C5INC/0LDQudC/0LvQsNC50L06IEhlbG1lcnQvU1ZEIOKGkiDQm9C10LLQtdC90LHQtdGA0LMt0JzQsNGA0LrQstCw0YDQtNGCIOKGkiDQndC10LvQtNC10YAt0JzQuNC0LCDQtNC+0L/Rg9GB0LogMWUtMTIuIgogICAgLSAi0J/RgNC+0LLQtdGA0LrQsCDQvdC10LLRj9C30LrQuDog0LfQsNC80LrQvdGD0YLRi9C5INC80LDRgNGI0YDRg9GCINC00L7Qu9C20LXQvSDQstC10YDQvdGD0YLRjNGB0Y8g0YEg0LzQuNC70LvQuNC80LXRgtGA0L7QstC+0Lkg0YLQvtGH0L3QvtGB0YLRjNGOLiIKICAgIC0gIkRlc2t0b3At0L/RgNC+0LTRg9C60YIg0L3QsCBQeVF0NiDRgSDQsNC/0L/QsNGA0LDRgtC90L7QuSDQv9GA0LjQstGP0LfQutC+0Lkg0LrQu9GO0YfQtdC5INC4INC+0YTQu9Cw0LnQvS3Qs9C10L3QtdGA0LDRgtC+0YDQvtC8INC70LjRhtC10L3Qt9C40LkuIgoKcmVzdWx0czoKICAtIHZhbHVlOiAiPDEgbW0iCiAgICBsYWJlbDoge2VuOiAicm91bmQtdHJpcCBlcnJvciIsIHJ1OiAi0L/QvtCz0YDQtdGI0L3QvtGB0YLRjCDQt9Cw0LzQutC90YPRgtC+0LPQviDQvNCw0YDRiNGA0YPRgtCwIn0KICAtIHZhbHVlOiAiMjArIgogICAgbGFiZWw6IHtlbjogImxvY2FsIGNvb3JkaW5hdGUgc3lzdGVtcyIsIHJ1OiAi0LvQvtC60LDQu9GM0L3Ri9GFINGB0LjRgdGC0LXQvCDQutC+0L7RgNC00LjQvdCw0YIifQogIC0gdmFsdWU6ICJDb21tZXJjaWFsIgogICAgbGFiZWw6IHtlbjogInJlbGVhc2UsIGdvdmVybm1lbnQgY2xpZW50cyIsIHJ1OiAi0YDQtdC70LjQtywg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C1INC30LDQutCw0LfRh9C40LrQuCJ9CgpzdGFjazoKICAtICJQeXRob24iCiAgLSAiTnVtUHkgLyBTY2lQeSIKICAtICJQeVF0NiIKICAtICJQeUluc3RhbGxlciAvIE51aXRrYSIKICAtICJIYXJkd2FyZS1sb2NrZWQgbGljZW5zaW5nIgoKY29uZmlkZW50aWFsaXR5OgogIGVuOiAiU291cmNlIHByaXZhdGUuIENvbW1lcmNpYWwgcHJvZHVjdDsgY2xpZW50IHN5c3RlbXMgYW5kIGxpY2Vuc2luZyBkZXRhaWxzIHVuZGVyIE5EQS4iCiAgcnU6ICLQmNGB0YXQvtC00L3QuNC60Lgg0LfQsNC60YDRi9GC0YsuINCa0L7QvNC80LXRgNGH0LXRgdC60LjQuSDQv9GA0L7QtNGD0LrRgjsg0LfQsNC60LDQt9GH0LjQutC4INC4INC00LXRgtCw0LvQuCDQu9C40YbQtdC90LfQuNGA0L7QstCw0L3QuNGPINC/0L7QtCBOREEuIgoKbGlua3M6CiAgLSBsYWJlbDoge2VuOiAiQ2FzZSBub3RlcyIsIHJ1OiAi0J7Qv9C40YHQsNC90LjQtSDQutC10LnRgdCwIn0KICAgIHVybDogImh0dHBzOi8vZ2l0aHViLmNvbS9rdWtodGlrL09wZW5fc3BhY2UiCgppbWFnZXM6CiAgLSBzcmM6ICJpbWFnZXMvZ2VvY29udmVydGVyLndlYnAiCiAgICBhbHQ6CiAgICAgIGVuOiAiR2VvQ29udmVydGVyIGRlc2t0b3AgYXBwbGljYXRpb24gbWFpbiB3aW5kb3ciCiAgICAgIHJ1OiAiR2VvQ29udmVydGVyIOKAlCDQs9C70LDQstC90L7QtSDQvtC60L3QviDQv9GA0LjQu9C+0LbQtdC90LjRjyIKICAgIGNhcHRpb246CiAgICAgIGVuOiAiRGVza3RvcCBwcm9kdWN0OiBzb3VyY2UgcG9pbnRzLCBsb2NhbCBzeXN0ZW0sIFdHUy04NCBvdXRwdXQuIgogICAgICBydTogIkRlc2t0b3At0L/RgNC+0LTRg9C60YI6INC40YHRhdC+0LTQvdGL0LUg0YLQvtGH0LrQuCwg0LvQvtC60LDQu9GM0L3QsNGPINGB0LjRgdGC0LXQvNCwLCDRgNC10LfRg9C70YzRgtCw0YIg0LIgV0dTLTg0LiIKICAtIHNyYzogImltYWdlcy9nZW9jb252ZXJ0ZXItcmVwb3J0LndlYnAiCiAgICBhbHQ6CiAgICAgIGVuOiAiR2VvQ29udmVydGVyIGdlbmVyYXRlZCBjYWxpYnJhdGlvbiByZXBvcnQiCiAgICAgIHJ1OiAiR2VvQ29udmVydGVyIOKAlCDRgdCz0LXQvdC10YDQuNGA0L7QstCw0L3QvdGL0Lkg0L7RgtGH0ZHRgiDQutCw0LvQuNCx0YDQvtCy0LrQuCIKICAgIGNhcHRpb246CiAgICAgIGVuOiAiR2VuZXJhdGVkIGNhbGlicmF0aW9uIHJlcG9ydCB3aXRoIHJvdW5kLXRyaXAgcmVzaWR1YWxzLiIKICAgICAgcnU6ICLQodCz0LXQvdC10YDQuNGA0L7QstCw0L3QvdGL0Lkg0L7RgtGH0ZHRgiDQutCw0LvQuNCx0YDQvtCy0LrQuCDRgSDQvdC10LLRj9C30LrQsNC80LguIgo=
+slug: geoconverter
+order: 3
+published: true
+featured: true
+visual: geo
+status: commercial
+year: "2023–2024"
+
+title:
+  en: "GeoConverter — geodetic coordinate conversion"
+  ru: "GeoConverter — конвертация геодезических координат"
+
+summary:
+  en: "Commercial desktop product for sub-millimetre conversion between legacy local coordinate systems and WGS-84. Four-stage numerical calibration, round-trip validation, hardware-locked licensing."
+  ru: "Коммерческий desktop-продукт для субмиллиметровой конвертации между локальными системами координат и WGS-84. Четырёхстадийная численная калибровка, проверка невязки, аппаратная привязка лицензий."
+
+problem:
+  en: "Converting coordinates between legacy local systems and modern global datums requires sub-millimetre precision under strong non-linear distortions. Off-the-shelf tools either lose precision or require a server."
+  ru: "Конвертация координат между локальными системами и современными глобальными датумами требует субмиллиметровой точности при сильных нелинейных искажениях. Готовые инструменты либо теряют точность, либо требуют сервера."
+
+approach:
+  en:
+    - "Four-stage pipeline: Helmert/SVD → Levenberg-Marquardt → Nelder-Mead, tolerance 1e-12."
+    - "Round-trip error validation: the closed route must return within millimetres."
+    - "PyQt6 desktop product with hardware-locked activation keys and an offline license issuer."
+  ru:
+    - "Четырёхстадийный пайплайн: Helmert/SVD → Левенберг-Марквардт → Нелдер-Мид, допуск 1e-12."
+    - "Проверка невязки: замкнутый маршрут должен вернуться с миллиметровой точностью."
+    - "Desktop-продукт на PyQt6 с аппаратной привязкой ключей и офлайн-генератором лицензий."
+
+results:
+  - value: "<1 mm"
+    label: {en: "round-trip error", ru: "погрешность замкнутого маршрута"}
+  - value: "20+"
+    label: {en: "local coordinate systems", ru: "локальных систем координат"}
+  - value: "Commercial"
+    label: {en: "release, government clients", ru: "релиз, государственные заказчики"}
+
+stack:
+  - "Python"
+  - "NumPy / SciPy"
+  - "PyQt6"
+  - "PyInstaller / Nuitka"
+  - "Hardware-locked licensing"
+
+confidentiality:
+  en: "Source private. Commercial product; client systems and licensing details under NDA."
+  ru: "Исходники закрыты. Коммерческий продукт; заказчики и детали лицензирования под NDA."
+
+links:
+  - label: {en: "Case notes", ru: "Описание кейса"}
+    url: "https://github.com/kukhtik/Open_space"
+
+images:
+  - src: "images/geoconverter.webp"
+    alt:
+      en: "GeoConverter desktop application main window"
+      ru: "GeoConverter — главное окно приложения"
+    caption:
+      en: "Desktop product: source points, local system, WGS-84 output."
+      ru: "Desktop-продукт: исходные точки, локальная система, результат в WGS-84."
+  - src: "images/geoconverter-report.webp"
+    alt:
+      en: "GeoConverter generated calibration report"
+      ru: "GeoConverter — сгенерированный отчёт калибровки"
+    caption:
+      en: "Generated calibration report with round-trip residuals."
+      ru: "Сгенерированный отчёт калибровки с невязками."

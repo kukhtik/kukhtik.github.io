@@ -1,1 +1,127 @@
-IyBERVNJR04ubWQg4oCUIHNpdGUtdjIKCkRpcmVjdGlvbjogKippbnN0cnVtZW50IGNvbnNvbGUqKi4gVGhlIHNpdGUgaXMgYnVpbHQgbGlrZSB0aGUgc2VydmljZSBzb2Z0d2FyZSBvZiBhCnJhZGlvdGhlcmFweSBtYWNoaW5lOiBkYXJrIGNsaW5pY2FsIHN1cmZhY2UsIG9uZSBsYXNlci1ncmVlbiBhY2NlbnQsIHRlY2huaWNhbCBkcmF3aW5nCmVsZW1lbnRzIChnYW50cnksIGlzb2NlbnRyZSwgZ2FudHJ5IGFuZ2xlLCBTQUQpLCBtb25vIHJlYWRvdXRzLCBtb3Rpb24gdGhhdCByZWFkcyBhcwp0ZWxlbWV0cnkgcmF0aGVyIHRoYW4gZGVjb3JhdGlvbi4KCiMjIFdoeSB0aGlzIGRpcmVjdGlvbgoKVGhlIHN1YmplY3QgaXMgbm90ICJhIFB5dGhvbiBkZXZlbG9wZXIiLiBJdCBpcyBhbiBlbmdpbmVlciB3aG8gc3BlbnQgMjAyMuKAlDIwMjYgbWFpbnRhaW5pbmcKbGluZWFyIGFjY2VsZXJhdG9ycyBpbnNpZGUgYW4gUkYtc2hpZWxkZWQgYnVua2VyIGFuZCBidWlsdCBzb2Z0d2FyZSB1bmRlciB0aGUgc2FtZSBydWxlOgp0aGUgcmVzdWx0IG11c3QgYmUgdmVyaWZpYWJsZS4gVGhlIHNpdGUgdGhlcmVmb3JlIGxlYWRzIHdpdGggdGhlIHNlcnZpY2UgcmVjb3JkLCBub3Qgd2l0aCBhCnN0YWNrIGxpc3QsIGFuZCB0aGUgdmlzdWFsIGxhbmd1YWdlIGJvcnJvd3MgZnJvbSB0aGUgbWFjaGluZSBoZSBzZXJ2aWNlZCDigJQgY3Jvc3NoYWlycywKaXNvY2VudHJlIHJpbmdzLCBkb3NlL3RlbGVtZXRyeSByZWFkb3V0cyDigJQgbm90IGZyb20gYSBTYWFTIGxhbmRpbmcgcGFnZS4KCiMjIERpcmVjdGlvbnMgcmVqZWN0ZWQKCjEuICoqVGVjaG5pY2FsIGRhdGFzaGVldCoqIChwcmV2aW91cyB2ZXJzaW9uOiBoYWlybGluZSBydWxlcywgbW9ubyBsYWJlbHMsIHBhcGVyLXdoaXRlKS4KICAgUmVqZWN0ZWQgYnkgdGhlIG93bmVyOiByZWFkcyBhcyBhIHByaW50ZWQgZG9jdW1lbnQsIG5vIHZpc3VhbCBwdWxsLCBwcm9qZWN0cyBkaWQgbm90CiAgIGxvb2sgY2xpY2thYmxlLgoyLiAqKkVkaXRvcmlhbCAvIHR5cGUtb25seSoqIChsYXJnZSBzZXJpZiwgZm9saW9zLCBubyBncmFwaGljcykuIEF1dGhvcmlhbCBhbmQgcXVpZXQsIGJ1dCBpdAogICB0ZWxscyBub3RoaW5nIGFib3V0IG1lZGljYWwgZW5naW5lZXJpbmcgYW5kIGdpdmVzIHRoZSBleWUgbm90aGluZyB0byBsYW5kIG9uLgozLiAqKkNhcmQgZ3JpZCB3aXRoIHBhc3RlbCBncmFkaWVudHMuKiogR2VuZXJpYyBwb3J0Zm9saW8gdGVtcGxhdGU7IGZsYXR0ZW5zIHRocmVlIHZlcnkKICAgZGlmZmVyZW50IHByb2plY3RzIGludG8gaWRlbnRpY2FsIHRpbGVzLgoKIyMgV2hhdCB0aGUgZGVzaWduIGlzIG1hZGUgb2YKCi0gKipIZXJvKio6IG5hbWUgYXQgODYgcHgsIGEgdHdvLWxpbmUgbGVhZCwgYW5kIGEgKnNjaGVtYXRpYyogb2YgYSBsaW5hYyBnYW50cnkg4oCUIGJvcmUgcmluZywKICB0aWNrIHJpbmcsIHJvdGF0aW5nIGhlYWQsIGJlYW0gY29uZSwgdHJlYXRtZW50IHRhYmxlLCBpc29jZW50cmUgcmV0aWNsZSDigJQgZHJhd24gYXMgaW5saW5lCiAgU1ZHLCBhbmltYXRlZCBpbiBDU1MuIEEgYGRhdGEtZGlhbGAgcGFyYWxsYXggKDEyIHB4IG1heCkgZm9sbG93cyB0aGUgcG9pbnRlciBvbiBob3Zlci1jYXBhYmxlCiAgZGV2aWNlcyBvbmx5LgotICoqVGVsZW1ldHJ5IHN0cmlwKio6IGZvdXIgcmVhZG91dHMgKGJhc2VkIC8gdGltZXpvbmUgLyBhdmFpbGFiaWxpdHkgLyBFbmdsaXNoKSBpbiB0aGUKICBtYWNoaW5lLWRhdGEgaWRpb20uCi0gKipTZXJ2aWNlIHJlY29yZCoqOiBhIHRocmVlLWVudHJ5IHRpbWVsaW5lLCAyMDIyIOKGkiAxMS4yMDI2IGNsaW5pY2FsIHNlcnZpY2UsIHRoZSBzb2Z0d2FyZQogIGJ1aWx0IGFsb25nc2lkZSBpdCwgYW5kIHRoZSBtb3ZlIHRvIGZ1bGwtdGltZS4KLSAqKldvcmsqKjogb25lIHdpZGUgY2FyZCArIHR3byBoYWxmIGNhcmRzLiBUaGUgd2hvbGUgY2FyZCBpcyBhIGxpbmsgKGBoMyBhOjphZnRlcmAgc3RyZXRjaGVzCiAgb3ZlciB0aGUgY2FyZCksIGhvdmVyIGxpZnRzIGl0IDQgcHggYW5kIHN3ZWVwcyBhIGdyZWVuIHNjYW5saW5lIGFjcm9zcyB0aGUgc2NyZWVuc2hvdC4KLSAqKkNhcGFiaWxpdGllcyoqOiB0aHJlZSBjYXJkcyB3aXRoIGhhbmQtZHJhd24gU1ZHIGdseXBocyAoaXNvY2VudHJlLCBzdHJ1Y3R1cmUsIHNpZ25hbCkuCi0gKipBYm91dCAvIGNvbnRhY3QqKjogcGFwZXItcXVpZXQgcGFuZWxzIG9uIHRoZSBkYXJrIHN1cmZhY2U7IHRoZSBlbWFpbCBpcyB0aGUgbGFyZ2VzdAogIGludGVyYWN0aXZlIGVsZW1lbnQgb24gdGhlIHBhZ2UuCgoKIyMgUmljaCBwcm9qZWN0IHByZXNlbnRhdGlvbiAodjMpCgpUaGUgaG9tZXBhZ2Ugbm8gbG9uZ2VyIHNob3dzIHRocmVlIGVxdWFsIGNhcmRzLiBFYWNoIGNhc2UgaXMgYSAqKnJvdyB3aXRoIGEgbGl2ZSB2aXN1YWwqKjoKCnwgem9uZSB8IHdoYXQgaXQgaXMgfAp8LS0tfC0tLXwKfCBgLndvcmstdml6YCB8IGNhbnZhcy1sZXNzIFNWRyBzY2VuZSByZW5kZXJlZCBieSBgc2l0ZS5qc2AgZnJvbSBgdmlzdWFsOmAgaW4gdGhlIHByb2plY3QgWUFNTCDigJQgYHJhZ2AgKHZlY3RvciBjbG91ZCwgcXVlcnkgcHVsbHMgaXRzIG5laWdoYm91cnMsIGNpdGF0aW9uIGNoaXApLCBgdmV0a2FgIChoYW5kLWRyYXduIGFicmlzIG1vcnBocyBpbnRvIHZlY3RvcnMpLCBgZ2VvYCAoZGlzdG9ydGVkIGNvb3JkaW5hdGUgbGF0dGljZSBzdHJhaWdodGVucywgcmVzaWR1YWwgYXJyb3dzIHNocmluaykgfAp8IGAud29yay1jb3B5YCB8IGJhZGdlLCB5ZWFyLCB0aXRsZSwgc3VtbWFyeSwgdGhyZWUgbWV0cmljcyDigJQgdmFsdWVzIGNvdW50IHVwIChgbWV0cmljX3BhcnRzKClgIGluIGBidWlsZC5weWAgc3BsaXRzICIyMSwyMTQiIGludG8gbnVtYmVyICsgc3VmZml4KSB8CnwgYC5zaG90YCB8IHRoZSByZWFsIHNjcmVlbnNob3QsIHJldmVhbGVkIGJ5IGEgc2NhbiBsaW5lIChgY2xpcC1wYXRoYCArIGEgc3dlZXBpbmcgYWNjZW50IGxpbmUpIHwKCkFib3ZlIHRoZW06IGEgc3RhY2sgdGlja2VyIChgdW5pb25gIG9mIGV2ZXJ5IHByb2plY3QncyBzdGFjaywgc2VhbWxlc3MgbG9vcCkuIFRoZSBzZXJ2aWNlIHJlY29yZApnb3QgYSByYWlsIHRoYXQgZmlsbHMgYXMgeW91IHNjcm9sbCBhbmQgbGlnaHRzIGVhY2ggbm9kZS4KCkNhc2UgcGFnZXMgZ290IGEgKipiYW5kKio6IHRoZSBzYW1lIHByb2plY3Qgc2NlbmUsIGZ1bGwgd2lkdGggdW5kZXIgdGhlIGxlYWQsIHdpdGggYSBzdGFjayBsZWdlbmQ7CnJlc3VsdHMgYmVjYW1lIGNvdW50ZXJzOyB0aGUgYm90dG9tIGlzIGEgKipuZXh0LWNhc2UqKiB0aWxlIGNhcnJ5aW5nIHRoYXQgcHJvamVjdCdzIG93biBzY2VuZS4KCkFsbCBvZiBpdCBpcyBvbmUgMTMgS0Igc2NyaXB0LCBJbnRlcnNlY3Rpb25PYnNlcnZlci1nYXRlZCwgYW5kIGV2ZXJ5IGFuaW1hdGlvbiBoYXMgYQpgcHJlZmVycy1yZWR1Y2VkLW1vdGlvbmAgb2ZmIHN3aXRjaC4gTm8gbGlicmFyaWVzLCBubyBjYW52YXMsIG5vIGV4dGVybmFsIHJlcXVlc3RzLgoKIyMgVG9rZW5zCgpBbGwgaW4gYDpyb290YCBpbiBgc3RhdGljL2Nzcy9zaXRlLmNzc2A7IHRoZSBidWlsZCBtaW5pZmllcyBDU1MgaW50byBgZGlzdC9gLgoKfCB0b2tlbiB8IHZhbHVlIHwgdXNlIHwKfC0tLXwtLS18LS0tfAp8IGAtLWlua2AgfCBgIzA1MDkwQWAgfCBwYWdlIGJhY2tncm91bmQgfAp8IGAtLXBhbmVsYCAvIGAtLXBhbmVsLTJgIHwgYCMwQjEyMTRgIC8gYCMxMDFBMURgIHwgY2FyZHMsIGFzaWRlcyB8CnwgYC0tbGluZWAgfCBgIzFDMkEyRGAgfCAxIHB4IHJ1bGVzLCBib3JkZXJzIHwKfCBgLS10ZXh0YCB8IGAjRTlGMkYwYCB8IGJvZHkgY29weSAoY29udHJhc3QgMTcuNToxKSB8CnwgYC0tbXV0ZWRgIHwgYCM5M0E4QTVgIHwgc2Vjb25kYXJ5IGNvcHkgKDcuOTk6MSkgfAp8IGAtLWFjY2VudGAgfCBgIzQ1RjA4RmAgfCBsYXNlciBncmVlbjogQ1RBcywgYmFkZ2VzLCBpbnN0cnVtZW50IHN0cm9rZXMgfAp8IGAtLWFtYmVyYCB8IGAjRjNCNDVFYCB8IE5EQSAvIGNvbW1lcmNpYWwgYmFkZ2VzIG9ubHkgfAp8IGAtLXJhZGl1c2AgfCBgMTRweGAgfCBjYXJkczsgYDhweGAgZm9yIHNtYWxsIGNvbnRyb2xzIHwKfCBgLS13cmFwYCB8IGAxMTgwcHhgIHwgY29udGVudCB3aWR0aCB8CnwgYC0tZm9udC1zYW5zYCB8IEludGVyIFRpZ2h0IChzZWxmLWhvc3RlZCwgc3Vic2V0IGxhdGluK2N5cmlsbGljKSB8IGV2ZXJ5dGhpbmcgfAp8IGAtLWZvbnQtbW9ub2AgfCBzeXN0ZW0gbW9ubyAoQ2FzY2FkaWEvQ29uc29sYXMvTWVubG8pIHwgbGFiZWxzLCBtZXRyaWNzLCBmaWxlIGJhcnMgfAoKVHlwZSBzY2FsZTogZGlzcGxheSBgY2xhbXAoMi45cmVtLCA3LjR2dywgNS40cmVtKWAsIGgyIGBjbGFtcCgxLjlyZW0sIDMuNHZ3LCAyLjlyZW0pYCwKYm9keSAxNyBweC8xLjY1LCBtb25vIGxhYmVscyAxMOKAkzEyIHB4IHdpdGggYDAuMDjigJMwLjE2ZW1gIHRyYWNraW5nLgoKIyMgTW90aW9uIGludmVudG9yeQoKfCBlbGVtZW50IHwgbW90aW9uIHwgcmVkdWNlZC1tb3Rpb24gfAp8LS0tfC0tLXwtLS18CnwgYC5ncmlkLWJnYCB8IHN0YXRpYyB0ZWNobmljYWwgZ3JpZCwgcmFkaWFsIG1hc2sgfCBoaWRkZW4gfAp8IGAuc2NhbmxpbmVgIHwgMTQwIHB4IGxpZ2h0IGJhciBzd2VlcHMgdGhlIHBhZ2UgZXZlcnkgMTQgcyB8IGhpZGRlbiB8CnwgYC5icmFuZC1tYXJrOjphZnRlcmAgfCBjcm9wLWZyYW1lIHB1bHNlIDMuNiBzIHwgZGlzYWJsZWQgfAp8IGAuc3RhdHVzLWRvdCBpYCB8IGF2YWlsYWJpbGl0eSBwdWxzZSAyLjQgcyB8IGRpc2FibGVkIHwKfCBgLmlucy1nYW50cnlgIHwgZ2FudHJ5IHJvdGF0ZXMgMzYwwrAgaW4gMjIgcyB8IGRpc2FibGVkIHwKfCBgLmlucy1yZXRpY2xlYCB8IGlzb2NlbnRyZSBicmVhdGhpbmcgMy40IHMgfCBkaXNhYmxlZCB8CnwgYC5oZXJvLXJ1bGVgIHwgYWNjZW50IHJ1bGUgZHJhd3MgaW4gb24gbG9hZCB8IGRpc2FibGVkIHwKfCBjYXJkcyB8IDQgcHggbGlmdCArIHNjYW5saW5lIHN3ZWVwIG9uIGhvdmVyIHwgdHJhbnNpdGlvbnMgMC4wMSBtcyB8Cnwgc2VjdGlvbnMgfCBgW2RhdGEtcmV2ZWFsXWAgZmFkZS9yaXNlIHZpYSBJbnRlcnNlY3Rpb25PYnNlcnZlciB8IGFsbCB2aXNpYmxlIGF0IG9uY2UgfAoKYHByZWZlcnMtcmVkdWNlZC1tb3Rpb246IHJlZHVjZWAga2lsbHMgZXZlcnkgYW5pbWF0aW9uIGFuZCB0cmFuc2l0aW9uIGFuZCBzaG93cyBhbGwgY29udGVudC4KV2l0aG91dCBKUyAoYGh0bWwubm8tanNgKSB0aGUgcGFnZSBpcyBjb21wbGV0ZTsgbm90aGluZyBkZXBlbmRzIG9uIHNjcmlwdC4KCiMjIEZpbGVzCgotIGB0ZW1wbGF0ZXMvYmFzZS5odG1sYCDigJQgaGVhZCwgaGVhZGVyIChicmFuZCwgc3RhdHVzLCBuYXYsIGxhbmd1YWdlKSwgZm9vdGVyLgotIGB0ZW1wbGF0ZXMvaG9tZS5odG1sYCDigJQgaGVybyArIGluc3RydW1lbnQgU1ZHLCB0ZWxlbWV0cnksIHJlY29yZCwgd29yaywgY2FwYWJpbGl0aWVzLCBhYm91dCwgY29udGFjdC4KLSBgdGVtcGxhdGVzL3Byb2plY3QuaHRtbGAg4oCUIGNhc2UgcGFnZTogaGVybywgY292ZXIsIHByb2JsZW0vYXBwcm9hY2gvcmVzdWx0cy9zdGFjay9wdWJsaWMsIGFzaWRlIGxpbmtzICsgZ2FsbGVyeS4KLSBgc3RhdGljL2Nzcy9zaXRlLmNzc2Ag4oCUIHRva2VucyArIGFsbCBjb21wb25lbnRzIChzb3VyY2UpOyBtaW5pZmllZCBhdCBidWlsZC4KLSBgc3RhdGljL2pzL3NpdGUuanNgIOKAlCAyLjQgS0I6IHJldmVhbHMgKyBwb2ludGVyIHBhcmFsbGF4LCBub3RoaW5nIGVsc2UuCi0gYHN0YXRpYy9mb250cy8qLndvZmYyYCDigJQgSW50ZXIgVGlnaHQgb25seSwgbGF0aW4gKyBjeXJpbGxpYyBzdWJzZXRzLCB3ZWlnaHQgNDAw4oCTNzAwLCBTSUwgT0ZMLgoKIyMgTWVhc3VyZWQgKGxvY2FsLCBgc2NyaXB0cy9zaG9vdC5weWAgKyBMaWdodGhvdXNlIDEyLjggbW9iaWxlKQoKfCBwYWdlIHwgd2VpZ2h0IHwgQ1NTIHwgSlMgfCBMQ1AgfCBDTFMgfCBhMTF5IC8gQlAgLyBTRU8gfAp8LS0tfC0tLXwtLS18LS0tfC0tLXwtLS18LS0tfAp8IGAvYCB8IDE1NOKAkzE1NyBLQiB8IDI0LjkgS0IgfCAyLjMgS0IgfCAxLjfigJMxLjkgcyB8IDAgfCAxMDAgLyAxMDAgLyAxMDAgfAp8IGAvd29yay9lbmdpbmVlci1jb21wYW5pb24vYCB8IDE3LjcgS0IgfCAyNC45IEtCIHwgMi4zIEtCIHwgMS45IHMgfCAwIHwgMTAwIC8gMTAwIC8gMTAwIHwKClBlcmZvcm1hbmNlOiA5NeKAkzk5IGRlcGVuZGluZyBvbiBtYWNoaW5lIGxvYWQgKHR3byBjb25zZWN1dGl2ZSBydW5zOiA5OSBhbmQgOTUsIHNhbWUgYnVpbGQpLgpObyBob3Jpem9udGFsIHNjcm9sbCBhdCAzNjAgcHgsIGNvbnRyYXN0IG5ldmVyIGJlbG93IDYuMzoxLCBhbGwgaW1hZ2VzIGhhdmUgaW50cmluc2ljCmB3aWR0aGAvYGhlaWdodGAgYW5kIGBzcmNzZXRgIHZhcmlhbnRzICg4MDAvMTIwMCB3KS4KCiMjIEhvdyB0byBjaGFuZ2UgdGhlIGRlc2lnbgoKMS4gVG9rZW5zIGZpcnN0OiBjb2xvdXIsIHJhZGl1cywgdHlwZSBzY2FsZSBpbiBgOnJvb3RgLiBNb3N0IGNoYW5nZXMgc3RvcCB0aGVyZS4KMi4gU3RydWN0dXJlIGxpdmVzIGluIGB0ZW1wbGF0ZXMvYDsgY2xhc3MgbmFtZXMgYXJlIHRoZSBjb250cmFjdCB3aXRoIGBzaXRlLmNzc2AuCjMuIE1vdGlvbjogYWRkIGEgcnVsZSwgdGhlbiBhZGQgdGhlIG1hdGNoaW5nIGxpbmUgdG8gdGhlIGBwcmVmZXJzLXJlZHVjZWQtbW90aW9uYCBibG9jayDigJQKICAgbm90aGluZyBzaGlwcyBhbmltYXRlZCB3aXRob3V0IGFuIG9mZiBzd2l0Y2guCjQuIEFmdGVyIGFueSBjaGFuZ2U6IGBweXRob24gbWFuYWdlLnB5IGJ1aWxkYCDihpIgYHB5dGhvbiBtYW5hZ2UucHkgc2hvb3RgIChyZW5kZXJzIDEyODAvMzkwLAogICBjaGVja3MgMzYwIHB4IG92ZXJmbG93LCBhbHQgdGV4dCwgb25lIGBoMWAsIHByaW50cyBwYWdlIHdlaWdodCkuCg==
+# DESIGN.md — site-v2
+
+Direction: **instrument console**. The site is built like the service software of a
+radiotherapy machine: dark clinical surface, one laser-green accent, technical drawing
+elements (gantry, isocentre, gantry angle, SAD), mono readouts, motion that reads as
+telemetry rather than decoration.
+
+## Why this direction
+
+The subject is not "a Python developer". It is an engineer who spent 2022—2026 maintaining
+linear accelerators inside an RF-shielded bunker and built software under the same rule:
+the result must be verifiable. The site therefore leads with the service record, not with a
+stack list, and the visual language borrows from the machine he serviced — crosshairs,
+isocentre rings, dose/telemetry readouts — not from a SaaS landing page.
+
+## Directions rejected
+
+1. **Technical datasheet** (previous version: hairline rules, mono labels, paper-white).
+   Rejected by the owner: reads as a printed document, no visual pull, projects did not
+   look clickable.
+2. **Editorial / type-only** (large serif, folios, no graphics). Authorial and quiet, but it
+   tells nothing about medical engineering and gives the eye nothing to land on.
+3. **Card grid with pastel gradients.** Generic portfolio template; flattens three very
+   different projects into identical tiles.
+
+## What the design is made of
+
+- **Hero**: name at 86 px, a two-line lead, and a *schematic* of a linac gantry — bore ring,
+  tick ring, rotating head, beam cone, treatment table, isocentre reticle — drawn as inline
+  SVG, animated in CSS. A `data-dial` parallax (12 px max) follows the pointer on hover-capable
+  devices only.
+- **Telemetry strip**: four readouts (based / timezone / availability / English) in the
+  machine-data idiom.
+- **Service record**: a three-entry timeline, 2022 → 11.2026 clinical service, the software
+  built alongside it, and the move to full-time.
+- **Work**: one wide card + two half cards. The whole card is a link (`h3 a::after` stretches
+  over the card), hover lifts it 4 px and sweeps a green scanline across the screenshot.
+- **Capabilities**: three cards with hand-drawn SVG glyphs (isocentre, structure, signal).
+- **About / contact**: paper-quiet panels on the dark surface; the email is the largest
+  interactive element on the page.
+
+
+## Rich project presentation (v3)
+
+The homepage no longer shows three equal cards. Each case is a **row with a live visual**:
+
+| zone | what it is |
+|---|---|
+| `.work-viz` | canvas-less SVG scene rendered by `site.js` from `visual:` in the project YAML — `rag` (vector cloud, query pulls its neighbours, citation chip), `vetka` (hand-drawn abris morphs into vectors), `geo` (distorted coordinate lattice straightens, residual arrows shrink) |
+| `.work-copy` | badge, year, title, summary, three metrics — values count up (`metric_parts()` in `build.py` splits "21,214" into number + suffix) |
+| `.shot` | the real screenshot, revealed by a scan line (`clip-path` + a sweeping accent line) |
+
+Above them: a stack ticker (`union` of every project's stack, seamless loop). The service record
+got a rail that fills as you scroll and lights each node.
+
+Case pages got a **band**: the same project scene, full width under the lead, with a stack legend;
+results became counters; the bottom is a **next-case** tile carrying that project's own scene.
+
+All of it is one 13 KB script, IntersectionObserver-gated, and every animation has a
+`prefers-reduced-motion` off switch. No libraries, no canvas, no external requests.
+
+## Tokens
+
+All in `:root` in `static/css/site.css`; the build minifies CSS into `dist/`.
+
+| token | value | use |
+|---|---|---|
+| `--ink` | `#05090A` | page background |
+| `--panel` / `--panel-2` | `#0B1214` / `#101A1D` | cards, asides |
+| `--line` | `#1C2A2D` | 1 px rules, borders |
+| `--text` | `#E9F2F0` | body copy (contrast 17.5:1) |
+| `--muted` | `#93A8A5` | secondary copy (7.99:1) |
+| `--accent` | `#45F08F` | laser green: CTAs, badges, instrument strokes |
+| `--amber` | `#F3B45E` | NDA / commercial badges only |
+| `--radius` | `14px` | cards; `8px` for small controls |
+| `--wrap` | `1180px` | content width |
+| `--font-sans` | Inter Tight (self-hosted, subset latin+cyrillic) | everything |
+| `--font-mono` | system mono (Cascadia/Consolas/Menlo) | labels, metrics, file bars |
+
+Type scale: display `clamp(2.9rem, 7.4vw, 5.4rem)`, h2 `clamp(1.9rem, 3.4vw, 2.9rem)`,
+body 17 px/1.65, mono labels 10–12 px with `0.08–0.16em` tracking.
+
+## Motion inventory
+
+| element | motion | reduced-motion |
+|---|---|---|
+| `.grid-bg` | static technical grid, radial mask | hidden |
+| `.scanline` | 140 px light bar sweeps the page every 14 s | hidden |
+| `.brand-mark::after` | crop-frame pulse 3.6 s | disabled |
+| `.status-dot i` | availability pulse 2.4 s | disabled |
+| `.ins-gantry` | gantry rotates 360° in 22 s | disabled |
+| `.ins-reticle` | isocentre breathing 3.4 s | disabled |
+| `.hero-rule` | accent rule draws in on load | disabled |
+| cards | 4 px lift + scanline sweep on hover | transitions 0.01 ms |
+| sections | `[data-reveal]` fade/rise via IntersectionObserver | all visible at once |
+
+`prefers-reduced-motion: reduce` kills every animation and transition and shows all content.
+Without JS (`html.no-js`) the page is complete; nothing depends on script.
+
+## Files
+
+- `templates/base.html` — head, header (brand, status, nav, language), footer.
+- `templates/home.html` — hero + instrument SVG, telemetry, record, work, capabilities, about, contact.
+- `templates/project.html` — case page: hero, cover, problem/approach/results/stack/public, aside links + gallery.
+- `static/css/site.css` — tokens + all components (source); minified at build.
+- `static/js/site.js` — 2.4 KB: reveals + pointer parallax, nothing else.
+- `static/fonts/*.woff2` — Inter Tight only, latin + cyrillic subsets, weight 400–700, SIL OFL.
+
+## Measured (local, `scripts/shoot.py` + Lighthouse 12.8 mobile)
+
+| page | weight | CSS | JS | LCP | CLS | a11y / BP / SEO |
+|---|---|---|---|---|---|---|
+| `/` | 154–157 KB | 24.9 KB | 2.3 KB | 1.7–1.9 s | 0 | 100 / 100 / 100 |
+| `/work/engineer-companion/` | 17.7 KB | 24.9 KB | 2.3 KB | 1.9 s | 0 | 100 / 100 / 100 |
+
+Performance: 95–99 depending on machine load (two consecutive runs: 99 and 95, same build).
+No horizontal scroll at 360 px, contrast never below 6.3:1, all images have intrinsic
+`width`/`height` and `srcset` variants (800/1200 w).
+
+## How to change the design
+
+1. Tokens first: colour, radius, type scale in `:root`. Most changes stop there.
+2. Structure lives in `templates/`; class names are the contract with `site.css`.
+3. Motion: add a rule, then add the matching line to the `prefers-reduced-motion` block —
+   nothing ships animated without an off switch.
+4. After any change: `python manage.py build` → `python manage.py shoot` (renders 1280/390,
+   checks 360 px overflow, alt text, one `h1`, prints page weight).
