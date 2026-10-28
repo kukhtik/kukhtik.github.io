@@ -1,155 +1,87 @@
 /* =============================================================================
-   LCARS KIT v2 — the Star Trek computer interface, measured from real references.
+   LCARS KIT v3 — rebuilt against the reference dashboard the owner supplied.
 
-   The palette below was SAMPLED from the reference images (dominant saturated
-   mid-lightness pixels), not invented. The geometry was measured too: on a
-   1200x900 reference the elbow bars are 13-35px thick (1.4-3.9% of height) and
-   the long runs reach 492px (41% of width) - so elbows are BOLD and their arms
-   are very UNEQUAL.
-
-   Four things only:
-     1. ELBOW  - a cantilever: ONE long arm + ONE short stub, unequal, with
-                  rounded outer ends. Never a symmetric L.
-     2. RAIL   - a vertical stack of colour blocks, the left edge of a screen.
-     3. BAR    - a segmented strip, unequal segments, round caps, 1px gaps.
-     4. MEDAL  - a pictogram in a disc, used as a section marker.
+   Measured off that image (600x414):
+     - ground: 34 % pure black, so the frame is near-black, not blue-grey
+     - colour: only 17 % of the canvas, but it is in LARGE MASSES, not thin accents
+     - five hue families, warm-dominant 2:1 over cool:
+         amber/orange  24 %   |  coral/rose 22 %  |  pink 22 %
+         periwinkle    18 %   |  slate       11 %
+     - no green, no teal, no violet anywhere
+     - every bar and block ends in a FULL semicircular cap
+     - coloured runs CONNECT: a bar turns a corner and becomes a column
+   So: five families, capsule ends, big masses, connected runs, near-black ground.
    ========================================================================== */
 
 .lcars{
-  /* sampled from the LCARS references */
-  --lc-coral:#e38b8b;   /* dominant */
-  --lc-rose:#da877c;
-  --lc-petal:#e37f89;
-  --lc-apricot:#e6b564;
-  --lc-gold:#e6b864;
-  --lc-amber:#e6ad64;
-  --lc-lilac:#c2b9e6;
-  --lc-periwinkle:#c5bded;
-  --lc-sky:#9ac1ec;
-  --lc-mint:#a6dfcf;
-  --lc-cyan:#79d9e9;
-  --lc-sand:#e3c9ab;
-  --lc-tan:#c8a582;
-  --lc-mauve:#ca99bd;
-  --lc-rust:#ca836f;
-  --lc-cream:#f5dbc2;
+  /* --- the five families, sampled from the reference --- */
+  --lc-amber:#ffae01;    /* the dominant band            */
+  --lc-orange:#f89838;   /* the second warm family       */
+  --lc-coral:#dd616e;    /* the red family               */
+  --lc-rose:#c8555f;     /* the deeper red               */
+  --lc-pink:#f8c8c0;     /* the pale accent              */
+  --lc-blue:#a5b7e2;     /* the pastel blue              */
+  --lc-slate:#575f6a;    /* the monochrome grey          */
+  --lc-dim:#384b56;      /* the dark grey                */
+  --lc-lavender:#9e9cfc;  /* the lavender family          */
+  --lc-violet:#9b98e0;    /* the blue-violet family       */
 
-  --lc-ground:#101418;   /* the dark ground a LCARS screen sits on */
+  --lc-ground:#05070a;   /* the screen the LCARS interface sits on */
   --lc-ink:#e8e4d8;      /* label ink on the ground */
   --lc-on:#0d1014;       /* ink on a colour block */
 
-  --lc-thick:18px;       /* elbow thickness - BOLD */
-  --lc-gap:1px;          /* the 1px dark gap that keeps adjacent blocks apart */
-  --lc-radius:2px;
+  /* --- fluid geometry: everything scales with the viewport width --- */
+  --lc-thick:clamp(11px, 1.5vw, 20px);   /* the run thickness        */
+  --lc-cap:clamp(9px, 1.15vw, 15px);     /* the small-block thickness*/
+  --lc-gap:2px;                           /* the dark seam between runs */
+  --lc-radius:999px;                      /* the run ends are capsules  */
+  --lc-mass:8px;                          /* the big colour masses are not pills */
 }
 
-/* ---- 1. ELBOW / CANTILEVER --------------------------------------------------
-   The long arm runs along the panel edge; the stub is a SHORT return.
-   --l-long  = length of the long arm (px or %)
-   --l-stub  = length of the stub     (px or %)
-   --l-thick = thickness
-   Ends are rounded: the long arm gets a round cap at its far end. */
-.l-elbow{position:absolute;pointer-events:none;inset:0}
-.l-elbow i{position:absolute;display:block;background:var(--c,var(--lc-coral))}
-/* long arm: horizontal by default, sits on the top edge */
-/* The long arm: the OUTER bend (top-left) is rounded by the thickness, so the
-   bracket wraps like a pipe; the free end is a full semicircular cap. The inner
-   corner (bottom-left) stays square. */
-.l-elbow i:first-child{
-  top:0;left:0;height:var(--l-thick,var(--lc-thick));
-  width:var(--l-long,40%);
-  border-radius:var(--l-thick,var(--lc-thick)) 999px 999px 0;
+/* ---- 1. RUN: the connected coloured path -----------------------------------
+   A run is a bar that turns a corner and becomes a column. The two arms are
+   the same colour and overlap by the thickness, so the union reads as ONE
+   piece: a rounded OUTER bend, a square inner corner, capsule free ends. */
+.l-run,.l-elbow{position:absolute;pointer-events:none;inset:0}
+.l-run i,.l-elbow i{position:absolute;display:block;background:var(--c,var(--lc-amber))}
+/* long arm: horizontal along the top edge, square at the joint, capsule at the far end */
+.l-run i:first-child,.l-elbow i:first-child{
+  top:0;left:0;height:var(--l-thick,var(--lc-thick));width:var(--l-long,40%);
+  border-radius:0 calc(var(--l-thick,var(--lc-thick))/2) calc(var(--l-thick,var(--lc-thick))/2) 0;
 }
-/* stub: vertical, returns down the side, and is MUCH shorter than the arm */
-/* the stub: continues the outer curve, free end is a full semicircular cap */
-.l-elbow i:last-child{
-  top:0;left:0;width:var(--l-thick,var(--lc-thick));
-  height:var(--l-stub,22%);
-  border-radius:var(--l-thick,var(--lc-thick)) 0 0 999px;
+/* stub: the column that drops from the joint, outer bend rounded by the thickness */
+.l-run i:last-child,.l-elbow i:last-child{
+  top:0;left:0;width:var(--l-thick,var(--lc-thick));height:var(--l-stub,22%);
+  border-radius:var(--lc-thick,var(--lc-thick)) 0 0 var(--lc-radius);
 }
-.l-elbow[data-dir="right"] i:first-child{left:auto;right:0;border-radius:999px var(--l-thick,var(--lc-thick)) 0 999px}
-.l-elbow[data-dir="right"] i:last-child{left:auto;right:0;border-radius:0 var(--l-thick,var(--lc-thick)) 999px 0}
-.l-elbow[data-dir="down"] i:first-child{
+.l-run[data-dir="right"] i:first-child,.l-elbow[data-dir="right"] i:first-child{left:auto;right:0;border-radius:calc(var(--l-thick,var(--lc-thick))/2) 0 0 calc(var(--l-thick,var(--lc-thick))/2)}
+.l-run[data-dir="right"] i:last-child,.l-elbow[data-dir="right"] i:last-child{left:auto;right:0;border-radius:0 var(--lc-thick,var(--lc-thick)) var(--lc-radius) 0}
+.l-run[data-dir="down"] i:first-child,.l-elbow[data-dir="down"] i:first-child{
   top:auto;bottom:0;left:0;width:var(--l-thick,var(--lc-thick));height:var(--l-long,40%);
-  border-radius:0 0 0 var(--l-thick,var(--lc-thick))}
-.l-elbow[data-dir="down"] i:last-child{
+  border-radius:0 0 0 calc(var(--l-thick,var(--lc-thick))/2)}
+.l-run[data-dir="down"] i:last-child,.l-elbow[data-dir="down"] i:last-child{
   top:auto;bottom:0;left:var(--l-thick,var(--lc-thick));width:var(--l-stub,22%);height:var(--l-thick,var(--lc-thick));
-  border-radius:0 999px 0 0}
-/* a horizontal-only arm: the "shelf" cantilever */
-.l-elbow[data-arm="only"] i:last-child{display:none}
+  border-radius:0 calc(var(--l-thick,var(--lc-thick))/2) 0 0}
+.l-run[data-arm="only"] i:last-child,.l-elbow[data-arm="only"] i:last-child{display:none}
 
-/* ---- 2. RAIL -----------------------------------------------------------------
-   A vertical stack of colour blocks down the left edge of a screen. */
-.l-rail{display:flex;flex-direction:column;gap:var(--lc-gap);width:100%;height:100%}
-.l-rail > i{display:block;width:100%;background:var(--c,var(--lc-coral));flex:var(--h,1) 1 0;
-  border-radius:var(--lc-radius)}
-.l-rail > i:first-child{border-radius:var(--lc-radius) var(--lc-radius) 0 0}
-.l-rail > i:last-child{border-radius:0 0 var(--lc-radius) var(--lc-radius)}
+/* NOTE: the reference is a BLACK canvas with DISCRETE rounded pieces floating on
+   it - there is no continuous border around the screen. A full-height frame
+   reads as a generic dark theme, not as LCARS, so the frame is gone. */
 
-/* ---- 3. SEGMENTED BAR -------------------------------------------------------
-   Unequal segments, round caps, 1px gaps so neighbours never merge. */
-.l-bar{display:flex;gap:var(--lc-gap);height:var(--lh,14px);width:100%}
-.l-bar > i{display:block;height:100%;flex:var(--w,1) 1 0;background:var(--c,var(--lc-coral));
-  border-radius:var(--lc-radius);
-  transform-origin:left center;transform:scaleX(var(--fill,1));
-  transition:transform .9s var(--ease, cubic-bezier(.2,.7,.3,1))}
-.l-bar > i:first-child{border-radius:calc(var(--lh,14px)/2) 0 0 calc(var(--lh,14px)/2)}
-.l-bar > i:last-child{border-radius:0 calc(var(--lh,14px)/2) calc(var(--lh,14px)/2) 0}
-
-/* the labelled band: blocks with text, ends rounded */
-.l-band{display:flex;gap:var(--lc-gap);align-items:stretch}
-.l-band > span{display:grid;place-items:center;padding:0 12px;height:100%;
-  background:var(--c,var(--lc-coral));color:var(--lc-on);
+/* ---- 7. PLATE: the reference's signature piece -----------------------------
+   A long bar with a label block set into one end, like the "SCIENCE" block in
+   the reference. The bar and the label are ONE piece; the label is a darker
+   inset of the same colour, and both ends are capsules. */
+.l-plate{display:flex;align-items:stretch;height:var(--lh,clamp(18px,2.1vw,26px));
+  width:var(--w,58%);min-width:min(100%,190px);
+  border-radius:calc(var(--lh,22px)/2);overflow:hidden;background:var(--c,var(--lc-amber));
+  max-width:100%}
+.l-plate .pl-label{display:inline-flex;align-items:center;padding:0 clamp(10px,1.4vw,18px);
+  background:rgba(0,0,0,.22);color:var(--lc-on);
   font-family:var(--font-panel,"PT Sans Narrow",sans-serif);font-weight:700;
-  font-size:var(--fs,13px);letter-spacing:.03em;white-space:nowrap;overflow:hidden;
-  flex:var(--w,1) 1 0;border-radius:var(--lc-radius)}
-.l-band > span:first-child{border-radius:var(--lc-radius) 0 0 var(--lc-radius)}
-.l-band > span:last-child{border-radius:0 var(--lc-radius) var(--lc-radius) 0}
-
-/* ---- 4. MEDALLION ------------------------------------------------------------ */
-/* A medallion is an instrument button, not a flat ring: a 12-tick outer ring plus an
-   inset counter-ring give it depth, the way a real control dial does. */
-.l-med{position:relative;isolation:isolate;display:inline-grid;place-items:center;
-  width:40px;height:40px;border-radius:50%;
-  border:2.5px solid var(--c,var(--lc-coral));color:var(--c,var(--lc-coral));background:transparent}
-.l-med svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;
-  stroke-linecap:round;stroke-linejoin:round}
-.l-med--fill{background:var(--c,var(--lc-coral));color:var(--lc-on)}
-.l-med::before{content:"";position:absolute;inset:-6px;border-radius:50%;pointer-events:none;
-  background:repeating-conic-gradient(from 0deg,var(--c,var(--lc-coral)) 0deg 2.2deg,transparent 2.2deg 30deg);
-  -webkit-mask:radial-gradient(circle,transparent 0 58%,#000 60%);
-  mask:radial-gradient(circle,transparent 0 58%,#000 60%);opacity:.55}
-.l-med::after{content:"";position:absolute;inset:3px;border-radius:50%;pointer-events:none;
-  border:1px solid color-mix(in srgb,var(--c,var(--lc-coral)) 38%,transparent)}
-.l-med--fill::after{border-color:color-mix(in srgb,var(--lc-on) 34%,transparent)}
-
-/* ---- PANEL with attached terminals ------------------------------------------
-   Thin rule outline; two 10px round nubs on the long axis, each with a 2px
-   ground ring so they read as attached, not painted on. */
-.l-panel{position:relative;border:1px solid var(--rule,#2a3438);border-radius:var(--lc-radius);
-  padding:18px 20px;background:transparent}
-.l-panel::before,.l-panel::after{content:"";position:absolute;width:10px;height:10px;
-  border-radius:50%;background:var(--c,var(--lc-coral));top:50%;transform:translateY(-50%);
-  box-shadow:0 0 0 2px var(--lc-ground,#101418)}
-.l-panel::before{left:-5px}
-.l-panel::after{right:-5px}
-
-/* ---- a title strip on a colour block, with a cut end ---------------------- */
-.l-strip{position:relative;display:inline-block;padding:5px 30px 4px 14px;
-  background:var(--c,var(--lc-coral));color:var(--lc-on);
-  font-family:var(--font-panel,"PT Sans Narrow",sans-serif);font-weight:700;
-  font-size:13px;letter-spacing:.035em;text-transform:uppercase;
-  border-radius:var(--lc-radius) 0 0 var(--lc-radius)}
-.l-strip::after{content:"";position:absolute;right:0;top:0;bottom:0;width:16px;
-  background:var(--lc-ground,#101418);clip-path:polygon(0 0,100% 50%,0 100%)}
-
-/* ---- the command bar: a full-width segmented strip -------------------------- */
-.l-cmd{display:flex;align-items:center;gap:10px;height:34px;padding:0 12px;
-  border:1px solid var(--rule,#2a3438);border-radius:var(--lc-radius);
-  font-family:var(--font-mono);font-size:12.5px;color:var(--lc-ink)}
-.l-cmd .l-dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--lc-coral));
-  box-shadow:0 0 0 2px var(--lc-ground,#101418)}
-
-@media (prefers-reduced-motion:reduce){
-  .l-bar > i{transition:none}
-}
+  font-size:clamp(11.5px,1.1vw,14px);letter-spacing:0.07em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.l-plate .pl-bar{flex:1 1 auto;min-width:clamp(40px,7vw,120px)}
+/* a side block: a vertical piece that stands beside the content */
+.l-side{display:block;width:var(--l-thick,var(--lc-thick));align-self:stretch;
+  background:var(--c,var(--lc-amber));border-radius:calc(var(--l-thick,var(--lc-thick))/2)}

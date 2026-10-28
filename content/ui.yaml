@@ -65,6 +65,8 @@ not_found:
 
 # ---- LCARS home: instrument chrome (bilingual) ----
 lcars:
+  side_role: {en: "Role", ru: "Роль"}
+  caption_isodose: {en: "Isodose of a treatment beam: the shape of the dose decides the shape of the plan.", ru: "Изодоза терапевтического пучка: форма дозы определяет форму плана."}
   metrics: {en: "metrics", ru: "метрик"}
   nav_instruments: {en: "Instruments", ru: "Приборы"}
   nav_projects: {en: "Projects", ru: "Проекты"}

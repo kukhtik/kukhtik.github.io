@@ -7,11 +7,11 @@
   --ink:#e8e4d8;
   --muted:#8d949c;
   --ease:cubic-bezier(.2,.7,.3,1);
-  --ground:#101418;
+  --ground:#05070a;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--ground);color:var(--ink);font-family:var(--font-text);font-size:15px;line-height:1.5}
-.screen{min-height:100vh;padding:26px 0 70px}
+html,body{background:#05070a;margin:0;padding:0;background:var(--ground);color:var(--ink);font-family:var(--font-text);font-size:15px;line-height:1.5}
+.screen{--pad-x:calc(var(--lc-thick) + clamp(10px,1.6vw,22px));min-height:100vh;padding:26px 0 70px}
 .wrap{width:min(100% - 48px,1180px);margin-inline:auto}
 .cmdrow{display:flex;gap:12px;align-items:center;margin-bottom:26px;flex-wrap:wrap}
 .l-cmd{flex:1;min-width:220px}
@@ -25,42 +25,42 @@ main{display:flex;flex-direction:column;gap:26px}
 .panelbox:has(> .l-elbow[data-dir="right"]){border-top-color:transparent;border-right-color:transparent}
 .panelbox:has(> .l-elbow[data-dir="down"]){border-left-color:transparent;border-bottom-color:transparent}
 .panelbox .l-elbow{left:0;top:0}
-.leg{margin:0 0 6px;font-family:var(--font-panel);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.name{font-family:var(--font-panel);font-weight:700;font-size:clamp(58px,9vw,108px);line-height:1.05;letter-spacing:.01em;margin:0 0 12px}
+.leg{margin:0 0 6px;font-family:var(--font-panel);font-size:12px;letter-spacing:0.07em;;text-transform:uppercase;color:var(--muted);font-weight:700}
+.name{font-family:var(--font-panel);font-weight:700;font-size:clamp(58px,9vw,108px);line-height:1.05;letter-spacing:normal;margin:0 0 12px}
 .lead{font-size:16px;line-height:1.6;color:#c9c6bc;max-width:62ch;margin:0 0 8px}
 .note{font-size:14px;line-height:1.5;color:var(--muted);max-width:62ch;margin:0 0 16px}
 .bandrow{margin-top:10px}
-.h2{font-family:var(--font-panel);font-weight:700;font-size:28px;letter-spacing:.02em;margin:0 0 14px;text-transform:none}
+.h2{font-family:var(--font-panel);font-weight:700;font-size:28px;letter-spacing:normal;margin:0 0 14px;text-transform:none}
 .proj{margin:22px 0;padding:18px;border:1px dashed #2a3438;border-radius:2px;background:#0f1418}
 .proj-head{display:flex;gap:14px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
-.proj-title{font-family:var(--font-panel);font-weight:700;font-size:20px;margin:0;letter-spacing:.02em}
+.proj-title{font-family:var(--font-panel);font-weight:700;font-size:20px;margin:0;letter-spacing:normal;}
 .tag{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);border:1px solid var(--rule);padding:2px 8px;border-radius:2px}
 .proj-sum{font-size:14px;line-height:1.6;color:#c9c6bc;margin:0 0 14px;max-width:78ch}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 @media(max-width:760px){.fields{grid-template-columns:1fr}}
-.field b{display:block;font-family:var(--font-panel);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700}
+.field b{display:block;font-family:var(--font-panel);font-size:12px;letter-spacing:normal;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700}
 .tbl{width:100%;border-collapse:collapse}
 .tbl tr{border-bottom:1px solid #1e262c}
 .tbl td{padding:6px 0;font-size:14px;color:#c9c6bc}
-.tbl td.num{font-family:var(--font-mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--lc-cream,#f0cca8)}
+.tbl td.num{font-family:var(--font-mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--lc-pink,#f0cca8)}
 .cap{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
 .cap li{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:12px;border:1px solid var(--rule);border-radius:2px;background:#0f1418}
 .cap .cnum{font-family:var(--font-mono);font-size:13px;color:var(--lc-coral);font-variant-numeric:tabular-nums}
-.cap b{font-family:var(--font-panel);font-size:16px;letter-spacing:.02em;display:block;margin-bottom:4px}
+.cap b{font-family:var(--font-panel);font-size:16px;letter-spacing:normal;display:block;margin-bottom:4px}
 .cap p{margin:0;font-size:14px;line-height:1.6;color:#c9c6bc}
 .log{display:flex;flex-direction:column;gap:12px}
 .logrow{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px;border:1px solid var(--rule);border-radius:2px;background:#0f1418}
-.when{font-family:var(--font-mono);font-size:12.5px;color:var(--lc-apricot);font-variant-numeric:tabular-nums}
+.when{font-family:var(--font-mono);font-size:12.5px;color:var(--lc-orange);font-variant-numeric:tabular-nums}
 .logrow b{font-family:var(--font-panel);font-size:15px;display:block;margin-bottom:4px}
 .logrow p{margin:0;font-size:14px;line-height:1.55;color:#c9c6bc}
 .facts{width:100%;border-collapse:collapse}
 .facts tr{border-bottom:1px solid #1e262c}
-.facts td:first-child{font-family:var(--font-panel);font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:8px 0;width:180px}
-.facts td:last-child{font-family:var(--font-mono);font-size:14px;color:var(--lc-cream,#f0cca8);padding:8px 0;font-variant-numeric:tabular-nums}
+.facts td:first-child{font-family:var(--font-panel);font-size:13px;letter-spacing:normal;text-transform:uppercase;color:var(--muted);font-weight:700;padding:8px 0;width:180px}
+.facts td:last-child{font-family:var(--font-mono);font-size:14px;color:var(--lc-pink,#f0cca8);padding:8px 0;font-variant-numeric:tabular-nums}
 .contacts{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:720px}
 @media(max-width:760px){.contacts{grid-template-columns:1fr}}
-.report{margin-top:18px;padding:14px 16px;background:#0a0d10;border:1px solid var(--rule);border-radius:2px;font-family:var(--font-mono);font-size:12.5px;color:var(--lc-mint);font-variant-numeric:tabular-nums}
-.report-head{color:var(--lc-coral);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-panel);font-size:12px}
+.report{margin-top:18px;padding:14px 16px;background:#0a0d10;border:1px solid var(--rule);border-radius:2px;font-family:var(--font-mono);font-size:12.5px;color:var(--lc-slate);font-variant-numeric:tabular-nums}
+.report-head{color:var(--lc-coral);margin-bottom:8px;letter-spacing:normal;text-transform:uppercase;font-family:var(--font-panel);font-size:12px}
 .report-line{opacity:.25;margin:3px 0;transition:opacity .3s}
 .report-line.printed{opacity:1}
 .more{font-size:14px;color:var(--muted);margin:6px 0}
@@ -70,11 +70,11 @@ main{display:flex;flex-direction:column;gap:26px}
 .gauge-readout{text-align:left}
 .readout-num{font-family:var(--font-mono);font-size:48px;font-weight:600;color:var(--lc-coral);font-variant-numeric:tabular-nums}
 .readout-den{font-family:var(--font-mono);font-size:18px;color:var(--muted)}
-.readout-label{display:block;font-family:var(--font-panel);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.readout-label{display:block;font-family:var(--font-panel);font-size:11px;letter-spacing:normal;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .leads{display:flex;flex-direction:column;gap:8px}
 .lead-item{display:grid;grid-template-columns:160px 80px 40px;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px solid #1e262c}
 .lead-item .k{font-family:var(--font-panel);font-size:13px;color:var(--muted);text-transform:none}
-.lead-item .v{font-family:var(--font-mono);font-size:18px;color:var(--lc-cream,#f0cca8);font-variant-numeric:tabular-nums}
+.lead-item .v{font-family:var(--font-mono);font-size:18px;color:var(--lc-pink,#f0cca8);font-variant-numeric:tabular-nums}
 .lead-item .u{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
 .mlc,.fieldmap,.vec,.lattice,.isodose,.wave{height:120px;width:auto;max-width:100%;display:block;margin:0 auto}
 /* a drawing sits ON a sheet, not floating in an empty column: the cell carries the
@@ -118,15 +118,15 @@ main{display:flex;flex-direction:column;gap:26px}
 
 /* the project title is the link to the real case-study page */
 .proj-link{color:inherit;text-decoration:none;display:inline-block}
-.proj-link:hover{color:var(--lc-apricot);text-decoration:underline;text-underline-offset:4px}
-.proj-link:focus-visible{outline:2px solid var(--lc-apricot);outline-offset:3px;border-radius:2px}
+.proj-link:hover{color:var(--lc-orange);text-decoration:underline;text-underline-offset:4px}
+.proj-link:focus-visible{outline:2px solid var(--lc-orange);outline-offset:3px;border-radius:2px}
 .proj-head .proj-title{position:relative}
 
 
 /* ---- case study pages, same instrument language as the home ---- */
 .case-back{text-decoration:none;margin:0 0 14px}
 .case-title{font-size:clamp(28px,4.4vw,50px);line-height:1.05;margin:.1em 0 .3em;
-  letter-spacing:-.01em}
+  letter-spacing:-.01em;}
 #case-gallery .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:18px;margin-top:14px}
 #case-gallery .shot{margin:0;border:1px solid var(--rule);background:rgba(255,255,255,.02);
@@ -136,3 +136,98 @@ main{display:flex;flex-direction:column;gap:26px}
   font-size:12px;color:var(--lc-muted,#8d949c);line-height:1.45}
 #case-stack .barlbl{display:block;margin-top:10px}
 .case-band-canvas{display:none}
+
+
+.lcars-main{position:relative;z-index:1;
+  padding:clamp(10px,1.6vw,22px) var(--pad-x) clamp(40px,6vw,90px);
+  display:flex;flex-direction:column;gap:clamp(18px,2.6vw,38px)}
+
+/* The reference is a BLACK canvas with discrete pieces floating on it: there is
+   no continuous border, so the page has none either. A full-height frame reads
+   as a generic dark theme instead of LCARS. */
+.lcars-main .wrap,.lcars-main .rail-host{width:100%;max-width:1180px;margin:0 auto}
+
+/* the content panels are black plates; the colour lives in the frame */
+.panelbox{background:transparent;border:0;border-radius:0;
+  padding:clamp(14px,2vw,26px) 0 clamp(22px,3vw,44px);position:relative}
+/* the content of a panel is a black plate, separated by black gaps */
+.panelbox > *{max-width:100%}
+/* the run that frames a panel is the panel's own colour, and it is a CAPSULE */
+.panelbox .l-run{inset:0}
+
+/* the hero: a colour block with the statement, and the schematic beside it */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(14px,2vw,26px);align-items:stretch;margin-top:12px}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}}
+
+/* the domain statement block, in the reference's solid-mass language */
+.statement{display:grid;gap:10px;align-content:center;padding:clamp(18px,2.4vw,30px);
+  background:var(--lc-coral);color:var(--lc-on);border-radius:var(--lc-mass)}
+.statement .st-t{font-family:var(--font-panel,"PT Sans Narrow",sans-serif);font-weight:700;
+  font-size:clamp(15px,1.5vw,20px);letter-spacing:normal;text-transform:uppercase}
+.statement .st-b{font-size:clamp(13.5px,1.2vw,16px);line-height:1.55}
+.statement .st-l{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:12px;
+  letter-spacing:normal;text-transform:uppercase;opacity:.72}
+
+/* the domain lines that replaced the numeric readouts */
+.domains{display:grid;gap:0;margin-top:6px}
+.domains li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:12px;
+  align-items:baseline;padding:9px 0;border-top:1px solid var(--rule)}
+.domains li:first-child{border-top:0}
+.domains .dm-k{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;
+  letter-spacing:normal;text-transform:uppercase;color:var(--lc-amber);white-space:nowrap}
+.domains .dm-v{font-size:clamp(13px,1.15vw,15px);line-height:1.5;color:var(--ink)}
+
+/* the caption under a drawing: the drawing has to mean something */
+.sheet-cap{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;
+  line-height:1.5;color:var(--muted);margin:8px 0 0;letter-spacing:normal;}
+.l-panel .panel-leg{margin:0 0 2px;font-family:var(--font-panel,"PT Sans Narrow",sans-serif);
+  font-weight:700;font-size:clamp(11.5px,1.05vw,13px);letter-spacing:0.07em;;text-transform:uppercase;
+  color:var(--lc-amber)}
+
+/* the plates start at the EDGE of the screen and run across it */
+.lcars-main .l-plate,
+.lcars-main .bandrow > .l-band{margin-left:calc(-1 * var(--pad-x))}
+.lcars-main .l-plate{max-width:calc(100% + var(--pad-x))}
+/* a panel's content sits in a black plate with breathing room */
+.panelbox .plate-row{display:grid;gap:clamp(12px,1.6vw,22px)}
+
+/* ---- colour mass ---------------------------------------------------------
+   The reference is 17 % coloured pixels on 58 % black: the colour is in BIG
+   pieces, not hairlines. These are the masses that carry it. */
+.lcars .l-plate{--lh:clamp(26px,3.4vw,42px)}
+.lcars .l-band{--bh:clamp(44px,5vw,64px)}
+.lcars .l-med{width:clamp(40px,3.6vw,52px);height:clamp(40px,3.6vw,52px);border-width:3px}
+.lcars .l-med svg{width:46%;height:46%}
+/* the domains list is a plate of its own */
+.lcars .domains{background:#0b0f14;border-left:clamp(6px,0.9vw,12px) solid var(--lc-amber);
+  padding:clamp(12px,1.8vw,22px) clamp(12px,1.8vw,24px)}
+.lcars .domains li{border-top-color:#1d2530}
+/* the drawing sits on a dark plate, like the schematic in the reference */
+.lcars .l-panel{background:#0b0f14;border:0;border-radius:var(--lc-mass);
+  padding:clamp(12px,1.6vw,20px)}
+.lcars .sheetfig{border-color:#1d2530;background:
+  linear-gradient(to right,rgba(234,244,248,.04) 1px,transparent 1px) 0 0/22px 22px,
+  linear-gradient(to bottom,rgba(234,244,248,.04) 1px,transparent 1px) 0 0/22px 22px,
+  #080b0f}
+.lcars .panelbox{padding-bottom:clamp(26px,3.6vw,54px)}
+/* the statement is the biggest mass on the page */
+.lcars .statement{padding:clamp(24px,3.4vw,46px);gap:clamp(10px,1.4vw,18px)}
+.lcars .statement .st-b{font-size:clamp(15px,1.35vw,19px)}
+/* the facts table is a plate too */
+.lcars .facts{background:#0b0f14;padding:clamp(10px,1.4vw,18px);
+  border-left:clamp(6px,0.9vw,12px) solid var(--lc-slate)}
+
+/* the header: the name on the left, a big colour mass on the right - the
+   reference's tall column, reduced to the width of the text block */
+.header-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+  gap:clamp(16px,2.4vw,38px);align-items:stretch;margin-top:clamp(10px,1.6vw,22px)}
+@media (max-width:760px){.header-grid{grid-template-columns:1fr}}
+.header-side{display:grid;align-content:space-between;gap:clamp(10px,1.4vw,18px);
+  background:var(--c,var(--lc-blue));color:var(--lc-on);
+  border-radius:var(--lc-mass);padding:clamp(16px,2.2vw,30px);min-height:clamp(180px,26vh,320px)}
+.header-side .hs-t{font-family:var(--font-panel,"PT Sans Narrow",sans-serif);font-weight:700;
+  font-size:clamp(12px,1.2vw,15px);letter-spacing:0.07em;text-transform:uppercase;opacity:.8}
+.header-side .hs-b{font-size:clamp(14px,1.35vw,18px);line-height:1.45}
+.header-side .hs-l{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;
+  letter-spacing:0.06em;text-transform:uppercase;opacity:.72}

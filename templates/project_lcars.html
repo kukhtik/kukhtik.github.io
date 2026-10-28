@@ -2,8 +2,8 @@
 {% block content %}
 {% set vis = project.visual %}
 <section class="panelbox" id="case-hero" data-od-id="case-hero">
-  <span class="l-elbow" style="--c:var(--lc-coral);--l-long:46%;--l-stub:26%;--l-thick:20px"><i></i><i></i></span>
-  <span class="l-elbow" data-dir="right" style="--c:var(--lc-apricot);--l-long:30%;--l-stub:18%;--l-thick:16px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-amber)"><span class="pl-bar"></span><span class="pl-label">CASE · {{ project.slug | upper }}</span></span>
+  <span class="l-plate" style="--c:var(--lc-apricot)"><span class="pl-bar"></span></span>
   <p class="leg">CASE · {{ project.slug | upper }} · {{ project.year }}</p>
   <a class="l-cmd case-back" href="{{ home_url }}#projects"><span class="l-dot" style="--c:var(--lc-coral)"></span>&#8592; {{ ui.actions.back_to_work[lang] }}</a>
   <h1 class="h2 case-title">{{ t(project.title, lang) }}</h1>
@@ -18,7 +18,7 @@
 </section>
 
 <section class="panelbox" id="case-band" data-od-id="case-band">
-  <span class="l-elbow" style="--c:var(--lc-cyan);--l-long:40%;--l-stub:24%;--l-thick:18px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-cyan)"><span class="pl-bar"></span></span>
   <p class="leg">{{ ui.sections.approach[lang] | upper }}</p>
   <div class="l-panel" style="--c:var(--lc-mint)">
     <p class="panel-leg">{% if vis == 'rag' %}{{ ui.lcars.cap_fieldmap[lang] }}{% elif vis == 'vetka' %}{{ ui.lcars.cap_vec[lang] }}{% else %}{{ ui.lcars.cap_latt[lang] }}{% endif %}</p>
@@ -32,14 +32,14 @@
 </section>
 
 <section class="panelbox" id="case-problem" data-od-id="case-problem">
-  <span class="l-elbow" style="--c:var(--lc-amber);--l-long:38%;--l-stub:22%;--l-thick:18px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-amber)"><span class="pl-bar"></span></span>
   <p class="leg">01 · {{ ui.sections.problem[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.problem[lang] }}</h2>
   <p class="proj-sum">{{ t(project.problem, lang) }}</p>
 </section>
 
 <section class="panelbox" id="case-approach" data-od-id="case-approach">
-  <span class="l-elbow" data-dir="right" style="--c:var(--lc-sky);--l-long:34%;--l-stub:20%;--l-thick:16px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-sky)"><span class="pl-bar"></span></span>
   <p class="leg">02 · {{ ui.sections.approach[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.approach[lang] }}</h2>
   <ul class="cap">
@@ -50,7 +50,7 @@
 </section>
 
 <section class="panelbox" id="case-results" data-od-id="case-results">
-  <span class="l-elbow" style="--c:var(--lc-mint);--l-long:42%;--l-stub:26%;--l-thick:20px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-mint)"><span class="pl-bar"></span></span>
   <p class="leg">03 · {{ ui.sections.results[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.results[lang] }}</h2>
   <table class="tbl">
@@ -61,7 +61,7 @@
 </section>
 
 <section class="panelbox" id="case-stack" data-od-id="case-stack">
-  <span class="l-elbow" style="--c:var(--lc-lilac);--l-long:36%;--l-stub:20%;--l-thick:16px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-lilac)"><span class="pl-bar"></span></span>
   <p class="leg">04 · {{ ui.sections.stack[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.stack[lang] }}</h2>
   <div class="barrow"><span class="l-bar" style="--lh:10px;width:100%">{% for s in project.stack %}<i style="--w:{{ [3,1,2,4,2,1,3,2,1][loop.index0] if loop.index0 < 9 else 1 }};--c:{{ ['var(--lc-coral)','var(--lc-apricot)','var(--lc-mint)','var(--lc-sky)','var(--lc-mauve)','var(--lc-sand)','var(--lc-periwinkle)','var(--lc-gold)','var(--lc-cream)'][loop.index0 % 9] }}"></i>{% endfor %}</span></div>
@@ -69,14 +69,14 @@
 </section>
 
 <section class="panelbox" id="case-public" data-od-id="case-public">
-  <span class="l-elbow" data-dir="right" style="--c:var(--lc-rose);--l-long:30%;--l-stub:18%;--l-thick:16px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-rose)"><span class="pl-bar"></span></span>
   <p class="leg">05 · {{ ui.sections.confidentiality[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.confidentiality[lang] }}</h2>
   <p class="proj-sum">{{ t(project.confidentiality, lang) }}</p>
 </section>
 
 <section class="panelbox" id="case-links" data-od-id="case-links">
-  <span class="l-elbow" style="--c:var(--lc-gold);--l-long:40%;--l-stub:24%;--l-thick:18px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-gold)"><span class="pl-bar"></span></span>
   <p class="leg">06 · {{ ui.sections.links[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.links[lang] }}</h2>
   <div class="contacts">
@@ -89,7 +89,7 @@
 
 {% if project.gallery_all %}
 <section class="panelbox" id="case-gallery" data-od-id="case-gallery">
-  <span class="l-elbow" style="--c:var(--lc-sand);--l-long:36%;--l-stub:20%;--l-thick:16px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-sand)"><span class="pl-bar"></span></span>
   <p class="leg">07 · {{ ui.sections.gallery[lang] | upper }}</p>
   <h2 class="h2">{{ ui.sections.gallery[lang] }}</h2>
   <div class="fields">
@@ -106,7 +106,7 @@
 
 {% if next_project %}
 <section class="panelbox" id="case-next" data-od-id="case-next">
-  <span class="l-elbow" data-dir="right" style="--c:var(--lc-periwinkle);--l-long:34%;--l-stub:20%;--l-thick:18px"><i></i><i></i></span>
+  <span class="l-plate" style="--c:var(--lc-periwinkle)"><span class="pl-bar"></span></span>
   <p class="leg">NEXT · {{ ui.nav.work[lang] | upper }}</p>
   <h2 class="h2"><a class="proj-link" href="{{ next_project.url_en if lang == 'en' else next_project.url_ru }}">{{ t(next_project.title, lang) }}</a></h2>
 </section>

@@ -8,9 +8,10 @@
     const svg = document.getElementById('isodose-hero');
     if(!svg) return;
     const ns='http://www.w3.org/2000/svg';
+    // the dose ramp, in the new five families: hot centre, cool fringe
     const curves = [
-      {r:30, c:'#7fc4b0'}, {r:46, c:'#3ccce4'}, {r:62, c:'#6c9fd8'},
-      {r:78, c:'#e49c24'}, {r:94, c:'#cc6060'}
+      {r:30, c:'#e06068'}, {r:46, c:'#f88078'}, {r:62, c:'#f8a808'},
+      {r:78, c:'#f89838'}, {r:94, c:'#b0c8f8'}
     ];
     curves.forEach((cur,i)=>{
       const p = document.createElementNS(ns,'ellipse');
@@ -39,13 +40,13 @@
       const top = document.createElementNS(ns,'rect');
       top.setAttribute('x', 20 + i*46); top.setAttribute('y', 10);
       top.setAttribute('width','38'); top.setAttribute('height','46');
-      top.setAttribute('fill','#cc6060'); top.setAttribute('opacity','0.7');
+      top.setAttribute('fill','#e06068'); top.setAttribute('opacity','0.7');
       top.setAttribute('rx','2');
       svg.appendChild(top);
       const bot = document.createElementNS(ns,'rect');
       bot.setAttribute('x', 20 + i*46); bot.setAttribute('y', 64);
       bot.setAttribute('width','38'); bot.setAttribute('height','46');
-      bot.setAttribute('fill','#6c9fd8'); bot.setAttribute('opacity','0.7');
+      bot.setAttribute('fill','#f8a808'); bot.setAttribute('opacity','0.7');
       bot.setAttribute('rx','2');
       svg.appendChild(bot);
     }
@@ -61,7 +62,7 @@
       r.setAttribute('cx', 40+ (i%3)*70 + (Math.random()*10));
       r.setAttribute('cy', 30 + Math.floor(i/3)*50);
       r.setAttribute('r', 8 + i*2);
-      r.setAttribute('fill','none'); r.setAttribute('stroke','#7fc4b0'); r.setAttribute('stroke-width','1.5');
+      r.setAttribute('fill','none'); r.setAttribute('stroke','#b0c8f8'); r.setAttribute('stroke-width','1.5');
       r.classList.add('field-node');
       svg.appendChild(r);
     }
@@ -69,7 +70,7 @@
       const l = document.createElementNS(ns,'line');
       l.setAttribute('x1',40+(i%3)*70); l.setAttribute('y1',30+Math.floor(i/3)*50);
       l.setAttribute('x2',40+((i+1)%3)*70); l.setAttribute('y2',30+Math.floor((i+1)/3)*50);
-      l.setAttribute('stroke','#3ccce4'); l.setAttribute('stroke-width','1');
+      l.setAttribute('stroke','#8fb4f0'); l.setAttribute('stroke-width','1');
       l.setAttribute('stroke-dasharray','200'); l.setAttribute('stroke-dashoffset','200');
       l.classList.add('field-edge');
       svg.appendChild(l);
@@ -85,7 +86,7 @@
       const r = document.createElementNS(ns,'rect');
       r.setAttribute('x', 10 + (i%4)*60); r.setAttribute('y', 10 + Math.floor(i/4)*32);
       r.setAttribute('width','48'); r.setAttribute('height','24');
-      r.setAttribute('fill','none'); r.setAttribute('stroke','#e49c24'); r.setAttribute('stroke-width','1.2');
+      r.setAttribute('fill','none'); r.setAttribute('stroke','#f89838'); r.setAttribute('stroke-width','1.2');
       r.setAttribute('rx','1');
       svg.appendChild(r);
     }
@@ -106,7 +107,7 @@
     }
     const res = document.createElementNS(ns,'circle');
     res.setAttribute('cx','160'); res.setAttribute('cy','60'); res.setAttribute('r','6');
-    res.setAttribute('fill','#cc6060'); res.setAttribute('class','residual');
+    res.setAttribute('fill','#e06068'); res.setAttribute('class','residual');
     svg.appendChild(res);
   }
 
@@ -122,7 +123,7 @@
     }
     const p = document.createElementNS(ns,'path');
     p.setAttribute('d', d); p.setAttribute('fill','none');
-    p.setAttribute('stroke','#7fc4b0'); p.setAttribute('stroke-width','2');
+    p.setAttribute('stroke','#b0c8f8'); p.setAttribute('stroke-width','2');
     p.setAttribute('stroke-dasharray','1200'); p.setAttribute('stroke-dashoffset', reduce?'0':'1200');
     p.classList.add('wave-path');
     svg.appendChild(p);
@@ -158,6 +159,77 @@
   function runMotion(){
     if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){ runFallback(); return; }
     gsap.registerPlugin(ScrollTrigger);
+
+    // ---- the runs EXTEND out of the edge of the screen ---------------------
+    // A LCARS bar is not drawn on the page, it grows: it starts collapsed
+    // against one edge and runs across. The same code runs on a phone, where
+    // the run is simply thinner and the trigger is the same.
+    const grow = (el, from, trigger, delay) => {
+      const horiz = (from === 'left' || from === 'right');
+      if(reduce){ gsap.set(el, horiz ? {scaleX:1} : {scaleY:1}); return; }
+      gsap.set(el, horiz
+        ? {scaleX:0, transformOrigin: from + ' center'}
+        : {scaleY:0, transformOrigin: 'center ' + from});
+      const tween = {duration:1.15, ease:'power3.out', delay: delay || 0};
+      if(horiz) tween.scaleX = 1; else tween.scaleY = 1;
+      if(trigger){
+        tween.scrollTrigger = {trigger:trigger, start:'top 84%', once:true};
+        tween.overwrite = 'auto';
+      }
+      gsap.to(el, tween);
+    };
+
+    // the screen frame: it is always on screen, so it grows on load
+    const frame = qs('.lcars-frame');
+    if(frame){
+      grow(qs('.run-top', frame), 'left');
+      grow(qs('.run-foot', frame), 'left', null, .12);
+      grow(qs('.run-left', frame), 'top', null, .16);
+      grow(qs('.run-right', frame), 'top', null, .24);
+      grow(qs('.run-block', frame), 'top', null, .32);
+      grow(qs('.frame-label', frame), 'right', null, .4);
+    }
+
+    // the runs that frame each panel
+    document.querySelectorAll('.l-run').forEach((run)=>{
+      const host = run.closest('.panelbox') || run;
+      const arm = run.querySelector('i:first-child');
+      const stub = run.querySelector('i:last-child');
+      const fromRight = run.dataset.dir === 'right';
+      if(arm) grow(arm, fromRight ? 'right' : 'left', host);
+      if(stub) grow(stub, 'top', host, .12);
+    });
+
+    // the segmented bars: each segment extends from its own edge
+    document.querySelectorAll('.l-bar').forEach((bar)=>{
+      const segs = bar.querySelectorAll('i');
+      segs.forEach((seg,i)=>{
+        const last = i === segs.length - 1;
+        grow(seg, last ? 'right' : 'left', bar, i * 0.06);
+      });
+    });
+
+    // the plates: a bar with a label in its end, extending from the screen edge
+    document.querySelectorAll('.l-plate').forEach((plate)=>{
+      const bar = plate.querySelector('.pl-bar');
+      const label = plate.querySelector('.pl-label');
+      const host = plate.closest('.panelbox') || plate;
+      if(bar) grow(bar, 'left', host);
+      if(label) grow(label, 'right', host, .18);
+    });
+
+    // the labelled band blocks
+    document.querySelectorAll('.l-band').forEach((band)=>{
+      band.querySelectorAll('span').forEach((cell,i)=> grow(cell, 'left', band, i*0.07));
+    });
+
+    // the solid colour masses appear as masses, they do not slide in
+    document.querySelectorAll('.statement').forEach((block)=>{
+      if(reduce){ gsap.set(block, {opacity:1}); return; }
+      gsap.set(block, {opacity:0, scale:.97});
+      gsap.to(block, {opacity:1, scale:1, duration:.7, ease:'power2.out',
+        scrollTrigger:{trigger:block, start:'top 88%', once:true}});
+    });
 
     // the gauge and the lead readouts read their targets from the markup, so a
     // number can never drift away from content/projects/*/project.yaml
