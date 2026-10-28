@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 620" id="plate-linac" data-od-id="plate-linac" role="img" aria-labelledby="plate-ttl plate-dsc" preserveAspectRatio="xMidYMid meet">
+<title id="plate-ttl">Medical linear accelerator - central console plate</title>
+<desc id="plate-dsc">Wide side elevation of a medical linear accelerator drawn in cyan line work on a transparent field. A thick C-shaped gantry arc carries the treatment head with its multi-leaf collimator; an amber beam cone falls from the head to the isocentre, where nested cyan-to-amber isodose rings sit. A couch with its rail carries the patient outline. Callout leader lines reach out of the drawing for GANTRY, TREATMENT HEAD, MLC, BEAM, ISOCENTRE, COUCH, PATIENT, SAD and FIELD.</desc>
+<style>
+@font-face{font-family:'PT Sans Narrow';src:url('../fonts/pt-sans-narrow-700-latin.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'IBM Plex Mono';src:url('../fonts/plex-mono-400-latin.woff2') format('woff2');font-weight:400;font-display:swap;}
+.struct{fill:none;stroke:#6fd3e8;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;}
+.struct-hi{fill:none;stroke:#9fe8f5;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.struct-f{fill:none;stroke:#6fd3e8;stroke-width:.8;stroke-linecap:round;}
+.struct-d{fill:none;stroke:#3f9cb4;stroke-width:.9;stroke-linecap:round;}
+.rib{fill:none;stroke:#4fb2c8;stroke-width:.9;stroke-linecap:round;}
+.cable{fill:none;stroke:#4fb2c8;stroke-width:.8;stroke-linecap:round;}
+.detail{fill:none;stroke:#9fe8f5;stroke-width:.9;stroke-linecap:round;}
+.axis{fill:none;stroke:#6fd3e8;stroke-width:.8;stroke-dasharray:7 5;}
+.dim{fill:none;stroke:#57b4cb;stroke-width:.8;stroke-dasharray:6 4;}
+.dimline{fill:none;stroke:#9fe8f5;stroke-width:1;}
+.cone{fill:none;stroke:#ffae01;stroke-width:1.2;stroke-linejoin:round;}
+.cone-fill{fill:#ffae01;fill-opacity:.16;stroke:none;}
+.cone-core{fill:none;stroke:#ffc24d;stroke-width:.7;stroke-dasharray:4 4;}
+.field{fill:none;stroke:#ffae01;stroke-width:1.4;}
+.source{fill:none;stroke:#ffc24d;stroke-width:1.2;}
+.iso-1{fill:none;stroke:#6fd3e8;stroke-width:1.2;}
+.iso-2{fill:none;stroke:#9fe8f5;stroke-width:1.2;}
+.iso-3{fill:none;stroke:#ffd07a;stroke-width:1.2;}
+.iso-4{fill:none;stroke:#ffa32b;stroke-width:1.3;}
+.iso-5{fill:none;stroke:#ef6f5c;stroke-width:1.4;}
+.iso-cross{fill:none;stroke:#dff8ff;stroke-width:1.3;}
+.leader{fill:none;stroke:#7fd0e6;stroke-width:.9;stroke-linecap:round;stroke-linejoin:round;}
+.leader-dot{fill:#7fd0e6;stroke:none;}
+.lbl-bar{fill:#6fd3e8;stroke:none;}
+.lbl{fill:#cdeffc;font-family:'PT Sans Narrow','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:13px;font-weight:700;letter-spacing:.13em;}
+.lbl-warm{fill:#ffc98a;font-family:'PT Sans Narrow','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:13px;font-weight:700;letter-spacing:.13em;}
+.dim-text{fill:#8fd9ec;font-family:'IBM Plex Mono','Consolas',monospace;font-size:12px;letter-spacing:.04em;}
+.dim-text-w{fill:#ffd9a0;font-family:'IBM Plex Mono','Consolas',monospace;font-size:12px;letter-spacing:.04em;}
+.caption{fill:#3f9cb4;font-family:'PT Sans Narrow','Arial Narrow',sans-serif;font-size:11px;letter-spacing:.22em;}
+</style>
+
+<g class="drawing" data-od-id="plate-drawing">
+
+  <g class="grp-gantry" data-od-id="grp-gantry">
+    <path class="struct-hi" data-od-id="gantry-arc" d="M 1009 317.3 A 320 320 0 0 0 391 317.3 L 431.4 328.1 A 278 278 0 0 1 968.6 328.1 Z"/>
+    <path class="rib" data-od-id="gantry-rib-210" d="M 459.1 261 L 422.9 240"/>
+    <path class="rib" data-od-id="gantry-rib-240" d="M 561 159.2 L 540 122.8"/>
+    <path class="rib" data-od-id="gantry-rib-270" d="M 700 122 L 700 80"/>
+    <path class="rib" data-od-id="gantry-rib-300" d="M 839 159.2 L 860 122.8"/>
+    <path class="rib" data-od-id="gantry-rib-330" d="M 940.9 261 L 977.1 240"/>
+    <path class="struct-d" data-od-id="gantry-inner-ring" d="M 481.7 274 A 252 252 0 0 1 918.3 274"/>
+    <path class="cable" data-od-id="gantry-cable-left" d="M 497.1 345.6 A 210 210 0 0 0 628.1 202.7"/>
+    <path class="cable" data-od-id="gantry-cable-left-2" d="M 510.8 349.2 A 196 196 0 0 0 632.9 215.9"/>
+    <path class="cable" data-od-id="gantry-cable-right" d="M 902.9 345.6 A 210 210 0 0 1 771.9 202.7"/>
+    <path class="cable" data-od-id="gantry-head-feed" d="M 648 160 C 560 170 470 220 448 300"/>
+    <path class="struct" data-od-id="gantry-column" d="M 366 296 L 474 296 L 474 560 L 366 560 Z"/>
+    <path class="rib" data-od-id="gantry-column-rib" d="M 390 296 L 390 560 M 420 296 L 420 560 M 450 296 L 450 560"/>
+    <path class="struct-f" data-od-id="gantry-column-base" d="M 346 560 L 494 560"/>
+    <path class="struct" data-od-id="gantry-counterweight" d="M 950 300 L 1040 300 L 1032 372 L 958 372 Z"/>
+    <path class="rib" data-od-id="gantry-counterweight-rib" d="M 970 300 L 974 372 M 1000 300 L 1002 372"/>
+  </g>
+
+  <g class="grp-head" data-od-id="grp-head">
+    <path class="struct" data-od-id="head-body" d="M 648 124 L 752 124 L 752 236 L 648 236 Z"/>
+    <path class="struct-f" data-od-id="head-vanes" d="M 664 124 L 664 190 M 736 124 L 736 190 M 648 190 L 752 190"/>
+    <path class="struct" data-od-id="head-collimator" d="M 672 190 L 728 190 L 720 216 L 680 216 Z"/>
+    <path class="struct-f" data-od-id="head-collimator-line" d="M 680 216 L 720 216 M 686 190 L 692 216 M 714 190 L 708 216"/>
+    <path class="source" data-od-id="target-source" d="M 694 150 L 706 150 M 700 144 L 700 156"/>
+    <path class="struct-hi" data-od-id="mlc-frame" d="M 676 236 L 724 236 L 724 250 L 676 250 Z"/>
+    <path class="leaf" data-od-id="mlc-leaf-l1" d="M 679 250 L 679 244"/>
+    <path class="leaf" data-od-id="mlc-leaf-l2" d="M 685 250 L 685 240"/>
+    <path class="leaf" data-od-id="mlc-leaf-l3" d="M 691 250 L 691 236"/>
+    <path class="leaf" data-od-id="mlc-leaf-r1" d="M 709 250 L 709 236"/>
+    <path class="leaf" data-od-id="mlc-leaf-r2" d="M 715 250 L 715 240"/>
+    <path class="leaf" data-od-id="mlc-leaf-r3" d="M 721 250 L 721 244"/>
+  </g>
+
+  <g class="grp-couch" data-od-id="grp-couch">
+    <path class="struct" data-od-id="couch-slab" d="M 640 438 L 1180 438 L 1180 458 L 640 458 Z"/>
+    <path class="struct-f" data-od-id="couch-rail" d="M 656 458 L 1164 458"/>
+    <path class="struct-f" data-od-id="couch-rail-ticks" d="M 680 458 L 680 466 M 720 458 L 720 466 M 760 458 L 760 466 M 800 458 L 800 466 M 840 458 L 840 466 M 880 458 L 880 466 M 920 458 L 920 466 M 960 458 L 960 466 M 1000 458 L 1000 466 M 1040 458 L 1040 466 M 1080 458 L 1080 466 M 1120 458 L 1120 466"/>
+    <path class="struct" data-od-id="couch-pedestal" d="M 980 458 L 1080 458 L 1070 560 L 990 560 Z"/>
+    <path class="rib" data-od-id="couch-pedestal-rib" d="M 1000 470 L 996 550 M 1060 470 L 1064 550"/>
+    <path class="struct-f" data-od-id="couch-base" d="M 960 560 L 1100 560"/>
+  </g>
+
+  <g class="grp-patient" data-od-id="grp-patient">
+    <path class="struct" data-od-id="patient-body" d="M 726 386 C 752 370 792 364 842 366 C 902 368 942 374 978 390 C 1012 404 1046 412 1082 418 L 1160 428 L 1168 424 L 1170 436 C 1075 442 1000 442 940 438 L 790 436 C 748 434 726 418 726 386 Z"/>
+    <circle class="struct" data-od-id="patient-head" cx="694" cy="402" r="32"/>
+    <path class="struct-f" data-od-id="patient-neck" d="M 720 392 L 730 390"/>
+    <path class="detail" data-od-id="patient-arm" d="M 772 380 C 820 376 872 380 912 390"/>
+  </g>
+
+  <g class="grp-isodose" data-od-id="grp-isodose">
+    <circle class="iso-1" data-od-id="iso-ring-outer" cx="700" cy="400" r="84"/>
+    <circle class="iso-2" data-od-id="iso-ring-2" cx="700" cy="400" r="68"/>
+    <circle class="iso-3" data-od-id="iso-ring-3" cx="700" cy="400" r="52"/>
+    <circle class="iso-4" data-od-id="iso-ring-4" cx="700" cy="400" r="36"/>
+    <circle class="iso-5" data-od-id="iso-ring-inner" cx="700" cy="400" r="20"/>
+  </g>
+
+  <g class="grp-beam" data-od-id="grp-beam">
+    <path class="cone-fill" data-od-id="beam-cone-fill" d="M 690.6 244 L 675 400 L 725 400 L 709.4 244 Z"/>
+    <path class="cone" data-od-id="beam-cone" d="M 690.6 244 L 675 400 L 725 400 L 709.4 244 Z"/>
+    <path class="cone-core" data-od-id="beam-core" d="M 700 244 L 700 400"/>
+    <path class="field" data-od-id="field-outline" d="M 673 400 L 727 400 M 675 394 L 675 406 M 725 394 L 725 406"/>
+  </g>
+
+  <g class="grp-isocentre" data-od-id="grp-isocentre">
+    <path class="iso-cross" data-od-id="isocentre-cross-h" d="M 684 400 L 716 400"/>
+    <path class="iso-cross" data-od-id="isocentre-cross-v" d="M 700 384 L 700 416"/>
+    <circle class="iso-cross" data-od-id="isocentre-ring" cx="700" cy="400" r="6"/>
+  </g>
+
+  <g class="grp-dim" data-od-id="grp-dim">
+    <path class="dim" data-od-id="sad-ext-top" d="M 700 150 L 548 150"/>
+    <path class="dim" data-od-id="sad-ext-bottom" d="M 700 400 L 548 400"/>
+    <path class="dimline" data-od-id="sad-rule" d="M 560 150 L 560 400"/>
+    <path class="dimline" data-od-id="sad-arrow-top" d="M 554 158 L 560 150 L 566 158"/>
+    <path class="dimline" data-od-id="sad-arrow-bottom" d="M 554 392 L 560 400 L 566 392"/>
+    <text class="dim-text" data-od-id="sad-value" x="546" y="279" text-anchor="end">SAD 100 cm</text>
+    <path class="struct-f" data-od-id="floor-line" d="M 300 560 L 1360 560"/>
+    <path class="struct-d" data-od-id="floor-ticks" d="M 340 560 L 332 570 M 400 560 L 392 570 M 460 560 L 452 570 M 520 560 L 512 570 M 580 560 L 572 570 M 640 560 L 632 570 M 700 560 L 692 570 M 760 560 L 752 570 M 820 560 L 812 570 M 880 560 L 872 570 M 940 560 L 932 570 M 1000 560 L 992 570 M 1060 560 L 1052 570 M 1120 560 L 1112 570 M 1180 560 L 1172 570 M 1240 560 L 1232 570 M 1300 560 L 1292 570"/>
+    <text class="caption" data-od-id="plate-caption" x="40" y="596">SIDE ELEVATION &#183; GANTRY 0&#176;</text>
+  </g>
+
+  <g class="grp-leaders" data-od-id="grp-leaders">
+    <g class="grp-leader" data-od-id="leader-gantry">
+      <path class="leader" d="M 226 175 L 330 175 L 470 176"/>
+      <circle class="leader-dot" cx="470" cy="176" r="2.6"/>
+      <rect class="lbl-bar" x="208" y="172" width="18" height="3"/>
+      <text class="lbl" x="200" y="181" text-anchor="end">GANTRY</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-sad">
+      <path class="leader" d="M 226 260 L 400 260 L 556 246"/>
+      <circle class="leader-dot" cx="556" cy="246" r="2.6"/>
+      <rect class="lbl-bar" x="208" y="257" width="18" height="3"/>
+      <text class="lbl" x="200" y="266" text-anchor="end">SAD 100 CM</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-treatment-head">
+      <path class="leader" d="M 1382 93 L 1160 93 L 754 126"/>
+      <circle class="leader-dot" cx="754" cy="126" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="90" width="18" height="3"/>
+      <text class="lbl" x="1408" y="99">TREATMENT HEAD</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-mlc">
+      <path class="leader" d="M 1382 155 L 1000 155 L 727 226"/>
+      <circle class="leader-dot" cx="727" cy="226" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="152" width="18" height="3"/>
+      <text class="lbl" x="1408" y="161">MLC</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-beam">
+      <path class="leader" d="M 1382 219 L 900 219 L 712 268"/>
+      <circle class="leader-dot" cx="712" cy="268" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="216" width="18" height="3"/>
+      <text class="lbl-warm" x="1408" y="225">BEAM</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-isocentre">
+      <path class="leader" d="M 1382 283 L 1150 283 L 770 330 L 704 394"/>
+      <circle class="leader-dot" cx="704" cy="394" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="280" width="18" height="3"/>
+      <text class="lbl" x="1408" y="289">ISOCENTRE</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-field">
+      <path class="leader" d="M 1382 347 L 1180 347 L 820 396 L 729 400"/>
+      <circle class="leader-dot" cx="729" cy="400" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="344" width="18" height="3"/>
+      <text class="lbl-warm" x="1408" y="353">FIELD 20 CM</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-patient">
+      <path class="leader" d="M 1382 411 L 1100 411 L 904 372"/>
+      <circle class="leader-dot" cx="904" cy="372" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="408" width="18" height="3"/>
+      <text class="lbl" x="1408" y="417">PATIENT</text>
+    </g>
+    <g class="grp-leader" data-od-id="leader-couch">
+      <path class="leader" d="M 1382 475 L 1250 475 L 1186 440"/>
+      <circle class="leader-dot" cx="1186" cy="440" r="2.6"/>
+      <rect class="lbl-bar" x="1382" y="472" width="18" height="3"/>
+      <text class="lbl" x="1408" y="481">COUCH</text>
+    </g>
+  </g>
+</g>
+</svg>

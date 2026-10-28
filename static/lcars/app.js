@@ -1,132 +1,92 @@
-/* ================================================================
-   LCARS portfolio — behaviour
-   - bilingual rendering from one markup (EN `/`, RU `/ru/`)
-   - L-elbows generated as ONE connected path per framed block
-   - GSAP + ScrollTrigger (vendored): runs extend, blocks reveal,
-     counters count, the linac / isodose drawings draw themselves
-   - honours prefers-reduced-motion
-   ================================================================ */
+/* =================================================================
+   THE CONSOLE - behaviour
+     - one markup, two languages: EN at /, RU at /ru/ ; every
+       interface string lives in the page's own i18n object
+     - the scroll is a mode dial: ONE scrubbed timeline drives the
+       console through its five states
+     - GSAP + ScrollTrigger, both vendored: no CDN, no fetch
+     - prefers-reduced-motion: the console renders in its rest
+       state, fully drawn, and the scroll does nothing
+   ================================================================= */
 (function () {
   'use strict';
 
   var CONTRACT = JSON.parse(document.getElementById('contract').textContent);
   var S = CONTRACT.site;
+  var HTML = document.documentElement;
+  var LANG = HTML.getAttribute('data-lang') === 'ru' ? 'ru' : 'en';
 
-  /* ---------- interface copy (RU + EN) ---------- */
-  var UI = {
-    'ui.capLabel':        { en: 'Python / AI',            ru: 'Python / AI' },
-    'ui.contact':         { en: 'Email me',               ru: 'Написать' },
-    'ui.tagRag':          { en: 'Offline RAG',            ru: 'Offline RAG' },
-    'ui.tagCad':          { en: 'CAD / GIS',              ru: 'CAD / GIS' },
-    'ui.tagAgents':       { en: 'LLM agents',             ru: 'LLM-агенты' },
+  /* ---------- the page's own interface copy, EN + RU ---------- */
+  var I18N = {
+    'ui.who':         { en: 'Maxim Kukhto',   ru: 'Максим Кухто' },
+    'ui.mode':        { en: 'Mode',           ru: 'Режим' },
+    'ui.clock':       { en: 'Local',          ru: 'Местное' },
+    'ui.state0':      { en: 'Boot',           ru: 'Пуск' },
+    'ui.state1':      { en: 'Machine',        ru: 'Установка' },
+    'ui.state2':      { en: 'Dose',           ru: 'Доза' },
+    'ui.state3':      { en: 'Leaves',         ru: 'Лепестки' },
+    'ui.state4':      { en: 'Work',           ru: 'Работа' },
+    'ui.state5':      { en: 'Rest',           ru: 'Покой' },
 
-    'ui.statusLegend':    { en: 'Status report',          ru: 'Сводка' },
-    'ui.statusTag':       { en: '5 parameters',           ru: '5 параметров' },
+    'ui.capTitle':    { en: 'Capabilities',   ru: 'Возможности' },
+    'ui.capTag':      { en: 'Three areas',    ru: 'Три направления' },
+    'ui.recordTitle': { en: 'Service record', ru: 'Служебная запись' },
+    'ui.recordTag':   { en: '2020 - 2026',    ru: '2020 - 2026' },
+    'ui.reportTitle': { en: 'System online',  ru: 'Система в сети' },
+    'ui.reportTag':   { en: 'Report',         ru: 'Отчёт' },
 
-    'ui.schematicLegend': { en: 'Linear accelerator · TrueBeam', ru: 'Линейный ускоритель · TrueBeam' },
-    'ui.schematicNote':   { en: 'Schematic · not to scale', ru: 'Схема · не в масштабе' },
-    'ui.stateLegend':     { en: 'Machine readout',        ru: 'Показания установки' },
-    'ui.beamLegend':      { en: 'Dose distribution',      ru: 'Распределение дозы' },
-    'ui.linacCapLeft':    { en: 'Gantry · head · MLC · isocentre', ru: 'Гантри · головка · MLC · изоцентр' },
-    'ui.linacCapRight':   { en: 'Varian TrueBeam / VitalBeam', ru: 'Varian TrueBeam / VitalBeam' },
+    'ui.insetsTitle': { en: 'Device panel',    ru: 'Панель приборов' },
+    'ui.insetsTag':   { en: 'Off the machine', ru: 'Снято с установки' },
+    'ui.isodoseTitle':{ en: 'Isodose - axis',  ru: 'Изодоза - ось' },
+    'ui.mlcTitle':    { en: 'MLC leaves',      ru: 'Лепестки MLC' },
+    'ui.waveTitle':   { en: 'Pulse train',     ru: 'Импульсы пучка' },
 
-    'ui.instrumentLegend':{ en: 'Instrument set',         ru: 'Комплект приборов' },
-    'ui.instrumentNote':  { en: 'Read off the machine above', ru: 'Снято с установки выше' },
-    'ui.isodoseTitle':    { en: 'Isodose · central axis',  ru: 'Изодоза · центральная ось' },
-    'ui.isodoseTag':      { en: '6 MV · sagittal',         ru: '6 МВ · сагитталь' },
-    'ui.isodoseCap':      { en: 'Dose falls from the hot amber core through coral to the cold fringe; d-max 1.5 cm, d90 6.0 cm, d50 17.4 cm in water.',
-                            ru: 'Доза падает от горячего янтарного центра через коралловый к холодной кромке; d-max 1.5 см, d90 6.0 см, d50 17.4 см в воде.' },
-    'ui.mlcTitle':        { en: 'MLC leaf pattern',       ru: 'Раскладка лепестков MLC' },
-    'ui.mlcTag':          { en: 'Aperture plane',         ru: 'Плоскость апертуры' },
-    'ui.mlcCap':          { en: 'Two banks of tungsten leaves close on a 10 × 10 cm field at the isocentre — the aperture the beam actually takes.',
-                            ru: 'Две банки вольфрамовых лепестков смыкаются на поле 10 × 10 см в изоцентре — та самая апертура, которую принимает пучок.' },
-    'ui.waveTitle':       { en: 'Beam-on pulse train',    ru: 'Импульсы пучка' },
-    'ui.waveTag':         { en: '6 MV · pulsed',           ru: '6 МВ · импульсный' },
-    'ui.waveCap':         { en: 'Six pulses of 2.8 ms in an 8 ms period — a 35 % duty cycle, the reason the dosimetry checks are repeatable.',
-                            ru: 'Шесть импульсов по 2.8 мс в периоде 8 мс — скважность 35 %, поэтому дозиметрические проверки повторяемы.' },
+    'ui.contactCta':  { en: 'Write me',      ru: 'Написать' },
+    'ui.github':      { en: 'GitHub',        ru: 'GitHub' },
+    'ui.linkedin':    { en: 'LinkedIn',      ru: 'LinkedIn' },
+    'ui.space':       { en: 'Open Space',    ru: 'Open Space' },
+    'ui.domain':      { en: 'kukhto.is-a.dev', ru: 'kukhto.is-a.dev' },
 
-    'ui.capabilitiesLegend': { en: 'Capabilities',         ru: 'Возможности' },
-    'ui.capabilitiesNote':   { en: 'What I build · 3 areas', ru: 'Что я делаю · 3 направления' },
-    'ui.stackLegend':     { en: 'Toolchain',              ru: 'Стек' },
-    'ui.stackTag':        { en: 'Per project',            ru: 'По проектам' },
+    'ui.caseOpen':    { en: 'Open case',     ru: 'Открыть кейс' },
+    'ui.stActive':    { en: 'Active',        ru: 'Активен' },
+    'ui.stSet':       { en: 'Set',           ru: 'Задано' },
+    'ui.stPrimary':   { en: 'Primary',       ru: 'Основное' },
+    'ui.stLive':      { en: 'Live',          ru: 'В работе' },
+    'ui.avail':       { en: 'Available',     ru: 'Доступен' },
 
-    'ui.workLegend':      { en: 'Selected work',          ru: 'Избранные работы' },
-    'ui.workNote':        { en: 'Measured results · NDA-safe', ru: 'Измеренные результаты · под NDA' },
-    'ui.approach':        { en: 'Approach',               ru: 'Подход' },
-    'ui.problem':         { en: 'Problem',                ru: 'Задача' },
-    'ui.confidentiality': { en: 'Disclosure',             ru: 'О раскрытии' },
-    'ui.stack':           { en: 'Stack',                  ru: 'Стек' },
-
-    'ui.recordLegend':    { en: 'Service record',         ru: 'Служебная запись' },
-    'ui.recordNote':      { en: '2020 → 2026',            ru: '2020 → 2026' },
-    'ui.spaceLegend':     { en: 'Open space',             ru: 'Открытое пространство' },
-    'ui.spaceTag':        { en: 'Elsewhere',              ru: 'В другом месте' },
-    'ui.open':            { en: 'Open',                  ru: 'Открыть' },
-    'ui.disclosureLegend':{ en: 'Disclosure',             ru: 'О раскрытии' },
-    'ui.disclosureTag':   { en: 'Per project',            ru: 'По проектам' },
-
-    'ui.aboutLegend':     { en: 'About',                  ru: 'Обо мне' },
-    'ui.aboutNote':       { en: 'Nine years on the machine', ru: 'Девять лет на машине' },
-    'ui.availabilityLegend': { en: 'Availability',         ru: 'Доступность' },
-    'ui.availabilityTag': { en: 'Start / base / language', ru: 'Старт / база / язык' },
-
-    'ui.contactLegend':   { en: 'Contact',                ru: 'Контакт' },
-    'ui.contactNote':     { en: 'One primary channel',    ru: 'Один основной канал' },
-    'ui.contactTitle':    { en: 'Let us talk about the work', ru: 'Поговорим о работе' },
-    'ui.contactPanelLegend': { en: 'Direct',              ru: 'Прямо' },
-    'ui.contactPanelTag': { en: 'Replies within 2 days',   ru: 'Ответ в течение 2 дней' },
-
-    'ui.cv':              { en: 'Résumé',                 ru: 'Резюме' },
-    'ui.footerLeft':      { en: 'LCARS portfolio · built from real service data', ru: 'Портфолио LCARS · построено на реальных сервисных данных' },
-
-    'ui.email':           { en: 'Email',                  ru: 'Почта' },
-    'ui.github':          { en: 'GitHub',                 ru: 'GitHub' },
-    'ui.linkedin':        { en: 'LinkedIn',               ru: 'LinkedIn' },
-    'ui.location':        { en: 'Based',                  ru: 'База' },
-    'ui.timezone':        { en: 'Timezone',               ru: 'Часовой пояс' },
-    'ui.english':         { en: 'English',                ru: 'Английский' },
-
-    'ro.gantry':          { en: 'Gantry angle',           ru: 'Угол гантри' },
-    'ro.sad':             { en: 'SAD',                    ru: 'SAD' },
-    'ro.field':           { en: 'Field at isocentre',     ru: 'Поле в изоцентре' },
-    'ro.mlc':             { en: 'MLC aperture',           ru: 'Апертура MLC' },
-    'ro.iso':             { en: 'Isocentre offset',       ru: 'Смещение изоцентра' },
-    'ro.dmax':            { en: 'Dose d-max',             ru: 'Доза d-max' },
-    'ro.d90':             { en: 'Depth d90',              ru: 'Глубина d90' },
-    'ro.d50':             { en: 'Depth d50',              ru: 'Глубина d50' },
-    'ro.mode':            { en: 'Mode',                   ru: 'Режим' },
-    'ro.energy':          { en: 'Nominal energy',         ru: 'Номинальная энергия' },
-    'ro.mv':              { en: 'Monitor units',          ru: 'MU' },
-    'ro.rate':            { en: 'Dose rate',              ru: 'Мощность дозы' },
-    'ro.freq':            { en: 'Pulse frequency',        ru: 'Частота импульсов' },
-    'ro.duty':            { en: 'Duty cycle',             ru: 'Скважность' }
+    'ro.gantry':      { en: 'Gantry',        ru: 'Гантри' },
+    'ro.head':        { en: 'Head',          ru: 'Головка' },
+    'ro.mlc':         { en: 'MLC',           ru: 'MLC' },
+    'ro.beam':        { en: 'Beam',          ru: 'Пучок' },
+    'ro.isocentre':   { en: 'Isocentre',     ru: 'Изоцентр' },
+    'ro.sad':         { en: 'SAD',           ru: 'SAD' },
+    'ro.field':       { en: 'Field',         ru: 'Поле' },
+    'ro.dmax':        { en: 'd_max',         ru: 'd_max' },
+    'ro.d90':         { en: 'd_90',          ru: 'd_90' },
+    'ro.d50':         { en: 'd_50',          ru: 'd_50' },
+    'ro.iso':         { en: 'Isodose',       ru: 'Изодоза' },
+    'ro.depth':       { en: 'Depth',         ru: 'Глубина' },
+    'ro.leaves':      { en: 'Leaves',        ru: 'Лепестки' },
+    'ro.gap':         { en: 'Leaf gap',      ru: 'Зазор' },
+    'ro.aperture':    { en: 'Aperture',      ru: 'Апертура' },
+    'ro.bankA':       { en: 'Bank A',        ru: 'Ряд A' },
+    'ro.bankB':       { en: 'Bank B',        ru: 'Ряд B' },
+    'ro.leafIndex':   { en: 'Leaf index',    ru: 'Индекс' },
+    'ro.cases':       { en: 'Cases',         ru: 'Кейсы' },
+    'ro.public':      { en: 'Public code',  ru: 'Открытый код' },
+    'ro.nda':         { en: 'Under NDA',     ru: 'Под NDA' },
+    'ro.commercial':  { en: 'Commercial',    ru: 'Коммерческий' },
+    'ro.tests':       { en: 'Tests',         ru: 'Тесты' },
+    'ro.p50':         { en: 'p50 latency',   ru: 'p50 задержка' },
+    'ro.facts':       { en: 'Facts indexed', ru: 'Фактов в индексе' },
+    'ro.accuracy':    { en: 'Accuracy',      ru: 'Точность' }
   };
 
-  /* machine readouts — every value is read off the drawings in assets/ */
-  var READOUT_STATE = [
-    { k: 'ro.gantry', v: '000', u: '°' },
-    { k: 'ro.sad',    v: '100', u: 'cm' },
-    { k: 'ro.field',  v: '20',  u: 'cm' },
-    { k: 'ro.mlc',    v: '10 × 10', u: 'cm' },
-    { k: 'ro.iso',    v: '0.0', u: 'mm' },
-    { k: 'ro.mode',   v: '6',   u: 'MV' }
-  ];
-  var READOUT_BEAM = [
-    { k: 'ro.energy', v: '6',   u: 'MV' },
-    { k: 'ro.mv',     v: '120', u: 'MU/min' },
-    { k: 'ro.rate',   v: '600', u: 'cGy/min' },
-    { k: 'ro.freq',   v: '125', u: 'Hz' },
-    { k: 'ro.duty',   v: '35',  u: '%' },
-    { k: 'ro.dmax',   v: '1.5', u: 'cm' }
-  ];
-
-  var LANG = 'en';
-
   /* ---------- helpers ---------- */
-  function $(sel, root) { return (root || document).querySelector(sel); }
-  function $$(sel, root) {
-    var list = root ? root.querySelectorAll(sel) : document.querySelectorAll(sel);
-    return Array.prototype.slice.call(list);
+  function $(sel, r) { return (r || document).querySelector(sel); }
+  function $$(sel, r) {
+    var l = r ? r.querySelectorAll(sel) : document.querySelectorAll(sel);
+    return Array.prototype.slice.call(l);
   }
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -134,96 +94,131 @@
     if (text !== undefined && text !== null) n.textContent = text;
     return n;
   }
-  function pick(obj) {
-    if (obj && typeof obj === 'object' && (obj.en !== undefined || obj.ru !== undefined)) {
-      return obj[LANG] !== undefined ? obj[LANG] : obj.en;
+  function pick(o) {
+    if (o && typeof o === 'object' && (o.en !== undefined || o.ru !== undefined)) {
+      return o[LANG] !== undefined ? o[LANG] : o.en;
     }
-    return obj;
+    return o;
   }
   function t(key) {
-    if (UI[key]) return UI[key][LANG] !== undefined ? UI[key][LANG] : UI[key].en;
-    var parts = key.split('.'), node = CONTRACT;
-    for (var i = 0; i < parts.length; i++) {
-      if (node === undefined || node === null) return '';
-      node = node[parts[i]];
+    if (I18N[key]) return I18N[key][LANG] !== undefined ? I18N[key][LANG] : I18N[key].en;
+    var p = key.split('.'), n = CONTRACT;
+    for (var i = 0; i < p.length; i++) {
+      if (n === undefined || n === null) return '';
+      n = n[p[i]];
     }
-    return pick(node);
+    return pick(n);
   }
   function host(name) {
-    var box = document.querySelector('[data-render="' + name + '"]');
-    if (!box) return null;
-    box.innerHTML = '';
-    return box;
+    var b = $('[data-render="' + name + '"]');
+    if (b) b.innerHTML = '';
+    return b;
   }
+  function group(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function easeOut(x) { return 1 - Math.pow(1 - x, 3); }
 
-  /* ---------- counters ---------- */
-  function counterHTML(value) {
-    return String(value).replace(/\d[\d,]*/g, function (tok) {
-      var target = parseInt(tok.replace(/,/g, ''), 10);
-      var comma = tok.indexOf(',') > -1;
-      return '<span class="cnt" data-to="' + target + '" data-comma="' + (comma ? 1 : 0) + '">0</span>';
+  /* ---------- the readout sets ----------
+     every number is read off the drawings themselves or out of the
+     contract: nothing is invented */
+  var SETS = {
+    0: [],
+    1: [ { k:'ro.gantry', n:0, d:0, u:'\u00b0' },
+         { k:'ro.head', n:6, d:0, u:'MV' },
+         { k:'ro.mlc', n:10, d:0, u:'cm' },
+         { k:'ro.beam', n:6, d:0, u:'MV' },
+         { k:'ro.isocentre', n:0, d:0, u:'cm' },
+         { k:'ro.sad', n:100, d:0, u:'cm' },
+         { k:'ro.field', n:20, d:0, u:'cm' } ],
+    2: [ { k:'ro.dmax', n:1.5, d:1, u:'cm' },
+         { k:'ro.d90', n:6.0, d:1, u:'cm' },
+         { k:'ro.d50', n:17.4, d:1, u:'cm' },
+         { k:'ro.iso', n:100, d:0, u:'%' },
+         { k:'ro.iso', n:50, d:0, u:'%' },
+         { k:'ro.depth', n:40, d:0, u:'cm' } ],
+    3: [ { k:'ro.mlc', n:10, d:0, u:'cm' },
+         { k:'ro.leaves', n:30, d:0, u:'' },
+         { k:'ro.gap', n:0.5, d:1, u:'mm' },
+         { k:'ro.aperture', n:10, d:0, u:'cm' },
+         { k:'ro.bankA', n:15, d:0, u:'' },
+         { k:'ro.bankB', n:15, d:0, u:'' },
+         { k:'ro.leafIndex', n:1, d:0, u:'- 15' } ],
+    4: [ { k:'ro.cases', n:3, d:0, u:'' },
+         { k:'ro.public', n:1, d:0, u:'' },
+         { k:'ro.nda', n:1, d:0, u:'' },
+         { k:'ro.commercial', n:1, d:0, u:'' },
+         { k:'ro.tests', n:768, d:0, u:'/ 775' },
+         { k:'ro.p50', n:130, d:0, u:'ms' },
+         { k:'ro.facts', n:21214, d:0, u:'' },
+         { k:'ro.accuracy', n:96, d:0, u:'/ 100' } ],
+    5: [ { k:'ro.gantry', n:0, d:0, u:'\u00b0' },
+         { k:'ro.head', n:6, d:0, u:'MV' },
+         { k:'ro.mlc', n:10, d:0, u:'cm' },
+         { k:'ro.beam', n:6, d:0, u:'MV' },
+         { k:'ro.isocentre', n:0, d:0, u:'cm' },
+         { k:'ro.sad', n:100, d:0, u:'cm' },
+         { k:'ro.field', n:20, d:0, u:'cm' } ]
+  };
+
+  /* when each state's readouts come in, and how long they take to count */
+  var START = { 1: 0.16, 2: 1.16, 3: 2.16, 4: 3.16, 5: 4.16 };
+  var SPAN  = 0.72;
+
+  /* the leader wires: a label on the drawing runs down to its readout cell */
+  var WIRES = {
+    1: [ { c:0, t:'GANTRY' }, { c:1, t:'TREATMENT HEAD' }, { c:2, t:'MLC' },
+         { c:3, t:'BEAM' }, { c:4, t:'ISOCENTRE' }, { c:5, t:'SAD 100 CM' },
+         { c:6, t:'FIELD 20 CM' } ],
+    2: [ { c:0, t:'dmax 1.5 cm' }, { c:1, t:'d90 = 6.0 cm' },
+         { c:2, t:'d50 = 17.4 cm' } ],
+    3: [ { c:0, t:'FIELD 10 x 10 cm AT ISO' }, { c:2, t:'LEAF GAP 0.5 mm' },
+         { c:4, t:'LEAF BANK A' }, { c:5, t:'LEAF BANK B' } ]
+  };
+
+  /* ---------- renderers ---------- */
+  function renderReadouts(state) {
+    var grid = $('#readouts-grid');
+    if (!grid) return;
+    var set = SETS[state] || [];
+    grid.innerHTML = '';
+    grid.style.setProperty('--cols', String(Math.max(set.length, 1)));
+    set.forEach(function (spec, i) {
+      var cell = el('div', 'readout');
+      cell.setAttribute('data-od-id', 'readout-' + state + '-' + (i + 1));
+      cell.appendChild(el('span', 'readout__k', t(spec.k)));
+      var v = el('span', 'readout__v');
+      var val = el('span', 'readout__n');
+      val.textContent = spec.d ? String(spec.n).replace('.', ',') : group(spec.n);
+      v.appendChild(val);
+      if (spec.u) v.appendChild(el('u', null, spec.u));
+      cell.appendChild(v);
+      grid.appendChild(cell);
     });
   }
-  function formatNum(n, comma) {
-    var s = String(n);
-    if (comma) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return s;
-  }
 
-  /* ---------- rendering ---------- */
-  function renderFacts() {
-    var box = host('facts');
+  function renderLadder() {
+    var box = host('ladder');
     if (!box) return;
-    S.facts.forEach(function (f) {
-      var row = el('div', 'datarow');
-      row.appendChild(el('div', 'datarow__k', pick(f.label)));
-      row.appendChild(el('div', 'datarow__v datarow__v--fg', pick(f.value)));
+    for (var s = 0; s <= 5; s++) {
+      var row = el('div', 'ladder__row');
+      row.setAttribute('data-od-id', 'ladder-row-' + s);
+      row.setAttribute('data-state', String(s));
+      row.appendChild(el('span', 'ladder__rule'));
+      row.appendChild(el('span', 'ladder__link'));
+      row.appendChild(el('span', 'ladder__block', t('ui.state' + s)));
       box.appendChild(row);
-    });
-  }
-
-  function renderReadouts() {
-    var state = host('readout-state');
-    if (state) {
-      READOUT_STATE.forEach(function (r) {
-        var row = el('div', 'readout__row');
-        row.appendChild(el('div', 'readout__k', t(r.k)));
-        var v = el('div', 'readout__v');
-        v.textContent = r.v;
-        var u = el('span');
-        u.textContent = ' ' + r.u;
-        v.appendChild(u);
-        row.appendChild(v);
-        state.appendChild(row);
-      });
     }
-    var beam = host('readout-beam');
-    if (beam) {
-      READOUT_BEAM.forEach(function (r) {
-        var row = el('div', 'readout__row');
-        row.appendChild(el('div', 'readout__k', t(r.k)));
-        var v = el('div', 'readout__v');
-        v.textContent = r.v;
-        var u = el('span');
-        u.textContent = ' ' + r.u;
-        v.appendChild(u);
-        row.appendChild(v);
-        beam.appendChild(row);
-      });
-    }
+    box.appendChild(el('span', 'ladder__notch'));
   }
 
   function renderRecord() {
     var box = host('record');
     if (!box) return;
-    var colours = ['coral', 'salmon', 'amber'];
+    var colours = ['coral', 'amber', 'lav'];
     S.record.forEach(function (r, i) {
       var row = el('div', 'rec__row');
+      row.setAttribute('data-od-id', 'record-row-' + (i + 1));
       var head = el('div', 'rec__head');
-      var bar = el('span', 'rec__bar');
-      bar.style.setProperty('--rec-c', 'var(--' + colours[i % colours.length] + ')');
-      bar.setAttribute('data-od-id', 'record-bar-' + (i + 1));
-      head.appendChild(bar);
+      head.appendChild(el('span', 'rec__bar rec__bar--' + colours[i % 3]));
       head.appendChild(el('span', 'rec__when', r.when));
       row.appendChild(head);
       row.appendChild(el('div', 'rec__title', pick(r.title)));
@@ -232,481 +227,582 @@
     });
   }
 
-  function renderServices() {
-    var box = host('services');
+  function renderReport() {
+    var box = host('report');
     if (!box) return;
-    var cls = ['cap', 'cap cap--lav', 'cap cap--amber'];
-    S.services.forEach(function (s, i) {
-      var row = el('div', cls[i % cls.length]);
+    var f = S.facts;
+    var rows = [
+      { k: pick(f[2].label), v: pick(f[2].value), s: 'ui.stLive', c: 'warn' },
+      { k: pick(f[0].label), v: pick(f[0].value), s: 'ui.stSet', c: 'on' },
+      { k: pick(f[1].label), v: pick(f[1].value), s: 'ui.stSet', c: 'on' },
+      { k: pick(f[4].label), v: pick(f[4].value), s: 'ui.stPrimary', c: 'on' },
+      { k: pick(f[3].label), v: pick(f[3].value), s: 'ui.stActive', c: 'on' }
+    ];
+    rows.forEach(function (r, i) {
+      var row = el('div', 'datarow');
+      row.setAttribute('data-od-id', 'report-row-' + (i + 1));
+      row.appendChild(el('div', 'datarow__k', r.k));
+      row.appendChild(el('div', 'datarow__v', r.v));
+      row.appendChild(el('div', 'datarow__s datarow__s--' + r.c, t(r.s)));
+      box.appendChild(row);
+    });
+  }
+
+  function renderCapabilities() {
+    var box = host('capabilities');
+    if (!box) return;
+    S.services.forEach(function (s) {
+      var row = el('div', 'cap');
       row.setAttribute('data-od-id', 'capability-' + s.number);
-      var left = el('div');
-      left.appendChild(el('div', 'cap__num', s.number));
-      left.appendChild(el('div', 'cap__title', pick(s.title)));
-      row.appendChild(left);
+      var head = el('div', 'cap__head');
+      head.appendChild(el('span', 'cap__num', s.number));
+      head.appendChild(el('span', 'cap__title', pick(s.title)));
+      row.appendChild(head);
       row.appendChild(el('p', 'cap__text', pick(s.text)));
       box.appendChild(row);
     });
   }
 
-  /* the toolchain panel: one dense row per project, real stacks */
-  function renderStacks() {
-    var box = host('stacks');
+  var CASES = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
+
+  function renderCases() {
+    var box = $('#cases');
     if (!box) return;
-    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
-    var colours = ['coral', 'lav', 'amber'];
-    order.forEach(function (key, i) {
+    box.innerHTML = '';
+    CASES.forEach(function (key, i) {
       var p = CONTRACT.projects[key];
-      var row = el('div', 'row row--' + colours[i % colours.length]);
-      row.setAttribute('data-od-id', 'stack-row-' + (i + 1));
-      row.appendChild(el('span', 'row__bar'));
-      var body = el('div');
-      body.appendChild(el('div', 'row__t', pick(p.title)));
-      var x = el('p', 'row__x');
-      x.textContent = p.stack.join(' · ');
-      body.appendChild(x);
-      row.appendChild(body);
-      box.appendChild(row);
-    });
-  }
+      var col = el('div', 'casecol');
+      col.setAttribute('data-od-id', 'casecol-' + p.slug);
+      var panel = el('article', 'casepanel');
+      panel.setAttribute('data-od-id', 'case-' + p.slug);
 
-  function renderMore() {
-    var box = host('more');
-    if (!box) return;
-    S.more.forEach(function (m, i) {
-      var row = el('div', 'row row--' + (i === 0 ? 'amber' : 'coral'));
-      row.setAttribute('data-od-id', 'more-row-' + (i + 1));
-      row.appendChild(el('span', 'row__bar'));
-      var body = el('div');
-      body.appendChild(el('div', 'row__t', pick(m.title)));
-      body.appendChild(el('p', 'row__x', pick(m.text)));
-      row.appendChild(body);
-      box.appendChild(row);
-    });
-  }
+      var full = el('div', 'casepanel__full');
+      full.appendChild(el('span', 'case__tab', ('0' + (i + 1)).slice(-2)));
+      full.appendChild(el('h3', 'case__title', pick(p.title)));
+      full.appendChild(el('p', 'case__role', pick(p.summary)));
 
-  /* disclosure rows: the three project states, verbatim from the contract */
-  function renderDisclosure() {
-    var box = host('disclosure');
-    if (!box) return;
-    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
-    order.forEach(function (key) {
-      var p = CONTRACT.projects[key];
-      var row = el('div', 'datarow');
-      row.appendChild(el('div', 'datarow__k', pick(p.title)));
-      row.appendChild(el('div', 'datarow__v datarow__v--coral', pick(S.status_labels[p.status])));
-      box.appendChild(row);
-    });
-  }
-
-  function renderAvailability() {
-    var box = host('availability');
-    if (!box) return;
-    var rows = [
-      { k: 'ui.availability', v: pick(S.facts[2].value) },
-      { k: 'ui.location', v: pick(S.facts[0].value) },
-      { k: 'ui.timezone', v: pick(S.facts[1].value) },
-      { k: 'ui.english', v: pick(S.facts[3].value) }
-    ];
-    rows.forEach(function (r) {
-      var row = el('div', 'datarow');
-      row.appendChild(el('div', 'datarow__k', t(r.k)));
-      row.appendChild(el('div', 'datarow__v datarow__v--amber', r.v));
-      box.appendChild(row);
-    });
-  }
-
-  function renderContact() {
-    var box = host('contact');
-    if (!box) return;
-    var rows = [
-      { k: 'ui.email', v: S.email },
-      { k: 'ui.github', v: 'github.com/kukhtik' },
-      { k: 'ui.linkedin', v: 'linkedin.com/in/max-kukhto' },
-      { k: 'ui.cv', v: pick(S.cv).replace('assets/', '') },
-      { k: 'ui.timezone', v: S.timezone }
-    ];
-    rows.forEach(function (r) {
-      var row = el('div', 'datarow');
-      row.appendChild(el('div', 'datarow__k', t(r.k)));
-      row.appendChild(el('div', 'datarow__v datarow__v--fg', r.v));
-      box.appendChild(row);
-    });
-  }
-
-  function aboutList() {
-    var a = S.about;
-    if (!a) return [];
-    if (Array.isArray(a)) return a;
-    if (Array.isArray(a.items)) return a.items;
-    if (Array.isArray(a.paragraphs)) return a.paragraphs;
-    if (typeof a.text === 'string') return [a.text];
-    return [];
-  }
-
-  function renderAbout() {
-    var box = host('about');
-    if (!box) return;
-    pick(S.about).forEach(function (p, i) {
-      var para = el('p', 'about__p');
-      para.setAttribute('data-od-id', 'about-paragraph-' + (i + 1));
-      para.textContent = p;
-      box.appendChild(para);
-    });
-  }
-
-  function renderCards() {
-    var box = host('projects');
-    if (!box) return;
-    var order = ['engineer-companion', 'vetka-dwg', 'geoconverter'];
-    var accents = ['lav', 'coral', 'amber'];
-    order.forEach(function (key, idx) {
-      var p = CONTRACT.projects[key];
-      var card = el('article', 'card');
-      card.style.setProperty('--card-c', 'var(--' + accents[idx] + ')');
-      card.setAttribute('data-od-id', 'card-' + p.slug);
-
-      var top = el('div', 'card__top');
-      top.appendChild(el('span', 'card__bar'));
-      top.appendChild(el('span', 'card__idx', '0' + (idx + 1)));
-      top.appendChild(el('span', 'pill pill--' + accents[idx], pick(S.status_labels[p.status])));
-      card.appendChild(top);
-
-      card.appendChild(el('h3', 'card__title', pick(p.title)));
-      card.appendChild(el('p', 'card__summary', pick(p.summary)));
-
-      var metrics = el('div', 'metrics');
-      p.results.forEach(function (r) {
-        var m = el('div', 'metric');
-        var v = el('div', 'metric__v');
-        v.innerHTML = counterHTML(r.value);
-        m.appendChild(v);
-        m.appendChild(el('span', 'metric__l', pick(r.label)));
+      var metrics = el('div', 'case__metrics');
+      p.results.forEach(function (r, j) {
+        var m = el('div', 'case__metric');
+        m.setAttribute('data-od-id', 'case-metric-' + p.slug + '-' + (j + 1));
+        m.appendChild(el('b', null, r.value));
+        m.appendChild(el('span', null, pick(r.label)));
         metrics.appendChild(m);
       });
-      card.appendChild(metrics);
+      full.appendChild(metrics);
 
-      var chips = el('div', 'card__chips');
-      p.stack.forEach(function (s) { chips.appendChild(el('span', 'chip', s)); });
-      card.appendChild(chips);
+      var stack = el('div', 'case__stack');
+      p.stack.forEach(function (s) { stack.appendChild(el('span', null, s)); });
+      full.appendChild(stack);
 
-      var det = el('details', 'card__more');
-      det.appendChild(el('summary', null, t('ui.approach')));
-      det.appendChild(el('p', 'row__x', pick(p.problem)));
-      var ul = el('ul');
-      pick(p.approach).forEach(function (a) { ul.appendChild(el('li', null, a)); });
-      det.appendChild(ul);
-      det.appendChild(el('p', 'row__x', pick(p.confidentiality)));
-      card.appendChild(det);
+      var foot = el('div', 'case__foot');
+      foot.appendChild(el('span', 'case__status', pick(S.status_labels[p.status])));
+      var link = el('a', 'case__link', t('ui.caseOpen') + ' \u2197');
+      link.setAttribute('href', p.links[0].url);
+      link.setAttribute('rel', 'noopener');
+      foot.appendChild(link);
+      full.appendChild(foot);
+      panel.appendChild(full);
 
-      var links = el('div', 'card__links');
-      p.links.forEach(function (l) {
-        var a = el('a', 'link', pick(l.label));
-        a.href = l.url;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        links.appendChild(a);
-      });
-      card.appendChild(links);
-      box.appendChild(card);
+      var compact = el('div', 'casepanel__compact');
+      compact.appendChild(el('span', 'case__tab', ('0' + (i + 1)).slice(-2)));
+      compact.appendChild(el('span', 'case__ctitle', pick(p.title)));
+      compact.appendChild(el('span', 'case__cmetric', p.results[0].value + ' \u00b7 ' + pick(p.results[0].label)));
+      panel.appendChild(compact);
+
+      col.appendChild(panel);
+      box.appendChild(col);
     });
   }
 
-  function renderStaticText() {
-    $$('[data-i18n]').forEach(function (node) {
-      var v = t(node.getAttribute('data-i18n'));
-      if (v !== '' && v !== undefined) node.textContent = v;
-    });
-    document.documentElement.setAttribute('lang', LANG);
-    document.title = pick(S.seo.title);
-    var md = document.getElementById('meta-desc');
-    if (md) md.setAttribute('content', pick(S.seo.description));
-
-    var mail = S.email;
-    ['cta-mail', 'contact-mail'].forEach(function (id) {
-      var a = document.getElementById(id);
-      if (!a) return;
-      a.href = 'mailto:' + mail;
-      if (id === 'contact-mail') a.textContent = mail;
-    });
-    ['cta-github', 'cta-github-2'].forEach(function (id) {
-      var a = document.getElementById(id);
-      if (a) { a.href = S.github; a.target = '_blank'; a.rel = 'noopener'; }
-    });
-    ['cta-linkedin', 'cta-linkedin-2'].forEach(function (id) {
-      var a = document.getElementById(id);
-      if (a) { a.href = S.linkedin; a.target = '_blank'; a.rel = 'noopener'; }
-    });
-    ['cta-cv', 'cta-cv-2'].forEach(function (id) {
-      var a = document.getElementById(id);
-      if (a) { a.href = pick(S.cv); a.target = '_blank'; a.rel = 'noopener'; a.textContent = t('ui.cv'); }
-    });
-    $$('.langswitch__btn').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG ? 'true' : 'false');
-    });
-  }
-
-  function renderAll() {
-    renderStaticText();
-    renderFacts();
-    renderReadouts();
-    renderRecord();
-    renderServices();
-    renderStacks();
-    renderMore();
-    renderDisclosure();
-    renderAvailability();
-    renderContact();
-    renderAbout();
-    renderCards();
-  }
-
-  /* ---------- language routing: `/` = EN, `/ru/` = RU ---------- */
-  function routeFor(lang) { return lang === 'ru' ? '/ru/' : '/'; }
-  function applyLang(lang, push) {
-    LANG = lang;
-    renderAll();
-    buildElbows();
-    if (push) {
-      try {
-        history.pushState({ lang: lang }, '', routeFor(lang));
-      } catch (e) {
-        location.hash = lang === 'ru' ? '#ru' : '#en';
-      }
+  function renderIdentity() {
+    var eb = $('#identity-eyebrow');
+    if (eb) eb.textContent = pick(S.role);
+    var nm = $('#identity-name');
+    if (nm) nm.textContent = pick(S.name);
+    var ld = $('#identity-lead');
+    if (ld) ld.textContent = pick(S.hero.lead);
+    var side = $('#identity-side');
+    if (side) {
+      side.innerHTML = '';
+      var av = el('span', 'pill pill--amber');
+      av.appendChild(el('span', null, t('ui.avail')));
+      av.appendChild(el('span', null, pick(S.facts[2].value)));
+      side.appendChild(av);
+      side.appendChild(el('span', 'pill pill--ghost', pick(S.location)));
+      side.appendChild(el('span', 'pill pill--ghost', S.timezone));
+      side.appendChild(el('span', 'pill pill--lav', pick(S.facts[4].value)));
     }
-    try { localStorage.setItem('lcars-lang', lang); } catch (e) {}
-    document.dispatchEvent(new CustomEvent('lcars:lang', { detail: { lang: lang } }));
   }
 
-  /* ---------- L-elbows: ONE connected path per framed block ----------
-     horizontal run -> 90 deg -> vertical run, outer AND inner corner
-     rounded with the same radius, semicircular caps on both ends.  */
-  var ELBOW_COLOUR = {
-    amber: 'var(--amber)',
-    coral: 'var(--coral)',
-    lav: 'var(--lav-2)',
-    salmon: 'var(--salmon)'
-  };
-
-  function elbowPath(W, H, t, r) {
-    var c = t / 2;
-    var d = [];
-    d.push('M ' + r + ' 0');
-    d.push('H ' + (W - c));
-    d.push('A ' + c + ' ' + c + ' 0 0 1 ' + (W - c) + ' ' + t);
-    d.push('H ' + (t + r));
-    d.push('A ' + r + ' ' + r + ' 0 0 0 ' + t + ' ' + (t + r));
-    d.push('V ' + (H - c));
-    d.push('A ' + c + ' ' + c + ' 0 0 1 0 ' + (H - c));
-    d.push('V ' + r);
-    d.push('A ' + r + ' ' + r + ' 0 0 1 ' + r + ' 0');
-    d.push('Z');
-    return d.join(' ');
+  function fillLinks() {
+    var mail = $('#contact-mail');
+    if (mail) {
+      mail.setAttribute('href', 'mailto:' + S.email);
+      var lbl = $('#contact-mail-text');
+      if (lbl) lbl.textContent = S.email;
+    }
+    var gh = $('#cta-github'); if (gh) gh.setAttribute('href', S.github);
+    var li = $('#cta-linkedin'); if (li) li.setAttribute('href', S.linkedin);
+    var dm = $('#cta-domain'); if (dm) dm.setAttribute('href', S.domain);
+    var sp = $('#cta-space');
+    if (sp) {
+      var found = null;
+      S.more.forEach(function (m) { if (!found && /Open Space/i.test(m.title.en)) found = m; });
+      if (found) sp.setAttribute('href', found.url);
+    }
+    var desc = $('#meta-desc');
+    if (desc) desc.setAttribute('content', pick(S.seo.description));
+    document.title = pick(S.seo.title);
   }
 
-  function buildElbows() {
-    $$('.elbow').forEach(function (hostEl) {
-      var W = parseFloat(hostEl.getAttribute('data-arm-w')) || 220;
-      var H = parseFloat(hostEl.getAttribute('data-arm-h')) || 130;
-      var t = 16, r = 8;
-      var colour = ELBOW_COLOUR[hostEl.getAttribute('data-elbow')] || 'var(--coral)';
-      hostEl.style.setProperty('--elbow-c', colour);
-      hostEl.style.width = W + 'px';
-      hostEl.style.height = H + 'px';
-      hostEl.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
-        '" aria-hidden="true" focusable="false"><path d="' + elbowPath(W, H, t, r) + '"></path></svg>';
+  function applyI18n() {
+    $$('[data-i18n]').forEach(function (n) {
+      var v = t(n.getAttribute('data-i18n'));
+      if (v) n.textContent = v;
+    });
+    var nb = $('.railblock__name');
+    if (nb) nb.textContent = t('ui.who');
+    HTML.setAttribute('lang', LANG);
+    HTML.setAttribute('data-lang', LANG);
+    $$('.railblock__langbtn').forEach(function (b) {
+      if (b.getAttribute('data-lang') === LANG) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
     });
   }
 
-  /* ---------- SVG draw-in ---------- */
-  function drawableNodes(svg) {
-    return $$('.drawing path, .drawing line, .drawing polyline, .drawing ellipse, .drawing circle', svg)
-      .filter(function (n) { return !n.classList.contains('dim'); });
+  function startClock() {
+    var box = $('#clock');
+    if (!box) return;
+    function tick() {
+      var d = new Date();
+      var hh = String(d.getUTCHours() + 3).padStart(2, '0');
+      var mm = String(d.getUTCMinutes()).padStart(2, '0');
+      var ss = String(d.getUTCSeconds()).padStart(2, '0');
+      box.textContent = hh + ':' + mm + ':' + ss;
+    }
+    tick();
+    setInterval(tick, 1000);
   }
 
-  function prepareDraw(svg) {
-    drawableNodes(svg).forEach(function (n) {
+  /* =================================================================
+     the drawings
+     ================================================================= */
+  function parts(root) {
+    return $$('path,line,polyline,ellipse,circle', root);
+  }
+  function dash(root) {
+    parts(root).forEach(function (n) {
       var len = 0;
       try { len = n.getTotalLength(); } catch (e) { len = 0; }
       if (!len) return;
       n.style.strokeDasharray = len + ' ' + len;
       n.style.strokeDashoffset = len;
     });
+    $$('text', root).forEach(function (x) { x.style.opacity = 0; });
+  }
+  function undash(root) {
+    parts(root).forEach(function (n) { n.style.strokeDashoffset = 0; });
+    $$('text', root).forEach(function (x) { x.style.opacity = 1; });
   }
 
-  function playDraw(svg, tl) {
-    drawableNodes(svg).forEach(function (n) {
-      var len = 0;
-      try { len = n.getTotalLength(); } catch (e) { len = 0; }
-      if (!len) return;
-      tl.to(n, { strokeDashoffset: 0, duration: 0.9, ease: 'none' }, '<' + (Math.random() * 0.25));
+  /* the MLC leaf banks: closed at the centre, opened to the field outline */
+  var LEAF_MID = 450;
+  function leafGeom(n) {
+    var d = n.getAttribute('d') || '';
+    var v = (d.match(/-?\d+(\.\d+)?/g) || []).map(Number);
+    if (v.length < 6) return null;
+    var base, tip;
+    if (v[0] < LEAF_MID) { base = v[0]; tip = v[2]; }
+    else { base = v[2]; tip = v[0]; }
+    return { base: base, tip: tip, y0: v[1], y1: v[5] };
+  }
+  function leafPath(g, tip) {
+    return 'M ' + g.base + ' ' + g.y0 + ' L ' + tip.toFixed(2) + ' ' + g.y0 +
+           ' L ' + tip.toFixed(2) + ' ' + g.y1 + ' L ' + g.base + ' ' + g.y1 + ' Z';
+  }
+  function closeLeaves(root) {
+    $$('.leaf', root).forEach(function (n) {
+      var g = leafGeom(n);
+      if (!g) return;
+      n.__g = g;
+      n.setAttribute('d', leafPath(g, LEAF_MID));
     });
-    $$('.drawing text', svg).forEach(function (t2, i) {
-      tl.to(t2, { opacity: 1, duration: 0.35 }, '<' + (0.3 + i * 0.03));
-    });
-    $$('.drawing .dim', svg).forEach(function (d) {
-      tl.to(d, { opacity: 1, duration: 0.4 }, '<0.2');
+  }
+  function openLeaves(root, p) {
+    $$('.leaf', root).forEach(function (n) {
+      var g = n.__g;
+      if (!g) return;
+      n.setAttribute('d', leafPath(g, LEAF_MID + (g.tip - LEAF_MID) * p));
     });
   }
 
-  function mountDraw(selector) {
-    var svg = $(selector);
+  /* ---------- the leader wires ---------- */
+  function drawWires(state) {
+    var svg = $('#wires');
     if (!svg) return;
-    prepareDraw(svg);
-    var tl = gsap.timeline({ paused: true });
-    playDraw(svg, tl);
-    if (window.ScrollTrigger) {
-      ScrollTrigger.create({
-        trigger: svg.closest('.dwg'),
-        start: 'top 85%',
-        once: true,
-        onEnter: function () { tl.play(0); }
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var box = svg.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+    svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+
+    var map = WIRES[state];
+    if (!map) return;
+    var dwg = $('#plate');
+    if (state === 2) dwg = $('#dose');
+    if (state === 3) dwg = $('#mlc');
+    if (!dwg) return;
+    var inner = dwg.querySelector('svg');
+    if (!inner) return;
+
+    var grid = $('#readouts-grid');
+    if (!grid) return;
+    var cells = $$('.readout', grid);
+    var gridBox = grid.getBoundingClientRect();
+
+    var busY = gridBox.top - box.top - 12;
+    var busL = gridBox.left - box.left + 6;
+    var busR = gridBox.right - box.left - 6;
+    var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', 'M ' + busL.toFixed(1) + ' ' + busY.toFixed(1) +
+                    ' L ' + busR.toFixed(1) + ' ' + busY.toFixed(1));
+    p.setAttribute('data-od-id', 'wire-bus');
+    svg.appendChild(p);
+
+    map.forEach(function (w) {
+      var txt = null;
+      $$('text', inner).forEach(function (x) {
+        if (!txt && x.textContent.trim() === w.t) txt = x;
       });
-    } else {
-      tl.play(0);
-    }
+      if (!txt) return;
+      var r = txt.getBoundingClientRect();
+      if (!r.width) return;
+      var fx = r.left - box.left + r.width / 2;
+      var fy = r.bottom - box.top;
+      var cell = cells[w.c];
+      if (!cell) return;
+      var cb = cell.getBoundingClientRect();
+      var cx = cb.left - box.left + cb.width / 2;
+      var midY = busY - 18;
+      var q = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      q.setAttribute('d', 'M ' + fx.toFixed(1) + ' ' + fy.toFixed(1) +
+                      ' L ' + fx.toFixed(1) + ' ' + midY.toFixed(1) +
+                      ' L ' + cx.toFixed(1) + ' ' + midY.toFixed(1) +
+                      ' L ' + cx.toFixed(1) + ' ' + busY.toFixed(1));
+      q.setAttribute('data-od-id', 'wire-' + w.c);
+      svg.appendChild(q);
+    });
   }
 
-  /* ---------- counters ---------- */
-  function runCounters(scope) {
-    var hosts = (scope && scope.nodeType) ? [scope] : (Array.isArray(scope) ? scope : []);
-    var nodes = [];
-    if (hosts.length) {
-      hosts.forEach(function (h) { nodes = nodes.concat($$('.cnt', h)); });
-    } else {
-      nodes = $$('.cnt');
-    }
-    nodes.forEach(function (node) {
-      if (node.dataset.done) return;
-      node.dataset.done = '1';
-      var to = parseFloat(node.getAttribute('data-to'));
-      var comma = node.getAttribute('data-comma') === '1';
+
+  /* =================================================================
+     THE DIAL - the scroll is a mode dial
+     -----------------------------------------------------------------
+     Six poses on one scrubbed timeline: BOOT, MACHINE, DOSE, LEAVES,
+     WORK, REST.  The frame never moves.  The centre changes by
+     MORPHING: the outgoing drawing only leaves once the incoming one
+     has arrived, so the middle of the console is never empty.
+     ================================================================= */
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var currentState = -1;
+  var timeline = null;
+
+  function delta(fromEl, toEl) {
+    var a = fromEl.getBoundingClientRect(), b = toEl.getBoundingClientRect();
+    return { x: (b.left + b.width / 2) - (a.left + a.width / 2),
+             y: (b.top + b.height / 2) - (a.top + a.height / 2) };
+  }
+
+  /* ---------- the readout counters ---------- */
+  function countReadouts(state) {
+    var set = SETS[state] || [];
+    var nodes = $$('#readouts-grid .readout__n');
+    nodes.forEach(function (node, i) {
+      var spec = set[i];
+      if (!spec) return;
+      if (!window.gsap) { node.textContent = readoutText(spec, spec.n); return; }
       var obj = { n: 0 };
       gsap.to(obj, {
-        n: to,
-        duration: 1.4,
-        ease: 'power2.out',
-        onUpdate: function () { node.textContent = formatNum(Math.round(obj.n), comma); },
-        onComplete: function () { node.textContent = formatNum(to, comma); }
+        n: spec.n, duration: SPAN, ease: 'power2.out',
+        onUpdate: function () { node.textContent = readoutText(spec, obj.n); },
+        onComplete: function () { node.textContent = readoutText(spec, spec.n); }
       });
     });
   }
 
-  /* ---------- motion ---------- */
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function readoutText(spec, v) {
+    if (spec.d) return v.toFixed(spec.d).replace('.', ',');
+    return group(Math.round(v));
+  }
 
-  function initMotion() {
-    if (!window.gsap) { revealFallback(); return; }
-    if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-
-    if (reduced) { showEverything(); return; }
-
-    /* the top bar draws itself out of the left edge */
-    gsap.from('.topbar', { scaleX: 0, duration: 1.1, ease: 'power3.out', transformOrigin: 'left center' });
-    gsap.from('.topbar__id', { xPercent: 30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.3 });
-    gsap.from('.topbar__cap', { xPercent: 40, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.45 });
-    gsap.from('.masthead__meta', { opacity: 0, duration: 0.6, delay: 0.5 });
-
-    /* the rail blocks grow along the spine */
-    gsap.from('.rail__block', {
-      scaleY: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.2,
-      transformOrigin: 'center'
+  /* ---------- the ladder: the notch steps down the bars ---------- */
+  function markState(state) {
+    $$('.ladder__row').forEach(function (row) {
+      row.classList.toggle('is-active', Number(row.getAttribute('data-state')) === state);
     });
-
-    /* each band reveals its own content */
-    var targets = $$('.panel, .card, .cap, .rec__row, .about__p, .row, .instrument, .datarow, .readout');
-    if (window.ScrollTrigger) {
-      ScrollTrigger.batch(targets, {
-        start: 'top 92%',
-        once: true,
-        onEnter: function (batch) {
-          gsap.fromTo(batch,
-            { opacity: 0, y: 18 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', clearProps: 'transform' });
-          runCounters(batch);
-        }
-      });
-    } else {
-      gsap.set(targets, { opacity: 1, y: 0 });
+    var notch = $('.ladder__notch');
+    var row = $('.ladder__row[data-state="' + state + '"]');
+    if (notch && row) {
+      var top = row.offsetTop + (row.offsetHeight - notch.offsetHeight) / 2;
+      if (window.gsap) gsap.to(notch, { top: top + 'px', duration: 0.35, ease: 'power2.out' });
+      else notch.style.top = top + 'px';
     }
-
-    /* the elbows draw themselves into their frame */
-    $$('.elbow path').forEach(function (p) {
-      try {
-        var len = p.getTotalLength();
-        if (!len) return;
-        p.style.strokeDasharray = len + ' ' + len;
-        p.style.strokeDashoffset = len;
-        gsap.to(p, {
-          strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut',
-          scrollTrigger: { trigger: p.closest('.frame'), start: 'top 92%', once: true }
-        });
-      } catch (e) {}
-    });
-
-    mountDraw('[data-od-id="linac-drawing"] svg');
-    mountDraw('[data-od-id="isodose-drawing"] svg');
-
-    runCounters(document);
+    var mode = $('#mode-value');
+    if (mode) mode.textContent = t('ui.state' + state);
   }
 
-  /* reduced motion: render the end state, no tweens */
-  function showEverything() {
-    $$('.rail__block').forEach(function (n) { n.style.transform = 'none'; });
-    $$('.cnt').forEach(function (n) {
-      n.textContent = formatNum(parseFloat(n.getAttribute('data-to')), n.getAttribute('data-comma') === '1');
+  /* ---------- the discrete part of the dial ---------- */
+  function onScroll(state) {
+    if (state === currentState) return;
+    currentState = state;
+    markState(state);
+    renderReadouts(state);
+    countReadouts(state);
+    drawWires(state);
+    if (window.gsap) {
+      gsap.to('#readouts-grid', { opacity: 1, duration: 0.25, ease: 'none' });
+      /* at rest the portfolio folds into its dense rows */
+      var full = state === 5 ? 0 : (state >= 4 ? 1 : 0);
+      gsap.to('.casepanel__full', { opacity: full, duration: 0.3, ease: 'none' });
+      gsap.to('.casepanel__compact', { opacity: state === 5 ? 1 : 0, duration: 0.3, ease: 'none' });
+      /* the dense report fills the bottom-left in the work state */
+      var rep = $('#panel-report');
+      if (rep) {
+        var h = rep.scrollHeight;
+        gsap.to(rep, { height: state >= 4 ? h : 0, opacity: state >= 4 ? 1 : 0,
+                       duration: 0.4, ease: 'power2.out' });
+      }
+      var contact = $('.contact');
+      if (contact) gsap.to(contact, { opacity: state >= 4 ? 1 : 0, duration: 0.35, ease: 'none' });
+    }
+  }
+
+  /* ---------- the boot animation ---------- */
+  function bootAnimation() {
+    if (!window.gsap) return;
+    /* the amber rail extends in from the LEFT EDGE of the screen */
+    gsap.fromTo('.frame__rail', { scaleX: 0 },
+      { scaleX: 1, duration: 1.1, ease: 'power3.out', transformOrigin: 'left center' });
+    /* the spine draws DOWN the full height */
+    gsap.fromTo('.frame__spine', { scaleY: 0 },
+      { scaleY: 1, duration: 1.3, ease: 'power3.out', transformOrigin: 'left top' });
+    /* the label block drops from the top edge */
+    gsap.fromTo('.railblock', { yPercent: -120, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.15 });
+    gsap.fromTo('.ladder__row', { x: 40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6, stagger: 0.06, ease: 'power3.out', delay: 0.35 });
+    gsap.fromTo('.modebar', { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 0.5 });
+    gsap.fromTo('#crosshair', { opacity: 0, scale: 0.4 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out', delay: 0.55 });
+    gsap.fromTo('.dwg--plate', { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 0.7 });
+  }
+
+  /* ---------- reduced motion: the console renders in its rest state ---------- */
+  function renderRest() {
+    currentState = 5;
+    markState(5);
+    renderReadouts(5);
+    $$('#readouts-grid .readout__n').forEach(function (node, i) {
+      var spec = (SETS[5] || [])[i];
+      if (spec) node.textContent = readoutText(spec, spec.n);
     });
+    ['#plate', '#dose', '#mlc', '#wave'].forEach(function (sel) {
+      var n = $(sel);
+      if (n) { n.style.opacity = sel === '#plate' ? '1' : '0'; n.style.transform = 'none'; }
+    });
+    var plateSvg = $('#plate svg');
+    if (plateSvg) undash(plateSvg);
+    var cross = $('#crosshair');
+    if (cross) cross.style.opacity = '0';
+    var rep = $('#panel-report');
+    if (rep) { rep.style.height = 'auto'; rep.style.opacity = '1'; }
+    var contact = $('.contact');
+    if (contact) contact.style.opacity = '1';
+    var full = $('.casepanel__full');
+    if (full) full.style.opacity = '0';
+    var compact = $('.casepanel__compact');
+    if (compact) compact.style.opacity = '1';
+    drawWires(5);
+  }
+
+  /* ---------- layout ---------- */
+  function layout() {
+    if (timeline && timeline.invalidate) timeline.invalidate();
+    drawWires(currentState < 0 ? 0 : currentState);
     if (window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
-  function revealFallback() {
-    $$('.cnt').forEach(function (n) {
-      n.textContent = formatNum(parseFloat(n.getAttribute('data-to')), n.getAttribute('data-comma') === '1');
+  /* ---------- the language switch ---------- */
+  function applyLang(lang) {
+    LANG = lang;
+    applyI18n();
+    renderIdentity();
+    renderLadder();
+    renderRecord();
+    renderReport();
+    renderCapabilities();
+    renderCases();
+    fillLinks();
+    markState(currentState < 0 ? 0 : currentState);
+    renderReadouts(currentState < 0 ? 0 : currentState);
+    layout();
+  }
+
+  /* =================================================================
+     THE TIMELINE
+     ================================================================= */
+  function drawIn(svg, tl, at, dur) {
+    if (!svg) return;
+    dash(svg);
+    var nodes = parts(svg);
+    if (!nodes.length) return;
+    if (!tl || !window.gsap) { undash(svg); return; }
+    nodes.forEach(function (n, i) {
+      var len = 0;
+      try { len = n.getTotalLength(); } catch (e) { len = 0; }
+      if (!len) return;
+      tl.fromTo(n, { strokeDashoffset: len },
+        { strokeDashoffset: 0, duration: dur, ease: 'none', immediateRender: false },
+        at + i * 0.004);
     });
+    $$('text', svg).forEach(function (x, i) {
+      tl.fromTo(x, { opacity: 0 }, { opacity: 1, duration: 0.25, immediateRender: false }, at + 0.45 + i * 0.02);
+    });
+  }
+
+  function buildTimeline() {
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#track',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.45
+      }
+    });
+
+    var plateSvg = $('#plate svg');
+    var doseSvg = $('#dose svg');
+    var mlcSvg = $('#mlc svg');
+    var waveSvg = $('#wave svg');
+    var railcap = $('#railcap');
+    var railcapR = $('#railcap-right');
+
+    /* ---------- 0 -> 1 : BOOT becomes THE MACHINE ---------- */
+    tl.fromTo('#plate', { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, ease: 'none', immediateRender: false }, 0);
+    tl.to('#crosshair', { opacity: 0, ease: 'none', immediateRender: false }, 0);
+    drawIn(plateSvg, tl, 0.05, 0.85);
+    tl.fromTo('#readouts-grid', { opacity: 0 }, { opacity: 1, ease: 'none', immediateRender: false }, 0.16);
+
+    /* ---------- 1 -> 2 : the machine parks in the rail, the dose comes ---------- */
+    if (railcap) {
+      tl.to('#plate', {
+        scale: function () { return 104 / $('#plate svg').getBoundingClientRect().width; },
+        x: function () { return delta($('#plate svg'), railcap).x; },
+        y: function () { return delta($('#plate svg'), railcap).y; },
+        transformOrigin: 'center center', ease: 'none', immediateRender: false
+      }, 1);
+      tl.to('#railcap', { opacity: 1, ease: 'none', immediateRender: false }, 1.15);
+    }
+    tl.to('#plate', { opacity: 0, duration: 0.3, ease: 'none', immediateRender: false }, 1.5);
+    tl.fromTo('#dose', { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'none', immediateRender: false }, 1.4);
+    drawIn(doseSvg, tl, 1.5, 0.75);
+
+    /* ---------- 2 -> 3 : the dose slides out, the leaves come in ---------- */
+    tl.to('#dose', { opacity: 0, x: 130, duration: 0.3, ease: 'none', immediateRender: false }, 2.1);
+    tl.fromTo('#mlc', { opacity: 0, scale: 0.96 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'none', immediateRender: false }, 2.0);
+    drawIn(mlcSvg, tl, 2.25, 0.7);
+    /* the leaf banks slide open leaf by leaf until the aperture is the field */
+    if (mlcSvg && window.gsap) {
+      closeLeaves(mlcSvg);
+      var leafP = { p: 0 };
+      tl.to(leafP, {
+        p: 1, duration: 0.7, ease: 'power2.inOut', immediateRender: false,
+        onUpdate: function () { openLeaves(mlcSvg, leafP.p); }
+      }, 2.35);
+    }
+
+    /* ---------- 3 -> 4 : the leaves collapse into the bar, the work comes ---------- */
+    if (railcapR) {
+      tl.to('#mlc', {
+        scale: function () { return 74 / $('#mlc svg').getBoundingClientRect().width; },
+        x: function () { return delta($('#mlc svg'), railcapR).x; },
+        y: function () { return delta($('#mlc svg'), railcapR).y; },
+        transformOrigin: 'center center', ease: 'none', immediateRender: false
+      }, 3);
+      tl.to('#railcap-right', { opacity: 1, ease: 'none', immediateRender: false }, 3.35);
+    }
+    tl.to('#mlc', { opacity: 0, duration: 0.3, ease: 'none', immediateRender: false }, 3.1);
+    /* the beam beats while the portfolio arrives */
+    tl.fromTo('#wave', { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'none', immediateRender: false }, 3.0);
+    drawIn(waveSvg, tl, 3.15, 0.55);
+    tl.fromTo('.casepanel__full', { opacity: 0, xPercent: -104 },
+      { opacity: 1, xPercent: 0, stagger: 0.12, ease: 'power2.out', immediateRender: false }, 3.5);
+
+    /* ---------- 4 -> 5 : REST - the plate comes home, the counters finish ---------- */
+    tl.to('#wave', { opacity: 0, duration: 0.3, ease: 'none', immediateRender: false }, 4.05);
+    tl.to('#railcap', { opacity: 0, ease: 'none', immediateRender: false }, 4.1);
+    tl.to('#railcap-right', { opacity: 0, ease: 'none', immediateRender: false }, 4.15);
+    tl.fromTo('#plate', { opacity: 0, scale: 0.94 },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'none', immediateRender: false }, 3.95);
+
+    return tl;
   }
 
   /* ---------- boot ---------- */
-  function initialLang() {
-    var p = location.pathname || '';
-    if (/\/ru\/?$/.test(p) || /\/ru(\/|$)/.test(p)) return 'ru';
-    if (location.hash === '#ru') return 'ru';
-    try {
-      var saved = localStorage.getItem('lcars-lang');
-      if (saved === 'ru' || saved === 'en') return saved;
-    } catch (e) {}
-    return 'en';
-  }
-
   function boot() {
-    applyLang(initialLang(), false);
-    initMotion();
+    applyI18n();
+    renderIdentity();
+    renderLadder();
+    renderRecord();
+    renderReport();
+    renderCapabilities();
+    renderCases();
+    fillLinks();
+    startClock();
 
-    $$('.langswitch__btn').forEach(function (b) {
-      b.addEventListener('click', function () {
-        applyLang(b.getAttribute('data-lang'), true);
-      });
+    /* the language switch is a real link to the other route: / and /ru/
+       are two static pages built from the same markup, so the switch
+       works on any static host with no server routing */
+    window.addEventListener('popstate', function () {
+      applyLang(/\/ru(\/|$)/.test(location.pathname) ? 'ru' : 'en');
     });
-    window.addEventListener('popstate', function () { applyLang(initialLang(), false); });
+
+    if (reduced) {
+      renderRest();
+      return;
+    }
+
+    renderReadouts(0);
+    timeline = buildTimeline();
+    bootAnimation();
+    onScroll(0);
+
+    /* the dial's discrete state: which pose are we in? */
+    if (window.ScrollTrigger) {
+      ScrollTrigger.create({
+        trigger: '#track', start: 'top top', end: 'bottom bottom', scrub: true,
+        onUpdate: function (self) {
+          var s = Math.min(5, Math.max(0, Math.round(self.progress * 5)));
+          if (s !== currentState) onScroll(s);
+        }
+      });
+    }
 
     var tmr;
     window.addEventListener('resize', function () {
       clearTimeout(tmr);
-      tmr = setTimeout(function () {
-        buildElbows();
-        if (window.ScrollTrigger) ScrollTrigger.refresh();
-      }, 140);
+      tmr = setTimeout(layout, 150);
     });
-    if (window.ResizeObserver) {
-      var ro = new ResizeObserver(function () { buildElbows(); });
-      $$('.frame').forEach(function (f) { ro.observe(f); });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { setTimeout(layout, 60); });
     }
-    if (window.ScrollTrigger) {
-      setTimeout(function () { ScrollTrigger.refresh(); }, 500);
-    }
+    setTimeout(layout, 800);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();

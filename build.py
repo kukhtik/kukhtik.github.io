@@ -215,6 +215,11 @@ def main() -> int:
         out.parent.mkdir(parents=True, exist_ok=True)
         canonical = "https://kukhto.is-a.dev" + home_url
         page = home_html.replace('lang="en"', 'lang="%s"' % lang, 1)
+        # the locale the page's own script reads on start, and absolute links
+        page = re.sub(r'(<html[^>]*?)\blang="en"', r'\1lang="%s"' % lang, page, count=1)
+        page = re.sub(r'(<html[^>]*?)\bdata-lang="en"', r'\1data-lang="%s"' % lang, page, count=1)
+        page = re.sub(r'<a class="railblock__langbtn" id="lang-en"[^>]*>', '<a class="railblock__langbtn" id="lang-en" href="/" data-lang="en" hreflang="en">', page)
+        page = re.sub(r'<a class="railblock__langbtn" id="lang-ru"[^>]*>', '<a class="railblock__langbtn" id="lang-ru" href="/ru/" data-lang="ru" hreflang="ru">', page)
         if "data-design-system" not in page:
             page = page.replace("<html", '<html data-design-system="lcars"', 1)
         page = page.replace("__CANONICAL__", canonical)
