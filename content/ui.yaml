@@ -65,6 +65,10 @@ not_found:
 
 # ---- LCARS home: instrument chrome (bilingual) ----
 lcars:
+  caption_blueprint: {en: "Treatment head, beam and isocentre: the geometry a linac is judged by.", ru: "Головка, пучок и изоцентр: геометрия, по которой судят о линейном ускорителе."}
+  legend_gantry: {en: "gantry", ru: "гантра"}
+  legend_beam: {en: "beam", ru: "пучок"}
+  legend_isocentre: {en: "isocentre", ru: "изоцентр"}
   side_role: {en: "Role", ru: "Роль"}
   caption_isodose: {en: "Isodose of a treatment beam: the shape of the dose decides the shape of the plan.", ru: "Изодоза терапевтического пучка: форма дозы определяет форму плана."}
   metrics: {en: "metrics", ru: "метрик"}

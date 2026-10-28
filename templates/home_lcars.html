@@ -40,6 +40,7 @@
 </section>
 
 <section class="panelbox" id="hero" data-od-id="hero">
+  <span class="l-elbow" style="--c:var(--lc-amber);--l-long:22%;--l-stub:12%;--l-thick:var(--lc-thick)"><i></i><i></i></span>
   <span class="l-plate" style="--w:58%;--c:var(--lc-coral)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_hero[lang] }}</span></span>
   <div class="hero-grid">
     <div class="statement">
@@ -47,11 +48,31 @@
       <span class="st-b">{{ t(site.hero.lead, lang) }}</span>
       <span class="st-l">{{ t(site.location, lang) }} · {{ site.timezone }} · {{ t(site.availability, lang) }}</span>
     </div>
-    <div class="l-panel" style="--c:var(--lc-blue)">
-      <p class="panel-leg">ISODOSE DISTRIBUTION · TREATMENT BEAM</p>
-      <figure class="sheetfig"><svg class="isodose" id="isodose-hero" viewBox="0 0 320 180" aria-hidden="true"></svg></figure>
-      <p class="sheet-cap">{{ ui.lcars.caption_isodose[lang] }}</p>
+    <div class="hero-figure">
+      <svg class="blueprint" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path d="M118 40 A150 150 0 0 1 118 260"/>
+        <path d="M118 22 A168 168 0 0 1 118 278" class="thin"/>
+        <circle cx="130" cy="150" r="24"/>
+        <circle cx="130" cy="150" r="10" class="thin"/>
+        <path d="M154 142 L180 142 M154 150 L180 150 M154 158 L180 158" class="ticks"/>
+        <path d="M154 150 L418 150" class="rule"/>
+        <path d="M154 136 L418 120 M154 164 L418 180"/>
+        <ellipse cx="424" cy="150" rx="14" ry="24"/>
+        <path d="M424 126 L424 174"/>
+        <path d="M410 150 L438 150" class="rule"/>
+        <path d="M300 268 L566 268"/>
+        <path d="M356 268 L356 296 M512 268 L512 296" class="thin"/>
+        <path d="M300 300 L566 300" class="rule"/>
+        <path d="M60 40 L60 260" class="ticks"/>
+      </svg>
+      <p class="sheet-cap">{{ ui.lcars.caption_blueprint[lang] }}</p>
+      <p class="fig-legend"><span><i></i>{{ ui.lcars.legend_gantry[lang] }}</span><span><i></i>{{ ui.lcars.legend_beam[lang] }}</span><span><i></i>{{ ui.lcars.legend_isocentre[lang] }}</span></p>
     </div>
+  </div>
+  <div class="l-panel" style="--c:var(--lc-blue)">
+    <p class="panel-leg">ISODOSE DISTRIBUTION · TREATMENT BEAM</p>
+    <figure class="sheetfig"><svg class="isodose" id="isodose-hero" viewBox="0 0 320 180" aria-hidden="true"></svg></figure>
+    <p class="sheet-cap">{{ ui.lcars.caption_isodose[lang] }}</p>
   </div>
   <ul class="domains">
     {% for s in site.services %}
@@ -61,6 +82,7 @@
 </section>
 
 <section class="panelbox" id="projects" data-od-id="projects">
+  <span class="l-elbow" data-dir="right" style="--c:var(--lc-coral);--l-long:18%;--l-stub:10%;--l-thick:var(--lc-thick)"><i></i><i></i></span>
   <span class="l-plate" style="--w:72%;--c:var(--lc-blue)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_projects[lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_projects[lang] }}</h2>
   {% for p in projects %}
@@ -129,6 +151,7 @@
 </section>
 
 <section class="panelbox" id="contact" data-od-id="contact">
+  <span class="l-elbow" style="--c:var(--lc-violet);--l-long:16%;--l-stub:9%;--l-thick:var(--lc-cap)"><i></i><i></i></span>
   <span class="l-plate" style="--w:54%;--c:var(--lc-coral)"><span class="pl-bar"></span><span class="pl-label">{{ ui.lcars.legend_contact[lang] }}</span></span>
   <h2 class="h2">{{ ui.lcars.h_contact[lang] }}</h2>
   <div class="contacts">

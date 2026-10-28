@@ -231,3 +231,17 @@ main{display:flex;flex-direction:column;gap:26px}
 .header-side .hs-b{font-size:clamp(14px,1.35vw,18px);line-height:1.45}
 .header-side .hs-l{font-family:var(--font-mono,"IBM Plex Mono",monospace);font-size:11.5px;
   letter-spacing:0.06em;text-transform:uppercase;opacity:.72}
+
+/* the panel that carries the blueprint: a black plate with the drawing in it */
+.lcars .hero-figure{position:relative;background:#080b0f;border:1px solid #1d2530;
+  border-radius:var(--lc-mass);padding:clamp(10px,1.4vw,18px);overflow:hidden}
+.lcars .hero-figure .blueprint{position:absolute;inset:0;width:100%;height:100%}
+.lcars .hero-figure .sheet-cap{position:relative;z-index:1}
+.lcars .hero-figure .fig-legend{position:relative;z-index:1;display:flex;gap:14px;
+  flex-wrap:wrap;margin-top:8px;font-family:var(--font-mono,"IBM Plex Mono",monospace);
+  font-size:11.5px;color:#6d7580}
+.lcars .hero-figure .fig-legend i{display:inline-block;width:16px;height:2px;
+  background:#575f6a;margin-right:6px;vertical-align:middle}
+/* the L-elbows sit on the panel edges, selectively - the reference connects
+   only a few pieces, it does not connect everything */
+.lcars .panelbox > .l-elbow{z-index:1}
