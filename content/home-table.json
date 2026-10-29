@@ -1846,5 +1846,97 @@
   "medical/linac numbers on the home console",
   "blocks with no text",
   "any medical term on the home console (isodose, gantry, MLC, linac, accelerator) - medicine belongs to record.0 and the Engineer Companion case page only"
- ]
+ ],
+ "sections": {
+  "home": [
+   {
+    "id": "sec-build",
+    "label": "BUILD",
+    "rows": 3
+   },
+   {
+    "id": "sec-work",
+    "label": "WORK",
+    "rows": 3
+   },
+   {
+    "id": "sec-record",
+    "label": "RECORD",
+    "rows": 3
+   },
+   {
+    "id": "sec-facts",
+    "label": "FACTS",
+    "rows": 5
+   },
+   {
+    "id": "sec-links",
+    "label": "CONTACT",
+    "rows": 2
+   }
+  ],
+  "work": [
+   {
+    "id": "sec-work",
+    "label": "CASES",
+    "rows": 14
+   },
+   {
+    "id": "sec-facts",
+    "label": "FACTS",
+    "rows": 5
+   }
+  ],
+  "about": [
+   {
+    "id": "sec-build",
+    "label": "ABOUT",
+    "rows": 3
+   },
+   {
+    "id": "sec-record",
+    "label": "RECORD",
+    "rows": 3
+   },
+   {
+    "id": "sec-facts",
+    "label": "FACTS",
+    "rows": 5
+   }
+  ],
+  "contact": [
+   {
+    "id": "sec-build",
+    "label": "CONTACT",
+    "rows": 5
+   },
+   {
+    "id": "sec-facts",
+    "label": "FACTS",
+    "rows": 5
+   }
+  ],
+  "case": [
+   {
+    "id": "sec-build",
+    "label": "PROBLEM",
+    "rows": 4
+   },
+   {
+    "id": "sec-work",
+    "label": "APPROACH",
+    "rows": 5
+   },
+   {
+    "id": "sec-record",
+    "label": "RESULTS",
+    "rows": 4
+   },
+   {
+    "id": "sec-facts",
+    "label": "STACK",
+    "rows": 2
+   }
+  ]
+ }
 }
