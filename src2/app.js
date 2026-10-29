@@ -1,12 +1,9 @@
 /* ===================================================================
    LCARS CONSOLE - the behaviour layer.
+
    The readout field is the template's data cascade: the first columns
-   carry the live values, the rest is the log.
-     1. BOOT      the console powers up when the page comes up
-     2. CYCLE     the digits roll, the accent block breathes, the
-                  availability lamp blinks
-     3. STANDBY   after a while with nobody watching, the console dims
-   Plus: the left panel of the section on screen lights up, the others dim.
+   carry the live values, the rest is the log. The motion is the machine
+   waking up, ticking and going to sleep - nothing blinks for decoration.
    =================================================================== */
 (function () {
   'use strict';
@@ -14,6 +11,7 @@
   var FULL_TIME = new Date(Date.UTC(2026, 10, 30)); // 30 Nov 2026
   var started = Date.now();
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var body = document.body;
 
   function pad(value, width) {
     var text = String(value);
@@ -40,8 +38,7 @@
     };
   }
 
-  // LCARS stardate: a base number plus the progress through the year,
-  // plus the time unit of the day (0-9).
+  // LCARS stardate: the year in a base number, plus the time unit of the day.
   function stardate() {
     var now = new Date();
     var yearStart = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
@@ -75,15 +72,21 @@
     list.forEach(function (el) {
       if (el.textContent === value) return;
       el.textContent = value;
-      if (!reduced) {
-        el.classList.remove('is-rolling');
-        void el.offsetWidth;
-        el.classList.add('is-rolling');
+      if (reduced) return;
+      el.classList.remove('is-rolling');
+      void el.offsetWidth;
+      el.classList.add('is-rolling');
+      var column = el.parentElement;
+      if (column && column.classList.contains('data-column')) {
+        column.classList.remove('is-ticking');
+        void column.offsetWidth;
+        column.classList.add('is-ticking');
       }
     });
   }
 
   function tick() {
+    if (body.classList.contains('is-standby')) return;
     var t = clock();
     for (var k in t) paint(k, t[k]);
     var sd = stardate();
@@ -94,49 +97,68 @@
     paint('facts-a', '21'); paint('facts-b', '214');
   }
 
-  // ---- the content flows in from beyond the edge when it comes into view ----
-  function revealOnScroll() {
-    if (reduced) return;
-    var targets = document.querySelectorAll(
-      '.lcars-text-bar, .lcars-list li, .readout__cell, .own-metric, .image-frame, .btn'
-    );
-    if (!('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        var siblings = el.parentElement ? el.parentElement.children : [];
-        var index = Array.prototype.indexOf.call(siblings, el);
-        el.style.setProperty('--d', (index * 45) + 'ms');
-        el.classList.add('own-reveal', 'is-in');
-        io.unobserve(el);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-    targets.forEach(function (el) { io.observe(el); });
-  }
-
-  // ---- 1. BOOT: the console powers up ----
+  // ---- BOOT: the console powers up, once, in order ----
   function boot() {
     if (reduced) return;
-    document.querySelectorAll('.right-frame-top, .left-frame, .right-frame').forEach(function (el, i) {
-      el.classList.add('own-boot');
-      el.style.animationDelay = (i * 0.09) + 's';
-    });
+    body.classList.add('motion', 'is-booting');
+    window.setTimeout(function () { body.classList.remove('is-booting'); }, 900);
   }
 
-  // ---- 3. STANDBY: the console powers down when nobody is watching ----
+  // ---- STANDBY: the console sleeps when nobody is watching ----
   var idle = 0;
   function wake() {
     idle = 0;
-    document.body.classList.remove('is-standby');
+    body.classList.remove('is-standby');
   }
   ['pointerdown', 'keydown', 'wheel', 'touchstart', 'focus'].forEach(function (evt) {
     window.addEventListener(evt, wake, { passive: true });
   });
   function checkIdle() {
     idle += 1000;
-    if (idle >= 12000) document.body.classList.add('is-standby');
+    if (idle >= 25000) body.classList.add('is-standby');
+  }
+
+  // ---- the left panel of the section on screen is the live one ----
+  var sections = [];
+  function collectSections() {
+    sections = [];
+    document.querySelectorAll('main .lcars-text-bar[id]').forEach(function (el) {
+      sections.push({ id: el.id, el: el });
+    });
+  }
+  function syncPanels() {
+    var panels = document.querySelectorAll('.left-frame [data-target]');
+    if (!panels.length) return;
+    var current = sections.length ? sections[0].id : null;
+    var main = document.getElementById('main');
+    var probe = (main ? main.getBoundingClientRect().top + window.scrollY : 0) + 160;
+    for (var i = 0; i < sections.length; i += 1) {
+      if (sections[i].el.getBoundingClientRect().top + window.scrollY <= probe) current = sections[i].id;
+    }
+    panels.forEach(function (p) {
+      var on = p.getAttribute('data-target') === current;
+      p.classList.toggle('own-on', on);
+      p.classList.toggle('own-off', !on);
+    });
+  }
+
+  // ---- the content comes in from beyond the edge as it enters the screen ----
+  function revealOnScroll() {
+    if (reduced) return;
+    if (!('IntersectionObserver' in window)) return;
+    var targets = document.querySelectorAll('.lcars-text-bar, .lcars-list li, .readout__cell, .own-metric, .image-frame');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var siblings = el.parentElement ? el.parentElement.children : [];
+        var index = Array.prototype.indexOf.call(siblings, el);
+        el.style.setProperty('--d', (index * 35) + 'ms');
+        el.classList.add('own-reveal', 'is-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    targets.forEach(function (el) { io.observe(el); });
   }
 
   // ---- the language switch: the URL always follows the stored choice ----
@@ -151,9 +173,7 @@
   }
   var stored = null;
   try { stored = localStorage.getItem('lcars-lang'); } catch (e) { stored = null; }
-  if (stored && stored !== currentLang()) {
-    location.replace(counterpart(location));
-  }
+  if (stored && stored !== currentLang()) location.replace(counterpart(location));
   document.querySelectorAll('[data-lang-toggle]').forEach(function (el) {
     el.textContent = otherLang() === 'en' ? 'EN' : 'RU';
     el.setAttribute('href', counterpart(location));
@@ -164,30 +184,6 @@
       location.href = counterpart(location);
     });
   });
-
-  // ---- the left panel of the section on screen lights up ----
-  var sections = [];
-  function collectSections() {
-    sections = [];
-    document.querySelectorAll('main .block[id]').forEach(function (el) {
-      sections.push({ id: el.id, el: el });
-    });
-  }
-  function syncPanels() {
-    var panels = document.querySelectorAll('.left-frame [data-target]');
-    if (!panels.length) return;
-    var current = sections.length ? sections[0].id : null;
-    var main = document.getElementById('main');
-    var probe = (main ? main.getBoundingClientRect().top + window.scrollY : 0) + 140;
-    for (var i = 0; i < sections.length; i += 1) {
-      if (sections[i].el.getBoundingClientRect().top + window.scrollY <= probe) current = sections[i].id;
-    }
-    panels.forEach(function (p) {
-      var on = p.getAttribute('data-target') === current;
-      p.classList.toggle('own-on', on);
-      p.classList.toggle('own-off', !on);
-    });
-  }
 
   tick();
   boot();

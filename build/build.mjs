@@ -153,6 +153,32 @@ function removeElement(html, className) {
   return html.slice(0, start) + html.slice(end);
 }
 
+
+// The HTML must be balanced. A mismatched end tag makes the browser move
+// whole blocks out of their parent, which is how the frame fell apart once.
+const VOID_TAGS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+function assertBalanced(html, label) {
+  const stack = [];
+  const re = /<\/?([a-zA-Z][a-zA-Z0-9-]*)\b[^>]*>/g;
+  let match;
+  while ((match = re.exec(html))) {
+    const raw = match[0];
+    const name = match[1].toLowerCase();
+    if (VOID_TAGS.has(name) || raw.endsWith('/>')) continue;
+    if (raw.startsWith('</')) {
+      const open = stack.pop();
+      if (open !== name) {
+        throw new Error(`Unbalanced HTML in ${label}: </${name}> closes <${open ?? 'nothing'}>`);
+      }
+    } else {
+      stack.push(name);
+    }
+  }
+  if (stack.length) {
+    throw new Error(`Unbalanced HTML in ${label}: open tags left: ${stack.join(' > ')}`);
+  }
+}
+
 // Expand a repeat block: {{#SLOT:path}} ... {{/SLOT:path}}
 // Inside, {{SLOT:path.@value}} and {{SLOT:path.@label}} refer to the current element.
 function expandRepeats(template, entries, lang) {
@@ -346,6 +372,8 @@ export async function build(lang, outDir, page, contentOverride) {
   if (html.includes('{{SLOT:')) {
     throw new Error('Template still contains unresolved slot placeholders');
   }
+
+  assertBalanced(html, spec.out);
 
   // outDir is the page's own index.html path
   const targetFile = path.isAbsolute(outDir) ? outDir : path.join(root, outDir);

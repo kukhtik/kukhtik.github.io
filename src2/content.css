@@ -81,37 +81,17 @@
 .own-role{font-size:.92rem !important;letter-spacing:.12em;text-transform:uppercase;color:var(--sky) !important;margin:0 0 .5rem !important}
 
 /* ---- motion: boot from beyond the edge, cycling, standby ---------- */
-@keyframes own-in-right{from{transform:translateX(30%);opacity:0}to{transform:none;opacity:1}}
-@keyframes own-in-left{from{transform:translateX(-30%);opacity:0}to{transform:none;opacity:1}}
-@keyframes own-in-up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
-@keyframes own-roll{0%{opacity:1;transform:translateY(0)}38%{opacity:.2;transform:translateY(-.3em)}100%{opacity:1;transform:none}}
-@keyframes own-breathe{0%,100%{filter:brightness(100%)}50%{filter:brightness(132%)}}
-@keyframes own-blink{0%,54%{opacity:1}55%,100%{opacity:.22}}
 
-.right-frame-top.own-boot{animation:own-in-right .3s cubic-bezier(.16,.84,.34,1) backwards}
-.left-frame.own-boot{animation:own-in-left .3s cubic-bezier(.16,.84,.34,1) backwards}
-.right-frame.own-boot{animation:own-in-up .34s ease .12s backwards}
 
-.dc-row-1.is-rolling,.dc-row-2.is-rolling,.dc-row-3.is-rolling,.dc-row-4.is-rolling,
 .dc-row-5.is-rolling,.dc-row-6.is-rolling,.dc-row-7.is-rolling{animation:own-roll .4s ease}
 [data-live]{transition:none}
 .dc-row-1{animation-name:own-roll}
-.nav-1,.nav-2,.nav-3,.nav-4{animation-name:own-breathe;animation-duration:5.5s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
-.nav-2{animation-delay:.9s}.nav-3{animation-delay:1.8s}.nav-4{animation-delay:2.7s}
-.blink{animation:own-blink 1.6s step-end infinite}
 
 .left-frame [data-target]{transition:filter .35s ease}
-.left-frame .own-off{filter:brightness(34%) saturate(.4)}
-.left-frame .own-on{filter:brightness(112%)}
 
-body.is-standby .right-frame-top,
-body.is-standby .left-frame{filter:brightness(.55) saturate(.6)}
-body.is-standby .right-frame{filter:brightness(.72)}
-body.is-standby .blink{animation:none;opacity:.4}
 body{transition:filter .8s ease}
 
 .own-status{font-size:.78rem !important;letter-spacing:.1em;text-transform:uppercase;color:#8b8b9c;margin:0 0 .6rem !important}
-.own-status b{color:var(--amber);font-weight:500}
 .own-skip{position:absolute;left:-9999px}
 .own-skip:focus{left:.5rem;top:.5rem;z-index:99;background:#000;color:var(--sky);padding:.5rem 1rem}
 @media (prefers-reduced-motion: reduce){
@@ -149,14 +129,79 @@ body{transition:filter .8s ease}
   .own-h1{font-size:1.5rem !important}
 }
 
-h1.banner{margin:0;font-size:inherit;font-weight:inherit}
+h1.banner{margin:0;font-weight:inherit;text-box:normal}
 .lcars-list li .hop{letter-spacing:0}
 
-/* ---- the content flows in from beyond the edge ---- */
-.own-reveal{transform:translateX(-30px)}
-.is-in{transform:none;transition:transform .38s cubic-bezier(.16,.84,.34,1) var(--d,0ms)}
-.lcars-text-bar.own-reveal{transform:translateX(-46px)}
-.image-frame.own-reveal{transform:translateX(-24px) scale(.985)}
+/* ---- the content flows in from beyond the edge ------------------------
+   The shift travels in the independent `translate` property, and the
+   amount comes from --shift. A single .is-in rule can therefore always
+   cancel it: no specificity fight, and the layout never moves.       */
+.lcars-text-bar{--shift:-46px}
+.image-frame{--shift:-24px}
+.own-reveal{
+  translate:var(--shift,-30px);
+  transition:translate .34s cubic-bezier(.16,.84,.34,1) var(--d,0ms);
+}
+.is-in{translate:none}
 @media (prefers-reduced-motion: reduce){
-  .own-reveal,.is-in{transform:none !important;transition:none !important}
+  .own-reveal,.is-in{translate:none !important;transition:none !important}
+}
+
+
+/* ===================================================================
+   MOTION - the console behaves like a machine, not like a web page.
+   Rules of the system:
+     * nothing fades in and nothing scales up - panels move, they do not grow
+     * every movement is short (140-420 ms) and decelerating
+     * motion means something: a boot, a new value, a section entering, sleep
+     * one slow pulse over the whole frame instead of blinking everywhere
+   =================================================================== */
+:root{--ease:cubic-bezier(.16,.84,.34,1)}
+
+/* --- 1. BOOT: the segments extend out of their anchors, the digits fall in --- */
+@keyframes own-seg-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes own-col-in{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
+@keyframes own-panel-in{from{transform:translateX(-22px)}to{transform:none}}
+@keyframes own-window-in{from{transform:translateY(10px)}to{transform:none}}
+@keyframes own-wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+body.motion .bar-panel div{transform-origin:left center}
+body.motion.is-booting .bar-panel div{animation:own-seg-in .42s var(--ease) backwards}
+body.motion.is-booting .bar-panel div:nth-child(2){animation-delay:.05s}
+body.motion.is-booting .bar-panel div:nth-child(3){animation-delay:.09s}
+body.motion.is-booting .bar-panel div:nth-child(4){animation-delay:.13s}
+body.motion.is-booting .bar-panel div:nth-child(5){animation-delay:.17s}
+body.motion.is-booting .data-column{animation:own-col-in .26s var(--ease) backwards}
+body.motion.is-booting .left-frame [data-target]{animation:own-panel-in .34s var(--ease) backwards}
+body.motion.is-booting .left-frame [data-target]:nth-child(2){animation-delay:.06s}
+body.motion.is-booting .left-frame [data-target]:nth-child(3){animation-delay:.12s}
+body.motion.is-booting .left-frame [data-target]:nth-child(4){animation-delay:.18s}
+body.motion.is-booting .right-frame{animation:own-window-in .38s var(--ease) .1s backwards}
+
+/* --- 2. THE CASCADE: a changed digit flips, the column answers --- */
+@keyframes own-flip{0%{transform:rotateX(0)}45%{transform:rotateX(-86deg)}100%{transform:rotateX(0)}}
+.dc-row-5.is-rolling,.dc-row-6.is-rolling,.dc-row-7.is-rolling{animation:own-flip .34s var(--ease)}
+@keyframes own-tick{0%{filter:brightness(100%)}40%{filter:brightness(118%)}100%{filter:brightness(100%)}}
+.data-column.is-ticking{animation:own-tick .42s var(--ease)}
+
+/* --- 3. A SECTION COMES IN: the bar wipes, the rows follow --- */
+.lcars-text-bar.own-reveal{clip-path:inset(0 100% 0 0)}
+.lcars-text-bar.is-in{clip-path:inset(0 0 0 0);transition:clip-path .34s var(--ease) var(--d,0ms)}
+
+/* --- 4. THE PANELS: the one on screen is live, the others are dimmed --- */
+.left-frame [data-target]{transition:filter .3s var(--ease)}
+
+/* --- 5. THE REACTOR: one slow pulse over the whole frame --- */
+@keyframes own-reactor{0%,100%{filter:brightness(100%)}50%{filter:brightness(104%)}}
+body.motion .bar-panel{animation:own-reactor 9s ease-in-out infinite}
+
+/* --- 6. STANDBY: the console sleeps when nobody is watching --- */
+body.motion.is-standby .right-frame-top,
+body.motion.is-standby .left-frame,
+body.motion.is-standby .right-frame{filter:brightness(.5) saturate(.55)}
+body.motion.is-standby{transition:filter .8s var(--ease)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .own-reveal,.is-in{translate:none !important;clip-path:none !important}
 }
