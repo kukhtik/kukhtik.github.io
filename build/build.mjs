@@ -357,7 +357,7 @@ export async function build(lang, outDir, page, contentOverride) {
 
 const PAGES = [
   { template: 'index.src.html', out: 'index.html', home: true,
-    title: 'Maxim Kukhto — Python / AI engineer', page: 'home',
+    title: 'Maxim Kukhto', page: 'home',
     metaDesc: 'Offline RAG, CAD/GIS automation and Python backend - measured results, public code, remote from Mogilev, UTC+3.' },
   { template: 'work.src.html', out: 'work/index.html',
     title: 'Work — 14 measured cases', page: 'work',
