@@ -1,0 +1,47 @@
+        <h2 class="own-h1">{{SLOT:{{PROJECT}}.title}}</h2>
+        <p class="own-lead">{{SLOT:{{PROJECT}}.subtitle}}</p>
+
+        <div class="gallery">
+          {{#SLOT:{{PROJECT}}.images}}
+          <div class="image-frame own-frame">
+            <div class="imgf-title"><div class="h4-wrapper"><h4>{{SLOT:{{PROJECT}}.images.@alt}}</h4></div></div>
+            <div class="imgf-image-body"><div class="image-holder"><img src="{{SLOT:{{PROJECT}}.images.@src}}" alt="{{SLOT:{{PROJECT}}.images.@alt}}" loading="lazy" decoding="async"></div></div>
+            <div class="imgf-base">
+              <div class="imgf-block-1"></div>
+              <div class="imgf-block-2"></div>
+              <div class="imgf-block-3"></div>
+              <div class="imgf-block-4"></div>
+              <div class="imgf-block-5"></div>
+            </div>
+          </div>
+          {{/SLOT:{{PROJECT}}.images}}
+        </div>
+
+        <div class="lcars-text-bar own-bar own-bar--sm" id="sec-build"><h2>{{SLOT:sec.case.problem.title}}</h2></div>
+        <ul class="lcars-list own-list">
+          {{#SENTENCES:{{PROJECT}}.problem}}<li>{{SENTENCE}}</li>{{/SENTENCES:{{PROJECT}}.problem}}
+        </ul>
+
+        <div class="lcars-text-bar own-bar own-bar--sm" id="sec-work"><h2>{{SLOT:sec.case.approach.title}}</h2></div>
+        <ul class="lcars-list own-list">
+          {{#SENTENCES:{{PROJECT}}.approach}}<li>{{SENTENCE}}</li>{{/SENTENCES:{{PROJECT}}.approach}}
+        </ul>
+
+        <div class="lcars-text-bar own-bar own-bar--sm" id="sec-record"><h2>{{SLOT:sec.case.results.title}}</h2></div>
+        <div class="readout">
+          {{#SLOT:{{PROJECT}}.results}}
+          <div class="own-metric"><b>{{SLOT:{{PROJECT}}.results.@value}}</b><span>{{SLOT:{{PROJECT}}.results.@label}}</span></div>
+          {{/SLOT:{{PROJECT}}.results}}
+        </div>
+
+        <div class="lcars-text-bar own-bar own-bar--sm" id="sec-facts"><h2>{{SLOT:sec.case.stack.title}}</h2></div>
+        <ul class="lcars-list own-list">
+          <li><b>Stack</b> {{SLOT:{{PROJECT}}.stack}}</li>
+          <li><b>Source</b> {{SLOT:{{PROJECT}}.confidentiality}}</li>
+        </ul>
+
+        {{#SLOT:{{PROJECT}}.links}}
+        <div class="btnrow">
+          <a class="btn btn--amber" href="{{SLOT:{{PROJECT}}.links.@url}}" target="_blank" rel="noopener">{{SLOT:{{PROJECT}}.links.@label}}</a>
+        </div>
+        {{/SLOT:{{PROJECT}}.links}}

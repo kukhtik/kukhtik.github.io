@@ -1,0 +1,1850 @@
+{
+ "_note": "Content table: every slot of the picard console with its exact text. Built BEFORE any markup. A slot with empty text must not exist as a block.",
+ "_source": "src/content-contract.json",
+ "slots": {
+  "left.status": [
+   {
+    "id": "status.availability",
+    "text": {
+     "en": "AVAILABLE",
+     "ru": "ДОСТУПЕН"
+    },
+    "limit": 38
+   },
+   {
+    "id": "status.place",
+    "text": {
+     "en": "MOGILEV · UTC+3",
+     "ru": "МОГИЛЁВ · UTC+3"
+    },
+    "limit": 38
+   },
+   {
+    "id": "status.from",
+    "text": {
+     "en": "FROM NOV 2026",
+     "ru": "С НОЯБРЯ 2026"
+    },
+    "limit": 38
+   }
+  ],
+  "left.facts": [
+   {
+    "id": "fact.based",
+    "text": {
+     "en": "Mogilev, Belarus",
+     "ru": "Могилёв, Беларусь"
+    },
+    "label": {
+     "en": "Based",
+     "ru": "База"
+    },
+    "limit": 32
+   },
+   {
+    "id": "fact.timezone",
+    "text": {
+     "en": "UTC+3",
+     "ru": "UTC+3"
+    },
+    "label": {
+     "en": "Timezone",
+     "ru": "Часовой пояс"
+    },
+    "limit": 32
+   },
+   {
+    "id": "fact.availability",
+    "text": {
+     "en": "Full-time from late Nov 2026",
+     "ru": "Full-time с конца нояб. 2026"
+    },
+    "label": {
+     "en": "Availability",
+     "ru": "Доступность"
+    },
+    "limit": 32
+   },
+   {
+    "id": "fact.english",
+    "text": {
+     "en": "B2",
+     "ru": "B2"
+    },
+    "label": {
+     "en": "English",
+     "ru": "Английский"
+    },
+    "limit": 32
+   },
+   {
+    "id": "fact.focus",
+    "text": {
+     "en": "RAG · CAD/GIS · Python",
+     "ru": "RAG · CAD/GIS · Python"
+    },
+    "label": {
+     "en": "Focus",
+     "ru": "Фокус"
+    },
+    "limit": 32
+   }
+  ],
+  "top.identity": [
+   {
+    "id": "hero.name",
+    "text": {
+     "en": "Maxim Kukhto",
+     "ru": "Максим Кухто"
+    },
+    "limit": 20,
+    "size": 22
+   },
+   {
+    "id": "hero.role",
+    "text": {
+     "en": "Python / AI engineer — offline RAG, CAD/GIS automation, LLM agents",
+     "ru": "Python / AI-инженер — offline-RAG, CAD/GIS, LLM-агенты"
+    },
+    "limit": 66,
+    "size": 13
+   },
+   {
+    "id": "hero.lead",
+    "text": {
+     "en": "I build systems that work without internet — and prove their work with tests, measured latency, and evidence links.",
+     "ru": "Строю системы, которые работают без интернета — и доказываю результат тестами и замерками."
+    },
+    "limit": 115,
+    "size": 11
+   },
+   {
+    "id": "hero.note",
+    "text": {
+     "en": "Currently a medical-equipment engineer at a radiotherapy centre; leaving in November for software full-time.",
+     "ru": "Сейчас инженер по медоборудованию в онкоцентре; в ноябре ухожу в разработку full-time."
+    },
+    "limit": 110,
+    "size": 11
+   },
+   {
+    "id": "sec.build.title",
+    "text": {
+     "en": "What I build",
+     "ru": "Что я делаю"
+    },
+    "limit": 40
+   },
+   {
+    "id": "sec.work.title",
+    "text": {
+     "en": "Selected work",
+     "ru": "Избранные кейсы"
+    },
+    "limit": 40
+   },
+   {
+    "id": "sec.record.title",
+    "text": {
+     "en": "Record",
+     "ru": "Хроника"
+    },
+    "limit": 40
+   },
+   {
+    "id": "sec.links.title",
+    "text": {
+     "en": "Elsewhere",
+     "ru": "Ссылки"
+    },
+    "limit": 40
+   },
+   {
+    "id": "sec.facts.title",
+    "text": {
+     "en": "Facts",
+     "ru": "Коротко"
+    },
+    "limit": 40
+   },
+   {
+    "id": "sec.case.problem.title",
+    "text": {
+     "en": "The problem",
+     "ru": "Задача"
+    },
+    "limit": 40,
+    "scope": "case"
+   },
+   {
+    "id": "sec.case.approach.title",
+    "text": {
+     "en": "The approach",
+     "ru": "Подход"
+    },
+    "limit": 40,
+    "scope": "case"
+   },
+   {
+    "id": "sec.case.results.title",
+    "text": {
+     "en": "Measured results",
+     "ru": "Измерено"
+    },
+    "limit": 40,
+    "scope": "case"
+   },
+   {
+    "id": "sec.case.stack.title",
+    "text": {
+     "en": "Stack & source",
+     "ru": "Стек и код"
+    },
+    "limit": 40,
+    "scope": "case"
+   },
+   {
+    "id": "sec.about.title",
+    "text": {
+     "en": "About",
+     "ru": "Обо мне"
+    },
+    "limit": 40,
+    "scope": "about"
+   },
+   {
+    "id": "sec.contact.title",
+    "text": {
+     "en": "Contact",
+     "ru": "Связаться"
+    },
+    "limit": 40,
+    "scope": "contact"
+   },
+   {
+    "id": "work.lead",
+    "scope": "work",
+    "text": {
+     "en": "Fourteen systems, each measured on a real run - latency, accuracy, test counts, sweep results. Every entry opens into the problem, the approach, the numbers and the screenshots.",
+     "ru": "Четырнадцать систем, каждая измерена на реальном прогоне: задержка, точность, число тестов, результаты свипов. Каждая открывается: задача, подход, числа и скриншоты."
+    },
+    "limit": 220
+   }
+  ],
+  "top.pills": [
+   {
+    "id": "pill.facts",
+    "text": {
+     "en": "21 214 FACTS",
+     "ru": "21 214 ФАКТОВ"
+    },
+    "limit": 16
+   },
+   {
+    "id": "pill.accuracy",
+    "text": {
+     "en": "96/100 ACCURACY",
+     "ru": "96/100 ТОЧН."
+    },
+    "limit": 16
+   },
+   {
+    "id": "pill.latency",
+    "text": {
+     "en": "130 MS P50",
+     "ru": "130 MS P50"
+    },
+    "limit": 16
+   }
+  ],
+  "top.cascade": [
+   {
+    "id": "casc.clock",
+    "kind": "live_clock",
+    "tz": "UTC+3",
+    "cells": 6,
+    "limit": 24,
+    "label": {
+     "en": "LOCAL TIME UTC+3",
+     "ru": "МЕСТНОЕ ВРЕМЯ UTC+3"
+    }
+   },
+   {
+    "id": "casc.days",
+    "kind": "counter",
+    "label": {
+     "en": "DAYS TO FULL-TIME",
+     "ru": "ДНЕЙ ДО FULL-TIME"
+    },
+    "target": "2026-11-30",
+    "cells": 2,
+    "note": "target 30 Nov 2026 per 'late November 2026' / 'с конца ноября 2026' in contract (3 independent mentions)",
+    "limit": 24
+   },
+   {
+    "id": "casc.uptime",
+    "kind": "counter",
+    "label": {
+     "en": "SESSION UPTIME",
+     "ru": "UPTIME СЕССИИ"
+    },
+    "cells": 4,
+    "limit": 24
+   },
+   {
+    "id": "casc.index",
+    "kind": "counter",
+    "label": {
+     "en": "FACTS INDEXED",
+     "ru": "ФАКТОВ В ИНДЕКСЕ"
+    },
+    "value": "21214",
+    "cells": 5,
+    "limit": 24
+   },
+   {
+    "id": "casc.date",
+    "kind": "live_date",
+    "cells": 8,
+    "label": {
+     "en": "DATE",
+     "ru": "ДАТА"
+    },
+    "limit": 24
+   }
+  ],
+  "mid.services": [
+   {
+    "id": "service.01",
+    "number": "01",
+    "title": {
+     "en": "Offline and on-prem RAG",
+     "ru": "Offline и on-prem RAG"
+    },
+    "text": {
+     "en": "Document ingestion, hybrid retrieval, reranking, local quantized inference (llama.cpp / GGUF, ONNX), evaluation harnesses, evidence-linked answers.",
+     "ru": "Индексация документов, гибридный поиск, реранкинг, локальный инференс, ответы со ссылками."
+    },
+    "limit_title": 26,
+    "limit_text": 147
+   },
+   {
+    "id": "service.02",
+    "number": "02",
+    "title": {
+     "en": "CAD/GIS automation",
+     "ru": "Автоматизация CAD/GIS"
+    },
+    "text": {
+     "en": "DXF/DWG generation, photo-to-drawing CV pipelines, coordinate systems, numerical calibration, desktop tooling with PySide6/PyQt6.",
+     "ru": "Генерация DXF/DWG, CV-пайплайны «фото → чертёж», системы координат, численная калибровка, desktop-инструменты на PySide6/PyQt6."
+    },
+    "limit_title": 26,
+    "limit_text": 147
+   },
+   {
+    "id": "service.03",
+    "number": "03",
+    "title": {
+     "en": "Python backend and desktop",
+     "ru": "Python backend/desktop"
+    },
+    "text": {
+     "en": "FastAPI services, async pipelines, SQL schemas and migrations, Cloudflare Workers/D1/R2, CI with coverage and mutation gates.",
+     "ru": "Сервисы на FastAPI, асинхронные пайплайны, схемы и миграции SQL, Cloudflare Workers/D1/R2, CI с coverage и mutation gates."
+    },
+    "limit_title": 26,
+    "limit_text": 147
+   }
+  ],
+  "mid.projects": [
+   {
+    "id": "project.swarm",
+    "title": {
+     "en": "Swarm",
+     "ru": "Swarm"
+    },
+    "subtitle": {
+     "en": "multi-agent orchestration with machine acceptance",
+     "ru": "мультиагентная оркестрация с машинной приёмкой"
+    },
+    "summary": {
+     "en": "Role isolation: the planner decomposes a task into verifiable steps, the executor does the work, and a verifier opens with a fresh context to judge execution — pytest, linter, dry-run — never the agent’s word.",
+     "ru": "Изоляция ролей: планировщик декомпозирует задачу в проверяемые шаги, исполнитель делает работу, верификатор открывается с чистым контекстом и судит исполнение — pytest, линтер, dry-run — а не слова агента."
+    },
+    "problem": {
+     "en": "LLM agents report “done” when the work is not done — they fail silently, leave stubs, loop. A single agent grading itself suffers confirmation bias.",
+     "ru": "LLM-агенты отчитываются «готово», когда работа не сделана — молча падают, оставляют заглушки, зацикливаются. Одиночный агент, проверяющий себя сам, страдает подтверждающим искажением."
+    },
+    "approach": {
+     "en": "Role isolation: the planner decomposes a task into verifiable steps, the executor does the work, and a verifier opens with a fresh context to judge execution — pytest, linter, dry-run — never the agent’s word.",
+     "ru": "Изоляция ролей: планировщик декомпозирует задачу в проверяемые шаги, исполнитель делает работу, верификатор открывается с чистым контекстом и судит исполнение — pytest, линтер, dry-run — а не слова агента."
+    },
+    "results": [
+     {
+      "value": "11/11",
+      "label": {
+       "ru": "проверок зелёные",
+       "en": "checks passed"
+      }
+     },
+     {
+      "value": "4",
+      "label": {
+       "ru": "хода",
+       "en": "turns"
+      }
+     },
+     {
+      "value": "21 с",
+      "label": {
+       "ru": "референсный прогон",
+       "en": "reference run"
+      }
+     },
+     {
+      "value": "21",
+      "label": {
+       "ru": "ветка реформы",
+       "en": "merged branches"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/swarm-architecture.jpg",
+      "thumb": "/assets/media-thumb/swarm-architecture.jpg",
+      "alt": {
+       "en": "Swarm — the agent farm schematic",
+       "ru": "Swarm — схема агентной фермы"
+      }
+     },
+     {
+      "src": "/assets/media-full/swarm-kanban.jpg",
+      "thumb": "/assets/media-thumb/swarm-kanban.jpg",
+      "alt": {
+       "en": "Swarm — the agent task board",
+       "ru": "Swarm — доска задач агентов"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "swarm",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.engineer-companion",
+    "title": {
+     "en": "Engineer Companion",
+     "ru": "Engineer Companion"
+    },
+    "subtitle": {
+     "en": "offline RAG over medical-equipment documentation",
+     "ru": "офлайн-RAG по документации медоборудования"
+    },
+    "summary": {
+     "en": "Offline RAG over radiotherapy documentation. Hybrid retrieval, local embeddings, CPU-only. Answers cite the page.",
+     "ru": "Offline-RAG по документации. Гибридный поиск, локальные эмбеддинги, CPU-only. Ответы со ссылкой на страницу."
+    },
+    "problem": {
+     "en": "A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds — out of tens of thousands of pages of manuals.",
+     "ru": "Инженер, обслуживающий клинический линейный ускоритель, работает в экранированном бункере без интернета и должен за секунды найти точную страницу спецификации среди десятков тысяч страниц руководств."
+    },
+    "approach": {
+     "en": "Fully local hybrid retrieval with verifiable evidence links: document, page, drawing region. Runs on CPU.",
+     "ru": "Полностью локальный гибридный поиск с проверяемыми ссылками на источник: документ, страница, область чертежа. Работает на CPU."
+    },
+    "results": [
+     {
+      "value": "21,214",
+      "label": {
+       "en": "facts indexed",
+       "ru": "фактов в индексе"
+      }
+     },
+     {
+      "value": "96/100",
+      "label": {
+       "en": "benchmark accuracy",
+       "ru": "точность на бенчмарке"
+      }
+     },
+     {
+      "value": "130 ms",
+      "label": {
+       "en": "p50 latency · CPU",
+       "ru": "p50 · CPU"
+      }
+     },
+     {
+      "value": "768/775",
+      "label": {
+       "en": "tests passing",
+       "ru": "тестов проходят"
+      }
+     }
+    ],
+    "stack": [
+     "Python",
+     "LanceDB",
+     "BM25",
+     "multilingual-e5-small",
+     "mmarco reranker",
+     "Gemma-3-4B (GGUF)",
+     "llama.cpp",
+     "PySide6",
+     "pytest"
+    ],
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Public code",
+       "ru": "Публичный код"
+      },
+      "url": "https://github.com/kukhtik/engineer-companion"
+     },
+     {
+      "label": {
+       "en": "Architecture notes",
+       "ru": "Архитектура"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "voyager",
+    "confidentiality": {
+     "en": "Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal.",
+     "ru": "Публичный код. В репозитории — код поиска и генерации и тесты; бенчмарк-харнесс внутренний."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/engineer-companion-chat.jpg",
+      "thumb": "/assets/media-thumb/engineer-companion-chat.jpg",
+      "alt": {
+       "en": "Engineer Companion — a chat with the assistant",
+       "ru": "Engineer Companion — диалог с ассистентом"
+      }
+     },
+     {
+      "src": "/assets/media-full/engineer-companion-cloud.jpg",
+      "thumb": "/assets/media-thumb/engineer-companion-cloud.jpg",
+      "alt": {
+       "en": "Fact cloud — the Clinac catalog as a node graph",
+       "ru": "Облако фактов — каталог Clinac как граф узлов"
+      }
+     },
+     {
+      "src": "/assets/media-full/engineer-companion-library.jpg",
+      "thumb": "/assets/media-thumb/engineer-companion-library.jpg",
+      "alt": {
+       "en": "Document library & index statistics",
+       "ru": "Библиотека документов и статистика индекса"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "year": "2026",
+    "slug": "engineer-companion",
+    "accent": "#70b5ff"
+   },
+   {
+    "id": "project.geoconverter",
+    "title": {
+     "en": "GeoConverter",
+     "ru": "GeoConverter"
+    },
+    "subtitle": {
+     "en": "numerical geodetic calibration",
+     "ru": "численная калибровка геодезических координат"
+    },
+    "summary": {
+     "en": "Sub-millimetre conversion between legacy local systems and WGS-84. Hardware-locked.",
+     "ru": "Субмиллиметровая конвертация локальных систем в WGS-84. Привязка к оборудованию."
+    },
+    "problem": {
+     "en": "Converting coordinates between legacy local systems and modern global datums requires sub-millimetre precision under strong non-linear distortions. Off-the-shelf tools either lose precision or require a server.",
+     "ru": "Конвертация координат между локальными системами и современными глобальными датумами требует субмиллиметровой точности при сильных нелинейных искажениях. Готовые инструменты либо теряют точность, либо требуют сервера."
+    },
+    "approach": {
+     "en": "A four-stage numerical pipeline with a round-trip check: the closed route must come back within millimetres.",
+     "ru": "Четырёхстадийный численный конвейер с обратной проверкой: замкнутый маршрут должен сойтись в пределах миллиметров."
+    },
+    "results": [
+     {
+      "value": "<1 mm",
+      "label": {
+       "en": "round-trip error",
+       "ru": "погрешность маршрута"
+      }
+     },
+     {
+      "value": "20+",
+      "label": {
+       "en": "local coordinate systems",
+       "ru": "локальных систем координат"
+      }
+     },
+     {
+      "value": "Commercial",
+      "label": {
+       "en": "release, government clients",
+       "ru": "релиз, гос. заказчики"
+      }
+     }
+    ],
+    "stack": [
+     "Python",
+     "NumPy / SciPy",
+     "PyQt6",
+     "PyInstaller / Nuitka",
+     "Hardware-locked licensing"
+    ],
+    "status": "commercial",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "nemesis-blue",
+    "confidentiality": {
+     "en": "Source private. Commercial product; client systems and licensing details under NDA.",
+     "ru": "Исходники закрыты. Коммерческий продукт; заказчики и детали лицензирования под NDA."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/geoconverter.jpg",
+      "thumb": "/assets/media-thumb/geoconverter.jpg",
+      "alt": {
+       "en": "GeoConverter — the converter window",
+       "ru": "GeoConverter — окно конвертера"
+      }
+     },
+     {
+      "src": "/assets/media-full/geoconverter-report.jpg",
+      "thumb": "/assets/media-thumb/geoconverter-report.jpg",
+      "alt": {
+       "en": "GeoConverter — the conversion report",
+       "ru": "GeoConverter — отчёт по конвертации"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "year": "2023–2024",
+    "slug": "geoconverter",
+    "accent": "#69f"
+   },
+   {
+    "id": "project.vetka-dwg",
+    "title": {
+     "en": "VETKA_DWG",
+     "ru": "VETKA_DWG"
+    },
+    "subtitle": {
+     "en": "survey sketches → CAD drawings",
+     "ru": "полевые абрисы → чертежи CAD"
+    },
+    "summary": {
+     "en": "Photo of a survey sketch to topographic DXF. Marker detection, OCR, block library.",
+     "ru": "Фото абриса в топографический DXF. Детекция маркеров, OCR, библиотека блоков."
+    },
+    "problem": {
+     "en": "A surveyor draws a field abris by hand, then spends hours transferring numbered points and symbols into CAD. The process is slow, repetitive and error-prone.",
+     "ru": "Геодезист рисует абрис от руки, а потом часы переносит точки и условные знаки в CAD. Процесс медленный, монотонный и подверженный ошибкам."
+    },
+    "approach": {
+     "en": "Photo of the sketch → marker and text recognition → topographic DXF/DWG. **4 hours of manual drafting → 15 minutes.** In production use with surveying companies (Belarus).",
+     "ru": "Фото абриса → распознавание маркеров и текста → топографический DXF/DWG. **4 часа ручного черчения → 15 минут.** В продакшене у геодезических компаний (Беларусь)."
+    },
+    "results": [
+     {
+      "value": "4h→15m",
+      "label": {
+       "en": "manual drafting time",
+       "ru": "время ручного черчения"
+      }
+     },
+     {
+      "value": "3",
+      "label": {
+       "en": "surveying companies live",
+       "ru": "геодез. компаний в prod"
+      }
+     },
+     {
+      "value": "444",
+      "label": {
+       "en": "GUGK blocks in the library",
+       "ru": "блока ГУГК в библиотеке"
+      }
+     }
+    ],
+    "stack": [
+     "Python",
+     "OpenCV",
+     "PaddleOCR",
+     "ezdxf",
+     "PySide6 / QML",
+     "CI quality gates"
+    ],
+    "status": "nda",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "lower-decks",
+    "confidentiality": {
+     "en": "Source private. Commercial use and government clients under NDA; architecture, screenshots and measured results are shown here.",
+     "ru": "Исходники закрыты. Коммерческое использование и государственные заказчики под NDA; здесь показаны архитектура, скриншоты и измеренные результаты."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/vetka-dwg-library.jpg",
+      "thumb": "/assets/media-thumb/vetka-dwg-library.jpg",
+      "alt": {
+       "en": "Vetka-DWG — the drawing library",
+       "ru": "Vetka-DWG — библиотека чертежей"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "year": "2026",
+    "slug": "vetka-dwg",
+    "accent": "#f70"
+   },
+   {
+    "id": "project.penapivo",
+    "title": {
+     "en": "PenaPivo / BeerLog",
+     "ru": "PenaPivo / BeerLog"
+    },
+    "subtitle": {
+     "en": "serverless Telegram bot + Mini App",
+     "ru": "serverless Telegram-бот + Mini App"
+    },
+    "summary": {
+     "en": "A live Telegram product: a beer-tasting journal with write-ups, statistics, shareable profile cards and ratings.",
+     "ru": "Cloudflare Workers (edge) · D1 (SQL) · R2 (бэкапы) · Telegram Mini App с i18n (ru/en/be) · CI: coverage-gate **≥84% ветвей** + mutation testing (Stryker)."
+    },
+    "problem": {
+     "en": "A live Telegram product: a beer-tasting journal with write-ups, statistics, shareable profile cards and ratings.",
+     "ru": "Живой Telegram-продукт: пивной журнал дегустаций с записями, статистикой, карточками профиля и рейтингами."
+    },
+    "approach": {
+     "en": "Cloudflare Workers (edge) · D1 (SQL) · R2 (backups) · Telegram Mini App with i18n (ru/en/be) · CI: ≥84% branch coverage gate + mutation testing (Stryker).",
+     "ru": "Cloudflare Workers (edge) · D1 (SQL) · R2 (бэкапы) · Telegram Mini App с i18n (ru/en/be) · CI: coverage-gate **≥84% ветвей** + mutation testing (Stryker)."
+    },
+    "results": [
+     {
+      "value": "≥84%",
+      "label": {
+       "ru": "покрытие ветвей",
+       "en": "branch coverage"
+      }
+     },
+     {
+      "value": "3",
+      "label": {
+       "ru": "языка в Mini App",
+       "en": "UI languages"
+      }
+     },
+     {
+      "value": "Workers",
+      "label": {
+       "ru": "на edge-хостинге",
+       "en": "edge runtime"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": "@PenaPivo_bot",
+      "url": "https://t.me/PenaPivo_bot"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/penabot-miniapp.jpg",
+      "thumb": "/assets/media-thumb/penabot-miniapp.jpg",
+      "alt": {
+       "en": "Mini App — tasting journal (demo data)",
+       "ru": "Mini App — журнал дегустаций (демо-данные)"
+      }
+     },
+     {
+      "src": "/assets/media-full/penabot-card.jpg",
+      "thumb": "/assets/media-thumb/penabot-card.jpg",
+      "alt": {
+       "en": "Profile card produced by the bot's card module (SVG; demo data)",
+       "ru": "Карточка профиля из модуля бота (SVG; демо-данные)"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "penapivo",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.vtuber-rigger",
+    "title": {
+     "en": "VTuber Rigger",
+     "ru": "VTuber Rigger"
+    },
+    "subtitle": {
+     "en": "AI auto-rigging: model or screenshots → VRM 1.0",
+     "ru": "авто-риггинг: модель или скриншоты → VRM 1.0"
+    },
+    "summary": {
+     "en": "Two paths, fully local (no paid APIs): **Path A** — a 3D model (GLB/GLTF/VRM/OBJ) → VRM 1.0; **Path B** — front/side/back screenshots → VRM 1.0. K-Means + curvature body segmentation, a 53-bone VRM skeleton predictor, RBF + Laplac",
+     "ru": "Два пути, полностью локально (без платных API): **Path A** — 3D-модель (GLB/GLTF/VRM/OBJ) → VRM 1.0; **Path B** — скриншоты спереди/сбоку/сзади → VRM 1.0. Сегментация тела на K-Means + кривизне, предиктор 53-костного VRM-скелета, "
+    },
+    "problem": {
+     "en": "Rigging a VTuber avatar — skeleton, skin weights, expressions, spring bones — takes hours of manual work in Blender, and screenshot-based reconstruction from a flat image is harder still.",
+     "ru": "Риггинг VTuber-аватара — скелет, скин-веса, выражения, spring-bones — занимает часы ручной работы в Blender, а реконструкция из плоского изображения (скриншоты) сложнее вдвойне."
+    },
+    "approach": {
+     "en": "Two paths, fully local (no paid APIs): **Path A** — a 3D model (GLB/GLTF/VRM/OBJ) → VRM 1.0; **Path B** — front/side/back screenshots → VRM 1.0. K-Means + curvature body segmentation, a 53-bone VRM skeleton predictor, RBF + Laplacian skin weights, 17 expressions, springs for hair/clothing, plus headless-VRM and LPIPS/CLIP perceptual QA gates.",
+     "ru": "Два пути, полностью локально (без платных API): **Path A** — 3D-модель (GLB/GLTF/VRM/OBJ) → VRM 1.0; **Path B** — скриншоты спереди/сбоку/сзади → VRM 1.0. Сегментация тела на K-Means + кривизне, предиктор 53-костного VRM-скелета, скин-веса RBF + Laplacian, 17 выражений, spring-bones для волос/одежды, QA-гейты headless-VRM и LPIPS/CLIP."
+    },
+    "results": [
+     {
+      "value": "53",
+      "label": {
+       "ru": "костный VRM-скелет",
+       "en": "bone VRM skeleton"
+      }
+     },
+     {
+      "value": "17",
+      "label": {
+       "ru": "выражений",
+       "en": "expressions"
+      }
+     },
+     {
+      "value": "2",
+      "label": {
+       "ru": "входных пути",
+       "en": "input paths"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": "github.com/kukhtik/RIGGER",
+      "url": "https://github.com/kukhtik/RIGGER"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/rigger-pipeline.jpg",
+      "thumb": "/assets/media-thumb/rigger-pipeline.jpg",
+      "alt": {
+       "en": "VTuber Rigger — the model rig pipeline",
+       "ru": "VTuber Rigger — пайплайн подготовки модели"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "vtuber-rigger",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.neuro-property-trade",
+    "title": {
+     "en": "Neuro Property Trade",
+     "ru": "Neuro Property Trade"
+    },
+    "subtitle": {
+     "en": "deterministic board-game engine + custom UI",
+     "ru": "детерминированный игровой движок + собственный UI"
+    },
+    "summary": {
+     "en": "A standalone Godot 4 game with a deterministic rules engine: seeded RNG flows through one class, every action goes through an append-only event log (full replay), and AI seats (Neuro / Evil Neuro / human) submit **intents** that t",
+     "ru": "Самостоятельная игра на Godot 4 с детерминированным движком правил: seeded RNG течёт через один класс, каждое действие идёт через append-only лог событий (полный replay), а ИИ-места (Neuro / Evil Neuro / человек) отправляют **инте"
+    },
+    "problem": {
+     "en": "A commercial board-game title can't be safely modded for AI play (anti-tamper, delisted versions, no clean state reads). To let an AI seat play fairly, the game itself must be built so the engine — not the AI — owns the state.",
+     "ru": "Коммерческую настольную игру нельзя безопасно модифицировать для игры ИИ (анти-тампер, снятые с продажи версии, нет чистого доступа к состоянию). Чтобы ИИ-место играло честно, сама игра должна быть построена так, чтобы состоянием владел движок — а не ИИ."
+    },
+    "approach": {
+     "en": "A standalone Godot 4 game with a deterministic rules engine: seeded RNG flows through one class, every action goes through an append-only event log (full replay), and AI seats (Neuro / Evil Neuro / human) submit **intents** that the engine validates and executes — the AI can never corrupt state. Original theme, no trademarked names. The UI is parametric (no 40 hardcoded tiles): it relayouts live to the window size, RU/EN, light/dark theme, seats panel and event journal.",
+     "ru": "Самостоятельная игра на Godot 4 с детерминированным движком правил: seeded RNG течёт через один класс, каждое действие идёт через append-only лог событий (полный replay), а ИИ-места (Neuro / Evil Neuro / человек) отправляют **интенты** — движок их валидирует и исполняет; ИИ не может испортить состояние. Оригинальный сеттинг, без чужих торговых марок. Интерфейс параметрический (никаких захардкоженных 40 клеток): перекладка вживую под размер окна, RU/EN, светлая/тёмная тема, панель мест и журнал событий."
+    },
+    "results": [
+     {
+      "value": "0",
+      "label": {
+       "ru": "захардкоженных клеток",
+       "en": "hardcoded tiles"
+      }
+     },
+     {
+      "value": "Godot 4",
+      "label": {
+       "ru": "детерминированное ядро",
+       "en": "deterministic engine"
+      }
+     },
+     {
+      "value": "100%",
+      "label": {
+       "ru": "повторяемый replay",
+       "en": "replayable"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": "github.com/kukhtik/neuro-property-trade",
+      "url": "https://github.com/kukhtik/neuro-property-trade"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/neuro-ui.jpg",
+      "thumb": "/assets/media-thumb/neuro-ui.jpg",
+      "alt": {
+       "en": "Match at the table — parametric board, dice, journal, seats",
+       "ru": "Партия за столом — поле, кубики, журнал, места"
+      }
+     },
+     {
+      "src": "/assets/media-full/neuro-engine.jpg",
+      "thumb": "/assets/media-thumb/neuro-engine.jpg",
+      "alt": {
+       "en": "Headless engine run —",
+       "ru": "Прогон движка —"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "neuro-property-trade",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.razgon-kviz",
+    "title": {
+     "en": "Razgon Quiz",
+     "ru": "Разгон Квиз"
+    },
+    "subtitle": {
+     "en": "live quiz-show platform (hall, remote, builder)",
+     "ru": "платформа живого квиза (зал, пульт, конструктор)"
+    },
+    "summary": {
+     "en": "A single server owns the state and the score. The hall screen opens by a tokenised link (a plain game URL cannot control the show), one click unlocks the browser's `AudioContext`, and the host pages through questions with a keypre",
+     "ru": "Состоянием и счётом владеет один сервер. Зал открывается по ссылке с токеном (обычный адрес игры не даёт права управлять показом), один клик разблокирует `AudioContext` браузера, а ведущий листает вопросы с клавиши, пока «фитиль в"
+    },
+    "problem": {
+     "en": "A quiz night is a live show: a projector in the hall, a host steering from a phone, teams answering, and a scoreboard that must be right in front of a paying audience. Off-the-shelf quiz apps assume every player has a stable connection and that the host can fix the score by hand — neither survives a real venue with bad Wi-Fi.",
+     "ru": "Квиз-вечер — это живое шоу: проектор в зале, ведущий управляет с телефона, команды отвечают, а табло со счётом должно быть верным перед платящей публикой. Готовые квиз-приложения предполагают, что у каждого игрока стабильный интернет и что ведущий поправит счёт руками — ни то, ни другое не выживает на реальной площадке с плохим Wi-Fi."
+    },
+    "approach": {
+     "en": "A single server owns the state and the score. The hall screen opens by a tokenised link (a plain game URL cannot control the show), one click unlocks the browser's `AudioContext`, and the host pages through questions with a keypress while each question's \"fuse\" timer runs itself. Because the hall answers **on paper** and only the host types, the server never has to hold hundreds of player sockets — the venue keeps working on a poor connection. The front end is a **PWA with explicit precache (386 entries)**; every one of the 98 mp3 cues is cached by name, because a missed track is silence without an error.",
+     "ru": "Состоянием и счётом владеет один сервер. Зал открывается по ссылке с токеном (обычный адрес игры не даёт права управлять показом), один клик разблокирует `AudioContext` браузера, а ведущий листает вопросы с клавиши, пока «фитиль времени» каждого вопроса отсчитывается сам. Поскольку зал отвечает **на бумаге**, а печатает только ведущий, серверу не нужно держать сотни соединений игроков — площадка работает и на слабом канале. Фронт — **PWA с явным предкэшем (386 записей)**; каждый из 98 mp3 закэширован поимённо, потому что пропущенный трек — это тишина без ошибки."
+    },
+    "results": [
+     {
+      "value": "386",
+      "label": {
+       "ru": "записей предкэша",
+       "en": "precache entries"
+      }
+     },
+     {
+      "value": "98",
+      "label": {
+       "ru": "mp3-подсказок",
+       "en": "mp3 cues"
+      }
+     },
+     {
+      "value": "30 с",
+      "label": {
+       "ru": "фитиль вопроса",
+       "en": "question fuse"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/razgon-hall.jpg",
+      "thumb": "/assets/media-thumb/razgon-hall.jpg",
+      "alt": {
+       "en": "Hall — question with a 30-second fuse timer and live answer/accuracy stats",
+       "ru": "Зал — вопрос с «фитилём» на 30 секунд и живой статистикой ответов"
+      }
+     },
+     {
+      "src": "/assets/media-full/razgon-scoreboard.jpg",
+      "thumb": "/assets/media-thumb/razgon-scoreboard.jpg",
+      "alt": {
+       "en": "Scoreboard — the server scores it; places, round points, game points",
+       "ru": "Табло — счёт считает сервер; места, очки за тур и за игру"
+      }
+     },
+     {
+      "src": "/assets/media-full/razgon-pult.jpg",
+      "thumb": "/assets/media-thumb/razgon-pult.jpg",
+      "alt": {
+       "en": "Host remote — controls the show from a phone",
+       "ru": "Пульт — управление показом с телефона"
+      }
+     },
+     {
+      "src": "/assets/media-full/razgon-player.jpg",
+      "thumb": "/assets/media-thumb/razgon-player.jpg",
+      "alt": {
+       "en": "Player — joins by game code, answers, sees points",
+       "ru": "Игрок — вход по коду игры, ответ, очки"
+      }
+     },
+     {
+      "src": "/assets/media-full/razgon-builder.jpg",
+      "thumb": "/assets/media-thumb/razgon-builder.jpg",
+      "alt": {
+       "en": "Builder — rounds, questions, per-question music and timing",
+       "ru": "Конструктор — туры, вопросы, музыка и тайминг на вопрос"
+      }
+     },
+     {
+      "src": "/assets/media-full/razgon-home.jpg",
+      "thumb": "/assets/media-thumb/razgon-home.jpg",
+      "alt": {
+       "en": "Razgon Quiz — the quiz screen",
+       "ru": "Razgon Quiz — экран викторины"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "razgon-kviz",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.hermes-viz",
+    "title": {
+     "en": "Hermes Viz",
+     "ru": "Hermes Viz"
+    },
+    "subtitle": {
+     "en": "telemetry console for an agent farm",
+     "ru": "телеметрическая консоль агентной фермы"
+    },
+    "summary": {
+     "en": "One screen with three facets over **live data**: **OPS** — radial deck of the live team (status, model, current tool, activity); **PIPELINE** — task board with dependencies, runs and blocked states; **KNOWLEDGE** — repository grap",
+     "ru": "Один экран с тремя фасетами поверх **живых данных**: **OPS** — радиальный «ролодекс» живой команды (статус, модель, текущий инструмент, активность); **PIPELINE** — доска задач с зависимостями, прогонами и блокировками; **KNOWLEDGE"
+    },
+    "problem": {
+     "en": "A multi-agent farm (21 agents, 9 models, async task board) is opaque at a glance: which agent is doing what, where a task is stuck, what the knowledge base actually serves.",
+     "ru": "Мультиагентная ферма (21 агент, 9 моделей, асинхронная доска задач) непрозрачна с одного взгляда: кто что делает, где задача встала, что реально отдаёт база знаний."
+    },
+    "approach": {
+     "en": "One screen with three facets over **live data**: **OPS** — radial deck of the live team (status, model, current tool, activity); **PIPELINE** — task board with dependencies, runs and blocked states; **KNOWLEDGE** — repository graph (2,292 nodes, 839 edges) with retrieval flow.",
+     "ru": "Один экран с тремя фасетами поверх **живых данных**: **OPS** — радиальный «ролодекс» живой команды (статус, модель, текущий инструмент, активность); **PIPELINE** — доска задач с зависимостями, прогонами и блокировками; **KNOWLEDGE** — граф репозитория (2 292 узла, 839 рёбер) с потоком ретривала."
+    },
+    "results": [
+     {
+      "value": "2 292",
+      "label": {
+       "ru": "узла графа",
+       "en": "graph nodes"
+      }
+     },
+     {
+      "value": "839",
+      "label": {
+       "ru": "рёбер",
+       "en": "edges"
+      }
+     },
+     {
+      "value": "21",
+      "label": {
+       "ru": "агент в ферме",
+       "en": "agents"
+      }
+     },
+     {
+      "value": "9",
+      "label": {
+       "ru": "моделей",
+       "en": "models"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/hermes-viz-ops.jpg",
+      "thumb": "/assets/media-thumb/hermes-viz-ops.jpg",
+      "alt": {
+       "en": "OPS — the live team as a sensor deck",
+       "ru": "OPS — живая команда как сенсор-ролодекс"
+      }
+     },
+     {
+      "src": "/assets/media-full/hermes-viz-knowledge.jpg",
+      "thumb": "/assets/media-thumb/hermes-viz-knowledge.jpg",
+      "alt": {
+       "en": "KNOWLEDGE — repository graph, 2,292 nodes",
+       "ru": "KNOWLEDGE — граф репозитория, 2 292 узла"
+      }
+     },
+     {
+      "src": "/assets/media-full/hermes-viz-pipeline.jpg",
+      "thumb": "/assets/media-thumb/hermes-viz-pipeline.jpg",
+      "alt": {
+       "en": "PIPELINE — task board with runs and blocked states",
+       "ru": "PIPELINE — доска задач с прогонами и блокировками"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "hermes-viz",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.codebot",
+    "title": {
+     "en": "Codebot",
+     "ru": "Codebot"
+    },
+    "subtitle": {
+     "en": "Telegram bridge to a coding-agent runtime",
+     "ru": "Telegram-мост к кодинг-агенту"
+    },
+    "summary": {
+     "en": "A dependency-free Java 21 Telegram bot (63 classes, ~10.9k LOC, plain `javac` — no Maven/Gradle) bridging to a local coding-agent server over JSON-RPC/WebSocket: live turn states, approvals, session switch/import/archive, attachme",
+     "ru": "Telegram-бот на Java 21 без зависимостей (63 класса, ~10,9k строк, обычный `javac` — без Maven/Gradle): мост к локальному серверу кодинг-агента по JSON-RPC/WebSocket — живые состояния хода, аппрувы, переключение/импорт/архив сесси"
+    },
+    "problem": {
+     "en": "Coding agents run on a workstation, but steering them from a phone should not require opening a laptop.",
+     "ru": "Кодинг-агент работает на станции, но управлять им с телефона не должно требовать ноутбука."
+    },
+    "approach": {
+     "en": "A dependency-free Java 21 Telegram bot (63 classes, ~10.9k LOC, plain `javac` — no Maven/Gradle) bridging to a local coding-agent server over JSON-RPC/WebSocket: live turn states, approvals, session switch/import/archive, attachments, urgent steering; shared mode where each Telegram user pairs their own machine.",
+     "ru": "Telegram-бот на Java 21 без зависимостей (63 класса, ~10,9k строк, обычный `javac` — без Maven/Gradle): мост к локальному серверу кодинг-агента по JSON-RPC/WebSocket — живые состояния хода, аппрувы, переключение/импорт/архив сессий, вложения, срочный steering; режим, где каждый пользователь подключает свою машину."
+    },
+    "results": [
+     {
+      "value": "63",
+      "label": {
+       "ru": "класса",
+       "en": "classes"
+      }
+     },
+     {
+      "value": "10,9k",
+      "label": {
+       "ru": "строк",
+       "en": "LOC"
+      }
+     },
+     {
+      "value": "Java 21",
+      "label": {
+       "ru": "без зависимостей",
+       "en": "no dependencies"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/codebot-build.jpg",
+      "thumb": "/assets/media-thumb/codebot-build.jpg",
+      "alt": {
+       "en": "1.1 with p",
+       "ru": "1.1, p"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "codebot",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.storybeam",
+    "title": {
+     "en": "Storybeam",
+     "ru": "Storybeam"
+    },
+    "subtitle": {
+     "en": "AI video pipeline (active fork)",
+     "ru": "пайплайн AI-видео (активный форк)"
+    },
+    "summary": {
+     "en": "An active fork of [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) rebuilt into a platform: React front-end over the REST API, long-form mode, cost governance, policy compliance.",
+     "ru": "Активный форк [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo), перестроенный в платформу: React-фронтенд поверх REST API, длинные форматы, контроль затрат, комплаенс."
+    },
+    "problem": {
+     "en": "An active fork of [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) rebuilt into a platform: React front-end over the REST API, long-form mode, cost governance, policy compliance.",
+     "ru": "Активный форк [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo), перестроенный в платформу: React-фронтенд поверх REST API, длинные форматы, контроль затрат, комплаенс."
+    },
+    "approach": {
+     "en": "Rebuilt from a MoneyPrinterTurbo fork into a platform: a React front end over a REST API, scripts split into duration chunks with resume and idempotency per scene, cost control through a LongFormCostGovernor, AI-synthesis disclosure on upload, protection against misleading metadata, and structural variation to avoid template output. A full Create / Library / Settings UI behind an API-key gate, and a Telegram bot at full parity.",
+     "ru": "Форк MoneyPrinterTurbo, перестроенный в платформу: React-фронтенд поверх REST API, сценарии чанками по длительности с resume и идемпотентностью по сценам, контроль затрат через LongFormCostGovernor, раскрытие AI-синтетики при загрузке, защита от вводящих метаданных и структурное варьирование кадров. Полный UI Create / Library / Settings за гейтом по API-ключу и Telegram-бот полного паритета."
+    },
+    "results": [
+     {
+      "value": "56",
+      "label": {
+       "ru": "коммитов",
+       "en": "commits"
+      }
+     },
+     {
+      "value": "+14 955",
+      "label": {
+       "ru": "строк добавлено",
+       "en": "lines added"
+      }
+     },
+     {
+      "value": "108",
+      "label": {
+       "ru": "файлов",
+       "en": "files"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/storybeam-create.jpg",
+      "thumb": "/assets/media-thumb/storybeam-create.jpg",
+      "alt": {
+       "en": "Storybeam — the create screen",
+       "ru": "Storybeam — экран создания"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "storybeam",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.torgovyy-issledovatelskiy-stend",
+    "title": {
+     "en": "Trading research station",
+     "ru": "Торговый исследовательский стенд"
+    },
+    "subtitle": {
+     "en": "systematic strategy validation",
+     "ru": "систематическая валидация стратегий"
+    },
+    "summary": {
+     "en": "A research bench rather than a signal bot: walk-forward backtests with fees, slippage and funding; explicit look-ahead-bias checks (signals shifted one bar); CPCV (combinatorial purged CV) consistency; risk controls (position sizi",
+     "ru": "Исследовательский стенд, а не сигнальный бот: walk-forward бэктесты с комиссиями, слиппеджем и фандингом; явные проверки look-ahead bias (сдвиг сигналов на бар); CPCV-консистентность (combinatorial purged CV); риск-контроль (сайзи"
+    },
+    "problem": {
+     "en": "Most \"profitable\" retail strategies die after fees and slippage; the standard backtest hides exactly that.",
+     "ru": "Большинство «прибыльных» розничных стратегий умирают после комиссий и слиппеджа; обычный бэктест это как раз и скрывает."
+    },
+    "approach": {
+     "en": "A research bench rather than a signal bot: walk-forward backtests with fees, slippage and funding; explicit look-ahead-bias checks (signals shifted one bar); CPCV (combinatorial purged CV) consistency; risk controls (position sizing, circuit breaker, kill-switch). Paper mode runs without keys.",
+     "ru": "Исследовательский стенд, а не сигнальный бот: walk-forward бэктесты с комиссиями, слиппеджем и фандингом; явные проверки look-ahead bias (сдвиг сигналов на бар); CPCV-консистентность (combinatorial purged CV); риск-контроль (сайзинг, circuit breaker, kill-switch). Paper-режим работает без ключей."
+    },
+    "results": [
+     {
+      "value": "1.44",
+      "label": {
+       "ru": "PF на 4h",
+       "en": "PF, 4h"
+      }
+     },
+     {
+      "value": "2 526",
+      "label": {
+       "ru": "сделок",
+       "en": "trades"
+      }
+     },
+     {
+      "value": "82%",
+      "label": {
+       "ru": "CPCV-консистентность",
+       "en": "CPCV consistency"
+      }
+     },
+     {
+      "value": "33",
+      "label": {
+       "ru": "стратегии в свипе",
+       "en": "strategies swept"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/trading-validation.jpg",
+      "thumb": "/assets/media-thumb/trading-validation.jpg",
+      "alt": {
+       "en": "Trading stand — the validation run",
+       "ru": "Торговый стенд — прогон валидации"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "torgovyy-issledovatelskiy-stend",
+    "accent": "#37a6d1",
+    "scope": "work"
+   },
+   {
+    "id": "project.streaming-stateful-prediction",
+    "title": {
+     "en": "Streaming stateful prediction",
+     "ru": "Streaming stateful prediction"
+    },
+    "subtitle": {
+     "en": "a research problem",
+     "ru": "исследовательская задача"
+    },
+    "summary": {
+     "en": "A stateful recurrent model (GRU, step-by-step ONNX export) with a strict state contract: single-row inference, hidden state carried between calls. The key is a **metric-aligned loss** — the official block-wise aggregate reimplemen",
+     "ru": "Stateful-рекуррентная модель (GRU, пошаговый экспорт в ONNX) со строгим контрактом состояния: инференс по одной строке, hidden state переносится между вызовами. Ключевое — **метрико-выровненный лосс**: реализация официального блоч"
+    },
+    "problem": {
+     "en": "A model must predict one row at a time in a stream: every row depends on the full prior history, the window is tens of thousands of rows long, and the metric is block-wise correlation *inside* each sequence — not MSE. Standard recipes (window slicing, MSE loss) don't work here.",
+     "ru": "Модель должна предсказывать цель по одной строке за раз в потоке: каждая строка зависит от всей предыдущей истории, окно — десятки тысяч строк, а метрика считается блоками внутри последовательности (корреляция, а не MSE). Обычные рецепты (нарезка окнами, MSE-лосс) здесь не работают."
+    },
+    "approach": {
+     "en": "A stateful recurrent model (GRU, step-by-step ONNX export) with a strict state contract: single-row inference, hidden state carried between calls. The key is a **metric-aligned loss** — the official block-wise aggregate reimplemented in torch and verified against the scorer, with correlation accumulated over the whole sequence (not a short window where the target is near-constant and the signal drowns).",
+     "ru": "Stateful-рекуррентная модель (GRU, пошаговый экспорт в ONNX) со строгим контрактом состояния: инференс по одной строке, hidden state переносится между вызовами. Ключевое — **метрико-выровненный лосс**: реализация официального блочного агрегата на torch, побитово сверенная со скорером, и корреляция, накапливаемая по всей последовательности (а не по короткому окну, где цель почти постоянна и сигнал тонет в шуме)."
+    },
+    "results": [
+     {
+      "value": "4–5×",
+      "label": {
+       "ru": "сильнее сигнал",
+       "en": "stronger signal"
+      }
+     },
+     {
+      "value": "1.38×",
+      "label": {
+       "ru": "запас в графе",
+       "en": "graph headroom"
+      }
+     },
+     {
+      "value": "500k",
+      "label": {
+       "ru": "строк перебрано",
+       "en": "rows scanned"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": {
+       "en": "Case notes",
+       "ru": "Описание кейса"
+      },
+      "url": "https://github.com/kukhtik/Open_space"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "streaming-stateful-prediction",
+    "accent": "#37a6d1",
+    "scope": "work",
+    "public_visuals": false
+   },
+   {
+    "id": "project.staticheskie-sayty",
+    "title": {
+     "en": "Static websites",
+     "ru": "Статические сайты"
+    },
+    "subtitle": {
+     "en": "hand-built, no libraries",
+     "ru": "вёрстка без библиотек"
+    },
+    "summary": {
+     "en": "Two sites built by hand — HTML, CSS, a little SVG and JS, **zero frameworks and zero third-party libraries**. They use two different visual languages on purpose, to show range rather than one trick twice: \"Sokratilin\" — an enginee",
+     "ru": "Два сайта вручную — HTML, CSS, немного SVG и JS, **ни одного фреймворка и ни одной сторонней библиотеки**. Сделаны в двух разных визуальных языках, чтобы показать диапазон, а не один приём дважды: «Сократилин» — концепт «инженерны"
+    },
+    "problem": {
+     "en": "A business-card site on a website builder carries hundreds of KB of engine and gives no control over typography or responsive behaviour. But \"hand-coded\" too often means either a framework or a pile of hacks.",
+     "ru": "Сайт-визитка на конструкторе весит сотни килобайт движка и не даёт контроля над типографикой и адаптивом. Но и «ручная вёрстка» часто означает либо фреймворк, либо кашу из костылей."
+    },
+    "approach": {
+     "en": "Two sites built by hand — HTML, CSS, a little SVG and JS, **zero frameworks and zero third-party libraries**. They use two different visual languages on purpose, to show range rather than one trick twice: \"Sokratilin\" — an engineering-drawing concept (graph paper, a side register, a sticky case strip); \"Slava Shved\" — 6 pages of poster typography, torn edges, a masonry gallery and filters.",
+     "ru": "Два сайта вручную — HTML, CSS, немного SVG и JS, **ни одного фреймворка и ни одной сторонней библиотеки**. Сделаны в двух разных визуальных языках, чтобы показать диапазон, а не один приём дважды: «Сократилин» — концепт «инженерный чертёж» (миллиметровка, боковой реестр, лента кейсов на sticky), «Слава Швед» — 6 страниц с постерной типографикой, рваными краями, masonry-галереей и фильтрами."
+    },
+    "results": [
+     {
+      "value": "2",
+      "label": {
+       "ru": "сайта",
+       "en": "sites"
+      }
+     },
+     {
+      "value": "6",
+      "label": {
+       "ru": "страниц",
+       "en": "pages"
+      }
+     },
+     {
+      "value": "390 px",
+      "label": {
+       "ru": "мобильный адаптив",
+       "en": "mobile width"
+      }
+     }
+    ],
+    "stack": "",
+    "status": "public",
+    "links": [
+     {
+      "label": "github.com/kukhtik/site-concepts",
+      "url": "https://github.com/kukhtik/site-concepts"
+     }
+    ],
+    "theme": "picard",
+    "confidentiality": {
+     "en": "Architecture, screenshots and measurements are public here; the implementation stays closed.",
+     "ru": "Архитектура, скриншоты и измерения открыты здесь; реализация остаётся закрытой."
+    },
+    "images": [
+     {
+      "src": "/assets/media-full/site-sokratilin.jpg",
+      "thumb": "/assets/media-thumb/site-sokratilin.jpg",
+      "alt": {
+       "en": "\"Sokratilin\" — the engineering-drawing concept",
+       "ru": "«Сократилин» — концепт «инженерный чертёж»"
+      }
+     },
+     {
+      "src": "/assets/media-full/site-shved.jpg",
+      "thumb": "/assets/media-thumb/site-shved.jpg",
+      "alt": {
+       "en": "\"Slava Shved\" — poster typography, 6 pages",
+       "ru": "«Слава Швед» — постерная типографика, 6 страниц"
+      }
+     },
+     {
+      "src": "/assets/media-full/site-mobile.jpg",
+      "thumb": "/assets/media-thumb/site-mobile.jpg",
+      "alt": {
+       "en": "Mobile layout — 390 px, no horizontal scroll",
+       "ru": "Мобильный адаптив — 390 px, без горизонтального скролла"
+      }
+     }
+    ],
+    "limit_title": 36,
+    "limit_summary": 240,
+    "limit_metric_label": 30,
+    "limit_metric_value": 14,
+    "limit_problem": 420,
+    "limit_approach": 640,
+    "slug": "staticheskie-sayty",
+    "accent": "#37a6d1",
+    "scope": "work"
+   }
+  ],
+  "mid.record": [
+   {
+    "id": "record.0",
+    "when": "2022 — 11.2026",
+    "title": {
+     "en": "Medical-equipment engineer · Mogilev Regional Oncology Dispensary",
+     "ru": "Инженер по медоборудованию · Могилёвский онкодиспансер"
+    },
+    "text": {
+     "en": "Maintenance of Varian TrueBeam and VitalBeam linear accelerators: dosimetry checks, MLC and imaging calibration, fault diagnosis in an RF-shielded bunker, service documentation with no margin for error.",
+     "ru": "Обслуживание линейных ускорителей Varian TrueBeam и VitalBeam: дозиметрический контроль, калибровка MLC и визуализации, поиск неисправностей в экранированном бункере."
+    },
+    "limit_title": 65,
+    "limit_text": 202
+   },
+   {
+    "id": "record.1",
+    "when": "2020 — 2026",
+    "title": {
+     "en": "Software alongside the service work",
+     "ru": "Разработка параллельно сервисной работе"
+    },
+    "text": {
+     "en": "A commercial geodetic converter, a production photo-to-DXF pipeline for surveyors, an offline RAG system for equipment documentation, and a live Telegram product on Cloudflare.",
+     "ru": "Коммерческий геодезический конвертер, production-пайплайн «фото → DXF» для геодезистов, offline-RAG по документации оборудования и живой Telegram-продукт на Cloudflare."
+    },
+    "limit_title": 65,
+    "limit_text": 202
+   },
+   {
+    "id": "record.2",
+    "when": "11.2026 →",
+    "title": {
+     "en": "Software full-time",
+     "ru": "Разработка full-time"
+    },
+    "text": {
+     "en": "Leaving the clinical role to build software with the same constraint I worked under for four years: the result has to be verifiable.",
+     "ru": "Ухожу из клиники, чтобы заниматься разработкой с тем же требованием, что и четыре года в сервисе: результат должен быть проверяемым."
+    },
+    "limit_title": 65,
+    "limit_text": 202
+   }
+  ],
+  "bottom.floater": [
+   {
+    "id": "float.caption",
+    "text": {
+     "en": "CAD/GIS PIPELINE",
+     "ru": "CAD/GIS ПАЙПЛАЙН"
+    },
+    "limit": 38
+   }
+  ],
+  "bottom.more": [
+   {
+    "id": "more.0",
+    "title": {
+     "en": "PenaPivo — live Telegram bot + Mini App",
+     "ru": "PenaPivo — живой TG-бот + Mini App"
+    },
+    "text": {
+     "en": "Serverless product on Cloudflare Workers / D1 / R2; CI with ≥84% branch coverage gate and mutation testing.",
+     "ru": "Serverless-продукт на Cloudflare Workers / D1 / R2; CI с coverage gate ≥84% и mutation testing."
+    },
+    "url": "https://t.me/PenaPivo_bot",
+    "limit_title": 40,
+    "limit_text": 110
+   },
+   {
+    "id": "more.1",
+    "title": {
+     "en": "Open Space — full project index",
+     "ru": "Open Space — полный индекс проектов"
+    },
+    "text": {
+     "en": "Architecture notes and screenshots for the projects that are not on this page.",
+     "ru": "Архитектура и скриншоты проектов, которых нет на этой странице."
+    },
+    "url": "https://github.com/kukhtik/Open_space",
+    "limit_title": 40,
+    "limit_text": 110
+   }
+  ],
+  "page.about": [
+   {
+    "id": "about.1",
+    "text": {
+     "en": "I am a medical-equipment engineer at the Mogilev Regional Oncology Dispensary, where I maintain Varian TrueBeam / VitalBeam linear accelerators. That work is safety-critical and documentation-heavy - which is exactly why I built Engineer Companion: a field engineer in an RF-shielded bunker needs the exact page in seconds, with no internet.",
+     "ru": "Я инженер по медоборудованию в УЗ «Могилёвский областной онкологический диспансер», обслуживаю линейные ускорители Varian TrueBeam / VitalBeam. Работа safety-critical и документационно тяжёлая - поэтому я и построил Engineer Companion: инженеру в бункере без интернета нужна точная страница за секунды."
+    },
+    "limit": 341,
+    "size": 12,
+    "scope": "about",
+    "limit_text": 360,
+    "limit_title": 60
+   },
+   {
+    "id": "about.2",
+    "text": {
+     "en": "I have been building software alongside that role since 2020: a commercial geodetic converter, a production photo-to-DXF pipeline, an offline RAG system, and a live Telegram product. I am leaving the clinical role in November 2026 to work on software full-time.",
+     "ru": "С 2020 года параллельно строю софт: коммерческий геодезический конвертер, production-пайплайн «фото → DXF», offline-RAG, живой Telegram-продукт. В ноябре 2026 ухожу из клиники в разработку full-time."
+    },
+    "limit": 261,
+    "size": 12,
+    "scope": "about",
+    "limit_text": 360,
+    "limit_title": 60
+   },
+   {
+    "id": "about.3",
+    "text": {
+     "en": "Commercial projects are covered by NDA. I can show architecture, screenshots, and measured results; source stays private.",
+     "ru": "Коммерческие проекты под NDA. Покажу архитектуру, скриншоты и замеры; исходники закрыты."
+    },
+    "limit": 121,
+    "size": 12,
+    "scope": "about",
+    "limit_text": 360,
+    "limit_title": 60
+   }
+  ],
+  "left.chrome": [
+   {
+    "id": "chrome.lang",
+    "text": {
+     "en": "EN / RU",
+     "ru": "EN / RU"
+    },
+    "limit": 12,
+    "note": "chrome label stays Latin in both locales - the only explicit EN/RU parity exception"
+   },
+   {
+    "id": "nav.home",
+    "text": {
+     "en": "HOME",
+     "ru": "HOME"
+    },
+    "limit": 12
+   },
+   {
+    "id": "nav.work",
+    "text": {
+     "en": "WORK",
+     "ru": "WORK"
+    },
+    "limit": 12
+   },
+   {
+    "id": "nav.about",
+    "text": {
+     "en": "ABOUT",
+     "ru": "ABOUT"
+    },
+    "limit": 12
+   },
+   {
+    "id": "nav.contact",
+    "text": {
+     "en": "CONTACT",
+     "ru": "CONTACT"
+    },
+    "limit": 12
+   }
+  ],
+  "bar.widgets": []
+ },
+ "_cascade_fields_allowed": [
+  {
+   "id": "clock",
+   "rule": "current UTC+3 time, 6 cells (hh mm ss), updates every second"
+  },
+  {
+   "id": "days",
+   "rule": "days until 2026-11-01, recomputed on load"
+  },
+  {
+   "id": "uptime",
+   "rule": "seconds since page load"
+  },
+  {
+   "id": "index",
+   "rule": "21214 facts indexed (constant from contract)"
+  },
+  {
+   "id": "date",
+   "rule": "current date YYYY MM DD"
+  }
+ ],
+ "_prohibited": [
+  "invented numbers",
+  "metrics not in content-contract.json",
+  "medical/linac numbers on the home console",
+  "blocks with no text",
+  "any medical term on the home console (isodose, gantry, MLC, linac, accelerator) - medicine belongs to record.0 and the Engineer Companion case page only"
+ ]
+}

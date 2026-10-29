@@ -1,0 +1,83 @@
+/* ===================================================================
+   THEME: lower-decks
+   Lower Decks: warm Starfleet orange / harvest gold. The bar rhythm is the
+   theme's own - narrower first segment, wider second - so the frame reads
+   differently from the home page, not just differently coloured.
+   Loaded after lcars.css and app.css: only variables are remapped, the
+   LCARS component system (panels, bars, cascade, nav, text bars) is the
+   template's own and is left untouched.
+   Palette values come from theLCARS.com's theme stylesheets.
+   =================================================================== */
+:root {
+  --left-frame-top-color: #f40;
+  --left-frame-color: #f70;
+  --corner-color-top: #f40;
+  --corner-color-bottom: #f40;
+  --panel-1-color: #f70;
+  --panel-2-color: #fc9;
+  --panel-3-color: #f70;
+  --panel-4-color: #f70;
+  --panel-5-color: #fa4;
+  --panel-6-color: #f40;
+  --panel-7-color: #fa4;
+  --panel-top-button-color: #fc9;
+  --bar-1-color: #f40;
+  --bar-2-color: #f70;
+  --bar-3-color: #fc9;
+  --bar-4-color: #fa4;
+  --bar-5-color: #f40;
+  --bar-6-color: #f40;
+  --bar-7-color: #f70;
+  --bar-8-color: #fc9;
+  --bar-9-color: #fa4;
+  --bar-10-color: #f40;
+  --nav-1-color: #fc9;
+  --nav-2-color: #fa4;
+  --nav-3-color: #f70;
+  --nav-4-color: #f40;
+  --banner-color: #fc9;
+  --data-cascade-color: #f70;
+  --light-color: #fff;
+  --font-color: #f91;
+  --h1-color: #fc9;
+  --h2-color: #fc9;
+  --h3-color: #fc9;
+  --h4-color: #fc9;
+  --link-color: #f91;
+  --button-color: #fa4;
+  --button-color-sidebar: #f40;
+  --code-color: #f40;
+  --image-border-color: #f40;
+  --lcars-bar-color: #f40;
+  --lcars-bar-start-color: #fa4;
+  --lcars-bar-end-color: #fa4;
+  --lcars-bar-text-color: #fa4;
+  --own-blue: #fc9;
+  --own-bright: #f91;
+  --own-red: #f40;
+  --own-orange: #f70;
+  --own-panel: #2b1a10;
+  --own-panel-2: #6b3a1a;
+  --own-ink: #fdecd2;
+  --own-ink-2: #f7d9b0;
+  --own-ink-3: #d2a878;
+  --bar-1-6-width: 10%;
+  --bar-2-7-width: 12%;
+  --bar-3-8-width: 17%;
+  --bar-5-10-width: 5%;
+  --african-violet: #f91;
+  --bluey: #fc9;
+  --red: #f40;
+  --orange: #f70;
+  --butterscotch: #fa4;
+  --barley: #fa4;
+  --almond: #f70;
+  --almond-creme: #d2a878;
+  --subdued-sienna: #8a5a2a;
+  --true-mauve: #e8c9a0;
+  --dusty-mauve: #b86a2a;
+  --dirty-mauve: #5a2e14;
+  --lilac: #3a2214;
+  --brown: #2b1a10;
+  --mars: #f91;
+}

@@ -1,0 +1,24 @@
+        <p class="own-lead" data-block="hero.role">{{SLOT:hero.role}}</p>
+
+        <div class="lcars-text-bar own-bar" id="sec-build"><h2>{{SLOT:sec.about.title}}</h2></div>
+        <ul class="lcars-list own-list">
+          {{#SENTENCES:about.1}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.1}}
+          {{#SENTENCES:about.2}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.2}}
+          {{#SENTENCES:about.3}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.3}}
+        </ul>
+
+        <div class="lcars-text-bar own-bar" id="sec-record"><h2>{{SLOT:sec.record.title}}</h2></div>
+        <ul class="lcars-list">
+          <li data-block="record.0"><b>{{SLOT:record.0.when}}</b> {{SLOT:record.0.title}}</li>
+          <li data-block="record.1"><b>{{SLOT:record.1.when}}</b> {{SLOT:record.1.title}}</li>
+          <li data-block="record.2"><b>{{SLOT:record.2.when}}</b> {{SLOT:record.2.title}}</li>
+        </ul>
+
+        <div class="lcars-text-bar own-bar" id="sec-facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
+        <ul class="lcars-list">
+          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
+          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
+          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
+          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
+          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
+        </ul>

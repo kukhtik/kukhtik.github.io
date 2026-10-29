@@ -1,0 +1,78 @@
+/* ===================================================================
+   THEME: nemesis-blue
+   Nemesis Blue: deep Starfleet blue with a tangerine accent and a wheat-coloured
+   cap panel - the cooler, more technical of the three.
+   Loaded after lcars.css and app.css: only variables are remapped, the
+   LCARS component system (panels, bars, cascade, nav, text bars) is the
+   template's own and is left untouched.
+   Palette values come from theLCARS.com's theme stylesheets.
+   =================================================================== */
+:root {
+  --left-frame-top-color: #26f;
+  --left-frame-color: #26f;
+  --corner-color-top: #26f;
+  --corner-color-bottom: #26f;
+  --panel-1-color: #d1a16c;
+  --panel-2-color: #ebf0ff;
+  --panel-3-color: #26f;
+  --panel-4-color: #26f;
+  --panel-5-color: #69f;
+  --panel-6-color: #0048f0;
+  --panel-7-color: #26f;
+  --panel-top-button-color: #f83;
+  --bar-1-color: #26f;
+  --bar-2-color: #fc9;
+  --bar-3-color: #69f;
+  --bar-4-color: #0048f0;
+  --bar-5-color: #52526a;
+  --bar-6-color: #26f;
+  --bar-7-color: #f83;
+  --bar-8-color: #ebf0ff;
+  --bar-9-color: #26f;
+  --bar-10-color: #52526a;
+  --nav-1-color: #a52a2a;
+  --nav-2-color: #d29270;
+  --nav-3-color: #8e5a3c;
+  --nav-4-color: #e63d00;
+  --banner-color: #8bf;
+  --data-cascade-color: #69f;
+  --light-color: #fff;
+  --font-color: #69f;
+  --h1-color: #8bf;
+  --h2-color: #8bf;
+  --h3-color: #8bf;
+  --h4-color: #8bf;
+  --link-color: #8bf;
+  --button-color: #69f;
+  --button-color-sidebar: #26f;
+  --code-color: #9c3;
+  --image-border-color: #69f;
+  --lcars-bar-color: #26f;
+  --lcars-bar-start-color: #0048f0;
+  --lcars-bar-end-color: #69f;
+  --lcars-bar-text-color: #8bf;
+  --own-blue: #69f;
+  --own-bright: #8bf;
+  --own-red: #e63d00;
+  --own-orange: #fc9;
+  --own-panel: #0b1a4a;
+  --own-panel-2: #52526a;
+  --own-ink: #ebf0ff;
+  --own-ink-2: #d9e2f5;
+  --own-ink-3: #9aa8c8;
+  --african-violet: #8bf;
+  --bluey: #26f;
+  --red: #e63d00;
+  --orange: #fc9;
+  --butterscotch: #f83;
+  --barley: #ebf0ff;
+  --almond: #26f;
+  --almond-creme: #9aa8c8;
+  --subdued-sienna: #52526a;
+  --true-mauve: #d9e2f5;
+  --dusty-mauve: #0048f0;
+  --dirty-mauve: #0b1a4a;
+  --lilac: #1c2a52;
+  --brown: #0b1a4a;
+  --mars: #f83;
+}

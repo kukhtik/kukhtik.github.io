@@ -1,0 +1,82 @@
+/* ===================================================================
+   THEME: voyager
+   Voyager: Starfleet silver and command gold with a science-blue accent. The bar
+   rhythm is the theme's own - a short capped first segment and a wide second one.
+   Loaded after lcars.css and app.css: only variables are remapped, the
+   LCARS component system (panels, bars, cascade, nav, text bars) is the
+   template's own and is left untouched.
+   Palette values come from theLCARS.com's theme stylesheets.
+   =================================================================== */
+:root {
+  --left-frame-top-color: #828cad;
+  --left-frame-color: #828cad;
+  --corner-color-top: #828cad;
+  --corner-color-bottom: #828cad;
+  --panel-1-color: #fb3;
+  --panel-2-color: #828cad;
+  --panel-3-color: #828cad;
+  --panel-4-color: #ffe1ca;
+  --panel-5-color: #828cad;
+  --panel-6-color: #828cad;
+  --panel-7-color: #828cad;
+  --panel-top-button-color: #fb3;
+  --bar-1-color: #828cad;
+  --bar-2-color: #fb3;
+  --bar-3-color: #28f;
+  --bar-4-color: #828cad;
+  --bar-5-color: #c96;
+  --bar-6-color: #828cad;
+  --bar-7-color: #ffe1ca;
+  --bar-8-color: #28f;
+  --bar-9-color: #828cad;
+  --bar-10-color: #c96;
+  --nav-1-color: #55a7ff;
+  --nav-2-color: #74788b;
+  --nav-3-color: #c96;
+  --nav-4-color: #ffe1ca;
+  --banner-color: #fb3;
+  --data-cascade-color: #28f;
+  --light-color: #fff;
+  --font-color: #70b5ff;
+  --h1-color: #fb3;
+  --h2-color: #fb3;
+  --h3-color: #fb3;
+  --h4-color: #fb3;
+  --link-color: #70b5ff;
+  --button-color: #828cad;
+  --button-color-sidebar: #fb3;
+  --code-color: #94b300;
+  --image-border-color: #828cad;
+  --lcars-bar-color: #828cad;
+  --lcars-bar-start-color: #28f;
+  --lcars-bar-end-color: #28f;
+  --lcars-bar-text-color: #fb3;
+  --own-blue: #28f;
+  --own-bright: #9cf;
+  --own-red: #f30;
+  --own-orange: #fb3;
+  --own-panel: #22262f;
+  --own-panel-2: #3a3f4d;
+  --own-ink: #e6f2ff;
+  --own-ink-2: #bec2cf;
+  --own-ink-3: #828cad;
+  --bar-1-6-width: clamp(10px, 14%, 80px);
+  --bar-2-7-width: 20%;
+  --bar-3-8-width: 5%;
+  --bar-5-10-width: 5%;
+  --african-violet: #70b5ff;
+  --bluey: #828cad;
+  --red: #f30;
+  --orange: #fb3;
+  --butterscotch: #ffe1ca;
+  --barley: #e6f2ff;
+  --almond: #828cad;
+  --almond-creme: #bec2cf;
+  --subdued-sienna: #474b5a;
+  --true-mauve: #d5dbe8;
+  --dusty-mauve: #28f;
+  --dirty-mauve: #1b1f28;
+  --lilac: #2b2f3a;
+  --brown: #1b1f28;
+  --mars: #f83;
+}

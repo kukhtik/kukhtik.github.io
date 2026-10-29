@@ -1,12 +1,16 @@
 # AGENTS.md — runbook
 
-Content-driven static site: YAML → Jinja2 → `dist/` → GitHub Pages. Design in `DESIGN.md`.
+Content-driven static site: slot table + LCARS templates → `dist/` → GitHub Pages. Design in `DESIGN.md`.
+
+The console is the LCARS frame of theLCARS (banner, data cascade, navigation, the
+panel staircase) with the content set into the window. The frame is the template's own
+markup and CSS; `src2/content.css` only styles what we put inside the window.
 
 ## Golden rules
 
 1. **Never edit `dist/`.** It is generated. Edit `content/`, `templates/`, `static/`.
-2. **Never put copy in templates.** Facts live in `content/*.yaml`.
-3. **Never add a case by editing `home.html`.** Create `content/projects/<slug>/project.yaml`.
+2. **Never put copy in templates.** Facts live in `content/home-table.json` (and the legacy `content/*.yaml`).
+3. **Never add a case by editing a template.** Add an entry to `content/home-table.json` under `slots.mid.projects` - the builder makes the page, the theme and the gallery from it.
 4. **One command surface: `manage.py`.** It wraps validate → build → check → render.
 5. **Do not invent facts.** `scripts/validate.py` blocks forbidden claims and stale dates.
 6. **Design is yours** — but every animation needs a `prefers-reduced-motion` off switch, and
@@ -52,8 +56,10 @@ reformatting), saves with validation, and can trigger a build. It is local-only,
 
 | file | what it does |
 |---|---|
-| `build.py` | reads YAML, renders pages, copies assets (minifies CSS), writes sitemap/robots/_headers/_redirects |
-| `scripts/validate.py` | content schema, both locales, images exist, links, forbidden tokens, CV files |
+| `build/build.mjs` | the console builder: the slot table (`content/home-table.json`) + the frame and page templates in `src2/` become `dist/` |
+| `build.py` | the entry point the workflow calls - runs the node builder and copies the CV files |
+| `scripts/validate.py` | the legacy YAML content schema, both locales, images exist, links, forbidden tokens, CV files |
+| `scripts/validate_slots.py` | the slot table: both locales per entry, the per-entry length limits, images on disk, no forbidden claim |
 | `scripts/check_dist.py` | per page: lang/title/description/canonical/one h1; every img has alt; every internal link resolves; sitemap entries exist |
 | `scripts/shoot.py` | Playwright: 1280 + 390 screenshots, page weight, 360 px overflow, alt/h1 checks |
 | `manage.py` | the single command surface above |

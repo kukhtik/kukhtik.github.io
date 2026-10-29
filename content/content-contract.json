@@ -1,0 +1,466 @@
+{
+ "site": {
+  "name": {
+   "en": "Maxim Kukhto",
+   "ru": "Максим Кухто"
+  },
+  "role": {
+   "en": "Python / AI engineer — offline RAG, CAD/GIS automation, LLM agents",
+   "ru": "Python / AI-инженер — offline-RAG, автоматизация CAD/GIS, LLM-агенты"
+  },
+  "location": {
+   "en": "Mogilev, Belarus",
+   "ru": "Могилёв, Беларусь"
+  },
+  "timezone": "UTC+3",
+  "availability": {
+   "en": "Available full-time from late November 2026",
+   "ru": "Доступен для full-time работы с конца ноября 2026"
+  },
+  "email": "maxkukhto@gmail.com",
+  "github": "https://github.com/kukhtik",
+  "linkedin": "https://www.linkedin.com/in/max-kukhto-517091337/",
+  "telegram": "",
+  "cv": {
+   "en": "assets/cv-en.pdf",
+   "ru": "assets/cv-ru.pdf"
+  },
+  "domain": "https://kukhto.is-a.dev",
+  "seo": {
+   "title": {
+    "en": "Maxim Kukhto — Python / AI engineer · offline RAG, CAD/GIS",
+    "ru": "Максим Кухто — Python / AI-инженер · offline-RAG, CAD/GIS"
+   },
+   "description": {
+    "en": "Python / AI engineer building offline RAG systems, LLM agents and CAD/GIS automation. Public code, measured results, NDA-safe case studies. Remote, UTC+3.",
+    "ru": "Python / AI-инженер: offline-RAG, LLM-агенты, автоматизация CAD/GIS. Публичный код, измеренные результаты, кейсы под NDA. Remote, UTC+3."
+   }
+  },
+  "hero": {
+   "lead": {
+    "en": "I build systems that work without internet — and prove their work with tests, measured latency, and evidence links.",
+    "ru": "Строю системы, которые работают без интернета — и доказывают результат тестами, измеренной задержкой и ссылками на источники."
+   },
+   "note": {
+    "en": "Currently a medical-equipment engineer at a radiotherapy center; leaving in November to do software full-time.",
+    "ru": "Сейчас — инженер по медоборудованию в онкоцентре; в ноябре ухожу, чтобы заниматься разработкой full-time."
+   }
+  },
+  "about": {
+   "en": [
+    "I am a medical-equipment engineer at the Mogilev Regional Oncology Dispensary, where I maintain Varian TrueBeam / VitalBeam linear accelerators. That work is safety-critical and documentation-heavy — which is exactly why I built Engineer Companion: a field engineer in an RF-shielded bunker needs the exact page in seconds, with no internet.",
+    "I have been building software alongside that role since 2020: a commercial geodetic converter, a production photo-to-DXF pipeline, an offline RAG system, and a live Telegram product. I am leaving the clinical role in November 2026 to work on software full-time.",
+    "Commercial projects are covered by NDA. I can show architecture, screenshots, and measured results; source stays private."
+   ],
+   "ru": [
+    "Я инженер по медицинскому оборудованию в УЗ «Могилёвский областной онкологический диспансер», обслуживаю линейные ускорители Varian TrueBeam / VitalBeam. Работа safety-critical и документационно тяжёлая — поэтому я и построил Engineer Companion: инженеру в бункере без интернета нужна точная страница за секунды.",
+    "С 2020 года параллельно строю софт: коммерческий геодезический конвертер, production-пайплайн «фото → DXF», offline-RAG, живой Telegram-продукт. В ноябре 2026 ухожу из клиники в разработку full-time.",
+    "Коммерческие проекты под NDA. Могу показать архитектуру, скриншоты и измеренные результаты; исходники остаются закрытыми."
+   ]
+  },
+  "record": [
+   {
+    "when": "2022 — 11.2026",
+    "title": {
+     "en": "Medical-equipment engineer · Mogilev Regional Oncology Dispensary",
+     "ru": "Инженер по медицинскому оборудованию · Могилёвский областной онкодиспансер"
+    },
+    "text": {
+     "en": "Maintenance of Varian TrueBeam and VitalBeam linear accelerators: dosimetry checks, MLC and imaging calibration, fault diagnosis in an RF-shielded bunker, service documentation with no margin for error.",
+     "ru": "Обслуживание линейных ускорителей Varian TrueBeam и VitalBeam: дозиметрический контроль, калибровка MLC и системы визуализации, поиск неисправностей в экранированном бункере, сервисная документация без права на ошибку."
+    }
+   },
+   {
+    "when": "2020 — 2026",
+    "title": {
+     "en": "Software alongside the service work",
+     "ru": "Разработка параллельно сервисной работе"
+    },
+    "text": {
+     "en": "A commercial geodetic converter, a production photo-to-DXF pipeline for surveyors, an offline RAG system for equipment documentation, and a live Telegram product on Cloudflare.",
+     "ru": "Коммерческий геодезический конвертер, production-пайплайн «фото → DXF» для геодезистов, offline-RAG по документации оборудования и живой Telegram-продукт на Cloudflare."
+    }
+   },
+   {
+    "when": "11.2026 →",
+    "title": {
+     "en": "Software full-time",
+     "ru": "Разработка full-time"
+    },
+    "text": {
+     "en": "Leaving the clinical role to build software with the same constraint I worked under for four years: the result has to be verifiable.",
+     "ru": "Ухожу из клиники, чтобы заниматься разработкой с тем же требованием, что и четыре года в сервисе: результат должен быть проверяемым."
+    }
+   }
+  ],
+  "facts": [
+   {
+    "label": {
+     "en": "Based",
+     "ru": "База"
+    },
+    "value": {
+     "en": "Mogilev, Belarus",
+     "ru": "Могилёв, Беларусь"
+    }
+   },
+   {
+    "label": {
+     "en": "Timezone",
+     "ru": "Часовой пояс"
+    },
+    "value": {
+     "en": "UTC+3",
+     "ru": "UTC+3"
+    }
+   },
+   {
+    "label": {
+     "en": "Availability",
+     "ru": "Доступность"
+    },
+    "value": {
+     "en": "Full-time from late Nov 2026",
+     "ru": "Full-time с конца ноября 2026"
+    }
+   },
+   {
+    "label": {
+     "en": "English",
+     "ru": "Английский"
+    },
+    "value": {
+     "en": "B2",
+     "ru": "B2"
+    }
+   },
+   {
+    "label": {
+     "en": "Focus",
+     "ru": "Фокус"
+    },
+    "value": {
+     "en": "RAG · CAD/GIS · Python",
+     "ru": "RAG · CAD/GIS · Python"
+    }
+   }
+  ],
+  "services": [
+   {
+    "number": "01",
+    "title": {
+     "en": "Offline and on-prem RAG",
+     "ru": "Offline и on-prem RAG"
+    },
+    "text": {
+     "en": "Document ingestion, hybrid retrieval, reranking, local quantized inference (llama.cpp / GGUF, ONNX), evaluation harnesses, evidence-linked answers.",
+     "ru": "Индексация документов, гибридный поиск, реранкинг, локальный инференс (llama.cpp / GGUF, ONNX), evaluation-харнессы, ответы со ссылками на источники."
+    }
+   },
+   {
+    "number": "02",
+    "title": {
+     "en": "CAD/GIS automation",
+     "ru": "Автоматизация CAD/GIS"
+    },
+    "text": {
+     "en": "DXF/DWG generation, photo-to-drawing CV pipelines, coordinate systems, numerical calibration, desktop tooling with PySide6/PyQt6.",
+     "ru": "Генерация DXF/DWG, CV-пайплайны «фото → чертёж», системы координат, численная калибровка, desktop-инструменты на PySide6/PyQt6."
+    }
+   },
+   {
+    "number": "03",
+    "title": {
+     "en": "Python backend and desktop",
+     "ru": "Python backend и desktop"
+    },
+    "text": {
+     "en": "FastAPI services, async pipelines, SQL schemas and migrations, Cloudflare Workers/D1/R2, CI with coverage and mutation gates.",
+     "ru": "Сервисы на FastAPI, асинхронные пайплайны, схемы и миграции SQL, Cloudflare Workers/D1/R2, CI с coverage и mutation gates."
+    }
+   }
+  ],
+  "more": [
+   {
+    "title": {
+     "en": "PenaPivo — live Telegram bot + Mini App",
+     "ru": "PenaPivo — живой Telegram-бот + Mini App"
+    },
+    "text": {
+     "en": "Serverless product on Cloudflare Workers / D1 / R2; CI with ≥84% branch coverage gate and mutation testing.",
+     "ru": "Serverless-продукт на Cloudflare Workers / D1 / R2; CI с coverage gate ≥84% и mutation testing."
+    },
+    "url": "https://t.me/PenaPivo_bot"
+   },
+   {
+    "title": {
+     "en": "Open Space — full project index",
+     "ru": "Open Space — полный индекс проектов"
+    },
+    "text": {
+     "en": "Architecture notes and screenshots for the projects that are not on this page.",
+     "ru": "Архитектура и скриншоты проектов, которых нет на этой странице."
+    },
+    "url": "https://github.com/kukhtik/Open_space"
+   }
+  ],
+  "status_labels": {
+   "public": {
+    "en": "Public code",
+    "ru": "Публичный код"
+   },
+   "nda": {
+    "en": "Source private · NDA",
+    "ru": "Исходники закрыты · NDA"
+   },
+   "commercial": {
+    "en": "Commercial · NDA",
+    "ru": "Коммерческий · NDA"
+   },
+   "rnd": {
+    "en": "R&D · proprietary",
+    "ru": "R&D · закрытый код"
+   }
+  }
+ },
+ "projects": {
+  "engineer-companion": {
+   "slug": "engineer-companion",
+   "title": {
+    "en": "Engineer Companion — offline RAG",
+    "ru": "Engineer Companion — offline-RAG"
+   },
+   "summary": {
+    "en": "Offline RAG over radiotherapy equipment documentation. Hybrid LanceDB + BM25 retrieval, local embeddings and reranker, CPU-only. Answers cite document, page and drawing region.",
+    "ru": "Offline-RAG по документации радиотерапевтического оборудования. Гибридный поиск LanceDB + BM25, локальные эмбеддинги и реранкер, CPU-only. Ответы цитируют документ, страницу и область чертежа."
+   },
+   "problem": {
+    "en": "A field engineer servicing a clinical linear accelerator works in an RF-shielded bunker with no internet and needs the exact page of a specification in seconds — out of tens of thousands of pages of manuals.",
+    "ru": "Инженер, обслуживающий клинический линейный ускоритель, работает в экранированном бункере без интернета и должен за секунды найти точную страницу спецификации среди десятков тысяч страниц руководств."
+   },
+   "approach": {
+    "en": [
+     "One Python core: PDF indexing, chunking, embeddings, LanceDB retrieval and a fact catalogue.",
+     "Hybrid retrieval: dense vectors + BM25, with a cross-encoder reranker.",
+     "Local quantized inference (Gemma-3-4B, GGUF / llama.cpp); every answer carries an evidence link to document, page and drawing region."
+    ],
+    "ru": [
+     "Одно Python-ядро: индексация PDF, чанкинг, эмбеддинги, поиск в LanceDB и каталог фактов.",
+     "Гибридный поиск: dense-векторы + BM25, с кросс-энкодерным реранкером.",
+     "Локальный квантованный инференс (Gemma-3-4B, GGUF / llama.cpp); каждый ответ несёт ссылку на документ, страницу и область чертежа."
+    ]
+   },
+   "results": [
+    {
+     "value": "21,214",
+     "label": {
+      "en": "facts indexed",
+      "ru": "фактов в индексе"
+     }
+    },
+    {
+     "value": "96/100",
+     "label": {
+      "en": "benchmark accuracy",
+      "ru": "точность на бенчмарке"
+     }
+    },
+    {
+     "value": "130 ms",
+     "label": {
+      "en": "p50 latency · CPU",
+      "ru": "p50 · CPU"
+     }
+    },
+    {
+     "value": "768/775",
+     "label": {
+      "en": "tests passing",
+      "ru": "тестов проходят"
+     }
+    }
+   ],
+   "stack": [
+    "Python",
+    "LanceDB",
+    "BM25",
+    "multilingual-e5-small",
+    "mmarco reranker",
+    "Gemma-3-4B (GGUF)",
+    "llama.cpp",
+    "PySide6",
+    "pytest"
+   ],
+   "confidentiality": {
+    "en": "Public code. The repository contains the retrieval and generation code and the test suite; the benchmark harness is internal.",
+    "ru": "Публичный код. В репозитории — код поиска и генерации и тесты; бенчмарк-харнесс внутренний."
+   },
+   "status": "public",
+   "year": "2026",
+   "visual": "rag",
+   "links": [
+    {
+     "label": {
+      "en": "Public code",
+      "ru": "Публичный код"
+     },
+     "url": "https://github.com/kukhtik/engineer-companion"
+    },
+    {
+     "label": {
+      "en": "Architecture notes",
+      "ru": "Архитектура"
+     },
+     "url": "https://github.com/kukhtik/Open_space"
+    }
+   ]
+  },
+  "vetka-dwg": {
+   "slug": "vetka-dwg",
+   "title": {
+    "en": "VETKA_DWG — photo of a survey sketch → DXF",
+    "ru": "VETKA_DWG — фото абриса → DXF"
+   },
+   "summary": {
+    "en": "Computer-vision pipeline that turns a photo of a hand-drawn survey sketch into a topographic DXF. Marker detection, OCR, block library. Cuts manual drafting from 4 hours to 15 minutes.",
+    "ru": "CV-пайплайн, который превращает фото рукописного абриса в топографический DXF. Детекция маркеров, OCR, библиотека блоков. Ручное черчение: 4 часа → 15 минут."
+   },
+   "problem": {
+    "en": "A surveyor draws a field abris by hand, then spends hours transferring numbered points and symbols into CAD. The process is slow, repetitive and error-prone.",
+    "ru": "Геодезист рисует абрис от руки, а потом часы переносит точки и условные знаки в CAD. Процесс медленный, монотонный и подверженный ошибкам."
+   },
+   "approach": {
+    "en": [
+     "Marker and text detection on a phone photo, followed by OCR for point numbers and labels.",
+     "A 444-block GUGK sign library with a fidelity audit against the reference template.",
+     "DXF generation with a PySide6/QML desktop shell and CI quality gates."
+    ],
+    "ru": [
+     "Детекция маркеров и текста на фото с телефона, OCR для номеров точек и подписей.",
+     "Библиотека из 444 блоков ГУГК с аудитом точности относительно эталонного шаблона.",
+     "Генерация DXF, desktop-оболочка на PySide6/QML и quality gates в CI."
+    ]
+   },
+   "results": [
+    {
+     "value": "4 h → 15 min",
+     "label": {
+      "en": "manual drafting time",
+      "ru": "время ручного черчения"
+     }
+    },
+    {
+     "value": "3",
+     "label": {
+      "en": "surveying companies in production",
+      "ru": "геодезические компании в production"
+     }
+    },
+    {
+     "value": "444",
+     "label": {
+      "en": "GUGK blocks in the library",
+      "ru": "блока ГУГК в библиотеке"
+     }
+    }
+   ],
+   "stack": [
+    "Python",
+    "OpenCV",
+    "PaddleOCR",
+    "ezdxf",
+    "PySide6 / QML",
+    "CI quality gates"
+   ],
+   "confidentiality": {
+    "en": "Source private. Commercial use and government clients under NDA; architecture, screenshots and measured results are shown here.",
+    "ru": "Исходники закрыты. Коммерческое использование и государственные заказчики под NDA; здесь показаны архитектура, скриншоты и измеренные результаты."
+   },
+   "status": "nda",
+   "year": "2026",
+   "visual": "vetka",
+   "links": [
+    {
+     "label": {
+      "en": "Case notes",
+      "ru": "Описание кейса"
+     },
+     "url": "https://github.com/kukhtik/Open_space"
+    }
+   ]
+  },
+  "geoconverter": {
+   "slug": "geoconverter",
+   "title": {
+    "en": "GeoConverter — geodetic coordinate conversion",
+    "ru": "GeoConverter — конвертация геодезических координат"
+   },
+   "summary": {
+    "en": "Commercial desktop product for sub-millimetre conversion between legacy local coordinate systems and WGS-84. Four-stage numerical calibration, round-trip validation, hardware-locked licensing.",
+    "ru": "Коммерческий desktop-продукт для субмиллиметровой конвертации между локальными системами координат и WGS-84. Четырёхстадийная численная калибровка, проверка невязки, аппаратная привязка лицензий."
+   },
+   "problem": {
+    "en": "Converting coordinates between legacy local systems and modern global datums requires sub-millimetre precision under strong non-linear distortions. Off-the-shelf tools either lose precision or require a server.",
+    "ru": "Конвертация координат между локальными системами и современными глобальными датумами требует субмиллиметровой точности при сильных нелинейных искажениях. Готовые инструменты либо теряют точность, либо требуют сервера."
+   },
+   "approach": {
+    "en": [
+     "Four-stage pipeline: Helmert/SVD → Levenberg-Marquardt → Nelder-Mead, tolerance 1e-12.",
+     "Round-trip error validation: the closed route must return within millimetres.",
+     "PyQt6 desktop product with hardware-locked activation keys and an offline license issuer."
+    ],
+    "ru": [
+     "Четырёхстадийный пайплайн: Helmert/SVD → Левенберг-Марквардт → Нелдер-Мид, допуск 1e-12.",
+     "Проверка невязки: замкнутый маршрут должен вернуться с миллиметровой точностью.",
+     "Desktop-продукт на PyQt6 с аппаратной привязкой ключей и офлайн-генератором лицензий."
+    ]
+   },
+   "results": [
+    {
+     "value": "<1 mm",
+     "label": {
+      "en": "round-trip error",
+      "ru": "погрешность замкнутого маршрута"
+     }
+    },
+    {
+     "value": "20+",
+     "label": {
+      "en": "local coordinate systems",
+      "ru": "локальных систем координат"
+     }
+    },
+    {
+     "value": "Commercial",
+     "label": {
+      "en": "release, government clients",
+      "ru": "релиз, государственные заказчики"
+     }
+    }
+   ],
+   "stack": [
+    "Python",
+    "NumPy / SciPy",
+    "PyQt6",
+    "PyInstaller / Nuitka",
+    "Hardware-locked licensing"
+   ],
+   "confidentiality": {
+    "en": "Source private. Commercial product; client systems and licensing details under NDA.",
+    "ru": "Исходники закрыты. Коммерческий продукт; заказчики и детали лицензирования под NDA."
+   },
+   "status": "commercial",
+   "year": "2023–2024",
+   "visual": "geo",
+   "links": [
+    {
+     "label": {
+      "en": "Case notes",
+      "ru": "Описание кейса"
+     },
+     "url": "https://github.com/kukhtik/Open_space"
+    }
+   ]
+  }
+ }
+}

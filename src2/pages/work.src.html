@@ -1,0 +1,19 @@
+        <p class="own-lead">{{SLOT:work.lead}}</p>
+
+        <div class="lcars-text-bar own-bar" id="sec-work"><h2>{{SLOT:sec.work.title}}</h2></div>
+        <ul class="lcars-list">
+          {{#GROUP:mid.projects}}
+          <li><a href="{{RU}}/work/{{SLOT:@slug}}/">{{SLOT:@title}}</a> &#183; <em>{{SLOT:@subtitle}}</em>
+              {{#SLOT:@results}}<b>{{SLOT:@results.@value}}</b> {{SLOT:@results.@label}} {{/SLOT:@results}}
+          </li>
+          {{/GROUP:mid.projects}}
+        </ul>
+
+        <div class="lcars-text-bar own-bar" id="sec-facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
+        <ul class="lcars-list">
+          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
+          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
+          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
+          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
+          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
+        </ul>

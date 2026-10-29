@@ -1,0 +1,290 @@
+/* ===================================================================
+   OWNER SITE - our content blocks, living inside the LCARS template.
+   The template (Jim Robertus, www.thelcars.com) supplies the frame, the
+   panels, the bars, the cascade and the typography. This file styles only
+   what we put inside it, and adapts the template's button rules to
+   anchors so the navigation stays real links.
+   =================================================================== */
+
+:root{
+  --own-ink:#f3f4f7; --own-ink-2:#d2d5df; --own-ink-3:#9ea5ba;
+  --own-blue:#37a6d1; --own-bright:#41c4f7; --own-red:#e7442a;
+  --own-orange:#ff977b; --own-panel:#2f3749; --own-panel-2:#52596e;
+}
+
+.own-skip{position:absolute;left:-9999px}
+.own-skip:focus{left:.5rem;top:.5rem;z-index:1000;background:#000;color:var(--own-bright);padding:.5rem 1rem}
+
+body, main, p, li, h1, h2, h3, h4{
+  font-family:'Oswald','PT Sans Narrow','Arial Narrow','Avenir Next Condensed',sans-serif;
+}
+
+/* navigation: the template styles nav buttons; ours are links */
+nav a	{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: var(--nav-width);
+	height: calc(var(--nav-width) / 2.8);
+	padding-inline: 1.5rem;
+	padding-bottom: 0.7rem;
+	border-radius: 100vmax;
+	background-color: var(--button-color);
+	text-align: right;
+	line-height: 1.175;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: black;
+	-webkit-touch-callout: none; 
+  	-webkit-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none;
+
+	@media (width <= 1300px) {
+		padding-bottom: 0.5rem;
+		font-size: 0.875rem;
+		padding-inline: 1.25rem;
+	}
+	@media (width <= 450px) {
+		height: 60px;
+	}
+}
+.own-btn{cursor:pointer}
+.own-btn--b{background-color:var(--own-bright)}
+.own-btn--l{background-color:var(--own-blue)}
+.own-btn--o{background-color:var(--own-orange)}
+.own-btn--v{background-color:var(--own-panel-2);color:var(--own-ink)}
+
+/* the big link buttons in the content column */
+.own-btn	{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: 224px;
+	height: 80px;
+	padding-inline: 1.75rem;
+	padding-bottom: 0.7rem;
+	background-color: var(--button-color);
+	border-radius: 100vmax;
+	border-width: 0;
+	text-align: right;
+	line-height: 1.175;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: black;
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
+}
+
+/* ---- main column ------------------------------------------------ */
+main{padding:.2rem 1.5rem 3rem 1rem;min-width:0}
+main h1{font-size:clamp(2.1rem,1.1rem+3.2vw,3.6rem);line-height:.95;margin:.1rem 0 .2rem;
+  text-transform:uppercase;letter-spacing:.005em}
+main h3{font-size:1rem;text-transform:uppercase;letter-spacing:.05em;margin:0 0 .22rem}
+main p{font-size:.92rem;line-height:1.55;color:var(--own-ink-2);margin:0 0 .5rem}
+
+.own-role{font-size:1.12rem !important;line-height:1.35 !important;color:var(--own-bright) !important;
+  text-transform:uppercase;letter-spacing:.055em;margin-bottom:.7rem !important}
+.own-lead{font-size:1.02rem !important;line-height:1.55 !important;color:var(--own-ink) !important;max-width:64ch}
+.own-note{font-size:.85rem !important;color:var(--own-ink-3) !important;max-width:72ch}
+
+.own-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 1.2rem}
+.own-pill{font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.06em;
+  padding:.34rem .7rem;background:var(--own-bright);color:#000;text-transform:uppercase;font-weight:600}
+.own-pill--r{background:var(--own-red);color:#fff}
+.own-pill--o{background:var(--own-orange);color:#000}
+.own-pill--b{background:var(--own-blue);color:#000}
+
+.own-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.4rem;margin-bottom:1rem}
+.own-readout__row{background:#000;padding:.35rem .55rem;border-left:3px solid var(--own-blue)}
+.own-readout__row span{display:block;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--own-ink-3);line-height:1.25}
+.own-readout__row b{display:block;font-family:'IBM Plex Mono',monospace;font-size:1.05rem;
+  color:var(--own-bright);font-weight:600;line-height:1.2;margin-top:.1rem}
+.own-readout__row i{font-style:normal;font-family:'IBM Plex Mono',monospace}
+
+.lcars-text-bar h3{font-size:clamp(.95rem,.85rem+.4vw,1.25rem);color:#000;margin:0;
+  text-transform:uppercase;letter-spacing:.07em;padding-left:1.1rem;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lcars-text-bar{margin-block:1.6rem 1rem}
+
+.own-svc{display:grid;gap:.5rem}
+.own-svc__row{display:grid;grid-template-columns:3.4rem 1fr;gap:.9rem;align-items:start;
+  background:var(--own-panel);padding:.6rem .85rem .7rem;border-left:.28rem solid var(--own-blue)}
+.own-svc__row:nth-child(2){border-left-color:var(--own-bright)}
+.own-svc__row:nth-child(3){border-left-color:var(--own-orange)}
+.own-svc__n{font-family:'IBM Plex Mono',monospace;font-size:1.6rem;color:var(--own-blue);line-height:1}
+.own-svc__row:nth-child(2) .own-svc__n{color:var(--own-bright)}
+.own-svc__row:nth-child(3) .own-svc__n{color:var(--own-orange)}
+.own-svc__row h3{color:var(--own-ink)}
+.own-svc__row p{margin:0;font-size:.86rem;line-height:1.5;color:var(--own-ink-3)}
+
+.own-project{background:var(--own-panel);padding:.7rem .9rem .8rem;margin-bottom:.7rem;
+  border-left:.28rem solid var(--own-blue)}
+.own-project--red{border-left-color:var(--own-red)}
+.own-project--orange{border-left-color:var(--own-orange)}
+.own-project__head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.own-project__head h3{color:var(--own-ink);font-size:1.08rem}
+.own-badge{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;
+  background:var(--own-blue);color:#000;white-space:nowrap;font-weight:600}
+.own-badge--red{background:var(--own-red);color:#fff}
+.own-badge--orange{background:var(--own-orange);color:#000}
+.own-project__sum{font-size:.86rem !important;line-height:1.5 !important;color:var(--own-ink-3) !important;
+  margin:.12rem 0 .5rem !important;max-width:74ch}
+.own-project__stack{font-family:'IBM Plex Mono',monospace;font-size:.7rem !important;line-height:1.5 !important;
+  color:var(--own-panel-2) !important;margin:.5rem 0 0 !important;max-width:90ch}
+
+.own-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:.26rem}
+.own-metric{background:#000;padding:.32rem .5rem .36rem;border-left:3px solid var(--own-blue)}
+.own-metric b{display:block;font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--own-ink);
+  line-height:1.15;font-weight:600}
+.own-metric span{display:block;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--own-ink-3);line-height:1.25;margin-top:.1rem}
+
+.own-rec{display:grid;gap:.5rem}
+.own-rec__row{display:grid;grid-template-columns:9rem 1fr;gap:.9rem;align-items:start}
+.own-rec__w{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:#000;background:var(--own-ink-3);
+  padding:.22rem .45rem;letter-spacing:.03em;white-space:nowrap}
+.own-rec__row h3{color:var(--own-ink);font-size:.95rem}
+.own-rec__row p{font-size:.84rem !important;line-height:1.5 !important;color:var(--own-ink-3) !important;margin:0}
+
+.own-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.4rem;margin:1.6rem 0 1rem}
+.own-foot__col h3{font-size:.72rem;color:var(--own-blue);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem}
+.own-facts,.own-links,.own-statuslist{list-style:none;margin:0;padding:0;display:grid;gap:.22rem}
+.own-facts li{display:flex;justify-content:space-between;gap:.6rem;font-size:.78rem;
+  border-bottom:1px solid #1c3c55;padding-bottom:.16rem}
+.own-facts span{color:var(--own-ink-3)}
+.own-facts b{color:var(--own-ink);font-weight:500;text-align:right}
+.own-links li,.own-statuslist li{font-size:.82rem;color:var(--own-ink-3)}
+.own-links a,.own-statuslist a{color:var(--own-bright);text-decoration:none;border-bottom:1px solid #2a7193}
+.own-links a:hover,.own-statuslist a:hover{color:#fff;border-bottom-color:#fff}
+
+.own-credit{font-size:.68rem !important;color:#3c4358 !important;margin-top:.6rem !important}
+.own-credit a{color:#3c4358}
+
+@media (max-width:900px){
+  .own-svc__row{grid-template-columns:2.5rem 1fr}
+  .own-rec__row{grid-template-columns:1fr;gap:.2rem}
+  main{padding:.2rem .9rem 2.5rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+  .dc-row-1,.dc-row-2,.dc-row-3,.dc-row-4,.dc-row-5,.dc-row-6,.dc-row-7{color:var(--own-orange)}
+}
+
+/* the content column must never push the frame wider than the template's
+   1215px - a long word inside it would otherwise stretch the whole page */
+.right-frame, .right-frame-top, main, .own-project, .own-svc__row, .own-rec__row{min-width:0}
+.own-project__sum, .own-lead, .own-note, .own-project__stack{overflow-wrap:anywhere}
+
+/* ---- the scroll re-points the console ------------------------------- */
+.left-frame [data-target]{
+  transition: filter .35s ease, transform .35s ease;
+  cursor: pointer;
+}
+.left-frame [data-target].is-active{
+  filter: brightness(118%);
+  transform: translateX(3px);
+}
+.lcars-text-bar{transition: filter .35s ease;}
+.lcars-text-bar.is-active{filter: brightness(112%);}
+.own-readout__row i.own-live{color:var(--own-orange)}
+.own-readout__row i.own-warm{color:var(--own-orange)}
+.own-readout__row i.own-sep{color:var(--own-ink-3);padding:0 .06em}
+@media (prefers-reduced-motion: reduce){
+  .left-frame [data-target], .lcars-text-bar{transition:none}
+}
+
+/* ---- page blocks ---------------------------------------------------- */
+.own-prose{display:grid;gap:.7rem;max-width:74ch}
+.own-prose p{font-size:1rem !important;line-height:1.65 !important;color:var(--own-ink-2) !important;margin:0 !important}
+.own-prose__p{font-size:.96rem !important;line-height:1.6 !important;color:var(--own-ink-2) !important;max-width:76ch;margin:0 !important}
+.own-metrics--big{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.4rem;margin-bottom:1rem}
+.own-metrics--big .own-metric{padding:.6rem .8rem .7rem}
+.own-metrics--big .own-metric b{font-size:1.6rem}
+.own-metrics--big .own-metric span{font-size:.68rem;margin-top:.2rem}
+.own-project__links{margin-block:.8rem 0 0}
+.own-project__links .own-btn{width:200px;height:64px}
+
+/* ---- the work index: one card per project ---------------------------- */
+.own-index{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:.7rem;
+}
+.own-card{
+  background:var(--own-panel);border-left:.3rem solid var(--card-accent,var(--own-blue));
+  padding:0;overflow:hidden;
+}
+.own-card__link{display:block;color:inherit;text-decoration:none;padding:0}
+.own-card__thumb{display:block;background:#000;max-height:8.5rem;overflow:hidden;line-height:0}
+.own-card__thumb img{width:100%;height:auto;max-height:8.5rem;object-fit:cover;object-position:top left;display:block}
+.own-card__t{
+  font-size:1.02rem;text-transform:uppercase;letter-spacing:.05em;color:var(--own-ink);
+  margin:.7rem .8rem .1rem;line-height:1.15;
+}
+.own-card__sub{font-size:.74rem !important;color:var(--card-accent,var(--own-blue)) !important;
+  margin:0 .8rem !important;text-transform:uppercase;letter-spacing:.06em}
+.own-card__sum{font-size:.8rem !important;line-height:1.45 !important;color:var(--own-ink-3) !important;
+  margin:.35rem .8rem .5rem !important}
+.own-chips{display:flex;flex-wrap:wrap;gap:.25rem;margin:0 .8rem .6rem}
+.own-chip{
+  font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--own-ink-2);
+  background:#000;padding:.2rem .4rem;line-height:1.2;white-space:nowrap;
+}
+.own-chip b{display:block;font-family:'IBM Plex Mono',monospace;font-size:.92rem;color:var(--own-ink);font-weight:600}
+.own-card__go{
+  display:block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--card-accent,var(--own-blue));padding:.35rem .8rem .6rem;
+}
+.own-card:hover .own-card__go{text-decoration:underline}
+.own-card:hover .own-card__thumb img{filter:brightness(112%)}
+
+/* ---- the case gallery ------------------------------------------------ */
+.own-shot{margin:0 0 1.1rem;background:var(--own-panel);border-left:.3rem solid var(--own-blue);padding:0}
+.own-shot img{width:100%;height:auto;display:block}
+.own-shot figcaption{
+  font-size:.72rem;color:var(--own-ink-3);padding:.45rem .8rem .55rem;line-height:1.4;
+}
+@media (max-width:700px){
+  .own-index{grid-template-columns:1fr}
+}
+
+/* ===================================================================
+   Our pages are built from the TEMPLATE's own content blocks
+   (lcars-list, lcars-text-bar, flexbox, image-frame, buttons) -
+   this file only adapts them for links and for our type sizes.
+   =================================================================== */
+.buttons a	{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: 224px;
+	height: 80px;
+	padding-inline: 1.75rem;
+	padding-bottom: 0.7rem;
+	background-color: var(--button-color);
+	border-radius: 100vmax;
+	border-width: 0;
+	text-align: right;
+	line-height: 1.175;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: black;
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
+}
+.buttons a{cursor:pointer}
+.lcars-list li b{color:var(--own-bright);font-family:'IBM Plex Mono',monospace;font-weight:600}
+.lcars-list li span{color:var(--own-ink-3)}
+.lcars-list li{margin-bottom:.35rem;line-height:1.35}
+.lcars-text-bar h2,.lcars-text-bar h3,.lcars-text-bar h4{margin:0}
+.image-frame{margin:0 0 1.6rem}
+.image-holder img{width:100%;height:auto;display:block}
+.flexbox .col h2{font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--own-blue);margin:.2rem 0 .4rem}
+.p.go-big{font-size:1.05rem !important;color:var(--own-ink) !important}

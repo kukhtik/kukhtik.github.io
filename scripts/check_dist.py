@@ -139,14 +139,18 @@ def main() -> int:
                 errors.append(f"sitemap: {loc} has no file")
 
     for required in ["index.html", "ru/index.html", "404.html", "robots.txt", "_headers", "_redirects",
-                     "assets/lcars/app.css", "assets/lcars/fonts.css",
-                     "assets/lcars/app.js", "assets/lcars/vendor/gsap.min.js",
-                     "assets/lcars/vendor/ScrollTrigger.min.js",
-                     "assets/lcars/assets/linac.svg", "assets/lcars/assets/isodose.svg",
-                     "assets/lcars/assets/mlc.svg", "assets/lcars/assets/wave.svg",
-    "assets/cv-en.pdf", "assets/cv-ru.pdf"]:
+                     "sitemap.xml",
+                     "assets/lcars.css", "assets/content.css", "assets/app.js", "assets/fonts.css",
+                     "assets/cv-en.pdf", "assets/cv-ru.pdf"]:
         if not (DIST / required).exists():
             errors.append(f"dist/{required} is missing")
+
+    media = sorted((DIST / "assets" / "media-full").glob("*")) if (DIST / "assets" / "media-full").exists() else []
+    if not media:
+        errors.append("dist/assets/media-full is empty")
+    thumbs = sorted((DIST / "assets" / "media-thumb").glob("*")) if (DIST / "assets" / "media-thumb").exists() else []
+    if not thumbs:
+        errors.append("dist/assets/media-thumb is empty")
 
     if errors:
         print(f"DIST CHECK FAILED: {len(errors)} error(s)")
