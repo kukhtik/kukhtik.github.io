@@ -1,24 +1,49 @@
-        <p class="own-lead" data-block="hero.role">{{SLOT:hero.role}}</p>
+        <h1 class="own-h1">{{SLOT:hero.name}}</h1>
+        <p class="own-lead">{{SLOT:hero.role}}</p>
 
-        <div class="lcars-text-bar own-bar" id="sec-build"><h2>{{SLOT:sec.about.title}}</h2></div>
-        <ul class="lcars-list own-list">
-          {{#SENTENCES:about.1}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.1}}
-          {{#SENTENCES:about.2}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.2}}
-          {{#SENTENCES:about.3}}<li>{{SENTENCE}}</li>{{/SENTENCES:about.3}}
-        </ul>
+        <section class="section" id="sec-build">
+          <div class="section__bar">
+            <div class="cell" style="--c:var(--amber)">{{SLOT:sec.about.title}}</div>
+            <div class="cell cell--grow"></div>
+            <div class="cell cell--num" style="--c:var(--black)">01</div>
+          </div>
+          <div class="section__body">
+            <ul class="rows">
+              {{#SENTENCES:about.1}}<li><b></b><span>{{SENTENCE}}</span><em></em></li>{{/SENTENCES:about.1}}
+              {{#SENTENCES:about.2}}<li><b></b><span>{{SENTENCE}}</span><em></em></li>{{/SENTENCES:about.2}}
+              {{#SENTENCES:about.3}}<li><b></b><span>{{SENTENCE}}</span><em></em></li>{{/SENTENCES:about.3}}
+            </ul>
+          </div>
+        </section>
 
-        <div class="lcars-text-bar own-bar" id="sec-record"><h2>{{SLOT:sec.record.title}}</h2></div>
-        <ul class="lcars-list">
-          <li data-block="record.0"><b>{{SLOT:record.0.when}}</b> {{SLOT:record.0.title}}</li>
-          <li data-block="record.1"><b>{{SLOT:record.1.when}}</b> {{SLOT:record.1.title}}</li>
-          <li data-block="record.2"><b>{{SLOT:record.2.when}}</b> {{SLOT:record.2.title}}</li>
-        </ul>
+        <section class="section" id="sec-record">
+          <div class="section__bar">
+            <div class="cell" style="--c:var(--light-blue)">{{SLOT:sec.record.title}}</div>
+            <div class="cell cell--grow"></div>
+            <div class="cell cell--num" style="--c:var(--black)">02</div>
+          </div>
+          <div class="section__body">
+            <ul class="rows">
+              <li><b>{{SLOT:record.0.when}}</b><span>{{SLOT:record.0.title}}</span><em></em></li>
+              <li><b>{{SLOT:record.1.when}}</b><span>{{SLOT:record.1.title}}</span><em></em></li>
+              <li><b>{{SLOT:record.2.when}}</b><span>{{SLOT:record.2.title}}</span><em></em></li>
+            </ul>
+          </div>
+        </section>
 
-        <div class="lcars-text-bar own-bar" id="sec-facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
-        <ul class="lcars-list">
-          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
-          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
-          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
-          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
-          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
-        </ul>
+        <section class="section" id="sec-facts">
+          <div class="section__bar">
+            <div class="cell" style="--c:var(--orchid)">{{SLOT:sec.facts.title}}</div>
+            <div class="cell cell--grow"></div>
+            <div class="cell cell--num" style="--c:var(--black)">03</div>
+          </div>
+          <div class="section__body">
+            <ul class="rows">
+              <li><b>{{SLOT:fact.based.value}}</b><span>{{SLOT:fact.based.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.timezone.value}}</b><span>{{SLOT:fact.timezone.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.availability.value}}</b><span>{{SLOT:fact.availability.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.english.value}}</b><span>{{SLOT:fact.english.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.focus.value}}</b><span>{{SLOT:fact.focus.label}}</span><em></em></li>
+            </ul>
+          </div>
+        </section>

@@ -1,7 +1,7 @@
 import { copyFile, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { cascade, panels as framePanels, esc } from './frame.mjs';
+import { cascade, panels as framePanels, menu as frameMenu, readout as frameReadout, esc } from './frame.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const tablePath = path.join(root, 'content', 'home-table.json');
@@ -231,7 +231,7 @@ function splitReference(reference, entries) {
 async function copyAssets() {
   await mkdir(assetsDir, { recursive: true });
 
-  for (const file of ['app.js', 'fonts.css', 'lcars.css', 'content.css', 'favicon.svg']) {
+  for (const file of ['app.js', 'fonts.css', 'console.css', 'favicon.svg']) {
     await copyFile(path.join(root, 'src2', file), path.join(assetsDir, file));
   }
 
@@ -324,7 +324,9 @@ export async function build(lang, outDir, page, contentOverride) {
     .split('{{META_DESC}}').join(spec.metaDesc ?? spec.meta ?? '')
     .split('{{CANONICAL}}').join(spec.canonical ?? '')
     .split('{{RU}}').join(lang === 'ru' ? '/ru' : '')
-    .split('{{CASCADE}}').join(cascade(table, lang));
+    .split('{{CASCADE}}').join(cascade(table, lang))
+    .split('{{MENU}}').join(frameMenu(table, spec.page ?? 'home', lang))
+    .split('{{READOUT}}').join(frameReadout(table));
 
   // the left column: one panel per section, the heights follow the content
   const sections = framePanels(table, spec.page ?? 'home');
@@ -402,7 +404,7 @@ export async function build(lang, outDir, page, contentOverride) {
 
 const PAGES = [
   { template: 'index.src.html', out: 'index.html', home: true,
-    title: 'Maxim Kukhto', page: 'home',
+    title: 'Maxim Kukhto - Python / AI engineer', page: 'home',
     metaDesc: 'Offline RAG, CAD/GIS automation and Python backend - measured results, public code, remote from Mogilev, UTC+3.' },
   { template: 'work.src.html', out: 'work/index.html',
     title: 'Work — 14 measured cases', page: 'work',
@@ -478,7 +480,7 @@ async function main() {
   }
 
   // 404 - the console frame with a "no such module" readout
-  const notFound = `        <div class="lcars-text-bar own-bar"><h2>404</h2></div>\n        <ul class="lcars-list"><li><b>MODULE NOT FOUND</b> the address does not exist on this console</li></ul>\n        <div class="btnrow"><a class="btn btn--amber" href="/">HOME</a></div>\n`;
+  const notFound = `        <h1 class="own-h1">404</h1>\n        <p class="own-lead">No such module on this console.</p>\n        <div class="btnrow"><a class="btn btn--amber" href="/">HOME</a></div>\n`;
   await build('en', path.join(distDir, '404.html'), {
     template: 'index.src.html', out: '404.html', home: false, page: '404',
     title: 'Not found', meta: 'module not found', canonical: `${SITE}/404.html`,

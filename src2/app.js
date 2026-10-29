@@ -122,12 +122,12 @@
   var sections = [];
   function collectSections() {
     sections = [];
-    document.querySelectorAll('main .lcars-text-bar[id]').forEach(function (el) {
+    document.querySelectorAll('main .section[id]').forEach(function (el) {
       sections.push({ id: el.id, el: el });
     });
   }
   function syncPanels() {
-    var panels = document.querySelectorAll('.left-frame [data-target]');
+    var panels = document.querySelectorAll('.menu [data-target]');
     if (!panels.length) return;
     var current = sections.length ? sections[0].id : null;
     var main = document.getElementById('main');

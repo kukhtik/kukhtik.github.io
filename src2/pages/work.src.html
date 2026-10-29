@@ -1,19 +1,34 @@
+        <h1 class="own-h1">{{SLOT:hero.name}}</h1>
         <p class="own-lead">{{SLOT:work.lead}}</p>
 
-        <div class="lcars-text-bar own-bar" id="sec-work"><h2>{{SLOT:sec.work.title}}</h2></div>
-        <ul class="lcars-list">
-          {{#GROUP:mid.projects}}
-          <li><a href="{{RU}}/work/{{SLOT:@slug}}/">{{SLOT:@title}}</a> &#183; <em>{{SLOT:@subtitle}}</em>
-              {{#SLOT:@results}}<b>{{SLOT:@results.@value}}</b> {{SLOT:@results.@label}} {{/SLOT:@results}}
-          </li>
-          {{/GROUP:mid.projects}}
-        </ul>
+        <section class="section" id="sec-work">
+          <div class="section__bar">
+            <div class="cell" style="--c:var(--red)">{{SLOT:sec.work.title}}</div>
+            <div class="cell cell--grow"></div>
+            <div class="cell cell--num" style="--c:var(--black)">14</div>
+          </div>
+          <div class="section__body">
+            <ul class="rows">
+              {{#GROUP:mid.projects}}
+              <li><b>{{SLOT:@results.0.value}}</b><span><a href="/work/{{SLOT:@slug}}/">{{SLOT:@title}}</a> &#183; <em>{{SLOT:@subtitle}}</em></span><em>{{SLOT:@slug}}</em></li>
+              {{/GROUP:mid.projects}}
+            </ul>
+          </div>
+        </section>
 
-        <div class="lcars-text-bar own-bar" id="sec-facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
-        <ul class="lcars-list">
-          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
-          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
-          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
-          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
-          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
-        </ul>
+        <section class="section" id="sec-facts">
+          <div class="section__bar">
+            <div class="cell" style="--c:var(--orchid)">{{SLOT:sec.facts.title}}</div>
+            <div class="cell cell--grow"></div>
+            <div class="cell cell--num" style="--c:var(--black)">05</div>
+          </div>
+          <div class="section__body">
+            <ul class="rows">
+              <li><b>{{SLOT:fact.based.value}}</b><span>{{SLOT:fact.based.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.timezone.value}}</b><span>{{SLOT:fact.timezone.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.availability.value}}</b><span>{{SLOT:fact.availability.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.english.value}}</b><span>{{SLOT:fact.english.label}}</span><em></em></li>
+              <li><b>{{SLOT:fact.focus.value}}</b><span>{{SLOT:fact.focus.label}}</span><em></em></li>
+            </ul>
+          </div>
+        </section>
