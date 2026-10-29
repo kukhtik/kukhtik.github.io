@@ -357,16 +357,16 @@ export async function build(lang, outDir, page, contentOverride) {
 
 const PAGES = [
   { template: 'index.src.html', out: 'index.html', home: true,
-    title: 'Maxim Kukhto', page: 'home',
+    title: 'Maxim Kukhto — Python / AI engineer', page: 'home',
     metaDesc: 'Offline RAG, CAD/GIS automation and Python backend - measured results, public code, remote from Mogilev, UTC+3.' },
   { template: 'work.src.html', out: 'work/index.html',
-    title: 'Work', page: 'work',
+    title: 'Work — 14 measured cases', page: 'work',
     metaDesc: 'Fourteen systems, each measured on a real run: latency, accuracy, test counts, sweep results.' },
   { template: 'about.src.html', out: 'about/index.html',
-    title: 'About', page: 'about',
+    title: 'About — record and facts', page: 'about',
     metaDesc: 'Six years of medical-equipment engineering and parallel software work. Remote from Mogilev, UTC+3.' },
   { template: 'contact.src.html', out: 'contact/index.html',
-    title: 'Contact', page: 'contact',
+    title: 'Contact — channels', page: 'contact',
     metaDesc: 'Email, GitHub, LinkedIn, Telegram and the CV. Remote from Mogilev, UTC+3.' },
 ];
 
