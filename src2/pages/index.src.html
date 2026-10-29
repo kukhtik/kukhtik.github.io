@@ -1,84 +1,41 @@
-        <h1 class="own-h1" data-block="hero.name">{{SLOT:hero.name}}</h1>
+        <p class="own-role" data-block="hero.role">{{SLOT:hero.role}}</p>
         <p class="own-lead" data-block="hero.lead">{{SLOT:hero.lead}}</p>
         <p class="own-note" data-block="hero.note">{{SLOT:hero.note}}</p>
+        <p class="own-lead">{{SLOT:status.availability}}</p>
 
-        <section class="section" id="sec-build">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--amber)">{{SLOT:sec.build.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">01</div>
-          </div>
-          <div class="section__body">
-            <ul class="rows">
-              <li><b>{{SLOT:service.01.number}}</b><span>{{SLOT:service.01.title}} &#183; {{SLOT:service.01.text}}</span><em>01</em></li>
-              <li><b>{{SLOT:service.02.number}}</b><span>{{SLOT:service.02.title}} &#183; {{SLOT:service.02.text}}</span><em>02</em></li>
-              <li><b>{{SLOT:service.03.number}}</b><span>{{SLOT:service.03.title}} &#183; {{SLOT:service.03.text}}</span><em>03</em></li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section" id="sec-work">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--red)">{{SLOT:sec.work.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">02</div>
-          </div>
-          <div class="section__body">
-            <ul class="rows">
-              <li><b>{{SLOT:project.engineer-companion.results.0.value}}</b><span><a href="/work/engineer-companion/">{{SLOT:project.engineer-companion.title}}</a> &#183; {{SLOT:project.engineer-companion.summary}}</span><em>EC</em></li>
-              <li><b>{{SLOT:project.vetka-dwg.results.0.value}}</b><span><a href="/work/vetka-dwg/">{{SLOT:project.vetka-dwg.title}}</a> &#183; {{SLOT:project.vetka-dwg.summary}}</span><em>VD</em></li>
-              <li><b>{{SLOT:project.geoconverter.results.0.value}}</b><span><a href="/work/geoconverter/">{{SLOT:project.geoconverter.title}}</a> &#183; {{SLOT:project.geoconverter.summary}}</span><em>GC</em></li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section" id="sec-record">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--light-blue)">{{SLOT:sec.record.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">03</div>
-          </div>
-          <div class="section__body">
-            <ul class="rows">
-              <li><b>{{SLOT:record.1.when}}</b><span>{{SLOT:record.1.title}}</span><em></em></li>
-              <li><b>{{SLOT:record.0.when}}</b><span>{{SLOT:record.0.title}}</span><em></em></li>
-              <li><b>{{SLOT:record.2.when}}</b><span>{{SLOT:record.2.title}}</span><em></em></li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section" id="sec-facts">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--orchid)">{{SLOT:sec.facts.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">04</div>
-          </div>
-          <div class="section__body">
-          <div class="metrics">
-            <div class="metric" style="--m:var(--amber)"><span>Engineer Companion &#183; facts indexed</span><b>{{SLOT:pill.facts}}</b></div>
-            <div class="metric" style="--m:var(--light-blue)"><span>Engineer Companion &#183; benchmark</span><b>{{SLOT:pill.accuracy}}</b></div>
-            <div class="metric" style="--m:var(--red)"><span>Engineer Companion &#183; p50 CPU</span><b>{{SLOT:pill.latency}}</b></div>
-          </div>
-            <ul class="rows">
-              <li><b>{{SLOT:fact.based.value}}</b><span>{{SLOT:fact.based.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.timezone.value}}</b><span>{{SLOT:fact.timezone.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.availability.value}}</b><span>{{SLOT:fact.availability.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.english.value}}</b><span>{{SLOT:fact.english.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.focus.value}}</b><span>{{SLOT:fact.focus.label}}</span><em></em></li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="section" id="sec-links">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--cornflower)">{{SLOT:sec.links.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">05</div>
-          </div>
-          <div class="section__body">
-            <ul class="rows">
-              <li><b>01</b><span><a href="https://github.com/kukhtik/Open_space">{{SLOT:more.1.title}}</a></span><em>GIT</em></li>
-              <li><b>02</b><span><a href="https://t.me/PenaPivo_bot">{{SLOT:more.0.title}}</a></span><em>TG</em></li>
-            </ul>
-          </div>
-        </section>
+        <div class="lcars-text-bar" id="build"><h2>{{SLOT:sec.build.title}}</h2></div>
+        <ul class="lcars-list">
+          <li data-block="service.01"><b>{{SLOT:service.01.number}}</b> {{SLOT:service.01.title}} &#183; {{SLOT:service.01.text}}</li>
+          <li data-block="service.02"><b>{{SLOT:service.02.number}}</b> {{SLOT:service.02.title}} &#183; {{SLOT:service.02.text}}</li>
+          <li data-block="service.03"><b>{{SLOT:service.03.number}}</b> {{SLOT:service.03.title}} &#183; {{SLOT:service.03.text}}</li>
+        </ul>
+        <div class="lcars-text-bar" id="work"><h2>{{SLOT:sec.work.title}}</h2></div>
+        <ul class="lcars-list">
+          <li data-block="project.engineer-companion"><b>{{SLOT:project.engineer-companion.results.0.value}}</b> <a href="/work/engineer-companion/">{{SLOT:project.engineer-companion.title}}</a> &#183; {{SLOT:project.engineer-companion.summary}}</li>
+          <li data-block="project.vetka-dwg"><b>{{SLOT:project.vetka-dwg.results.0.value}}</b> <a href="/work/vetka-dwg/">{{SLOT:project.vetka-dwg.title}}</a> &#183; {{SLOT:project.vetka-dwg.summary}}</li>
+          <li data-block="project.geoconverter"><b>{{SLOT:project.geoconverter.results.0.value}}</b> <a href="/work/geoconverter/">{{SLOT:project.geoconverter.title}}</a> &#183; {{SLOT:project.geoconverter.summary}}</li>
+        </ul>
+        <div class="lcars-text-bar" id="record"><h2>{{SLOT:sec.record.title}}</h2></div>
+        <ul class="lcars-list">
+          <li data-block="record.1"><b>{{SLOT:record.1.when}}</b> {{SLOT:record.1.title}}</li>
+          <li data-block="record.0"><b>{{SLOT:record.0.when}}</b> {{SLOT:record.0.title}}</li>
+          <li data-block="record.2"><b>{{SLOT:record.2.when}}</b> {{SLOT:record.2.title}}</li>
+        </ul>
+        <div class="lcars-text-bar" id="facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
+        <div class="metrics">
+          <div class="metric" style="--m:var(--amber)"><span>Engineer Companion &#183; facts indexed</span><b>{{SLOT:pill.facts}}</b></div>
+          <div class="metric" style="--m:var(--light-blue)"><span>Engineer Companion &#183; benchmark</span><b>{{SLOT:pill.accuracy}}</b></div>
+          <div class="metric" style="--m:var(--red)"><span>Engineer Companion &#183; p50 CPU</span><b>{{SLOT:pill.latency}}</b></div>
+        </div>
+        <ul class="lcars-list">
+          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
+          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
+          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
+          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
+          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
+        </ul>
+        <div class="lcars-text-bar" id="links"><h2>{{SLOT:sec.links.title}}</h2></div>
+        <ul class="lcars-list">
+          <li><b>GIT</b> <a href="https://github.com/kukhtik/Open_space">{{SLOT:more.1.title}}</a></li>
+          <li><b>TG</b> <a href="https://t.me/PenaPivo_bot">{{SLOT:more.0.title}}</a></li>
+        </ul>

@@ -1,36 +1,18 @@
-        <h1 class="own-h1">{{SLOT:hero.name}}</h1>
-        <p class="own-lead">{{SLOT:hero.lead}}</p>
+        <p class="own-lead" data-block="hero.lead">{{SLOT:hero.lead}}</p>
 
-        <section class="section" id="sec-build">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--red)">{{SLOT:sec.contact.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">01</div>
-          </div>
-          <div class="section__body">
-            <div class="btnrow">
-              <a class="btn btn--amber" href="mailto:maxkukhto@gmail.com">Email</a>
-              <a class="btn" href="https://github.com/kukhtik" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn btn--red" href="https://www.linkedin.com/in/max-kukhto-517091337/" target="_blank" rel="noopener">LinkedIn</a>
-              <a class="btn btn--orange" href="/assets/cv-en.pdf">CV PDF</a>
-              <a class="btn btn--mauve" href="https://t.me/PenaPivo_bot" target="_blank" rel="noopener">Telegram</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="sec-facts">
-          <div class="section__bar">
-            <div class="cell" style="--c:var(--orchid)">{{SLOT:sec.facts.title}}</div>
-            <div class="cell cell--grow"></div>
-            <div class="cell cell--num" style="--c:var(--black)">02</div>
-          </div>
-          <div class="section__body">
-            <ul class="rows">
-              <li><b>{{SLOT:fact.based.value}}</b><span>{{SLOT:fact.based.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.timezone.value}}</b><span>{{SLOT:fact.timezone.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.availability.value}}</b><span>{{SLOT:fact.availability.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.english.value}}</b><span>{{SLOT:fact.english.label}}</span><em></em></li>
-              <li><b>{{SLOT:fact.focus.value}}</b><span>{{SLOT:fact.focus.label}}</span><em></em></li>
-            </ul>
-          </div>
-        </section>
+        <div class="lcars-text-bar" id="contact"><h2>{{SLOT:sec.contact.title}}</h2></div>
+        <div class="buttons">
+          <button class="button-orange" onclick="location.href='mailto:maxkukhto@gmail.com'">Email</button>
+          <button class="button-bluey" onclick="window.open('https://github.com/kukhtik','_blank')">GitHub</button>
+          <button class="button-red" onclick="window.open('https://www.linkedin.com/in/max-kukhto-517091337/','_blank')">LinkedIn</button>
+          <button class="button-african-violet" onclick="location.href='/assets/cv-en.pdf'">CV PDF</button>
+          <button class="button-true-mauve" onclick="window.open('https://t.me/PenaPivo_bot','_blank')">Telegram</button>
+        </div>
+        <div class="lcars-text-bar" id="facts"><h2>{{SLOT:sec.facts.title}}</h2></div>
+        <ul class="lcars-list">
+          <li><b>{{SLOT:fact.based.value}}</b> {{SLOT:fact.based.label}}</li>
+          <li><b>{{SLOT:fact.timezone.value}}</b> {{SLOT:fact.timezone.label}}</li>
+          <li><b>{{SLOT:fact.availability.value}}</b> {{SLOT:fact.availability.label}}</li>
+          <li><b>{{SLOT:fact.english.value}}</b> {{SLOT:fact.english.label}}</li>
+          <li><b>{{SLOT:fact.focus.value}}</b> {{SLOT:fact.focus.label}}</li>
+        </ul>

@@ -1,6 +1,10 @@
 # AGENTS.md — runbook
 
-Content-driven static site: slot table + LCARS templates → `dist/` → GitHub Pages. Design in `DESIGN.md`.
+Content-driven static site: slot table + the LCARS components → `dist/` → GitHub Pages.
+
+**The design code is in `docs/lcars-code-design/`** - read `00-README.md` first.
+The machine-readable form is `docs/lcars-code-design/lcars-spec.json`, and
+`scripts/check_spec.py` fails the build when the stylesheets drift from it.
 
 The console is the LCARS frame of theLCARS (banner, data cascade, navigation, the
 panel staircase) with the content set into the window. The frame is the template's own

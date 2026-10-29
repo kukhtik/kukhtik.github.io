@@ -8,6 +8,7 @@
 <link rel="canonical" href="{{CANONICAL}}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/lcars.css">
 <link rel="stylesheet" href="/assets/console.css">
 </head>
 <body data-page="{{PAGE}}">
@@ -15,49 +16,59 @@
 
 <div class="console">
 
-  <header class="status">
-    <div class="cell cell--start" style="--c:var(--orchid)"><b>{{SLOT:hero.name}}</b><i>{{SLOT:hero.role}}</i></div>
-    <div class="cell cell--num" style="--c:var(--cornflower)"><i>{{SLOT:casc.clock.label}}</i><span data-live="clock-h">--</span>:<span data-live="clock-m">--</span>:<span data-live="clock-s">--</span></div>
-    <div class="cell cell--num" style="--c:var(--light-blue)"><i>{{SLOT:casc.date.label}}</i><span data-live="date-d">--</span>.<span data-live="date-m">--</span>.<span data-live="date-y">----</span></div>
-    <div class="cell cell--num" style="--c:var(--amber)"><i>stardate</i><span data-live="sd-a">----</span>.<span data-live="sd-b">-</span></div>
-    <div class="cell cell--num" style="--c:var(--orange)"><i>{{SLOT:casc.days.label}}</i><span data-live="days">--</span></div>
-    <div class="cell cell--num" style="--c:var(--red)"><i>{{SLOT:casc.uptime.label}}</i><span data-live="up-h">--</span>:<span data-live="up-m">--</span>:<span data-live="up-s">--</span></div>
-    <div class="cell cell--num" style="--c:var(--orchid)"><i>{{SLOT:casc.index.label}}</i><span data-live="facts-a">21</span><span data-live="facts-b">214</span></div>
-    <div class="cell cell--start" style="--c:var(--red)"><i>{{SLOT:status.availability}}</i></div>
-    {{READOUT}}
-    <nav class="status__nav" aria-label="Primary">
-      <a class="cell" href="{{RU}}/" style="--c:var(--cornflower)">01-{{SLOT:nav.home}}</a>
-      <a class="cell" href="{{RU}}/work/" style="--c:var(--red)">02-{{SLOT:nav.work}}</a>
-      <a class="cell" href="{{RU}}/about/" style="--c:var(--orange)">03-{{SLOT:nav.about}}</a>
-      <a class="cell" href="{{RU}}/contact/" style="--c:var(--orchid)">04-{{SLOT:nav.contact}}</a>
-      <a class="cell cell--num" href="#" data-lang-toggle style="--c:var(--amber)">{{SLOT:chrome.lang}}</a>
-    </nav>
-  </header>
+  <h1 class="console__title">{{SLOT:hero.name}} &#149; {{SLOT:hero.tagline}}</h1>
 
-  <aside class="menu">
-    {{MENU}}
+  <div class="console__top">
+    <div class="readout">
+      <div class="readout__legend">
+        <span>{{SLOT:casc.clock.label}}</span>
+        <span>{{SLOT:casc.date.label}}</span>
+        <span>{{SLOT:casc.days.label}}</span>
+        <span>{{SLOT:casc.uptime.label}}</span>
+        <span>{{SLOT:casc.index.label}}</span>
+      </div>
+      <div class="data-cascade-wrapper" id="default">
+{{CASCADE}}
+      </div>
+    </div>
+    <nav class="console__nav" aria-label="Primary">
+      <a href="{{RU}}/" class="nav-1" data-block="nav.home">01-{{SLOT:nav.home}}</a>
+      <a href="{{RU}}/work/" class="nav-2" data-block="nav.work">02-{{SLOT:nav.work}}</a>
+      <a href="{{RU}}/about/" class="nav-3" data-block="nav.about">03-{{SLOT:nav.about}}</a>
+      <a href="{{RU}}/contact/" class="nav-4" data-block="nav.contact">04-{{SLOT:nav.contact}}</a>
+      <a href="#" class="lang" data-lang-toggle>{{SLOT:chrome.lang}}</a>
+    </nav>
+  </div>
+
+  <aside class="spine">
+    <div class="spine__top">
+      <button class="panel-1" type="button">{{SLOT:hero.name}}<span class="hop">&#183;PY/AI</span></button>
+      <button class="panel-2" type="button">{{SLOT:status.place}}<span class="hop">&#183;{{SLOT:status.from}}</span></button>
+    </div>
+    <div class="spine__stack">
+{{SPINE}}
+    </div>
   </aside>
 
-  <main class="window" id="main">
-    <div class="window__body">
+  <main class="console__window" id="main">
+    <div class="console__content">
 {{CONTENT}}
     </div>
-    <div class="window__title">
-      <div class="cell" style="--c:var(--red)">{{SLOT:float.caption}}</div>
-      <div class="cell cell--grow"></div>
-      <div class="cell cell--num" style="--c:var(--light-blue)">{{SLOT:status.from}}</div>
-      <div class="cell cell--num" style="--c:var(--amber)">UTC+3</div>
+    <div class="console__titlebar">
+      <div class="tb-name">{{SLOT:float.caption}}</div>
+      <div class="tb-fill"></div>
+      <div class="tb-meta">{{SLOT:status.from}} &#183; UTC+3</div>
     </div>
   </main>
 
-</div>
+  <aside class="console__edge" aria-hidden="true">
+    <i style="--c:var(--cornflower)"></i><i style="--c:var(--amber)"></i><i style="--c:var(--light-blue)"></i>
+    <i style="--c:var(--orchid)"></i><i style="--c:var(--red)"></i><i style="--c:var(--orange)"></i>
+    <i style="--c:var(--cornflower)"></i><i style="--c:var(--amber)"></i><i style="--c:var(--light-blue)"></i>
+    <i style="--c:var(--orchid)"></i><i style="--c:var(--red)"></i><i style="--c:var(--orange)"></i>
+  </aside>
 
-<aside class="edge" aria-hidden="true">
-  <i style="--c:var(--cornflower)"></i><i style="--c:var(--amber)"></i><i style="--c:var(--light-blue)"></i>
-  <i style="--c:var(--orchid)"></i><i style="--c:var(--red)"></i><i style="--c:var(--orange)"></i>
-  <i style="--c:var(--cornflower)"></i><i style="--c:var(--amber)"></i><i style="--c:var(--light-blue)"></i>
-  <i style="--c:var(--orchid)"></i><i style="--c:var(--red)"></i><i style="--c:var(--orange)"></i>
-</aside>
+</div>
 
 <script src="/assets/app.js"></script>
 </body>

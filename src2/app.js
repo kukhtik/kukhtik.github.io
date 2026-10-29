@@ -122,12 +122,12 @@
   var sections = [];
   function collectSections() {
     sections = [];
-    document.querySelectorAll('main .section[id]').forEach(function (el) {
+    document.querySelectorAll('main .lcars-text-bar[id]').forEach(function (el) {
       sections.push({ id: el.id, el: el });
     });
   }
   function syncPanels() {
-    var panels = document.querySelectorAll('.menu [data-target]');
+    var panels = document.querySelectorAll('.spine [data-target]');
     if (!panels.length) return;
     var current = sections.length ? sections[0].id : null;
     var main = document.getElementById('main');
@@ -146,7 +146,7 @@
   function revealOnScroll() {
     if (reduced) return;
     if (!('IntersectionObserver' in window)) return;
-    var targets = document.querySelectorAll('.lcars-text-bar, .lcars-list li, .readout__cell, .own-metric, .image-frame');
+    var targets = document.querySelectorAll('.lcars-text-bar, .lcars-list li, .metric, .image-frame');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;

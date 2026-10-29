@@ -1,0 +1,204 @@
+{
+  "name": "lcars-console",
+  "version": 1,
+  "tokens": {
+    "space": {
+      "gutter": "8px",
+      "cell": "40px",
+      "edge": "31px"
+    },
+    "radius": {
+      "elbow": "20px",
+      "elbow_rule": "one rounded end per shape, radius = half the thickness"
+    },
+    "colour": {
+      "orchid": "#cc99cc",
+      "cornflower": "#9999ff",
+      "light_blue": "#9999cc",
+      "red": "#cc6666",
+      "orange": "#ff9966",
+      "amber": "#ff9900",
+      "black": "#000",
+      "ink": "#d8d8e2",
+      "muted": "#9a9aae"
+    },
+    "type": {
+      "display": "Oswald / Arial Narrow",
+      "numeric": "IBM Plex Mono / monospace",
+      "rule": "uppercase for labels, right aligned, knocked out in black on a colour"
+    }
+  },
+  "roles": {
+    "title": {
+      "selector": ".console__title",
+      "colour": "var(--banner-color)"
+    },
+    "readout": {
+      "selector": ".readout .data-cascade-wrapper",
+      "component": "data-cascade"
+    },
+    "nav": {
+      "selector": ".console__nav a",
+      "colours": {
+        "nav-1": "cornflower",
+        "nav-2": "orange",
+        "nav-3": "butterscotch",
+        "nav-4": "red"
+      }
+    },
+    "spine": {
+      "selector": ".spine__stack .panel-N",
+      "component": "panel-N",
+      "heights": "owned by the template CSS - never an inline style"
+    },
+    "window": {
+      "selector": ".console__window"
+    },
+    "titlebar": {
+      "selector": ".console__titlebar",
+      "rule": "below the window"
+    },
+    "edge": {
+      "selector": ".console__edge"
+    }
+  },
+  "components": [
+    {
+      "id": "readout-field",
+      "markup": "<div class=\"readout\"><div class=\"data-cascade-wrapper\">{{CASCADE}}</div></div>",
+      "role": "the live numbers",
+      "rules": [
+        "24 columns x 7 rows",
+        "the digits are our measurements",
+        "the colour cycles in groups"
+      ]
+    },
+    {
+      "id": "section-title",
+      "markup": "<div class=\"lcars-text-bar\"><h2>Title</h2></div>",
+      "role": "the title of a section",
+      "rules": [
+        "the heading is knocked out in black"
+      ]
+    },
+    {
+      "id": "row-list",
+      "markup": "<ul class=\"lcars-list\"><li><b>12</b><span>text</span></li></ul>",
+      "role": "the rows",
+      "rules": [
+        "the marker is an ellipse 34x18",
+        "the number comes first"
+      ]
+    },
+    {
+      "id": "picture",
+      "markup": "<div class=\"image-frame\">...</div>",
+      "role": "the picture",
+      "rules": [
+        "the five-block base is the signature"
+      ]
+    },
+    {
+      "id": "actions",
+      "markup": "<div class=\"buttons\"><button class=\"button-orange\">X</button></div>",
+      "role": "the actions",
+      "rules": [
+        "one colour per action type"
+      ]
+    },
+    {
+      "id": "metric",
+      "markup": "<div class=\"metric\"><span>label</span><b>value</b></div>",
+      "role": "a measured figure with its source named",
+      "rules": [
+        "the project is named in the label"
+      ]
+    },
+    {
+      "id": "spine-block",
+      "markup": "<button class=\"panel-3\" data-target=\"sec-x\">01</button>",
+      "role": "one block per section",
+      "rules": [
+        "no inline height",
+        "the height comes from the template CSS"
+      ]
+    }
+  ],
+  "pages": {
+    "home": {
+      "spine": [
+        "build",
+        "work",
+        "record",
+        "facts",
+        "links"
+      ],
+      "content": [
+        "lead",
+        "five sections"
+      ]
+    },
+    "work": {
+      "spine": [
+        "cases",
+        "facts"
+      ],
+      "content": [
+        "one list of the 14 cases"
+      ]
+    },
+    "case": {
+      "spine": [
+        "problem",
+        "approach",
+        "results",
+        "stack"
+      ],
+      "content": [
+        "title",
+        "gallery",
+        "four sections"
+      ]
+    },
+    "about": {
+      "spine": [
+        "about",
+        "record",
+        "facts"
+      ],
+      "content": [
+        "lead",
+        "three sections"
+      ]
+    },
+    "contact": {
+      "spine": [
+        "contact",
+        "facts"
+      ],
+      "content": [
+        "lead",
+        "actions",
+        "facts"
+      ]
+    }
+  },
+  "gates": [
+    {
+      "id": "validate_slots",
+      "proves": "the content table: both languages, the per-entry limits, the images on disk, no forbidden claim"
+    },
+    {
+      "id": "check_dist",
+      "proves": "every page: lang, title, description, canonical, one h1, alt text, the internal links, the sitemap"
+    },
+    {
+      "id": "check_frame",
+      "proves": "the frame rules: the 8px gutters, the 40px cells, the 20px elbow, the 31px edge, no sideways scroll"
+    },
+    {
+      "id": "balanced html",
+      "proves": "the generated markup is balanced, so the parser cannot move a block out of its parent"
+    }
+  ]
+}

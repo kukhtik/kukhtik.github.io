@@ -1,0 +1,128 @@
+{
+  "what_this_is": "The numbers behind the rules. Every value was measured in pixels from the reference material; the source is named for each one.",
+  "measured_on": "2026-10-29",
+  "sources": {
+    "lcarsde_overview": "https://lcarsde.github.io/images/lcarsde-overview.png",
+    "lcarsde_status_bar": "https://lcarsde.github.io/images/status-bar.png",
+    "lcarsde_app_menu": "https://lcarsde.github.io/images/app-menu.png",
+    "lcarsde_manual": "https://lcarsde.github.io/manual.html",
+    "thelcars_elements": "https://www.thelcars.com/html-elements.php",
+    "thelcars_flex": "https://www.thelcars.com/flex.php",
+    "tng_panels": "http://www.lcars.org.uk/lcars_TNG_panels.htm",
+    "lcars_workshop": "https://lcarsworkshop.com/"
+  },
+  "geometry": {
+    "gutter_px": {
+      "value": 8,
+      "where": "between every two blocks, in all three lcarsde screenshots",
+      "note": "the widest gutter measured is 10px, at the elbow of a block; the plain gap is 8px"
+    },
+    "cell_thickness_px": {
+      "value": 40,
+      "where": "the cells of the application menu"
+    },
+    "elbow_radius_px": {
+      "value": 20,
+      "where": "the rounded end of a 40px cell",
+      "note": "one rounded end only, radius = half the thickness"
+    },
+    "frame_edge_px": {
+      "value": 31,
+      "where": "the segments of the right frame edge"
+    },
+    "status_cell_width_px": {
+      "value": 91,
+      "where": "the coloured cells of the lcarsde status bar",
+      "note": "the black areas between them are the text"
+    },
+    "black_gutter": {
+      "value": "#000",
+      "note": "black is the gutter and the field, never a background behind a block"
+    }
+  },
+  "palette": {
+    "orchid": "#cc99cc",
+    "cornflower": "#9999ff",
+    "light_blue": "#9999cc",
+    "red": "#cc6666",
+    "orange": "#ff9966",
+    "amber": "#ff9900",
+    "black": "#000",
+    "source": "read out of the lcarsde screenshots; these are the canonical LCARS colours"
+  },
+  "the_frame_parts": {
+    "title": "one line of large right-aligned type, above everything",
+    "readout_field": "a field of right-aligned digits, in rows; the numbers are the content",
+    "nav": "four buttons, always at the top right",
+    "spine": "a stack of tall blocks on the left edge",
+    "window": "the reading area; its title bar sits BELOW it (lcarsde manual)",
+    "edge": "a strip of 31px segments closing the frame on the right"
+  },
+  "the_component_catalogue": {
+    "source": "https://www.thelcars.com/html-elements.php and the template's CSS",
+    "components": [
+      {
+        "name": ".lcars-bar",
+        "what": "one empty coloured div",
+        "role": "a separator"
+      },
+      {
+        "name": ".lcars-text-bar",
+        "what": "a bar with the heading knocked out in black",
+        "role": "the title of a section"
+      },
+      {
+        "name": ".lcars-list",
+        "what": "a list, each row with an ellipse marker 34x18",
+        "role": "the row list"
+      },
+      {
+        "name": ".flexbox / .col",
+        "what": "two columns that wrap on narrow screens",
+        "role": "paired content"
+      },
+      {
+        "name": ".image-frame",
+        "what": "a picture in a frame with a five-block base",
+        "role": "the picture"
+      },
+      {
+        ".buttons + button-<colour>": {
+          "what": "the action buttons",
+          "role": "the actions"
+        }
+      },
+      {
+        "name": ".font-<colour> / .bullet-<colour>",
+        "what": "colour by class name",
+        "role": "the typed colour vocabulary"
+      },
+      {
+        "name": ".blink / -slow / -fast",
+        "what": "a blinking element",
+        "role": "the only live marker"
+      },
+      {
+        "name": ".blockquote",
+        "what": "a quote",
+        "role": "a citation"
+      },
+      {
+        "name": ".panel-N",
+        "what": "the tall left blocks",
+        "role": "the spine"
+      },
+      {
+        "name": ".data-cascade",
+        "what": "a grid of digits whose colour cycles in groups",
+        "role": "the readout field"
+      }
+    ]
+  },
+  "the_motion": {
+    "readout_colour_cycle": "the digit rows cycle their colour in groups (data-group-1/1a/2/2b/3) every 6s - the layout never moves",
+    "press_feedback": "a panel answers a press with brightness, and the frame segment next to it answers too (the template does it with :has())",
+    "value_change": "a changed value rolls or flips; it never fades in",
+    "the_only_blink": "a live state blinks, slowly"
+  }
+}

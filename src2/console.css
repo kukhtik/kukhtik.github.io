@@ -1,190 +1,171 @@
 /* ===================================================================
-   THE CONSOLE FRAME - built to the measured LCARS rules.
+   THE CONSOLE - our composition of the LCARS components.
 
-   The rules came from the lcarsde desktop screenshots (the canonical
-   reference), measured in pixels:
+   The components themselves are the template's (lcars.css): the readout
+   field (data-cascade), the section title (lcars-text-bar), the rows
+   (lcars-list), the picture (image-frame), the actions (buttons).
 
-     * every block is separated from the next by an 8 px black gutter
-     * a block is 40 px thick (the menu cells) or 31 px (the frame edge)
-     * a block has ONE rounded end - the elbow - with a radius of about
-       half its thickness
-     * the label is knocked out in black and pushed to the right
-     * the colours are the canonical set: orchid, cornflower, light blue,
-       red, orange, amber - and black is the gutter, never a background
-
-   Nothing here is copied from a page: the frame is composed here, to the
-   rules, around our own content.
+   This file is only the FRAME: the five parts, their places, and the
+   measured rules - the 8 px gutter, the 40 px cell, the 20 px elbow, the
+   31 px edge. See docs/lcars-code-design.md.
    =================================================================== */
 
 :root{
+  --gutter:8px;
   --orchid:#cc99cc;
   --cornflower:#9999ff;
   --light-blue:#9999cc;
   --red:#cc6666;
   --orange:#ff9966;
   --amber:#ff9900;
-  --black:#000;
-  --gutter:8px;        /* measured: the gap between two blocks */
-  --cell:40px;         /* measured: the thickness of a cell */
-  --elbow:20px;        /* measured: one rounded end, half the thickness */
-  --edge:31px;         /* measured: the frame's edge segment */
   --ink:#d8d8e2;
-  --font-ui:"Oswald","Arial Narrow",sans-serif;
-  --font-num:"IBM Plex Mono",ui-monospace,monospace;
+  --muted:#9a9aae;
+  --cell:40px;
+  --elbow:20px;
+  --edge:31px;
+  --ink:#d8d8e2;
 }
 
-*,*::before,*::after{box-sizing:border-box}
-
-html{font-size:16px}
-body{
-  margin:0;background:var(--black);color:var(--ink);
-  font-family:var(--font-ui);
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit;text-decoration:none}
-h1,h2,h3,h4,p,ul,li,figure{margin:0;padding:0}
-ul{list-style:none}
-
-/* ---- the frame: the status bar on top, the menu and the window below --- */
 .console{
   display:grid;
   grid-template-columns:232px minmax(0,1fr);
-  grid-template-rows:auto minmax(0,1fr);
+  grid-template-rows:auto auto minmax(0,1fr);
   gap:var(--gutter);
   padding:var(--gutter);
+  background:#000;
   min-height:100vh;
 }
 
-/* ---- a cell: one shape, one rounded end, the label knocked out ------- */
-.cell{
-  position:relative;
-  display:flex;align-items:center;justify-content:flex-end;
-  gap:.5rem;
-  min-height:var(--cell);
-  padding:0 .9rem;
-  background:var(--c,var(--cornflower));
-  color:#000;
-  border-radius:0 var(--elbow) var(--elbow) 0;
-  font-size:.86rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
-  white-space:nowrap;overflow:hidden;
+/* ---- 1. THE TITLE: one line, big, pushed right ---------------------- */
+.console__title{
+  grid-row:1;grid-column:1/-1;
+  margin:0;
+  font-size:clamp(1.5rem,1rem + 2.2vw,3.2rem);
+  line-height:1.05;
+  text-align:right;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  color:var(--banner-color);
+  font-weight:400;
 }
-.cell--start{border-radius:var(--elbow) 0 0 var(--elbow)}
-.cell b{font-weight:600}
-.cell i{font-style:normal;letter-spacing:.1em;opacity:.72}
-.cell--num{font-family:var(--font-num);letter-spacing:.06em}
-.cell--grow{flex:1 1 auto;justify-content:flex-start}
-.cell--void{background:var(--black);color:var(--ink)}
 
-/* ---- 1. THE STATUS BAR: the top strip ------------------------------- */
-.status{
-  grid-column:1/-1;
-  display:flex;align-items:stretch;gap:var(--gutter);
-  min-height:var(--cell);
+/* ---- 2. THE READOUT FIELD + THE NAV --------------------------------- */
+.console__top{
+  grid-row:2;grid-column:1/-1;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:var(--gutter);
 }
-.status__nav{display:flex;gap:var(--gutter);margin-left:auto}
-.status__nav .cell{font-size:.78rem}
-
-/* the readout field: the numbers, in cells, separated by the gutter */
-.readout{display:flex;gap:var(--gutter);align-items:stretch}
-.readout .cell{min-width:64px;justify-content:center;padding:0 .6rem}
-.readout .cell span{font-family:var(--font-num);font-size:.82rem;letter-spacing:.04em}
-
-/* ---- 2. THE APPLICATION MENU: the left column ----------------------- */
-.menu{
-  grid-row:2;
-  display:grid;gap:var(--gutter);align-content:start;
+.readout{flex:1 1 auto;min-width:0;overflow:hidden}
+.readout .data-cascade-wrapper{padding-left:0;padding-right:0}
+.console__nav{display:flex;gap:var(--gutter);align-items:flex-start;flex:0 0 auto;flex-wrap:nowrap}
+.console__nav a{
+  display:flex;align-items:flex-end;justify-content:flex-end;
+  min-height:var(--cell);padding:0 .9rem;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#000;
+  white-space:nowrap;
 }
-.menu .cell{width:100%;min-height:var(--cell)}
-.menu__spacer{height:var(--gutter)}
-.menu__big{
-  min-height:120px;align-items:flex-end;
-  border-radius:var(--elbow) 0 0 var(--elbow);
-  padding-bottom:.9rem;
-}
-.menu__big i{display:block;font-size:.7rem;letter-spacing:.14em;opacity:.7}
+.console__nav a:hover{filter:brightness(118%)}
+.console__nav a:active{filter:brightness(88%)}
+.console__nav .nav-1{background:var(--nav-1,var(--bluey));border-radius:var(--elbow)}
+.console__nav .nav-2{background:var(--nav-2,var(--orange));border-radius:var(--elbow)}
+.console__nav .nav-3{background:var(--nav-3,var(--butterscotch));border-radius:var(--elbow)}
+.console__nav .nav-4{background:var(--nav-4,var(--red));border-radius:var(--elbow)}
+.console__nav .lang{background:var(--barley);border-radius:var(--elbow);font-family:var(--font-num,monospace)}
 
-/* ---- 3. THE WINDOW: the title bar sits BELOW the body -------------- */
-.window{
-  grid-row:2;grid-column:2;
+/* ---- 3. THE SPINE: the tall blocks on the left ----------------------- */
+.spine{grid-row:3;grid-column:1;display:flex;flex-direction:column;justify-content:space-between;gap:var(--gutter);min-width:0}
+.spine__top{display:flex;flex-direction:column;background:var(--left-frame-top-color);border-radius:var(--radius-top,0 0 0 100px)}
+.spine__stack{display:flex;flex-direction:column;gap:var(--gutter)}
+.spine__stack .panel-3,.spine__stack .panel-4,.spine__stack .panel-5,
+.spine__stack .panel-6,.spine__stack .panel-7{width:100%}
+
+/* ---- 4. THE WINDOW: the content, and its title bar BELOW ------------- */
+.console__window{
+  grid-row:3;grid-column:2;
   display:grid;grid-template-rows:minmax(0,1fr) auto;gap:var(--gutter);
   min-width:0;
 }
-.window__body{min-width:0;padding:.2rem .4rem 1.2rem}
-.window__title{
-  display:flex;gap:var(--gutter);align-items:stretch;
-}
-.window__title .cell{min-height:32px;font-size:.72rem}
-.window__title .cell--grow{flex:1 1 auto;background:var(--black)}
+.console__content{min-width:0;padding:.2rem .5rem 1rem}
+.console__titlebar{display:flex;gap:var(--gutter);align-items:stretch}
+.console__titlebar > *{min-height:32px;font-size:.74rem;letter-spacing:.14em}
+.console__titlebar .tb-name{background:var(--red);color:#000;display:flex;align-items:center;padding:0 .9rem;border-radius:var(--elbow)}
+.console__titlebar .tb-fill{flex:1 1 auto;background:#000}
+.console__titlebar .tb-meta{background:var(--light-blue);color:#000;display:flex;align-items:center;padding:0 .9rem;border-radius:var(--elbow);font-family:var(--font-num,monospace)}
 
-/* the sections inside the window */
-.section{margin:0 0 1.4rem}
-.section__bar{
-  display:flex;gap:var(--gutter);align-items:stretch;margin:0 0 .5rem;
-}
-.section__bar .cell{min-height:34px;font-size:.78rem}
-.section__bar .cell--grow{flex:1 1 auto;background:var(--black)}
-.section__body{display:grid;gap:.45rem}
-.section__body p{font-size:.92rem;line-height:1.5;color:var(--ink)}
-.rows{display:grid;gap:.3rem}
-.rows li{
-  display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:.6rem;align-items:baseline;
-  padding:.3rem .5rem;border-bottom:1px solid #17171f;font-size:.92rem;
-}
-.rows li b{font-family:var(--font-num);color:var(--amber);font-weight:500}
-.rows li em{font-style:normal;color:#8a8a9c;font-size:.78rem}
-.metric{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.8rem;align-items:baseline;
-  padding:.35rem .5rem;border-left:3px solid var(--m,var(--amber));background:#0b0b12;
-}
-.metric b{font-family:var(--font-num);font-size:1.05rem;color:var(--m,var(--amber))}
-.metric span{font-size:.8rem;color:#9a9aae}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--gutter);margin:.6rem 0 1.2rem}
-.shot{border:1px solid #22222c;background:#0b0b12}
-.shot img{display:block;width:100%;height:120px;object-fit:cover}
-.shot figcaption{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8a8a9c;padding:.35rem .5rem}
-.btnrow{display:flex;flex-wrap:wrap;gap:var(--gutter);margin:.8rem 0}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:var(--cell);padding:0 1.4rem;
-  background:var(--b,var(--cornflower));color:#000;
-  border-radius:var(--elbow);
-  font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;
-  transition:filter .2s ease;
-}
-.btn:hover{filter:brightness(115%)}
-.btn:active{filter:brightness(88%)}
-.btn--amber{--b:var(--amber)}
-.btn--red{--b:var(--red)}
-.btn--orchid{--b:var(--orchid)}
-.btn--orange{--b:var(--orange)}
-.btn--mauve{--b:var(--light-blue)}
-.blink{animation:bl 1.8s step-end infinite}
-@keyframes bl{0%,60%{opacity:1}61%,100%{opacity:.25}}
-@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
-
-/* ---- the frame's edge: a strip of segments on the right ------------- */
-.edge{
+/* ---- 5. THE EDGE: the strip that closes the frame -------------------- */
+.console__edge{
   position:fixed;top:0;right:0;bottom:0;width:var(--edge);
   display:grid;grid-auto-rows:var(--cell);gap:var(--gutter);
   padding:var(--gutter) 0;z-index:2;pointer-events:none;
 }
-.edge i{display:block;background:var(--c,var(--cornflower));border-radius:0 0 0 var(--elbow)}
-.edge i:nth-child(3n){border-radius:var(--elbow) 0 0 0}
-.edge i:nth-child(4n){border-radius:0 var(--elbow) 0 0}
+.console__edge i{display:block;background:var(--c,var(--bluey));border-radius:0 0 0 var(--elbow)}
+.console__edge i:nth-child(3n){border-radius:var(--elbow) 0 0 0}
+.console__edge i:nth-child(4n){border-radius:0 var(--elbow) 0 0}
 
-/* ---- narrow screens: the menu becomes a strip above the window ------ */
-@media (max-width:900px){
-  .console{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr)}
-  .status{grid-column:1;flex-wrap:wrap}
-  .status__nav{margin-left:0;flex-wrap:wrap}
-  .menu{grid-row:2;grid-auto-flow:column;grid-auto-columns:minmax(140px,1fr);overflow-x:auto}
-  .menu__big{min-height:var(--cell)}
-  .window{grid-row:3;grid-column:1}
-  .edge{display:none}
-}
-
-.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--gutter)}
-.own-h1{font-size:1.6rem;line-height:1.15;color:#fff;letter-spacing:.02em;text-transform:none;font-weight:600}
-.own-lead{font-size:.95rem;color:#9a9aae;margin:.2rem 0 1rem}
+/* ---- the content layer: the components are the template's ------------ */
+.lcars-text-bar{margin-block:1.4rem .4rem}
+.lcars-list li{font-size:.92rem;color:var(--ink)}
+.lcars-list li b{color:var(--amber);font-weight:500}
+.lcars-list li a{color:var(--sky,#99f)}
+main h1{font-size:1.6rem;text-transform:none;letter-spacing:.01em;text-align:left;color:#fff}
+main p{color:#b9b9c8}
+.own-lead{color:#9a9aae !important;font-size:.95rem !important}
+.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:var(--gutter);margin:.6rem 0}
+.metric{display:flex;justify-content:space-between;gap:.8rem;align-items:baseline;padding:.35rem .6rem;border-left:3px solid var(--m,var(--amber));background:#0b0b12}
+.metric span{font-size:.8rem;color:#9a9aae}
+.metric b{font-family:var(--font-num,monospace);font-size:1.05rem;color:var(--m,var(--amber))}
+.buttons{margin-block:1rem}
+.buttons button{border-radius:var(--elbow)}
 .own-skip{position:absolute;left:-9999px}
 .own-skip:focus{left:.5rem;top:.5rem;z-index:9;background:#000;color:var(--amber);padding:.5rem 1rem}
+.blink{animation:blink 1.9s step-end infinite}
+@keyframes blink{0%,60%{opacity:1}61%,100%{opacity:.25}}
+
+@media (max-width:900px){
+  .console{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto minmax(0,1fr)}
+  .console__top{flex-direction:column}
+  .console__nav{flex-wrap:wrap}
+  .spine{grid-row:3;grid-column:1}
+  .spine__stack{flex-direction:row;flex-wrap:wrap}
+  .spine__stack .panel-3,.spine__stack .panel-4,.spine__stack .panel-5,
+  .spine__stack .panel-6,.spine__stack .panel-7{width:auto;flex:1 1 140px;height:40px !important;min-height:40px !important}
+  .console__window{grid-row:4;grid-column:1}
+  .console__edge{display:none}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+
+
+/* ===================================================================
+   MOTION - the vocabulary of docs/lcars-code-design/06-motion.md.
+   Nothing fades in, nothing scales up: blocks move, and they move only
+   for a reason. The distance travels in the independent `translate`
+   property, so the settled state always wins over the starting one.
+   =================================================================== */
+:root{--ease:cubic-bezier(.16,.84,.34,1)}
+
+@keyframes own-flip{0%{transform:rotateX(0)}45%{transform:rotateX(-86deg)}100%{transform:rotateX(0)}}
+.dc-row-1.is-rolling,.dc-row-2.is-rolling,.dc-row-3.is-rolling,.dc-row-4.is-rolling,
+.dc-row-5.is-rolling,.dc-row-6.is-rolling,.dc-row-7.is-rolling{animation:own-flip .34s var(--ease)}
+
+.lcars-text-bar{--shift:0}
+.lcars-list li{--shift:-14px}
+.own-reveal{translate:var(--shift,0);transition:translate .34s var(--ease) var(--d,0ms)}
+.is-in{translate:none}
+.lcars-text-bar.own-reveal{clip-path:inset(0 100% 0 0)}
+.lcars-text-bar.is-in{clip-path:inset(0 0 0 0);transition:clip-path .34s var(--ease) var(--d,0ms)}
+
+.spine [data-target]{transition:filter .3s var(--ease)}
+.spine .own-off{filter:brightness(30%) saturate(.35)}
+.spine .own-on{filter:brightness(108%)}
+
+body.is-standby .console{filter:brightness(.5) saturate(.55);transition:filter .8s var(--ease)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .own-reveal,.is-in{translate:none !important;clip-path:none !important}
+}
+
+.readout__legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:.35rem}
+.readout__legend span{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#8a8a9c}
+.own-note{font-size:.86rem !important;color:#7a7a8e !important;margin:.2rem 0 0 !important}
+
+.own-role{font-size:.8rem !important;letter-spacing:.16em;text-transform:uppercase;color:var(--amber) !important;margin:0 0 .3rem !important}

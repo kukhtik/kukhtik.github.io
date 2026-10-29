@@ -30,6 +30,7 @@ jobs:
       - run: python scripts/validate_slots.py
       - run: python build.py
       - run: python scripts/check_dist.py
+      - run: python scripts/check_spec.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

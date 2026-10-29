@@ -127,29 +127,15 @@ function panels(table, page) {
   }));
 }
 
-// --- the application menu: one cell per section, then the big block ------
-function menu(table, page, lang) {
+// --- the spine: one block per section, the template's own panel geometry ---
+// The heights are the template's (min-height, 22vh, 29vh, 30vh) and are
+// never overridden - an inline height on a panel is what broke the frame.
+function spine(table, page) {
   const sections = table.sections?.[page] ?? table.sections?.home ?? [];
-  const colours = ['var(--orchid)', 'var(--red)', 'var(--orange)', 'var(--light-blue)', 'var(--cornflower)', 'var(--amber)'];
-  const cells = sections.map((section, index) =>
-    `      <a class="cell" href="#${esc(section.id)}" data-target="${esc(section.id)}" style="--c:${colours[index % colours.length]}">${String(index + 1).padStart(2, '0')}<i>${esc(section.label)}</i></a>`);
-  cells.push('      <a class="cell cell--start menu__big" href="#sec-links" style="--c:var(--orchid)">{{SLOT:status.place}}<i>{{SLOT:status.from}}</i></a>');
-  return cells.join('\n');
+  return sections.map((section, index) => {
+    const panel = 3 + (index % 5);              // panel-3 .. panel-7
+    return `      <button class="panel-${panel}" type="button" data-target="${esc(section.id)}">${String(index + 1).padStart(2, '0')}<span class="hop">${esc(section.label)}</span></button>`;
+  }).join('\n');
 }
 
-// --- the readout: the numbers of the cases, in cells --------------------
-function readout(table) {
-  const projects = table.slots['mid.projects'] ?? [];
-  const cells = [];
-  for (const project of projects.slice(0, 4)) {
-    const result = (project.results ?? [])[0];
-    if (!result) continue;
-    const title = typeof project.title === 'object' ? (project.title.en ?? '') : project.title;
-    cells.push(`      <div class="cell cell--num" style="--c:var(--light-blue)"><i>${esc(String(title).slice(0, 10))}</i><span>${esc(result.value)}</span></div>`);
-  }
-  cells.push(`      <div class="cell cell--num" style="--c:var(--amber)"><i>cases</i><span>${projects.length}</span></div>`);
-  cells.push(`      <div class="cell cell--num" style="--c:var(--orange)"><i>facts</i><span>21 214</span></div>`);
-  return cells.join('\n');
-}
-
-export { cascade, panels, menu, readout, esc, FIELD_COLUMNS, FIELD_ROWS };
+export { cascade, panels, spine, esc, FIELD_COLUMNS, FIELD_ROWS };

@@ -1,7 +1,7 @@
 import { copyFile, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { cascade, panels as framePanels, menu as frameMenu, readout as frameReadout, esc } from './frame.mjs';
+import { cascade, panels as framePanels, spine as frameSpine, esc } from './frame.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const tablePath = path.join(root, 'content', 'home-table.json');
@@ -231,7 +231,7 @@ function splitReference(reference, entries) {
 async function copyAssets() {
   await mkdir(assetsDir, { recursive: true });
 
-  for (const file of ['app.js', 'fonts.css', 'console.css', 'favicon.svg']) {
+  for (const file of ['app.js', 'fonts.css', 'lcars.css', 'console.css', 'favicon.svg']) {
     await copyFile(path.join(root, 'src2', file), path.join(assetsDir, file));
   }
 
@@ -325,23 +325,8 @@ export async function build(lang, outDir, page, contentOverride) {
     .split('{{CANONICAL}}').join(spec.canonical ?? '')
     .split('{{RU}}').join(lang === 'ru' ? '/ru' : '')
     .split('{{CASCADE}}').join(cascade(table, lang))
-    .split('{{MENU}}').join(frameMenu(table, spec.page ?? 'home', lang))
-    .split('{{READOUT}}').join(frameReadout(table));
+    .split('{{SPINE}}').join(frameSpine(table, spec.page ?? 'home'))
 
-  // the left column: one panel per section, the heights follow the content
-  const sections = framePanels(table, spec.page ?? 'home');
-  const panelButtons = sections.slice(0, -1).map((section, index) => {
-    const cls = `panel-${3 + index}`;
-    const height = Math.max(68, Math.min(Math.round(section.rows * 26), Math.round(30 * 16)));
-    return `        <button class="${cls}" type="button" data-target="${esc(section.id)}" style="height:${height}px">${String(index + 1).padStart(2, '0')}<span class="hop">${esc(section.label)}</span></button>`;
-  });
-  const last = sections[sections.length - 1];
-  const lastButton = last
-    ? `        <button class="panel-7" type="button" data-target="${esc(last.id)}" style="height:${Math.max(68, Math.round(last.rows * 26))}px">${String(sections.length).padStart(2, '0')}<span class="hop">${esc(last.label)}</span></button>`
-    : '';
-  template = template
-    .split('{{PANELS}}').join(panelButtons.join('\n'))
-    .replace(/<button class="panel-7"[^>]*>.*?<\/button>/, lastButton);
 
   // A project page is one template rendered per project: {{PROJECT}} is the
   // slot id prefix (project.engineer-companion, ...).
@@ -480,7 +465,9 @@ async function main() {
   }
 
   // 404 - the console frame with a "no such module" readout
-  const notFound = `        <h1 class="own-h1">404</h1>\n        <p class="own-lead">No such module on this console.</p>\n        <div class="btnrow"><a class="btn btn--amber" href="/">HOME</a></div>\n`;
+  const notFound = `        <p class="own-lead">No such module on this console.</p>
+        <div class="buttons"><button class="button-orange" onclick="location.href='/'">HOME</button></div>
+`;
   await build('en', path.join(distDir, '404.html'), {
     template: 'index.src.html', out: '404.html', home: false, page: '404',
     title: 'Not found', meta: 'module not found', canonical: `${SITE}/404.html`,

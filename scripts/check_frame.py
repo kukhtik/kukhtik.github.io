@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Check the console frame against the measured LCARS rules.
 
-The rules were measured in pixels from the canonical lcarsde desktop
-screenshots:
+The rules are in docs/lcars-code-design/reference/measured-rules.json.
+What this gate proves, on the running page:
 
-  * every block is separated from the next by an 8 px black gutter
-  * a cell is 40 px thick
-  * a cell has ONE rounded end, with a radius of about half its thickness
-  * the frame edge is a strip of 31 px segments
-
-Usage:
-    python scripts/check_frame.py <url>
+  * the nav is a row of cells of equal height with 8 px gutters
+  * the readout field is the template's 24 x 7 grid, with no empty cell
+  * the spine has one block per section, and NO block carries an inline
+    height - the template's geometry owns that, and an inline height is
+    what broke the frame three times
+  * the frame edge is 31 px
+  * one h1, and no sideways scroll
 """
 
 from __future__ import annotations
@@ -21,6 +21,8 @@ from playwright.sync_api import sync_playwright
 GUTTER = 8
 CELL = 40
 ELBOW = 20
+EDGE = 31
+COLUMNS = 24
 
 
 def main() -> int:
@@ -39,49 +41,64 @@ def main() -> int:
             """() => {
           const R = e => { const b = e.getBoundingClientRect();
             return {x: Math.round(b.x), y: Math.round(b.y), w: Math.round(b.width), h: Math.round(b.height)}; };
-          const cells = [...document.querySelectorAll('.cell')];
-          const status = [...document.querySelectorAll('.status > *')].map(R);
-          const menu = [...document.querySelectorAll('.menu > *')].map(R);
-          const radii = [...new Set(cells.map(c => getComputedStyle(c).borderRadius))];
-          const heights = [...new Set(cells.map(c => R(c).h))];
-          return {status, menu, radii, heights,
-                  edge: R(document.querySelector('.edge')),
-                  over: document.documentElement.scrollWidth > 1440,
-                  h1: document.querySelectorAll('h1').length,
-                  errors: []};
+          const nav = [...document.querySelectorAll('.console__nav a')].map(R);
+          const panels = [...document.querySelectorAll('.spine [data-target]')].map(e => ({
+            r: R(e), inline: e.getAttribute('style') || '', target: e.getAttribute('data-target'),
+            radius: getComputedStyle(e).borderRadius }));
+          const sections = [...document.querySelectorAll('main .lcars-text-bar[id]')].map(e => e.id);
+          const cells = [...document.querySelectorAll('.data-cascade-wrapper .data-column > div')];
+          const cols = document.querySelectorAll('.data-cascade-wrapper .data-column').length;
+          const rows = document.querySelector('.data-cascade-wrapper .data-column')?.children.length ?? 0;
+          const empty = cells.filter(e => !e.textContent.trim() && !e.hasAttribute('data-live')).length;
+          const edge = R(document.querySelector('.console__edge'));
+          const title = document.querySelector('.console__title');
+          return {nav, panels, sections, cols, rows, empty, edge, h1: document.querySelectorAll('h1').length,
+                  titleTag: title ? title.tagName : null,
+                  over: document.documentElement.scrollWidth > 1440};
         }"""
         )
         browser.close()
 
-    # the gutters between the neighbours of the status bar
-    status = data["status"]
-    for a, b in zip(status, status[1:]):
+    # the nav: equal cells, 8 px gutters
+    heights = {n["h"] for n in data["nav"]}
+    if len(heights) > 1:
+        fails.append(f"the nav cells have different heights: {sorted(heights)}")
+    elif heights and heights.pop() != CELL:
+        fails.append(f"a nav cell is {list(heights)[0]}px thick, not {CELL}")
+    for a, b in zip(data["nav"], data["nav"][1:]):
         gap = b["x"] - (a["x"] + a["w"])
         if not (GUTTER - 1 <= gap <= GUTTER + 1):
-            fails.append(f"the gutter between two status cells is {gap}px, not {GUTTER}")
-    # the menu: the cells are 40 px, the gaps are 8
-    menu = data["menu"]
-    for cell in menu[:-1]:
-        if abs(cell["h"] - CELL) > 1:
-            fails.append(f"a menu cell is {cell['h']}px thick, not {CELL}")
-    for a, b in zip(menu, menu[1:]):
-        gap = b["y"] - (a["y"] + a["h"])
-        if not (GUTTER - 1 <= gap <= GUTTER + 1):
-            fails.append(f"the gutter between two menu cells is {gap}px, not {GUTTER}")
-    # one rounded end, radius = half the thickness
-    for radius in data["radii"]:
-        parts = radius.split()
-        rounded = [p for p in parts if p != "0px"]
+            fails.append(f"the gutter between two nav cells is {gap}px, not {GUTTER}")
+
+    # the readout field
+    if data["cols"] != COLUMNS:
+        fails.append(f"the readout field has {data['cols']} columns, not {COLUMNS}")
+    if data["rows"] != 7:
+        fails.append(f"the readout field has {data['rows']} rows, not 7")
+    if data["empty"]:
+        fails.append(f"{data['empty']} empty cells in the readout field")
+
+    # the spine: one block per section, and no inline geometry
+    if len(data["panels"]) != len(data["sections"]):
+        fails.append(f"{len(data['panels'])} spine blocks for {len(data['sections'])} sections")
+    for panel in data["panels"]:
+        if "height" in panel["inline"] or "width" in panel["inline"]:
+            fails.append(f"a spine block carries an inline size: {panel['inline']}")
+        rounded = [p for p in panel["radius"].split() if p != "0px"]
         if len(rounded) > 2:
-            fails.append(f"a cell has {len(rounded)} rounded corners: {radius}")
-        if rounded and rounded[0] not in (f"{ELBOW}px", f"{ELBOW - 1}px"):
-            fails.append(f"the elbow radius is {rounded[0]}, not {ELBOW}px")
-    if data["edge"] and data["edge"]["w"] != 31:
-        fails.append(f"the frame edge is {data['edge']['w']}px, not 31")
-    if data["over"]:
-        fails.append("the page scrolls sideways")
+            fails.append(f"a spine block has {len(rounded)} rounded corners: {panel['radius']}")
+
+    # the edge
+    if data["edge"] and data["edge"]["w"] != EDGE:
+        fails.append(f"the frame edge is {data['edge']['w']}px, not {EDGE}")
+
+    # the page
     if data["h1"] != 1:
         fails.append(f"the page has {data['h1']} h1 elements, not 1")
+    if data["titleTag"] != "H1":
+        fails.append(f"the frame title is a {data['titleTag']}, not an H1")
+    if data["over"]:
+        fails.append("the page scrolls sideways")
     if errors:
         fails.append(f"page errors: {errors[:3]}")
 
@@ -90,7 +107,7 @@ def main() -> int:
         for fail in fails:
             print(f"  - {fail}")
         return 1
-    print(f"FRAME RULES OK: gutters {GUTTER}px, cells {CELL}px, elbow {ELBOW}px, edge 31px")
+    print(f"FRAME RULES OK: nav {CELL}px/{GUTTER}px, field {COLUMNS}x7, spine {len(data['panels'])} blocks, edge {EDGE}px")
     return 0
 
 
