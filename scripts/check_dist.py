@@ -140,7 +140,7 @@ def main() -> int:
 
     for required in ["index.html", "ru/index.html", "404.html", "robots.txt", "_headers", "_redirects",
                      "sitemap.xml",
-                     "assets/lcars.css", "assets/content.css", "assets/app.js", "assets/fonts.css",
+                     "assets/console.css", "assets/app.js", "assets/fonts.css",
                      "assets/cv-en.pdf", "assets/cv-ru.pdf"]:
         if not (DIST / required).exists():
             errors.append(f"dist/{required} is missing")

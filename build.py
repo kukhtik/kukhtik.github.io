@@ -20,6 +20,10 @@ ROOT = Path(__file__).resolve().parent
 
 
 def main() -> int:
+    # dist/ is generated: start from an empty folder, or the files of the
+    # previous build survive and the checks pass on stale output
+    shutil.rmtree(ROOT / "dist", ignore_errors=True)
+
     result = subprocess.run(["node", "build/build.mjs"], cwd=ROOT)
     if result.returncode != 0:
         return result.returncode
