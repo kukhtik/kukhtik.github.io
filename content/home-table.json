@@ -1717,14 +1717,14 @@
    {
     "id": "more.0",
     "title": {
-     "en": "PenaPivo — live Telegram bot + Mini App",
-     "ru": "PenaPivo — живой TG-бот + Mini App"
+     "en": "Hybrid agent harness — Open Space",
+     "ru": "Гибридный контур — Open Space"
     },
     "text": {
-     "en": "Serverless product on Cloudflare Workers / D1 / R2; CI with ≥84% branch coverage gate and mutation testing.",
-     "ru": "Serverless-продукт на Cloudflare Workers / D1 / R2; CI с coverage gate ≥84% и mutation testing."
+     "en": "Frozen cards, model-free oracle, independent verifier: 9 accepted cards, 7/7 passes.",
+     "ru": "Карточки-контракты, оракул без модели, независимый верификатор: 9 карточек, 7/7 пропусков."
     },
-    "url": "https://t.me/PenaPivo_bot",
+    "url": "https://github.com/kukhtik/Open_space",
     "limit_title": 40,
     "limit_text": 110
    },
