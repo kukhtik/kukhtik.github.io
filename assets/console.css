@@ -1136,6 +1136,13 @@ html[data-motion="reduced"] .main { animation: none; }
     min-height: 46px;
   }
   .rail-nav a b { font-size: 13px; }
+  /* на телефоне секции не «появляются» заново при прокрутке — анимация входа только на десктопе */
+  .state.is-on,
+  .state.is-on .metric,
+  .state.is-on .strip-item,
+  .state.is-on .readout-row,
+  .state.is-on .ev-card { animation: none; }
+
   .rail-nav a span {
     display: block;
     position: static;
