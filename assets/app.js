@@ -145,6 +145,12 @@
     document.querySelectorAll("[data-state-link]").forEach(function (a) {
       a.setAttribute("aria-current", String(Number(a.getAttribute("data-state-link")) === i));
     });
+    var ms = document.getElementById("mstate");
+    if (ms) {
+      ms.querySelector("b").textContent = ("0" + (i + 1)).slice(-2) + " / " + ("0" + states.length).slice(-2);
+      var kick = states[i] && states[i].querySelector(".kicker");
+      ms.querySelector("span").textContent = kick ? kick.textContent.split("·")[0].trim() : "";
+    }
     var chip = document.getElementById("state-chip");
     if (chip) {
       chip.textContent = ("0" + (i + 1)).slice(-2);
@@ -164,7 +170,14 @@
   var trackEl = document.querySelector(".track");
   function onScroll() {
     if (!states.length) return;
-    var i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
+    var i;
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      var marker = window.scrollY + window.innerHeight * 0.35;
+      i = 0;
+      states.forEach(function (el, k) { if (el.offsetTop <= marker) i = k; });
+    } else {
+      i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
+    }
     setState(Math.max(0, Math.min(states.length - 1, i)));
   }
   if (trackEl) {
