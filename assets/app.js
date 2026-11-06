@@ -190,8 +190,16 @@
   var trackEl = document.querySelector(".track");
   function onScroll() {
     if (!states.length) return;
-    if (isPhone()) return;
-    var i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
+    var i;
+    if (isPhone()) {
+      var marker = window.scrollY + window.innerHeight * 0.35;
+      i = 0;
+      states.forEach(function (el, k) {
+        if (el.getBoundingClientRect().top + window.scrollY <= marker) i = k;
+      });
+    } else {
+      i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
+    }
     setState(Math.max(0, Math.min(states.length - 1, i)));
   }
   if (trackEl) {
