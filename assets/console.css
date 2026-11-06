@@ -1048,7 +1048,8 @@ html[data-motion="reduced"] .main { animation: none; }
   .facts .metric { min-height: 84px; padding: 10px 12px; }
   .pipe { min-height: 68px; }
 
-  .banner, .datazone, .main, .mobile-settings { padding-left: 10px; }
+  .banner, .datazone, .main { padding-left: 10px; }
+  .mobile-settings { margin-left: 10px; }
   .state { padding: 12px 0 20px; margin-bottom: 20px; }
   .state + .state { border-top: 2px solid color-mix(in srgb, var(--panel) 28%, transparent); padding-top: 24px; margin-top: 4px; }
   .state h2 { font-size: 30px; line-height: 1.02; margin-bottom: 8px; }
