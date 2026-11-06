@@ -132,6 +132,17 @@
 
   /* состояния главной */
   var states = Array.prototype.slice.call(document.querySelectorAll(".state"));
+  var mainEl = document.querySelector(".main");
+  var isPhone = function () { return window.matchMedia("(max-width: 640px)").matches; };
+  function scrollEl() {
+    return (isPhone() && mainEl && mainEl.scrollHeight > mainEl.clientHeight + 2) ? mainEl : null;
+  }
+  function scrollRatio() {
+    var el = scrollEl();
+    if (el) { var m = el.scrollHeight - el.clientHeight; return m > 0 ? Math.min(1, Math.max(0, el.scrollTop / m)) : 0; }
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+  }
   var steps = Array.prototype.slice.call(document.querySelectorAll(".track .step"));
   var current = -1;
   function setState(i) {
@@ -142,8 +153,18 @@
     if (num) num.textContent = ("0" + (i + 1)).slice(-2) + " / " + ("0" + states.length).slice(-2);
     var ticks = document.querySelectorAll("#state-ticks i");
     for (var k = 0; k < ticks.length; k++) ticks[k].classList.toggle("is-on", k <= i);
-    document.querySelectorAll("[data-state-link]").forEach(function (a) {
+    document.querySelectorAll("[data-state-go]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      setState(Number(b.getAttribute("data-state-go")));
+      if (mainEl) mainEl.scrollTop = 0;
+      tick();
+    });
+  });
+  document.querySelectorAll("[data-state-link]").forEach(function (a) {
       a.setAttribute("aria-current", String(Number(a.getAttribute("data-state-link")) === i));
+    });
+    document.querySelectorAll("[data-state-go]").forEach(function (b) {
+      b.setAttribute("aria-current", String(Number(b.getAttribute("data-state-go")) === i));
     });
     var ms = document.getElementById("mstate");
     if (ms) {
@@ -169,14 +190,8 @@
   var trackEl = document.querySelector(".track");
   function onScroll() {
     if (!states.length) return;
-    var i;
-    if (window.matchMedia("(max-width: 640px)").matches) {
-      var marker = window.scrollY + window.innerHeight * 0.35;
-      i = 0;
-      states.forEach(function (el, k) { if (el.getBoundingClientRect().top + window.scrollY <= marker) i = k; });
-    } else {
-      i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
-    }
+    if (isPhone()) return;
+    var i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
     setState(Math.max(0, Math.min(states.length - 1, i)));
   }
   if (trackEl) {
@@ -184,6 +199,13 @@
     window.addEventListener("resize", onScroll);
     onScroll();
   }
+  document.querySelectorAll("[data-state-go]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      setState(Number(b.getAttribute("data-state-go")));
+      if (mainEl) mainEl.scrollTop = 0;
+      tick();
+    });
+  });
   document.querySelectorAll("[data-state-link]").forEach(function (a) {
     a.addEventListener("click", function (ev) {
       var i = Number(a.getAttribute("data-state-link"));
@@ -197,8 +219,7 @@
         CY = +mlc.dataset.cy, OPEN = +mlc.dataset.open, MIN = +mlc.dataset.min, PAIRS = +mlc.dataset.pairs;
     var mlcTick = false;
     var paintMlc = function () {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      var p = scrollRatio();
       mlc.style.setProperty("--amp", String(1 - p));
       var pct = document.getElementById("scroll-pct");
       if (pct) pct.textContent = Math.round(p * 100) + "%";
@@ -211,9 +232,11 @@
       }
       mlcTick = false;
     };
-    window.addEventListener("scroll", function () {
+    var kickMlc = function () {
       if (!mlcTick) { mlcTick = true; requestAnimationFrame(paintMlc); }
-    }, { passive: true });
+    };
+    window.addEventListener("scroll", kickMlc, { passive: true });
+    if (mainEl) mainEl.addEventListener("scroll", kickMlc, { passive: true });
     paintMlc();
   }
 
@@ -221,14 +244,15 @@
   var ticking = false;
   function paintProgress() {
     if (!progressBar) return;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    var ratio = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    var ratio = scrollRatio();
     progressBar.style.width = (ratio * 100).toFixed(2) + "%";
     ticking = false;
   }
-  window.addEventListener("scroll", function () {
+  var tick = function () {
     if (!ticking) { ticking = true; requestAnimationFrame(paintProgress); }
-  }, { passive: true });
+  };
+  window.addEventListener("scroll", tick, { passive: true });
+  if (mainEl) mainEl.addEventListener("scroll", tick, { passive: true });
   paintProgress();
 
   var codeEl = document.getElementById("banner-code");
