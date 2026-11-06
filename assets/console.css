@@ -908,7 +908,8 @@ html[data-motion="reduced"] .main { animation: none; }
   .work-item h3 { font-size: 19px; }
   .work-item .w-metric { grid-column: 2; border-left: 0; padding: 6px 10px; }
   .work-item .w-metric b { font-size: 18px; }
-  .mail { font-size: 19px; }
+  .mail { font-size: 19px; display: inline-block; padding: 9px 0; max-width: 100%; overflow-wrap: anywhere; }
+  .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.2; }
   .progress { display: none; }
   .state-chip { display: none; }
 }
@@ -975,3 +976,133 @@ html[data-motion="reduced"] .main { animation: none; }
 .mlc-bank use { fill: #000; }
 .mlc-axis { stroke: #000; stroke-width: .4; stroke-dasharray: 2 3; opacity: .6; }
 .mlcbox svg { shape-rendering: geometricPrecision; }
+
+/* ===== мобильная адаптация v2 (≤640) ===== */
+@media (max-width: 640px) {
+  .frame { grid-template-columns: 48px minmax(0, 1fr); padding: 4px 10px 0 4px; gap: 0; }
+  .rail { width: 48px; height: auto; overflow: visible; position: sticky; top: 0; z-index: 6; }
+  .rail-body { flex: 0 0 auto; }
+  .rail-top { height: auto; }
+  .p1 { height: 54px; border-radius: 0 0 0 24px; }
+  .p1 .who { font-size: 9px; line-height: 1.05; }
+  .p2 { height: auto; min-height: 0; padding: 4px 2px 6px; border-radius: 0; }
+  .rail-nav { gap: 6px; margin-top: 0; }
+  .rail-nav a {
+    min-height: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    font-size: 12px;
+    letter-spacing: .02em;
+    border-radius: 0 12px 12px 0;
+  }
+  .rail-nav a b { font-size: 13px; }
+  .p3 { display: none; }
+
+  .banner { min-height: 48px; font-size: 22px; padding: 6px 0; }
+  body.page .banner { min-height: 48px; font-size: 21px; }
+  .banner-title { white-space: normal; }
+
+  /* навигация остаётся в рейке — верхний дубль на телефоне убираем */
+  .nav { display: none; }
+  .bars { display: none; }
+
+  /* блок STATE с MLC снова виден: полоса под полосами-разделителями */
+  .datazone { display: block; margin: 0 0 8px; }
+  .statepanel { display: block; width: 100%; height: auto; grid-template-columns: none; }
+  .sp-info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 5px 8px;
+    grid-template-rows: none;
+  }
+  .sp-kicker { font-size: 10px; }
+  .sp-num { font-size: 15px; }
+  .sp-hint { margin-left: auto; font-size: 10px; }
+  .mlcbox { border-left: 0; border-top: 4px solid #000; height: auto; aspect-ratio: 275 / 80; }
+  .mlcbox svg { height: 100%; }
+
+  /* прогресс-линия всегда сверху */
+  .progress {
+    display: block;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    width: auto;
+    height: 3px;
+    z-index: 30;
+    background: rgba(186, 164, 229, .22);
+  }
+
+  /* тап-таргеты и плотность списков */
+  .list-systems, .list-systems.tight { grid-template-columns: 1fr; gap: 0; }
+  .list-systems a { min-height: 44px; align-items: center; font-size: 15px; gap: 12px; padding: 4px 0; }
+  .list-systems.tight a { font-size: 14px; }
+  .list-systems i { font-size: 12.5px; text-align: right; white-space: nowrap; }
+  .contact-list a { min-height: 44px; align-items: center; gap: 12px; }
+  .strip-item { min-height: 72px; padding: 10px; }
+  .ev-card { min-height: 84px; padding: 10px; }
+  .facts .metric { min-height: 76px; }
+  .pipe { min-height: 68px; }
+
+  .state { padding: 10px 0 18px; margin-bottom: 18px; }
+  .state h2 { font-size: 30px; line-height: 1.02; margin-bottom: 8px; }
+  .display { font-size: 30px; }
+  .lead { font-size: 16px; line-height: 1.45; }
+  .kicker { font-size: 11px; }
+  .readout-row { min-height: 30px; font-size: 13px; }
+  .readout-row span { font-size: 13px; }
+  .mail { font-size: 19px; display: inline-block; padding: 9px 0; max-width: 100%; overflow-wrap: anywhere; }
+  .btn { max-width: 100%; white-space: normal; text-align: center; line-height: 1.2; }
+  .textbar { height: 32px; font-size: 15px; }
+
+  .work-grid { grid-template-columns: 1fr; }
+  .work-item { grid-template-columns: 40px minmax(0, 1fr); }
+  .work-item .w-metric { grid-column: 2; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery .shot img { width: 100%; height: auto; }
+  .case-metrics { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+
+/* мобильные настройки: тема, язык, движение */
+.mobile-settings { display: none; }
+
+@media (max-width: 640px) {
+  .mobile-settings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 8px;
+    padding-top: 12px;
+    border-top: 2px solid color-mix(in srgb, var(--panel) 35%, transparent);
+  }
+  .ms-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .mobile-settings .rail-themes { margin: 0; }
+  .mobile-settings .rail-themes button { width: 32px; height: 32px; }
+  .ms-lang {
+    margin-left: auto;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 2px solid var(--panel);
+    color: var(--banner);
+    font-size: 13px;
+    letter-spacing: .08em;
+  }
+  .ms-motion { width: auto; min-height: 44px; margin-top: 0; padding: 0 12px; border-color: var(--panel); color: var(--panel); }
+  .ms-motion:hover, .ms-motion:focus-visible { background: var(--panel); color: #000; }
+
+  /* подписи навигации остаются в дереве доступности */
+  .rail-nav a span {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}

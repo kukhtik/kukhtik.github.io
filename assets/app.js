@@ -11,18 +11,18 @@
     motion = m;
     html.setAttribute("data-motion", m);
     try { localStorage.setItem("lcars-motion", m); } catch (e) {}
-    var btn = document.getElementById("motion-toggle");
-    if (btn) btn.textContent = "MOTION · " + (m === "full" ? "FULL" : m === "reduced" ? "REDUCED" : "OFF");
+    document.querySelectorAll("[data-motion-toggle]").forEach(function (btn) {
+      btn.textContent = "MOTION · " + (m === "full" ? "FULL" : m === "reduced" ? "REDUCED" : "OFF");
+    });
     if (window.__lcarsStars) window.__lcarsStars.setMode(m);
   }
   applyMotion(motion);
 
-  var motionBtn = document.getElementById("motion-toggle");
-  if (motionBtn) {
-    motionBtn.addEventListener("click", function () {
+  document.querySelectorAll("[data-motion-toggle]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
       applyMotion(motion === "full" ? "off" : "full");
     });
-  }
+  });
 
   /* тема */
   var saved = null;
