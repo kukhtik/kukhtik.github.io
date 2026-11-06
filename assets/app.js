@@ -133,7 +133,7 @@
   /* состояния главной */
   var states = Array.prototype.slice.call(document.querySelectorAll(".state"));
   var steps = Array.prototype.slice.call(document.querySelectorAll(".track .step"));
-  var current = 0;
+  var current = -1;
   function setState(i) {
     if (i === current && states[i] && states[i].classList.contains("is-on")) return;
     current = i;
@@ -148,8 +148,7 @@
     var ms = document.getElementById("mstate");
     if (ms) {
       ms.querySelector("b").textContent = ("0" + (i + 1)).slice(-2) + " / " + ("0" + states.length).slice(-2);
-      var kick = states[i] && states[i].querySelector(".kicker");
-      ms.querySelector("span").textContent = kick ? kick.textContent.split("·")[0].trim() : "";
+      ms.querySelector("span").textContent = (states[i] && states[i].dataset.name) || "";
     }
     var chip = document.getElementById("state-chip");
     if (chip) {
@@ -174,7 +173,7 @@
     if (window.matchMedia("(max-width: 640px)").matches) {
       var marker = window.scrollY + window.innerHeight * 0.35;
       i = 0;
-      states.forEach(function (el, k) { if (el.offsetTop <= marker) i = k; });
+      states.forEach(function (el, k) { if (el.getBoundingClientRect().top + window.scrollY <= marker) i = k; });
     } else {
       i = Math.round(window.scrollY / Math.max(1, window.innerHeight));
     }
