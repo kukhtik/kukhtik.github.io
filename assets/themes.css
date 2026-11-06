@@ -1,0 +1,82 @@
+/* themes.css — роли и геометрия. Единственное место, где живут hex. */
+:root,
+[data-theme="classic"] {
+  --bg: #000;
+  --frame: #d29b7f;
+  --banner: #eb943a;
+  --panel: #baa4e5;
+  --text: #baa4e5;
+  --accent: #c47d69;
+  --bar-1: #8899ff; --bar-2: #eb943a; --bar-3: #baa4e5; --bar-4: #baa4e5; --bar-5: #cf4f4f;
+  --bar-6: #cf4f4f; --bar-7: #ea9c72; --bar-8: #cf4f4f; --bar-9: #baa4e5; --bar-10: #ea9c72;
+  --radius: 130px;
+  --bar-h: 24px;
+  --bar-step: 32px;
+  --panel-border: 4px;
+  --seq-1: 40%; --seq-2: 4%; --seq-3: 17%; --seq-4: 35%; --seq-5: 4%;
+}
+
+[data-theme="nemesis-blue"] {
+  --bg: #000;
+  --frame: #2266ff;
+  --banner: #88bbff;
+  --panel: #d1a16c;
+  --text: #6699ff;
+  --accent: #adcaff;
+  --bar-1: #da2537; --bar-2: #b88b5c; --bar-3: #6699ff; --bar-4: #d1a16c; --bar-5: #ffcc99;
+  --bar-6: #da2537; --bar-7: #b88b5c; --bar-8: #6699ff; --bar-9: #d1a16c; --bar-10: #ffcc99;
+  --radius: 130px; --bar-h: 24px; --bar-step: 32px; --panel-border: 4px;
+  --seq-1: 40%; --seq-2: 4%; --seq-3: 17%; --seq-4: 35%; --seq-5: 4%;
+}
+
+[data-theme="lower-decks"] {
+  --bg: #000;
+  --frame: #ff7700;
+  --banner: #ffcc99;
+  --panel: #ff7700;
+  --text: #ff9911;
+  --accent: #ffcc99;
+  --bar-1: #ff4400; --bar-2: #ffaa44; --bar-3: #ff7700; --bar-4: #ffcc99; --bar-5: #ffeecc;
+  --bar-6: #ff4400; --bar-7: #ffaa44; --bar-8: #ff7700; --bar-9: #ffcc99; --bar-10: #ffeecc;
+  --radius: 100px; --bar-h: 20px; --bar-step: 28px; --panel-border: 6.4px;
+  --seq-1: 10%; --seq-2: 12%; --seq-3: 17%; --seq-4: 56%; --seq-5: 5%;
+}
+
+[data-theme="lower-decks-padd"] {
+  --bg: #000;
+  --frame: #5588ee;
+  --banner: #88eeff;
+  --panel: #455580;
+  --text: #7799dd;
+  --accent: #99ccff;
+  --bar-1: #66ccff; --bar-2: #5588ee; --bar-3: #99ccff; --bar-4: #455580; --bar-5: #ff3500;
+  --bar-6: #66ccff; --bar-7: #5588ee; --bar-8: #99ccff; --bar-9: #455580; --bar-10: #ff3500;
+  --radius: 100px; --bar-h: 20px; --bar-step: 28px; --panel-border: 6.4px;
+  --seq-1: 10%; --seq-2: 28%; --seq-3: 7%; --seq-4: 50%; --seq-5: 5%;
+}
+
+[data-theme="voyager"] {
+  --bg: #000;
+  --frame: #828cad;
+  --banner: #ffbb33;
+  --panel: #ffbb33;
+  --text: #70b5ff;
+  --accent: #ffe1ca;
+  --bar-1: #fb9004; --bar-2: #2288ff; --bar-3: #ffbb33; --bar-4: #828cad; --bar-5: #e98181;
+  --bar-6: #fb9004; --bar-7: #2288ff; --bar-8: #ffbb33; --bar-9: #828cad; --bar-10: #e98181;
+  --radius: 100px; --bar-h: 20px; --bar-step: 28px; --panel-border: 5.2px;
+  --seq-1: 14%; --seq-2: 20%; --seq-3: 5%; --seq-4: 56%; --seq-5: 5%;
+}
+
+[data-theme="picard"] {
+  --bg: #000;
+  --frame: #6d748c;
+  --banner: #9ea5ba;
+  --panel: #6d748c;
+  --text: #9ea5ba;
+  --accent: #d2d5df;
+  --bar-1: #ff977b; --bar-2: #37a6d1; --bar-3: #2f3749; --bar-4: #d2d5df; --bar-5: #6d748c;
+  --bar-6: #ff977b; --bar-7: #37a6d1; --bar-8: #2f3749; --bar-9: #d2d5df; --bar-10: #6d748c;
+  --radius: 80px; --bar-h: 20px; --bar-step: 28px; --panel-border: 5px;
+  --seq-1: 20%; --seq-2: 20%; --seq-3: 20%; --seq-4: 20%; --seq-5: 20%;
+}
